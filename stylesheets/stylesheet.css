@@ -148,6 +148,13 @@ img {
   -ms-box-shadow: 0 0 5px #ebebeb;
 }
 
+header img {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
 p img {
   display: inline;
   margin: 0;
