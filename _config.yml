@@ -3,6 +3,8 @@ title: "Official website of the AngleSharp project"
 author: "AngleSharp Community"
 description: "Official website of the C# lecture of the University of Regensburg."
 keywords: "AngleSharp, Parser, .NET, C#, HTML, HTML5, JavaScript, DOM, Document, Query, Selector"
-markdown: redcarpet
 pygments: true
 markdown: kramdown
+
+kramdown:
+  input: GFM
