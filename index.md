@@ -16,6 +16,7 @@ Documentation
 -------------
 
 Documentation is available in form of the public Wiki here at GitHub. 
+
 * [Wiki Home](https://github.com/FlorianRappl/AngleSharp/wiki)
 * [Documentation](https://github.com/FlorianRappl/AngleSharp/wiki/Documentation)
 * [API](https://github.com/FlorianRappl/AngleSharp/wiki/Api)
@@ -50,6 +51,7 @@ Change log
 ----------
 
 **0.8.0**
+
 - New CSS value model integrated
 - PseudoElement available
 - Mutation records connected
@@ -63,6 +65,7 @@ Change log
 - All HTML5 input types are supported
 
 **0.7.0**
+
 - Native (callback based) async parsing
 - Interfaces for resource loading defined
 - Browsing context available / creation possible (if demanded)
@@ -71,6 +74,7 @@ Change log
 - Sample JavaScript engine based on Jint included
 
 **0.6.0:**
+
 - Implemented parsing of CSS media queries
 - Improved URL parsing according to RFC 3986
 - 100% finished HTML5 parser
@@ -83,6 +87,7 @@ Change log
 - New source management for better handling and performance
 
 **0.5.0:**
+
 - Major API changes (DI is now the only singleton)
 - 98% finished HTML5 parser
 - 95% finished CSS3 parser
@@ -90,6 +95,7 @@ Change log
 - Included `Submit()` method for forms
 
 **0.4.0:**
+
 - Final alpha version
 - 98% finished HTML5 parser
 - 90% finished CSS3 parser
@@ -98,6 +104,7 @@ Change log
 - Included WebRequester
 
 **0.3.0:**
+
 - Alpha version
 - 95% finished HTML5 parser
 - 90% finished CSS3 parser
@@ -107,6 +114,7 @@ Change log
 - DOMAttribute applied where possible
 
 **0.2.0:**
+
 - First released version (pre-alpha)
 - 95% finished HTML5 parser
 - 70% finished CSS3 parser
@@ -122,6 +130,7 @@ The roadmap presents a draft on what is about to be implemented, and when. The p
 The time estimates are speculative, which means that the project could be totally off those predictions. Finding talented (and motivated) collaborators would certainly speed up the project.
 
 (April 2015) **0.9.0**
+
 - (Simple?) XPath query support
 - Interface for rendering defined
 - CSS layout box
@@ -134,6 +143,7 @@ The time estimates are speculative, which means that the project could be totall
 - AngleSharp.Scripting with generated JS bindings
 
 (September 2015) **1.0.0**
+
 - Final release of the first version
 - MathML and SVG finalized (for HTML)
 - HTML5 parser at 100% with complete DOM
