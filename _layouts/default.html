@@ -17,8 +17,12 @@
           <a id="forkme_banner" href="https://github.com/AngleSharp">View on GitHub</a>
           <img src="images/logo.png" width=200 height=175 alt="AngleSharp Logo">
           <h2 id="project_tagline">Official website of the AngleSharp project.</h2>
-
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/FlorianRappl/AngleSharp/archive/master.zip">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/FlorianRappl/AngleSharp/archive/master.tar.gz">Download this project as a tar.gz file</a>
+          </section>
         </header>
+
     </div>
 
     <!-- MAIN CONTENT -->
@@ -28,14 +32,21 @@
       </section>
     </div>
 
+    <!-- NAVIGATION -->
+    <div id="nav_wrap" class="outer">
+      <nav class="nav" class="inner">
+        <ul>
+          {% for node in site.pages %}<li><a href="{{ node.url | prepend: site.baseurl }}"{% if page.url == node.url %} class="selected"{% endif %}>{{ node.title }}</a></li>{% endfor %}
+        </ul>
+      </nav>
+    </div>
+
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
