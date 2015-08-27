@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blog
+parent: root
+---
+<div class="col-xs-12">
+{% for page in site.posts %}
+<article>
+	<h2>{{ page.title }}</h2>
+
+	<div class="blog-info">
+		{{ page.author }} • {{ page.date | date: "%b %-d, %Y" }} • {{ page.categories | join: ', '}}
+	</div>
+
+	<div class="blog-post">
+		{{ page.content }}
+	</div>
+</article>
+{% endfor %}
+</div>

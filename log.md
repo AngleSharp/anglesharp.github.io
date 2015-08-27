@@ -1,10 +1,25 @@
 ---
 layout: default
-title: Log
+title: Changelog
+parent: root
 ---
 
-Change log
-----------
+## Change log
+
+**0.9.0**
+
+- Improved DOM algorithms and performance
+- Shadow DOM draft implemented
+- The `picture` element is now support (with `srcset`)
+- More neat helpers
+- Custom `MimeType`
+- `DocumentBuilder` removed
+- AngleSharp events aggregated in `IEventAggregator`
+- Non-validating XML parser reintegrated
+- CSSOM improved (also allows round-trip)
+- Included default cookie service
+- Deployed with strong name
+- Improved parser front-ends (`HtmlParser`, `CssParser`, ...)
 
 **0.8.0**
 

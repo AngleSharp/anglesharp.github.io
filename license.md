@@ -1,10 +1,10 @@
 ---
 layout: default
 title: License
+parent: none
 ---
 
-Some legal stuff
-----------------
+## Some legal stuff
 
 Copyright (c) 2013-2015, AngleSharp Community.
 All rights reserved.

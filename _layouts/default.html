@@ -1,52 +1,22 @@
-<!DOCTYPE html>
-<html>
+---
+layout: master
+---
+<div class="container">
+  <header class="header-small">
+      <div class="headline-small">
+          <h1>The AngleSharp Project</h1>
+      </div>
+  </header>
 
-  <head>
-    <meta charset="{{ site.encoding }}">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <title>AngleSharp - {{ page.title }}</title>
-  </head>
+    <hr class="divider">
 
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/AngleSharp">View on GitHub</a>
-          <img src="images/logo.png" width=200 height=175 alt="AngleSharp Logo">
-          <h2 id="project_tagline">Official website of the AngleSharp project.</h2>
-          <section id="downloads">
-            <a class="zip_download_link" href="https://github.com/FlorianRappl/AngleSharp/archive/master.zip">Download this project as a .zip file</a>
-            <a class="tar_download_link" href="https://github.com/FlorianRappl/AngleSharp/archive/master.tar.gz">Download this project as a tar.gz file</a>
-          </section>
-        </header>
-
+    <div class="row">
+      <div class="col-lg-12">
+        {{content}}
+      </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        {{ content }}
-      </section>
-    </div>
+    <hr class="divider">
 
-    <!-- NAVIGATION -->
-    <div id="nav_wrap" class="outer">
-      <nav class="nav" class="inner">
-        <ul>
-          {% for node in site.pages %}<li><a href="{{ node.url | prepend: site.baseurl }}"{% if page.url == node.url %} class="selected"{% endif %}>{{ node.title }}</a></li>{% endfor %}
-        </ul>
-      </nav>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-  </body>
-</html>
+    {% include footer.html %}
+</div>
