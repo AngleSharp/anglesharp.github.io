@@ -2,6 +2,10 @@ body {
     margin-top: 50px;
 }
 
+span.red {
+    color: #E21D1D;
+}
+
 .header-large {
     display: block;
     width: 100%;
@@ -16,7 +20,7 @@ body {
 
 .headline-large h1 {
     font-size: 130px;
-    text-shadow: 0 0 10px #fff;
+    text-shadow: 0 0 5px #fff;
 }
 
 .headline-large h2 {
