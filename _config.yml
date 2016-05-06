@@ -1,7 +1,7 @@
 name: AngleSharp
 title: "Official website of the AngleSharp project"
 author: "AngleSharp Community"
-description: "Official website of the C# lecture of the University of Regensburg."
+description: "The official webpage of the AngleSharp project."
 keywords: "AngleSharp, Parser, .NET, C#, HTML, HTML5, JavaScript, DOM, Document, Query, Selector"
 pygments: true
 markdown: redcarpet
