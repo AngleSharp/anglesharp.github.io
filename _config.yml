@@ -4,8 +4,5 @@ author: "AngleSharp Community"
 description: "The official webpage of the AngleSharp project."
 keywords: "AngleSharp, Parser, .NET, C#, HTML, HTML5, JavaScript, DOM, Document, Query, Selector"
 pygments: true
-markdown: redcarpet
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
-
-redcarpet:
-  extensions: ["tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
+future: true
