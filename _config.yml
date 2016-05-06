@@ -3,6 +3,6 @@ title: "Official website of the AngleSharp project"
 author: "AngleSharp Community"
 description: "The official webpage of the AngleSharp project."
 keywords: "AngleSharp, Parser, .NET, C#, HTML, HTML5, JavaScript, DOM, Document, Query, Selector"
-pygments: true
+rouge: true
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
 future: true
