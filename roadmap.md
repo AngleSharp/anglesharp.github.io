@@ -10,10 +10,10 @@ The roadmap presents a draft on what is about to be implemented, and when. The p
 
 The time estimates are speculative, which means that the project could be totally off those predictions. Finding talented (and motivated) collaborators would certainly speed up the project.
 
-(eo 2018) **1.0.0**
+(eo 2019) **1.0.0**
 
 - Release of the first stable version
-- Split AngleSharp.Core into several libraries (Core, CSS)
+- Split AngleSharp.Core into several libraries (Core, CSS, ...)
 - Provide internal / external communication channel (best flexibility)
 - Service model finalized
 
