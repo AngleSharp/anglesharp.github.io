@@ -6,6 +6,17 @@ parent: root
 
 ## Change log
 
+**0.11.0**
+
+- Moved everything from `AngleSharp.Xml` to its own library
+- Added more examples regarding forms
+- Moved `ISvgDocument` and `AutoSelectedMarkupFormatter` to AngleSharp.Xml
+- Improved fragment parsing
+- Fixed inconsistent behavior in fragment parsing
+- Improved migration documentation
+- Fixed internal bug in `link` resolution
+- Removed `SetDefault` function from `Configuration`
+
 **0.10.0**
 
 - `HttpRequester` improvements

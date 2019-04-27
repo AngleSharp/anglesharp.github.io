@@ -5,4 +5,9 @@ description: "The official webpage of the AngleSharp project."
 keywords: "AngleSharp, Parser, .NET, C#, HTML, HTML5, JavaScript, DOM, Document, Query, Selector"
 rouge: true
 markdown_ext:  markdown,mkdown,mkdn,mkd,md
+kramdown:
+  input: GFM
 future: true
+collections:
+  docs:
+    documentation: true
