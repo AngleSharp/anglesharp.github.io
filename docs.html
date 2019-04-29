@@ -4,9 +4,11 @@ title: Documentation
 parent: root
 ---
 <div class="col-xs-12">
-{% for page in site.docs %}
-<article>
-	{{ page.content | markdownify }}
-</article>
+<ul>
+{% for doc in site.docs %}
+	<li>
+	<a href="{{ doc.url }}">{{ doc.title }}</a>
+	</li>
 {% endfor %}
+</ul>
 </div>
