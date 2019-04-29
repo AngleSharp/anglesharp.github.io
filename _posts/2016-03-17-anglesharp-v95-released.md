@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.5 released"
-date:   2016-03-17 14:44:00
+title: "AngleSharp v0.9.5 released"
+date: 2016-03-17 14:44:00
 categories: news release
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 It has been quite a while until the last release, but better late than never: AngleSharp v0.9.5 is now available. There have been some bug fixes and improvements. Most importantly (and thanks to [Jeremy Meng](https://github.com/jeremymeng) from Microsoft after discussions with the core Nancy developers) we now support the CoreCLR (*dotnet*) target via NuGet.
 

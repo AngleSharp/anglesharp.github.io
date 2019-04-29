@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.6 released"
-date:   2016-05-06 13:27:00
+title: "AngleSharp v0.9.6 released"
+date: 2016-05-06 13:27:00
 categories: news release
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 More than two months after the release of AngleSharp v0.9.5 the new version v0.9.6 has been published. Besides some bug fixes the version focused on starting some changes regarding the final API touches and modifications.
 

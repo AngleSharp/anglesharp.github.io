@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.11.0 released"
-date:   2019-02-12 09:20:00
+title: "AngleSharp v0.11.0 released"
+date: 2019-02-12 09:20:00
 categories: news release major
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 Yesterday the latest version of AngleSharp has been released. This version corrects some smaller issues of the big 0.10 release published a month ago. It also brings some further advancements such as improved fragment parsing, some internal bugfixes, or the removal of AngleSharp.Xml from the core library.
 

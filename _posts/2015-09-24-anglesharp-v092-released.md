@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.2 released"
-date:   2015-09-24 23:44:00
+title: "AngleSharp v0.9.2 released"
+date: 2015-09-24 23:44:00
 categories: news release
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 This week's minor update was only a small patch that fixed a bug in the tokenizer and improved the XML parser's performance. It also features the brandnew `application/json` encoding type for form submission. The form submission process internals have been redesigned to be much easier to extend and use. The `FormDataSet` and `FormDataSetEntry` classes are now public. This forms the basis for sending forms without requiring a webpage or valid `<form>` element at all.
 

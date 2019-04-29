@@ -1,8 +1,10 @@
 ---
-title:  "Taking AngleSharp to the Next Level"
-date:   2018-03-09 10:15:00
+title: "Taking AngleSharp to the Next Level"
+date: 2018-03-09 10:15:00
 categories: news organization
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 In the recent two months some advancements have been made to ensure that AngleSharp will see active development also in the future. Today I am happy to announce that plans for joining the .NET Foundation are becoming more solid.
 
