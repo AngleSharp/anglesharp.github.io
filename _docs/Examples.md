@@ -1,14 +1,15 @@
 ---
+title: "Example Code"
+layout: doc
+section: Documentation
 ---
-# Example Code
-
 This is a (growing) list of examples for every-day usage of AngleSharp.
 
 ## Parsing a Well-Defined Document
 
 Of course AngleSharp can handle well-defined documents very well. But what about a document that seems ill-defined, however, is in fact well-defined. The following document works, has no errors at all and is also used in production by Google. The serialized output of the document generation can be compared with the serialization done by browsers such as IE, Chrome or Firefox.
 
-```C#
+```cs
 var source = @"
 <!DOCTYPE html>
 <html lang=en>
@@ -43,7 +44,7 @@ In this case we use the provided source code to determine the content of the req
 
 AngleSharp constructs a DOM according to the official HTML5 specification. This also means that the resulting model is fully interactive and could be used for simple manipulation. The following example creates a document and changes the tree structure by inserting another paragraph element with some text.
 
-```C#
+```cs
 static async Task FirstExample()
 {
     //Use the default configuration for AngleSharp
@@ -76,7 +77,7 @@ Here the parser will create a new `IHtmlDocument` instance, which is then querie
 
 AngleSharp exposes all DOM lists as `IEnumerable<T>` like `IEnumerable<Node>` for the `NodeList` class. This allows us to use LINQ in combination with some already given DOM capabilities like the `QuerySelectorAll` method.
 
-```C#
+```cs
 static async Task UsingLinq()
 {
     //Create a new context for evaluating webpages with the default config
@@ -115,7 +116,7 @@ Since the `All` property of an `IDocument` returns all `IElement` nodes that are
 
 It is also possible to get the same as `All` with a selector - the special asterisk `*` selector:
 
-```C#
+```cs
 //Same as document.All
 var blueListItemsLinq = document.QuerySelectorAll("*").Where(m => m.LocalName == "li" && m.ClassList.Contains("blue"));
 ```
@@ -128,7 +129,7 @@ Additionally we have the `QuerySelector` method. This one is quite close to LINQ
 
 Let's see some sample code:
 
-```C#
+```cs
 static async Task SingleElements()
 {
     //Create a new context for evaluating webpages with the default config
@@ -167,7 +168,7 @@ The sample starts by creating a customized version based on the pre-defined `Con
 
 Here is the full sample code.
 
-```C#
+```cs
 static async Task SimpleScriptingSample()
 {
     //We require a custom configuration
@@ -202,7 +203,7 @@ Using JavaScript with AngleSharp is no problem. In the current state we can also
 
 The following example code performs DOM queries, creates new elements and removes existing ones.
 
-```C#
+```cs
 static void ExtendedScriptingSample()
 {
     //We require a custom configuration with JavaScript and CSS
@@ -264,7 +265,7 @@ The sample document of this example consists of a single script, that calls the 
 
 The listener is called once the document is fully loaded. This happens after executing the provided JavaScript, hence we should see this event at the end. We also registered another event listener, which will be invoked once the custom event **hello** is dispatched.
 
-```C#
+```cs
 public static void EventScriptingExample()
 {
     //We require a custom configuration

@@ -1,7 +1,8 @@
 ---
+title: "Getting Started"
+layout: doc
+section: Documentation
 ---
-# Getting Started
-
 ## Requirements
 
 AngleSharp comes currently in two flavors: on Windows for .NET 4.6 and in general targetting .NET Standard 2.0 platforms.

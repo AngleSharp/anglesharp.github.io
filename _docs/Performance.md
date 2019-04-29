@@ -1,7 +1,8 @@
 ---
+title: "Performance Evaluations"
+layout: doc
+section: Documentation
 ---
-# Performance Evaluations
-
 ## General Considerations
 
 The library is not small (its not huge either), which makes preloading or "warming-up" (or using NGen) a candidate for productive usage. The first runs will always be slower than the following. This is a property of C# / the MSIL (or the JIT process in general), which has nothing to do with AngleSharp.

@@ -1,7 +1,8 @@
 ---
+title: "Frequently Asked Questions"
+layout: doc
+section: Documentation
 ---
-# Frequently Asked Questions
-
 ## How to download a picture?
 
 This is nothing directly to do with AngleSharp. You can perform any kind of requests to some URL.
