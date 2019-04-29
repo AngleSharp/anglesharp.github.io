@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article>
+    <h2 class="feature-heading">{{ page.title }}</h2>
+
+    <div class="toc-container">
+        <p class="toc-title">Contents</p>
+        {% include toc.html html=content %}
+    </div>
+    
+    
+    <div class="blog-post">
+        {{ content }}
+    </div>
+</article>
