@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.9.1 released"
-date:   2018-01-03 16:01:00
+title: "AngleSharp v0.9.9.1 released"
+date: 2018-01-03 16:01:00
 categories: news release hotfix
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 For over a year the development of AngleSharp was stale. But the project is not dead! Today I am proud to release a hotfix to the very successful version v0.9.9, called v0.9.9.1. This hotfix contains some critical fixes and improvements. It also paves the way for the v0.10 release, which is stuck with an observer problem (namely how to attach dynamic listeners to attribute changes for - from the perspective of AngleSharp.Core - unknown attributes), which is solved in this hotfix. In the long term this also enables users to disable the dynamic DOM, resulting in even better performance for static analysis when a fully dynamic DOM is not needed.
 
@@ -10,11 +12,11 @@ One of the things that kept AngleSharp stale was the issue of the broken tool ch
 
 AngleSharp is already quite in use and popular these days. The NuGet statistic of downloads per day also confirms this.
 
-![AngleSharp downloads per day](images/nuget_stat_day.png)
+![AngleSharp downloads per day](/images/nuget_stat_day.png)
 
 More importantly, the overall number of downloads is pretty much constantly increasing. Thus we do not see any decline in AngleSharp's usage. However, increasing the number of downloads per day (i.e., stepping back in the arena with HtmlAgilityPack) will be an important goal for 2018.
 
-![AngleSharp downloads in total](images/nuget_stat_total.png)
+![AngleSharp downloads in total](/images/nuget_stat_total.png)
 
 To achieve this goal we will try to finally publish v0.10. If this can be done in the first half of 2018 then the way for v1 is definitely free. For v1 we will try to improve / realize
 

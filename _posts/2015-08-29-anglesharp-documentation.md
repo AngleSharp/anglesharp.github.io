@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp Documentation"
-date:   2015-08-29 10:01:00
+title: "AngleSharp Documentation"
+date: 2015-08-29 10:01:00
 categories: information documentation
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 An important aspect that is still missing (on the new homepage) is documentation. There should be two directly linked pages: "Get Started" and "Documentation". Right now the documentation can only be found in the Wiki, with a little code being displayed in the *AngleSharp/AngleSharp* repository. My plan is to keep both, but to update / sync them from a larger (more dedicated) source.
 

@@ -3,8 +3,16 @@ layout: default
 title: Changelog
 parent: root
 ---
+**0.12.0**
 
-## Change log
+- Added ability to create a selector for an element (#784)
+- Enhanced documentation (#776, #774, #771)
+- Fixed DOM name attribute in `AdjacentPosition` (#775)
+- Fixed bug regarding `set-cookie` header (#768)
+- Added attribute start position in token (#766)
+- Added support for XML processing instruction (#761)
+- Fixed serialization of xmlns attributes (#760)
+- Added `ISourceReference` for source position retrieval (#754)
 
 **0.11.0**
 

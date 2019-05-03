@@ -1,7 +1,8 @@
 ---
+title: "Form Submission by Example"
+layout: doc
+section: Documentation
 ---
-# Form Submission by Example
-
 ## Standard Forms
 
 One of the most needed functionalities of a dynamic DOM is the possibility to submit forms. Submitting a form with AngleSharp can be as simple as:

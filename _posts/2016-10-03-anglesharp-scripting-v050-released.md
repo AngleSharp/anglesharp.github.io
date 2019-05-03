@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp Scripting v0.5.0 released"
-date:   2016-10-03 11:45:00
+title: "AngleSharp Scripting v0.5.0 released"
+date: 2016-10-03 11:45:00
 categories: news release scripting
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 Just now the latest version of the JavaScript scripting extension *AngleSharp.Scripting.JavaScript* was released. In the new release with the version 0.5.0 a couple of bug fixes and improvements have been placed. All in all this is certainly leading the way forward.
 

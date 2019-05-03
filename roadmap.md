@@ -3,9 +3,6 @@ layout: default
 title: Roadmap
 parent: root
 ---
-
-## Roadmap
-
 The roadmap presents a draft on what is about to be implemented, and when. The priorities might change, which will affect the roadmap. Additionally the implementation speed will be impacted by factors like people participating in the project and design decisions.
 
 The time estimates are speculative, which means that the project could be totally off those predictions. Finding talented (and motivated) collaborators would certainly speed up the project.

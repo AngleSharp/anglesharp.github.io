@@ -10,4 +10,4 @@ kramdown:
 future: true
 collections:
   docs:
-    documentation: true
+    output: true

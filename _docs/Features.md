@@ -1,7 +1,8 @@
 ---
+title: "Feature Status"
+layout: doc
+section: Documentation
 ---
-# Feature Status
-
 ## Included Features
 
 This section lists features that have been moved from the list of upcoming features to the implemented features. It does not include all available features, even though this may be the ultimate goal of this page. The purpose of moving the implemented features in here is to keep track of the used references. That way it should be easier to track W3C specification changes or if tests are missing.

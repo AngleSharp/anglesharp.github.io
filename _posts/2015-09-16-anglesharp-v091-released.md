@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.1 released"
-date:   2015-09-16 11:08:00
+title: "AngleSharp v0.9.1 released"
+date: 2015-09-16 11:08:00
 categories: news release
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 A week ago the the first patch for AngleSharp v0.9.1 has been released. Besides fixing some issues the event loop model has been reworked. This will not be the last update to this mechanism. The next update v0.9.2 will focus on closing some existing issues, such as the proposed `CssNode`.
 

@@ -1,8 +1,10 @@
 ---
-title:  "AngleSharp v0.9.7 released"
-date:   2016-07-16 22:20:00
+title: "AngleSharp v0.9.7 released"
+date: 2016-07-16 22:20:00
 categories: news release
 author: "Florian Rappl"
+section: Blog
+layout: post
 ---
 Too much time has past since the last update. The current release v0.9.7 marks the beginning of a dramatic change in the AngleSharp philosophy. For all related projects the target will change with the upcoming version. AngleSharp will be fully targeting .NET core. This change is an investment in the future of .NET core. Furthermore, it should simplify the development process in the long run - as the target platform is clearly defined.
 
