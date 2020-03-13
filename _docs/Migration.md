@@ -3,6 +3,26 @@ title: "Migration Guide"
 layout: doc
 section: Documentation
 ---
+## 0.12 to 0.13
+
+### Task Event Loop
+
+The default event loop has been moved out of AngleSharp. You'll find an event loop implementation in `AngleSharp.Js`, however, in most cases you'll need care unless you directly required it for some reason (unlikely).
+
+### Cookies
+
+To better utilize cookies the provided functionality from `AngleSharp.Io` has been named `WithCookies`. To avoid a naming conflict the default implementation is now called ` WithDefaultCookies`, just like other `WithDefault...` methods.
+
+If you use the existing `WithCookies` helper then either also install the `AngleSharp.Io` package (the contained cookie container is much better!) or rename your configuration set up of cookies to `WithDefaultCookies`.
+
+### Asynchronous Events
+
+Most events in the DOM are actually asynchronous. This was previously not correctly implemented. If you use events from C# you'll potentially need to await them now properly. In most cases you'll not feel any difference though.
+
+## 0.11 to 0.12
+
+For this change we do not expect any migration work unless a custom implementation of `IElement` has been done (unlikely).
+
 ## 0.10 to 0.11
 
 This release follows the spirit of 0.10 an prepares for the 1.0 later this year. There are mainly additions, but also one important breaking change: We removed everything that is related to AngleSharp.Xml. This is now part of separate library called AngleSharp.Xml.

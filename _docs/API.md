@@ -62,7 +62,7 @@ An example of this is the official `AngleSharp.Css` library, which implements th
 
 ### IScriptingService
 
-AngleSharp does not provide a script engine by default. Of course any JavaScript engine would be a great addition, since JavaScript is the programming language of the web.
+AngleSharp does not provide a script engine by default. Of course, any JavaScript engine would be a great addition, since JavaScript is the programming language of the web.
 
 However, right now there are no intentions in providing an official / integrated solution. The `AngleSharp.Scripting` project that is contained our organization, is a sample and experimental project, to demonstrate how simple it is to write such an extension. Here we can start thinking about allowing C# as a scripting language. This would certainly be possible. Backed up with scriptcs or any other solution this would be a great addition, which could also be something different. In the long run it is great that AngleSharp supports multiple scripting engines.
 

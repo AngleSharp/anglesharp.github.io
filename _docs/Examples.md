@@ -164,7 +164,11 @@ Extension methods such as `ToHtml()` and `Text()` can be found in the namespace 
 
 The project also contains a sample JavaScript engine based on Jint (JavaScript Interpreter).
 
-The sample starts by creating a customized version based on the pre-defined `Configuration` class. Here we just include another engine, located in `AngleSharp.Scripting` (namespace and project). It is important to also enable scripting. AngleSharp knows that having script engines and using them are two different things.
+The sample starts by creating a customized version based on the pre-defined `Configuration` class. Here we just include another engine, located in `AngleSharp.Js` (namespace and project). It is important to also enable scripting. AngleSharp knows that having script engines and using them are two different things.
+
+```ps1
+Install-Package AngleSharp.Js
+```
 
 Here is the full sample code.
 
@@ -172,7 +176,7 @@ Here is the full sample code.
 static async Task SimpleScriptingSample()
 {
     //We require a custom configuration
-    var config = Configuration.Default.WithJavaScript();
+    var config = Configuration.Default.WithJs();
 
     //Create a new context for evaluating webpages with the given config
     var context = BrowsingContext.New(config);
@@ -201,13 +205,20 @@ This code just parses the given HTML code, encounters the provided JavaScript an
 
 Using JavaScript with AngleSharp is no problem. In the current state we can also easily use DOM manipulation like creating elements, appending or removing them.
 
+For this example, we'll need two additional packages besides `AngleSharp`: `AngleSharp.Js` (for evaluating JavaScript) and `AngleSharp.Css` (for understanding CSS).
+
+```ps1
+Install-Package AngleSharp.Js
+Install-Package AngleSharp.Css
+```
+
 The following example code performs DOM queries, creates new elements and removes existing ones.
 
 ```cs
 static void ExtendedScriptingSample()
 {
     //We require a custom configuration with JavaScript and CSS
-    var config = Configuration.Default.WithJavaScript().WithCss();
+    var config = Configuration.Default.WithJs().WithCss();
 
     //Create a new context for evaluating webpages with the given config
     var context = BrowsingContext.New(config);
@@ -217,33 +228,33 @@ static void ExtendedScriptingSample()
         <html>
         <head><title>Sample</title></head>
         <style>
-        .bold {
-        font-weight: bold;
-        }
-        .italic {
-        font-style: italic;
-        }
-        span {
-        font-size: 12pt;
-        }
-        div {
-        background: #777;
-        color: #f3f3f3;
-        }
+            .bold {
+                font-weight: bold;
+            }
+            .italic {
+                font-style: italic;
+            }
+            span {
+                font-size: 12pt;
+            }
+            div {
+                background: #777;
+                color: #f3f3f3;
+            }
         </style>
         <body>
         <div id=content></div>
         <script>
         (function() {
-        var doc = document;
-        var content = doc.querySelector('#content');
-        var span = doc.createElement('span');
-        span.id = 'myspan';
-        span.classList.add('bold', 'italic');
-        span.textContent = 'Some sample text';
-        content.appendChild(span);
-        var script = doc.querySelector('script');
-        script.parentNode.removeChild(script);
+            var doc = document;
+            var content = doc.querySelector('#content');
+            var span = doc.createElement('span');
+            span.id = 'myspan';
+            span.classList.add('bold', 'italic');
+            span.textContent = 'Some sample text';
+            content.appendChild(span);
+            var script = doc.querySelector('script');
+            script.parentNode.removeChild(script);
         })();
         </script>
         </body>";
@@ -263,13 +274,19 @@ The beginning of the following example is exactly the same as the previous two e
 
 The sample document of this example consists of a single script, that calls the `console.log` method. One time before adding a listener, another time after adding the listener.
 
+You'll need to add the additional `AngleSharp.Js` package:
+
+```ps1
+Install-Package AngleSharp.Js
+```
+
 The listener is called once the document is fully loaded. This happens after executing the provided JavaScript, hence we should see this event at the end. We also registered another event listener, which will be invoked once the custom event **hello** is dispatched.
 
 ```cs
 public static void EventScriptingExample()
 {
     //We require a custom configuration
-    var config = Configuration.Default.WithJavaScript();
+    var config = Configuration.Default.WithJs();
 
     //Create a new context for evaluating webpages with the given config
     var context = BrowsingContext.New(config);

@@ -87,13 +87,15 @@ There are some restrictions to the DOM:
 - Inheritance of known elements is not possible
 - Modifications of the DOM have to follow the given paths
 
-This means that one cannot write code like (note: the `HtmlParagraphElement` element is internal, anyway - it is the (default) implementation of the `IHtmlParagraphElement` interface),
+This means that one **cannot** write code like (note: the `HtmlParagraphElement` element is internal, anyway - it is the (default) implementation of the `IHtmlParagraphElement` interface),
 
 ```c#
 var paragraph = new HTMLParagraphElement();
 ```
 
-as this is also not possible in e.g. JavaScript. What one requires is an instance of the `IDocument` interface. If we assume that this instance is called `document` we can now write
+as this is also not possible in, e.g., JavaScript. What one requires is an instance of the `IDocument` interface.
+
+If we assume that this instance is called `document` we **can** now write
 
 ```c#
 var paragraph = document.CreateElement("p");
