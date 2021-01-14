@@ -358,7 +358,7 @@ public class CustomHtmlMarkupFormatter : IMarkupFormatter
 
         foreach (var attribute in element.Attributes)
         {
-            temp.Append(" ").Append(Instance.Attribute(attribute));
+            temp.Append(" ").Append(this.Attribute(attribute));
         }
 
         temp.Append(selfClosing ? " />" : ">");
