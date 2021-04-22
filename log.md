@@ -3,6 +3,53 @@ layout: default
 title: Changelog
 parent: root
 ---
+**0.15.0**
+
+- Added `ToHtmlAsync()` extension method (#863)
+- Added `ParseFragment` overload using `Stream` (#896)
+- Added `euc-kr` encoding (#928)
+- Fixed CSS attribute value comparison w.r.t. case sensitivity (#864)
+- Fixed issue in the Heisenberg algorithm of the HTML5 parser (#893)
+- Fixed issue with the strictness of broken char references in attribute values (#902)
+- Fixed possible NRE in the markup formatters / attribute serialization (#903)
+- Fixed `GetSelector` returning invalid ID selector (#909)
+- Fixed `GetSelector` returning duplicate element ids (#910)
+- Fixed possible NRE in media and `embed` elements without `src` (#914)
+- Updated CI/CD system to GitHub Actions (#942)
+- Dropped support for the .NET Standard 1.3 target (#944)
+
+**0.14.0**
+
+- Included context event `error` for error tracking (#698)
+- Extended the `IMarkupFormatter` for literal text (#821)
+- Extended the `IElementFactory` definition
+- Fixed an issue regarding n-th child for the `GetSelector` utility (#835)
+- Added explicit support for .NET 4.6.1 (#842)
+- Added public constructor to `BrowsingContext` (#844)
+- Force `IBrowsingContext` to be `IDisposable` for cleanup purposes
+- Fixed missing `Media` property of stylesheets (#846)
+- Improved API of `IMarkupFormatter` (#858)
+- Enhanced existing `IMarkupFormatter` instances to allow inheritance
+- Added default accepts header for standard document requests (#859)
+
+**0.13.0**
+
+- Removed the `TaskEventLoop` (#782)
+- Renamed `WithCookies` to `WithDefaultCookies`
+- Fixed bubbling of `DOMContentLoaded` event (#789)
+- Fixed maximum recursion depth at query selector (#763)
+- Added `MinifyMarkupFormatter` (#745)
+- Added `Prettify` and `Minify` extension methods
+- Moved `hashchange` to be emitted on `IWindow`
+- Added option to avoid consuming character references (#494)
+- Added more pseudo elements for GCPM
+- Fixed character position starting at normalized CRLF (#786)
+- Improved setting `Href` in `Url`
+- Fixed crash for invalid attribute names during SVG parsing (#795)
+- Added more punycode replacement characters on .NET Standard 1.3 (#797)
+- Added use of correct hostname IDN on .NET Standard 2.0 and .NET Framework 4.6 (#797)
+- Added ability to delay load in `Document` (#815)
+
 **0.12.0**
 
 - Added ability to create a selector for an element (#784)

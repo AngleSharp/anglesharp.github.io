@@ -7,7 +7,7 @@ The roadmap presents a draft on what is about to be implemented, and when. The p
 
 The time estimates are speculative, which means that the project could be totally off those predictions. Finding talented (and motivated) collaborators would certainly speed up the project.
 
-(eo 2020) **1.0.0**
+(mid 2021) **1.0.0**
 
 - Release of the first stable version
 - Split AngleSharp.Core into several libraries (Core, CSS, ...)
