@@ -186,3 +186,6 @@ FakesAssemblies/
 serve/
 _site/
 build/
+
+# Docs generated files
+dist/

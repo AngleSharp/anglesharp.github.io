@@ -1,0 +1,70 @@
+{
+  "name": "AngleSharp",
+  "title": "AngleSharp - Documentation",
+  "description": "AngleSharp is the ultimate angle brackets parser library. It parses HTML5, CSS3, and XML to construct a DOM based on the official W3C specification..",
+  "author": "Florian Rappl",
+  "branch": "main",
+  "repositoryUrl": "https://github.com/AngleSharp/anglesharp.github.io",
+  "rootDir": ".",
+  "styles": [
+    "./src/styles.css"
+  ],
+  "outputDir": "./dist",
+  "changelogFile": "./CHANGELOG.md",
+  "components": {
+    "logo": "./src/Logo.tsx",
+    "footer": "./src/Footer.tsx",
+    "notFoundPage": "./src/NotFoundPage.tsx"
+  },
+  "pages": {
+    "/": "./src/HomePage.tsx",
+    "/imprint": "./src/ImprintPage.tsx"
+  },
+  "helpers": {
+    "setup": "./src/setup.tsx",
+    "requestPilets": "./src/requestPilets.ts"
+  },
+  "sitemap": {
+    "general": {
+      "title": "General",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "general"
+        }
+      ]
+    },
+    "docs": {
+      "title": "Documentation",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "tutorials"
+        }
+      ]
+    },
+    "blog": {
+      "title": "Blog",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "sorting": "desc",
+          "dir": "blog"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "sections": [
+        {
+          "generator": "markdown",
+          "segment": "",
+          "dir": "projects"
+        }
+      ]
+    }
+  }
+}
