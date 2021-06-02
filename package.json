@@ -38,6 +38,6 @@
     "gh-pages": "^3.2.0",
     "piral-cli": "^0.13.3-pre.2480",
     "piral-cli-parcel": "^0.13.3-pre.2480",
-    "piral-docs-tools": "^0.6.1"
+    "piral-docs-tools": "^0.6.2"
   }
 }
