@@ -3,6 +3,8 @@ title: "AngleSharp v0.10.0 released"
 date: 2019-01-06 10:49:00
 categories: news release major
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 After more than 2 years AngleSharp v0.10 has finally become a reality. Jointly with AngleSharp.Io and AngleSharp.Css we now enter the v0.10 release cycle - an important milestone before hitting v1. The next step is an intermediate v0.11 (potentially of all of these libraries) to include feedback, suggestions, fixes, and other features before becoming stable.
 

@@ -3,6 +3,8 @@ title: "AngleSharp v0.9.3 released"
 date: 2015-10-12 11:44:00
 categories: news release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 AngleSharp v0.9.3 is another round of minor updates. Besides a few bug fixes the `CompareDocumentPosition` method has been improved. It now passes all tests and works reliably.
 

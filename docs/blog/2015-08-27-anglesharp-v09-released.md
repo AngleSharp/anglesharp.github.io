@@ -3,6 +3,8 @@ title: "AngleSharp v0.9 released"
 date: 2015-08-27 14:05:00
 categories: news release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 Yesterday the latest version of Anglesharp has been released. This release marks the v0.9 milestone. Besides providing skeleton implementations for, e.g., the recent shadow DOM API draft, the `picture` element, etc., this version fixes some bugs that may appear in conjunction with using scripts.
 

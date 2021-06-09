@@ -3,6 +3,8 @@ title: "AngleSharp v0.9.9.1 released"
 date: 2018-01-03 16:01:00
 categories: news release hotfix
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 For over a year the development of AngleSharp was stale. But the project is not dead! Today I am proud to release a hotfix to the very successful version v0.9.9, called v0.9.9.1. This hotfix contains some critical fixes and improvements. It also paves the way for the v0.10 release, which is stuck with an observer problem (namely how to attach dynamic listeners to attribute changes for - from the perspective of AngleSharp.Core - unknown attributes), which is solved in this hotfix. In the long term this also enables users to disable the dynamic DOM, resulting in even better performance for static analysis when a fully dynamic DOM is not needed.
 

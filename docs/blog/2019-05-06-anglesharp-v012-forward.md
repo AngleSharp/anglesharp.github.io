@@ -3,6 +3,8 @@ title: "AngleSharp v0.12 and the future"
 date: 2019-05-06 22:23:10
 categories: news organization release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 Last week the latest version of AngleSharp v0.12 has been released. Not only the core library was updated to v0.12, but we also started updating some related libraries. So far we released:
 

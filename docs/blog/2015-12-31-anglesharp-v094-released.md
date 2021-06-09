@@ -3,6 +3,8 @@ title: "AngleSharp v0.9.4 released"
 date: 2015-12-31 08:36:00
 categories: news release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 Finally, after weeks of delays and many discussions, AngleSharp v0.9.4 is available. There have been some bug fixes and improvements. Most importantly, these are encoding and insertion pointer fixes.
 

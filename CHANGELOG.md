@@ -1,3 +1,5 @@
 # AngleSharp Documentation CHANGELOG
 
-## 0.14.0 (tbd)
+## 0.16.0 (tbd)
+
+- Initial release

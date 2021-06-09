@@ -4,6 +4,8 @@ section: "General"
 ---
 # Articles
 
+A list of articles about the AngleSharp project and how to use AngleSharp.
+
 - [AngleSharp](https://www.codeproject.com/Articles/609053/AngleSharp)
 - [AngleSharp and JavaScript](https://www.codeproject.com/Articles/839588/AngleSharp-and-JavaScript)
 - [Using AngleSharp for HTML parsing](https://programmersought.com/article/53641047060/)
@@ -15,3 +17,5 @@ section: "General"
 - [Hands teach you how to write crawlers with. NET Core](https://programmer.group/hands-teach-you-how-to-write-crawlers-with-net-core.html)
 - [Parse HTML in .NET and survive: library analysis and comparison](https://sudonull.com/post/92236-Parse-HTML-in-NET-and-survive-library-analysis-and-comparison)
 - [Create a Simple Web Scraper in C#](https://dev.to/rachelsoderberg/create-a-simple-web-scraper-in-c-1l1m)
+
+Feel free to submit a PR for this list if some article is missing.

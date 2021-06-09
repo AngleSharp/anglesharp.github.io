@@ -3,6 +3,8 @@ title: "Joining the .NET Foundation"
 date: 2019-05-02 15:00:00
 categories: news organization release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 Today version v0.12 of AngleSharp has been published. Like v0.11 this is only an intermediate release before becoming officially stable with v1.0. Obviously, I could now write a bit on the bugfixes, enhancements, and additions that come with this release. However, there is a bigger organizational change that has finally happend with the release of v0.12 ...
 

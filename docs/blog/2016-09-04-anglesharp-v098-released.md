@@ -3,6 +3,8 @@ title: "AngleSharp v0.9.8 released"
 date: 2016-09-04 17:40:00
 categories: news release
 author: "Florian Rappl"
+userId: FlorianRappl
+section: Posts
 ---
 Yesterday version 0.9.8 of AngleSharp has been released. There are not too many API changes - and barely any breaking change so one should not notice anything.
 
