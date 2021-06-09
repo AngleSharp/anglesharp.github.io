@@ -24,6 +24,9 @@
     "setup": "./src/setup.tsx",
     "requestPilets": "./src/requestPilets.ts"
   },
+  "layouts": {
+    "blog": "./src/Blog.tsx"
+  },
   "sitemap": {
     "general": {
       "title": "General",
@@ -51,6 +54,7 @@
         {
           "generator": "markdown",
           "segment": "",
+          "layout": "blog",
           "sorting": "desc",
           "dir": "blog"
         }

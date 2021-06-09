@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: "14.x"
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install Dependencies
+      run: |
+        npm install
+
+    - name: Build Release with Piral
+      run: |
+        npm run build:www
+
+    - name: Deploy with gh-pages
+      run: |
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build SDK with Piral
+      run: |
+        npm run build:sdk
+
+    - name: Publish NPM Package
+      continue-on-error: true
+      run: |
+        mv dist/emulator/*.tgz sdk.tgz
+        npm publish sdk.tgz --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

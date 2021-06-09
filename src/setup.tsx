@@ -1,19 +1,3 @@
-import * as React from 'react';
+import { PiletApi } from 'piral-docs-tools';
 
-export default function setup(api) {
-  api.registerDocumentation(
-    {
-      title: "Foo",
-      links: [
-        {
-          id: "foo",
-          page: () => <div />,
-          route: "/docs/foo",
-          link: "/docs/foo",
-          title: "Foo Page",
-        },
-      ],
-    },
-    "docs"
-  );
-}
+export default function setup(api: PiletApi) {}
