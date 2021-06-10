@@ -24,6 +24,8 @@ jobs:
     - name: Build Release with Piral
       run: |
         npm run build:www
+        cd dist/release
+        ln -s index.html 404.html
 
     - name: Deploy with gh-pages
       run: |
