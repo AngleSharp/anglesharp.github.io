@@ -10,7 +10,6 @@
     "./src/styles.css"
   ],
   "outputDir": "./dist",
-  "changelogFile": "./CHANGELOG.md",
   "components": {
     "logo": "./src/Logo.tsx",
     "footer": "./src/Footer.tsx",
@@ -22,6 +21,7 @@
   },
   "helpers": {
     "setup": "./src/setup.tsx",
+    "plugins": "./src/plugins.ts",
     "requestPilets": "./src/requestPilets.ts"
   },
   "layouts": {

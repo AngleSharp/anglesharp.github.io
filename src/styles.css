@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 span.red {
   color: #E21D1D;
 }
@@ -12,6 +16,10 @@ span.red {
   flex-direction: row;
   justify-content: space-evenly;
   margin: 0 -15px;
+}
+
+.homepage .row > div {
+  margin: 1rem;
 }
 
 .homepage .row .half-width {
@@ -273,7 +281,7 @@ footer .right {
   list-style: outside none none !important;
 }
 
-@media(max-width:1200px) {
+@media(max-width: 1200px) {
   .headline-large h1 {
     font-size: 140px;
   }
@@ -297,9 +305,13 @@ footer .right {
   .feature-heading {
     font-size: 35px;
   }
+
+  .pull-left, .pull-right {
+    float: none !important;
+  }
 }
 
-@media(max-width:991px) {
+@media(max-width: 991px) {
   .headline-large h1 {
     font-size: 105px;
   }
@@ -329,9 +341,10 @@ footer .right {
   }
 }
 
-@media(max-width:768px) {
+@media(max-width: 768px) {
   .container {
     margin: 0 15px;
+    width: auto;
   }
 
   .divider {
@@ -349,10 +362,11 @@ footer .right {
 
   .feature-heading {
     font-size: 25px;
+    word-break: break-all;
   }
 }
 
-@media(max-width:668px) {
+@media(max-width: 668px) {
   .headline-large h1 {
     font-size: 70px;
   }
@@ -371,7 +385,7 @@ footer .right {
   }
 }
 
-@media(max-width:640px) {
+@media(max-width: 640px) {
   .headline-large {
     padding: 75px 0 25px 0;
   }
@@ -390,7 +404,7 @@ footer .right {
   }
 }
 
-@media(max-width:375px) {
+@media(max-width: 375px) {
   .feature-divider {
     margin: 10px 0;
   }

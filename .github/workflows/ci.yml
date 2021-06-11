@@ -3,10 +3,15 @@ name: CI
 on:
   push:
     branches: [main]
+  release:
+    types:
+      - created
 
 jobs:
-  build:
+  deploy_www:
     runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'push' }}
 
     steps:
     - uses: actions/checkout@v2
@@ -34,12 +39,29 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  release_npm:
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'release' }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: "14.x"
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install Dependencies
+      run: |
+        npm install
+
     - name: Build SDK with Piral
       run: |
         npm run build:sdk
 
     - name: Publish NPM Package
-      continue-on-error: true
       run: |
         mv dist/emulator/*.tgz sdk.tgz
         npm publish sdk.tgz --access public
