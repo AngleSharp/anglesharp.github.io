@@ -1,0 +1,1 @@
+{"version":3,"file":"7d6879.js","mappings":"uJAEA,mBAAqB","sources":["webpack://@pidoc/core/../../../src/NotFoundPage.tsx"],"sourcesContent":["import * as React from 'react';\r\n\r\nexport default () => <div>Page not found</div>;\r\n"],"names":[],"sourceRoot":""}

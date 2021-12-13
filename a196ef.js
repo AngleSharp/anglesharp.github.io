@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_pidoc_core=self.webpackChunk_pidoc_core||[]).push([[571],{1571:(e,c,n)=>{n.r(c),n.d(c,{"default":()=>t});var r=n(7158);const t=function(){return r.createElement("div",null)}}}]);
+//# sourceMappingURL=a196ef.js.map

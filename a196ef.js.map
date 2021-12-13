@@ -1,0 +1,1 @@
+{"version":3,"file":"a196ef.js","mappings":"uJAEA,mBAAqB","sources":["webpack://@pidoc/core/../../../src/ImprintPage.tsx"],"sourcesContent":["import * as React from 'react';\r\n\r\nexport default () => <div />;\r\n"],"names":[],"sourceRoot":""}
