@@ -1,4 +1,4 @@
-import type { PiralPlugin } from "piral-docs-tools";
+import type { PiralPlugin } from "./types";
 
 const plugins: Array<PiralPlugin> = [
   (context) => ({
