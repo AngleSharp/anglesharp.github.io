@@ -6,9 +6,9 @@ author: "Florian Rappl"
 userId: FlorianRappl
 section: Posts
 ---
-# 🎉 AngleSharp.Css 1.0.0 Is Finally Here!
+Some milestones arrive quickly. Others... take a little longer...
 
-Some milestones arrive quickly. Others... take a little longer.
+## 🎉 AngleSharp.Css 1.0.0 Is Finally Here!
 
 After **almost three years** since the last release of **AngleSharp.Css**, I'm incredibly happy to finally announce the release of **AngleSharp.Css 1.0.0**! 🚀
 
