@@ -60,8 +60,8 @@ If your company or your own projects benefit from AngleSharp, please consider sp
 
 You can support the project here:
 
-* GitHub Sponsors: https://github.com/sponsors/FlorianRappl
-* Buy Me a Coffee: https://buymeacoffee.com/florianrappl
+* GitHub Sponsors: [github.com/sponsors/FlorianRappl](https://github.com/sponsors/FlorianRappl)
+* Buy Me a Coffee: [buymeacoffee.com/florianrappl](https://buymeacoffee.com/florianrappl)
 
 Every contribution is genuinely appreciated. 🙏
 
