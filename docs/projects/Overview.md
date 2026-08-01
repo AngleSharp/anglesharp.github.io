@@ -43,7 +43,7 @@ section: General
 ![AngleSharp.Js](../../images/anglesharp-js-logo.png) {.feature-image .img-responsive .pull-right}
 <h2 class="feature-heading" id="anglesharp-js">AngleSharp.<span class="text-muted">Js</span></h2>
 <p class="lead">Solution for integrating a JavaScript engine (Jint). Provides DOM bindings (and binding helpers).</p>
-<p class="lead">Currently in alpha. Considered unstable.<br><a href="https://github.com/AngleSharp/AngleSharp.Js">AngleSharp/AngleSharp.Js</a></p>
+<p class="lead">Stable and production ready.<br><a href="https://github.com/AngleSharp/AngleSharp.Js">AngleSharp/AngleSharp.Js</a></p>
 :::
 
 <hr class="feature-divider" />
@@ -70,5 +70,14 @@ section: General
 ![AngleSharp.Wasm](../../images/anglesharp-wasm-logo.png) {.feature-image .img-responsive .pull-left}
 <h2 class="feature-heading" id="anglesharp-wasm">AngleSharp.<span class="text-muted">Wasm</span></h2>
 <p class="lead">Support for adding support to run WASM and interact / interpret WASM parts.</p>
-<p class="lead">Currently upcoming. Contributions welcome.<br><a href="https://github.com/AngleSharp/AngleSharp.Wasm">AngleSharp/AngleSharp.Wasm</a></p>
+<p class="lead">Considered stable.<br><a href="https://github.com/AngleSharp/AngleSharp.Wasm">AngleSharp/AngleSharp.Wasm</a></p>
+:::
+
+<hr class="feature-divider" />
+
+::: feature
+![AngleSharp.Renderer](../../images/anglesharp-renderer-logo.png) {.feature-image .img-responsive .pull-right}
+<h2 class="feature-heading" id="anglesharp-renderer">AngleSharp.<span class="text-muted">Renderer</span></h2>
+<p class="lead">Support for rendering the styled DOM from its render tree.</p>
+<p class="lead">Currently upcoming. Contributions welcome.<br><a href="https://github.com/AngleSharp/AngleSharp.Renderer">AngleSharp/AngleSharp.Renderer</a></p>
 :::
