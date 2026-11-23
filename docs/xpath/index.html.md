@@ -1,0 +1,65 @@
+# AngleSharp.XPath Documentation
+
+> Source: https://anglesharp.github.io/docs/xpath/
+> Project: AngleSharp.XPath (https://github.com/AngleSharp/AngleSharp.XPath)
+> Package: AngleSharp.XPath 2.0.10 — install with `dotnet add package AngleSharp.XPath`
+> Docs revision: 4f0ff2799a6b23d00dd177e6252e8dd620b49f5b
+
+AngleSharp.XPath extends AngleSharp with the ability to select nodes via XPath queries instead of CSS selector syntax. This is more powerful and potentially more common for .NET developers working with XML on a daily basis.
+
+## Basic Use
+
+With this library using XPath queries is as simple as writing
+
+```cs
+var contentNode = document.Body.SelectSingleNode("//div[@id='content']");
+```
+
+Besides `SelectSingleNode` we can also use `SelectNodes`. Both are extension methods defined in the `AngleSharp.XPath` namespace.
+
+If wanted we can also use XPath directly in CSS selectors such as in `QuerySelector` or `QuerySelectorAll` calls. For this we only need to apply the following configuration:
+
+```cs
+var config = Configuration.Default.WithXPath();
+```
+
+Now we can write queries such as
+
+```cs
+var secondLi = document.QuerySelector("*[xpath>'//li[2]']");
+```
+
+It is important that the original selector has all elements (`*`) as the intersection of the ordinary CSS selector and the XPath attribute is considered. The XPath attribute consists of a head (`xpath>`) and a value - provided as a string, e.g., `//li[2]`.
+
+## Features
+
+- Uses `XPathNavigator` from `System.Xml.XPath`
+- Includes XPath capabilities to CSS query selectors if wanted
+
+## Participating
+
+Participation in the project is highly welcome. For this project the same rules as for the AngleSharp core project may be applied.
+
+If you have any question, concern, or spot an issue then please report it before opening a pull request. An initial discussion is appreciated regardless of the nature of the problem.
+
+Live discussions can take place in our [Gitter chat](https://gitter.im/AngleSharp/AngleSharp), which supports using GitHub accounts.
+
+This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community.
+
+For more information see the [.NET Foundation Code of Conduct](https://dotnetfoundation.org/code-of-conduct).
+
+## .NET Foundation
+
+This project is supported by the [.NET Foundation](https://dotnetfoundation.org).
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2018 - 2026 Denis Ivanov, AngleSharp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

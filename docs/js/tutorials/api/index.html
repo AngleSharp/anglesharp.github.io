@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API Documentation · AngleSharp.Js · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/js/tutorials/api/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="API Documentation · AngleSharp.Js · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/js/tutorials/api/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/js/tutorials/api/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Js menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/js/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/" selected>AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Js documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/js/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/js/general/basics/">Getting Started</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/js/tutorials/api/" aria-current="page">API Documentation</a></li><li><a href="/docs/js/tutorials/examples/">Examples</a></li><li><a href="/docs/js/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Js" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Js" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/js/">AngleSharp.Js</a>
+      <span>/</span><span>Tutorials</span>
+    </nav>
+    
+    <div class="prose"><h1 id="api-documentation">API Documentation</h1>
+<p>This page lists the public .NET API of AngleSharp.Js and explains how .NET types become JavaScript objects. For a guided introduction see <a href="/docs/js/general/basics/">Getting Started</a>.</p>
+<p>The package targets <code>netstandard2.0</code>, <code>net462</code>, <code>net472</code>, <code>net8.0</code> and <code>net10.0</code>, and depends only on AngleSharp and <a href="https://github.com/sebastienros/jint" target="_blank" rel="noopener">Jint</a>.</p>
+<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type / member</th>
+<th>Namespace</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WithJs()</code>, <code>WithJs(JsScriptingOptions)</code></td>
+<td><code>AngleSharp</code></td>
+<td>Registers the JavaScript engine and its auxiliary services.</td>
+</tr>
+<tr>
+<td><code>WithEventLoop()</code> and overloads</td>
+<td><code>AngleSharp</code></td>
+<td>Registers the event loop that runs scripts, timers and callbacks.</td>
+</tr>
+<tr>
+<td><code>WithConsoleLogger(Func&lt;IBrowsingContext, IConsoleLogger&gt;)</code></td>
+<td><code>AngleSharp</code></td>
+<td>Routes <code>console.*</code> output to your code.</td>
+</tr>
+<tr>
+<td><code>ExecuteScript(document, code, type, sourceUrl)</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>Runs JavaScript in the document's engine and returns the result.</td>
+</tr>
+<tr>
+<td><code>Then</code>, <code>WhenStable</code>, <code>WaitUntilAvailable</code></td>
+<td><code>AngleSharp.Dom</code></td>
+<td>Synchronize .NET code with the event loop.</td>
+</tr>
+<tr>
+<td><code>JsScriptingService</code></td>
+<td><code>AngleSharp.Scripting</code></td>
+<td>The <code>IScriptingService</code>; holds host values and gives access to the Jint  engine.</td>
+</tr>
+<tr>
+<td><code>JsScriptingOptions</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>Call stack depth and function source retention.</td>
+</tr>
+<tr>
+<td><code>EngineCreator</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>Delegate service to build the Jint <code>Engine</code> yourself (limits, timeouts).</td>
+</tr>
+<tr>
+<td><code>JsEventLoop</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>The default <code>IEventLoop</code>, a dedicated background thread.</td>
+</tr>
+<tr>
+<td><code>IConsoleLogger</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>Receives the values passed to <code>console.*</code>.</td>
+</tr>
+<tr>
+<td><code>JsNavigationHandler</code></td>
+<td><code>AngleSharp.Js</code></td>
+<td>Handles <code>javascript:</code> URLs.</td>
+</tr>
+<tr>
+<td><code>DomConstructorFunctionAttribute</code></td>
+<td><code>AngleSharp.Js.Attributes</code></td>
+<td>Marks a method as a factory-style constructor function (like <code>Image</code>).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Typical <code>using</code> directives:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Dom</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Js</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Scripting</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">; </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// only for JsScriptingService</span></span>
+<span class="line"></span></code></pre></div><h2 id="configuration-extensions" tabindex="-1">Configuration extensions <a class="anchor" href="#configuration-extensions" aria-hidden="true">#</a></h2>
+<p>All of these extend <code>IConfiguration</code> and live in <code>AngleSharp.JsConfigurationExtensions</code>.</p>
+<h3 id="withjs-withjsjsscriptingoptions-options" tabindex="-1"><code>WithJs()</code> / <code>WithJs(JsScriptingOptions options)</code> <a class="anchor" href="#withjs-withjsjsscriptingoptions-options" aria-hidden="true">#</a></h3>
+<p>Registers:</p>
+<ul>
+<li>a <code>JsScriptingService</code> (the engine) configured with a copy of <code>options</code>,</li>
+<li>an <code>EventAttributeObserver</code>, which turns <code>onclick=&quot;…&quot;</code> and similar attributes into handlers,</li>
+<li>a <code>JsNavigationHandler</code> for <code>javascript:</code> URLs,</li>
+<li>a structured clone service (used by <code>postMessage</code>, <code>structuredClone</code>, workers),</li>
+<li>a custom element host, so <code>customElements.define</code> works with JavaScript classes.</li>
+</ul>
+<p>Calling <code>WithJs</code> does <strong>not</strong> register an event loop or a loader. Most documents that run scripts need both (see <code>WithEventLoop</code> and AngleSharp's <code>WithDefaultLoader</code>).</p>
+<h3 id="witheventloop" tabindex="-1"><code>WithEventLoop()</code> <a class="anchor" href="#witheventloop" aria-hidden="true">#</a></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> WithEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> configuration</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> WithEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> configuration</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IEventLoop</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> loop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> WithEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> configuration</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Func</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IBrowsingContext</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">creator</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>The parameterless overload creates one <code>JsEventLoop</code> per browsing context. Pass an instance to share one loop, or a factory to customize the loop per context. Each overload replaces a previously registered <code>IEventLoop</code> (<code>WithOnly</code>).</p>
+<p>Without an event loop, scripts still run, but nothing is queued: timers, <code>postMessage</code> to the window, and the <code>Then</code>/<code>WhenStable</code> synchronization have nothing to wait for.</p>
+<h3 id="withconsoleloggerfunc-createlogger" tabindex="-1"><code>WithConsoleLogger(Func&lt;IBrowsingContext, IConsoleLogger&gt; createLogger)</code> <a class="anchor" href="#withconsoleloggerfunc-createlogger" aria-hidden="true">#</a></h3>
+<p>Registers a factory for an <code>IConsoleLogger</code>. It is ignored if a logger is already registered.</p>
+<h2 id="running-scripts-from-net" tabindex="-1">Running scripts from .NET <a class="anchor" href="#running-scripts-from-net" aria-hidden="true">#</a></h2>
+<h3 id="executescript" tabindex="-1"><code>ExecuteScript</code> <a class="anchor" href="#executescript" aria-hidden="true">#</a></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> static</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Object</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> ExecuteScript</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> scriptCode</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">,</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> scriptType</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> sourceUrl</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Defined in <code>AngleSharp.Js.JsApiExtensions</code>. Runs <code>scriptCode</code> synchronously in the engine of the document's window and returns the completion value of the script (the value of the last expression statement), converted to .NET:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>JavaScript value</th>
+<th>.NET value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>undefined</code> (also a script ending in a declaration such as <code>var x = 1;</code>)</td>
+<td>the <strong>string</strong> <code>&quot;undefined&quot;</code></td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td><code>null</code></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td><code>Boolean</code></td>
+</tr>
+<tr>
+<td>number</td>
+<td><code>Double</code> (always, also for integers)</td>
+</tr>
+<tr>
+<td>string</td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td>BigInt</td>
+<td><code>System.Numerics.BigInteger</code></td>
+</tr>
+<tr>
+<td>DOM object (<code>document.body</code>, …)</td>
+<td>the AngleSharp object (<code>IHtmlElement</code>, …)</td>
+</tr>
+<tr>
+<td>other objects, arrays, dates, functions</td>
+<td>the Jint object (<code>Jint.Native.JsObject</code>, <code>JsArray</code>, <code>JsDate</code>, function), a <code>JsValue</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>When you need structured data, return <code>JSON.stringify(…)</code> and deserialize it in .NET.</p>
+<p>Remarks:</p>
+<ul>
+<li><code>scriptType</code> defaults to <code>text/javascript</code>. Any JavaScript MIME type runs a classic script, <code>module</code> runs an ES module, <code>importmap</code> registers an import map; other types return <code>null</code>.</li>
+<li><code>sourceUrl</code> is used in error messages and stack traces, and as the base address for imports.</li>
+<li>Errors are thrown to the caller: a JavaScript error as <code>Jint.Runtime.JavaScriptException</code> (also for syntax errors), a violated Jint constraint as the respective Jint exception (e.g. <code>StatementsCountOverflowException</code>).</li>
+<li>It returns <code>null</code> when the configuration has no <code>JsScriptingService</code> or the document is in a sandboxed frame that may not run scripts.</li>
+<li>It does <strong>not</strong> go through the event loop. If page scripts are still loading, wait for them first (<code>WaitUntilAvailable</code>), or queue the call with <code>Then(String)</code>.</li>
+</ul>
+<h3 id="synchronizing-with-the-event-loop" tabindex="-1">Synchronizing with the event loop <a class="anchor" href="#synchronizing-with-the-event-loop" aria-hidden="true">#</a></h3>
+<p>Defined in <code>AngleSharp.Dom.JsDocumentExtensions</code>; every method exists for <code>IDocument</code> and for <code>Task&lt;IDocument&gt;</code>, so they can be chained directly after <code>OpenAsync</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Then(Action&lt;IDocument&gt; action)</code></td>
+<td>Queues <code>action</code> on the event loop and completes after it ran. Runs immediately if there is no event loop.</td>
+</tr>
+<tr>
+<td><code>Then(String jsSource)</code></td>
+<td>Same, but runs JavaScript via <code>ExecuteScript</code>.</td>
+</tr>
+<tr>
+<td><code>WhenStable()</code></td>
+<td>Completes once every task queued so far has run.</td>
+</tr>
+<tr>
+<td><code>WaitUntilAvailable(CancellationToken cancellation = default)</code></td>
+<td>Waits for the <code>load</code> event of the document (if not yet complete), then for <code>WhenStable()</code>. The token aborts the wait for <code>load</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(address)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WaitUntilAvailable</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Then</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"document.title = 'changed'"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>The returned tasks only cover work already in the queue. Work started later, for example a <code>setTimeout</code> callback or an <code>XMLHttpRequest</code> response, is not awaited; see the <a href="/docs/js/tutorials/questions/#how-do-i-wait-for-a-timer-or-a-request-started-by-a-script">FAQ</a>.</p>
+<h2 id="jsscriptingservice" tabindex="-1"><code>JsScriptingService</code> <a class="anchor" href="#jsscriptingservice" aria-hidden="true">#</a></h2>
+<p>Namespace <code>AngleSharp.Scripting</code>. <code>WithJs()</code> creates one for you; create it yourself when you want to use <code>External</code> or <code>GetOrCreateJint</code>, and register it with <code>.With(service)</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JsScriptingService()</code> / <code>JsScriptingService(JsScriptingOptions options)</code></td>
+<td>Creates the service. The options are copied.</td>
+</tr>
+<tr>
+<td><code>IDictionary&lt;String, Object&gt; External</code></td>
+<td>Values set as globals in every engine created afterwards (one engine per window).</td>
+</tr>
+<tr>
+<td><code>Engine GetOrCreateJint(IDocument document)</code></td>
+<td>The Jint engine of the document's window, created on first use.</td>
+</tr>
+<tr>
+<td><code>Object EvaluateScript(IDocument document, String source, String type, String sourceUrl)</code></td>
+<td>What <code>ExecuteScript</code> calls.</td>
+</tr>
+<tr>
+<td><code>String Type</code></td>
+<td><code>text/javascript</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>To keep the inline-event and <code>javascript:</code> URL support, register the service <em>and</em> call <code>WithJs()</code>, or prefer the <code>EngineCreator</code> service for host globals:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> scripting</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> JsScriptingService</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">scripting.External[</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"appName"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">] </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "MyApp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">With</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(scripting)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>Each window has its own engine: <code>GetOrCreateJint(frameDocument)</code> returns a different engine than for the top-level document, and global variables are not shared between documents.</p>
+<p>The page's scripts run in a window scope layered over the Jint global. <code>engine.Evaluate</code>, <code>engine.Execute</code>, <code>engine.GetValue(&quot;name&quot;)</code> and <code>engine.Invoke(&quot;name&quot;, …)</code> do not see the variables and functions the page declared. Use <code>ExecuteScript</code> to run code or to obtain a function, and <code>engine.Invoke(JsValue function, params Object[] arguments)</code> to call it.</p>
+<h2 id="jsscriptingoptions" tabindex="-1"><code>JsScriptingOptions</code> <a class="anchor" href="#jsscriptingoptions" aria-hidden="true">#</a></h2>
+<p>Namespace <code>AngleSharp.Js</code>. Copied when the service is created.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Int32 MaxCallStackDepth</code></td>
+<td><code>10000</code></td>
+<td>Recursion depth before the script gets a <code>RangeError</code> (&quot;Maximum call stack size exceeded&quot;). Zero or less removes the guard; deep recursion then crashes the process with a <code>StackOverflowException</code>.</td>
+</tr>
+<tr>
+<td><code>Boolean RetainFunctionSourceText</code></td>
+<td><code>true</code></td>
+<td>Keeps the source text so <code>Function.prototype.toString()</code> returns it. Turn off to save memory; functions then print as <code>function name() { [native code] }</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="enginecreator" tabindex="-1"><code>EngineCreator</code> <a class="anchor" href="#enginecreator" aria-hidden="true">#</a></h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> delegate</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Jint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Engine</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> EngineCreator</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IWindow</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> window</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Jint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Options</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> options</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Register an <code>EngineCreator</code> (or a <code>Func&lt;IBrowsingContext, EngineCreator&gt;</code>) as a service to create the Jint engine yourself. It is called once per window, before any page script runs.</p>
+<ul>
+<li>Always construct the engine with the given <code>options</code>: they carry the DOM object wrapper, the module loader and the call stack guard. Add to them, do not replace them.</li>
+<li>Return a new <code>Engine</code> each time; returning <code>null</code> throws <code>InvalidOperationException</code>.</li>
+<li>The DOM is installed after the delegate returns, so do not touch DOM objects in it. Setting host globals with <code>engine.SetValue</code> is fine.</li>
+<li>Workers created by the page also use the creator.</li>
+</ul>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Jint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">With</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> EngineCreator</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">window</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">options</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Engine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(options</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">MaxStatements</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">1_000_000</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">TimeoutInterval</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">LimitMemory</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">64</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> *</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 1024</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> *</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 1024</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">RegexTimeoutInterval</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)))))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithEventLoop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>An inline page script violating a constraint is reported to the browsing context (see <a href="/docs/js/tutorials/examples/#collect-script-errors">error handling</a>); <code>ExecuteScript</code> throws the Jint exception.</p>
+<h2 id="jseventloop" tabindex="-1"><code>JsEventLoop</code> <a class="anchor" href="#jseventloop" aria-hidden="true">#</a></h2>
+<p>Namespace <code>AngleSharp.Js</code>, implements <code>IEventLoop</code> and <code>IDisposable</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JsEventLoop()</code></td>
+<td>Loop with the default worker thread stack size.</td>
+</tr>
+<tr>
+<td><code>JsEventLoop(IBrowsingContext context)</code></td>
+<td>Same, used by <code>WithEventLoop()</code>.</td>
+</tr>
+<tr>
+<td><code>JsEventLoop(Int32 maxStackSize)</code></td>
+<td>Uses the given stack size (bytes) for the worker thread. Raise it together with <code>MaxCallStackDepth</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>All tasks of the loop run on one dedicated thread, one after another, ordered by priority (scripts are queued as critical). After each task the pending promise jobs (microtasks) run. Exceptions thrown by a task are reported as <code>error</code> events of the browsing context.</p>
+<h2 id="iconsolelogger" tabindex="-1"><code>IConsoleLogger</code> <a class="anchor" href="#iconsolelogger" aria-hidden="true">#</a></h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> interface</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IConsoleLogger</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> Log</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Object</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">[] </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">values</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Every <code>console</code> method ends up in <code>Log</code>. The values are the converted arguments (strings, numbers, AngleSharp objects, …).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Script call</th>
+<th>What <code>Log</code> receives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>debug</code>, <code>trace</code>, <code>dir</code>, <code>dirxml</code>, <code>table</code></td>
+<td>the arguments</td>
+</tr>
+<tr>
+<td><code>assert(condition, …)</code></td>
+<td>the arguments after <code>condition</code>, only if <code>condition</code> is falsy</td>
+</tr>
+<tr>
+<td><code>group(…)</code>, <code>groupCollapsed(…)</code></td>
+<td>the arguments, if any</td>
+</tr>
+<tr>
+<td><code>count(label)</code></td>
+<td><code>&quot;label: n&quot;</code></td>
+</tr>
+<tr>
+<td><code>time(label)</code> / <code>timeLog(label, …)</code> / <code>timeEnd(label)</code></td>
+<td>the elapsed time in milliseconds</td>
+</tr>
+<tr>
+<td><code>groupEnd()</code>, <code>clear()</code>, <code>countReset()</code></td>
+<td>nothing</td>
+</tr>
+</tbody>
+</table></div>
+<p>The severity is not passed on: <code>console.error</code> and <code>console.log</code> look the same to the logger.</p>
+<h2 id="jsnavigationhandler" tabindex="-1"><code>JsNavigationHandler</code> <a class="anchor" href="#jsnavigationhandler" aria-hidden="true">#</a></h2>
+<p>Registered by <code>WithJs()</code>. Navigating to a <code>javascript:</code> URL (e.g. clicking <code>&lt;a href=&quot;javascript:doSomething()&quot;&gt;</code>) runs the code in the current document instead of loading a new one.</p>
+<h2 id="domconstructorfunctionattribute" tabindex="-1"><code>DomConstructorFunctionAttribute</code> <a class="anchor" href="#domconstructorfunctionattribute" aria-hidden="true">#</a></h2>
+<p>Namespace <code>AngleSharp.Js.Attributes</code>. Placed on a static extension method of <code>IWindow</code> to expose it as a constructor function under the given name, the way <code>Image(width, height)</code> and <code>Audio(src)</code> are built:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">[</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">DomConstructorFunction</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Image"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)]</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> static</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IHtmlImageElement</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> Image</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">this</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IWindow</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> window</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Int32</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">? </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">width</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Int32</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">? </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">height</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"></span></code></pre></div><h2 id="how-net-types-become-javascript" tabindex="-1">How .NET types become JavaScript <a class="anchor" href="#how-net-types-become-javascript" aria-hidden="true">#</a></h2>
+<p>There is no generated binding code. When an engine is created, AngleSharp.Js reflects over the exported types of every assembly whose name starts with <code>AngleSharp</code> and that provides a service registered in the browsing context (AngleSharp itself, AngleSharp.Js, AngleSharp.Css, AngleSharp.Io, …). The attributes from <code>AngleSharp.Attributes</code> drive what scripts see:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[DomName(&quot;X&quot;)]</code> on an interface or class</td>
+<td>The JavaScript interface name (<code>HTMLDivElement</code>). Its instances get <code>X.prototype</code>.</td>
+</tr>
+<tr>
+<td><code>[DomName(&quot;x&quot;)]</code> on a member</td>
+<td>Exposes the property, method or event under that name. Methods of the same name are overloads.</td>
+</tr>
+<tr>
+<td><code>[DomConstructor]</code> on a constructor</td>
+<td><code>new X(…)</code> is possible from script.</td>
+</tr>
+<tr>
+<td><code>[DomExposed(&quot;Window&quot;)]</code> on a type</td>
+<td>Publishes the interface on the window (or on another interface or namespace, e.g. <code>[DomExposed(&quot;Worker&quot;)]</code>). On a static class, its <code>[DomName]</code> extension methods are added to the type they extend.</td>
+</tr>
+<tr>
+<td><code>[DomNoInterfaceObject]</code></td>
+<td>Members are available, but no global constructor is published.</td>
+</tr>
+<tr>
+<td><code>[DomInitDict]</code> on a parameter</td>
+<td>The parameter is filled from the members of an options object.</td>
+</tr>
+<tr>
+<td><code>[DomLiterals]</code> on an enum</td>
+<td>The enum values are strings (<code>&quot;loading&quot;</code>), otherwise numbers.</td>
+</tr>
+<tr>
+<td><code>[DomPutForwards(&quot;x&quot;)]</code></td>
+<td>Assigning the property assigns its member <code>x</code> (e.g. <code>location = &quot;…&quot;</code>).</td>
+</tr>
+</tbody>
+</table></div>
+<p>Value conversions follow WebIDL:</p>
+<ul>
+<li><strong>Into .NET:</strong> JS numbers to any numeric type; functions to delegates (also bound functions and callable proxies); objects with <code>handleEvent</code>/<code>acceptNode</code> to the respective listener or filter; any iterable to arrays and the generic interfaces arrays implement; BufferSources to <code>Byte[]</code> when the parameter is <code>Object</code>; promises to <code>Task</code>; BigInt to <code>BigInteger</code>.</li>
+<li><strong>Out of .NET:</strong> <code>[DomLiterals]</code> enums to strings, other enums to numbers (the enum type is exposed as an object of constants); <code>Byte[]</code> to a new <code>ArrayBuffer</code>; <code>ArraySegment&lt;Byte&gt;</code> to a new  <code>Uint8Array</code>; <code>Memory&lt;Byte&gt;</code> to an <code>ArrayBuffer</code> sharing the memory; other arrays to JS arrays; <code>IDictionary&lt;String, Object&gt;</code> to a plain object; <code>Task</code> to a promise; <code>DateTime</code> to <code>Date</code>; delegates to functions; DOM exceptions to errors of their own class (<code>instanceof Error</code>).</li>
+<li>Identity is preserved: the same AngleSharp node is always the same JavaScript object, so <code>document.body === document.body</code> holds and expandos stay attached.</li>
+<li>Members live on the prototype of the interface declaring them and are writable, so polyfills can patch them (<code>Element.prototype.querySelector = …</code>).</li>
+</ul>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Js/edit/devel/docs/tutorials/01-API.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/js/tutorials/api/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Js/tree/dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af" target="_blank" rel="noopener"><code>dfd5fb3</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/js/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
+      <a class="pager-next" href="/docs/js/tutorials/examples/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Examples</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#overview" title="Overview">Overview</a></li><li class="toc-l2"><a href="#configuration-extensions" title="Configuration extensions">Configuration extensions</a></li><li class="toc-l3"><a href="#withjs-withjsjsscriptingoptions-options" title="WithJs() / WithJs(JsScriptingOptions options)">WithJs() / WithJs(JsScriptingOptions options)</a></li><li class="toc-l3"><a href="#witheventloop" title="WithEventLoop()">WithEventLoop()</a></li><li class="toc-l3"><a href="#withconsoleloggerfunc-createlogger" title="WithConsoleLogger(Func&lt;IBrowsingContext, IConsoleLogger&gt; createLogger)">WithConsoleLogger(Func&lt;IBrowsingContext, IConsoleLogger&gt; createLogger)</a></li><li class="toc-l2"><a href="#running-scripts-from-net" title="Running scripts from .NET">Running scripts from .NET</a></li><li class="toc-l3"><a href="#executescript" title="ExecuteScript">ExecuteScript</a></li><li class="toc-l3"><a href="#synchronizing-with-the-event-loop" title="Synchronizing with the event loop">Synchronizing with the event loop</a></li><li class="toc-l2"><a href="#jsscriptingservice" title="JsScriptingService">JsScriptingService</a></li><li class="toc-l2"><a href="#jsscriptingoptions" title="JsScriptingOptions">JsScriptingOptions</a></li><li class="toc-l2"><a href="#enginecreator" title="EngineCreator">EngineCreator</a></li><li class="toc-l2"><a href="#jseventloop" title="JsEventLoop">JsEventLoop</a></li><li class="toc-l2"><a href="#iconsolelogger" title="IConsoleLogger">IConsoleLogger</a></li><li class="toc-l2"><a href="#jsnavigationhandler" title="JsNavigationHandler">JsNavigationHandler</a></li><li class="toc-l2"><a href="#domconstructorfunctionattribute" title="DomConstructorFunctionAttribute">DomConstructorFunctionAttribute</a></li><li class="toc-l2"><a href="#how-net-types-become-javascript" title="How .NET types become JavaScript">How .NET types become JavaScript</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

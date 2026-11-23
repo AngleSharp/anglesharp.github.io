@@ -1,0 +1,50 @@
+# Questions (AngleSharp.Xml)
+
+> Source: https://anglesharp.github.io/docs/xml/tutorials/questions/
+> Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
+> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+
+## Do I need AngleSharp.Xml if I already use AngleSharp?
+
+Yes, if you want robust XML parsing and XML-specific behavior. AngleSharp.Xml integrates with the same DOM and configuration pipeline used by AngleSharp.
+
+## Should I use WithXml or XmlParser directly?
+
+Use WithXml when loading resources via BrowsingContext and content types. Use XmlParser when you already have raw XML text or streams.
+
+## Can I parse fragments instead of full documents?
+
+Yes. Use ParseFragment with a context element when you only need child nodes from partial XML content.
+
+## Can I keep source positions for diagnostics?
+
+Yes. Set IsKeepingSourceReferences to true and optionally use the OnCreated callback in XmlParserOptions.
+
+## Does the serializer preserve namespaces and prefixes?
+
+Yes. Prefixes and namespace URIs are preserved through the AngleSharp DOM model and formatter pipeline.
+
+## Why does my malformed XML throw?
+
+By default, malformed XML throws parse exceptions. If you prefer best-effort parsing, enable IsSuppressingErrors.
+
+## Can I transform a self-closing element into a non-empty element through DOM operations?
+
+Yes. In XML DOM terms, self-closing syntax and explicit open+close syntax both represent elements. If children are added, serialization should emit open+close form.
+
+## Is XML Schema (XSD) validation included?
+
+No built-in XSD validation pipeline is provided by this package. If you need strict schema validation, combine AngleSharp.Xml with dedicated schema validation tooling.
+
+## How do I validate XML against a DTD?
+
+Parse with XmlParser and inspect `document.IsValid`. This gives practical DTD validity results for supported declaration patterns, especially for internal subsets.
+
+## Are external DTD files automatically resolved?
+
+Only with resource loading enabled. The external subset is fetched through the browsing context's resource loader and its requesters, so it loads from the protocols they serve (HTTP with AngleSharp's default requester, local files with AngleSharp.Io's file requester); see [Loading the external subset](https://anglesharp.github.io/docs/xml/tutorials/dtd-validation/index.html.md#loading-the-external-subset). External entities are not loaded. PUBLIC identifier/catalog resolution is not implemented as a full conformance feature. If you depend on those external subset/entity workflows for strict compliance, add an external validation layer in your pipeline.
+
+## Is XPath included?
+
+This package is focused on the AngleSharp DOM and parser integration. Most users query nodes through AngleSharp DOM APIs (such as CSS selectors).

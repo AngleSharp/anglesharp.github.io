@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactivity, Transitions &amp; Animations · AngleSharp.Renderer · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/renderer/general/interactivity/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Interactivity, Transitions &amp; Animations · AngleSharp.Renderer · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/renderer/general/interactivity/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/renderer/general/interactivity/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Renderer menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/renderer/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/" selected>AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Renderer documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/renderer/">Overview</a></li><li><a href="/docs/renderer/benchmarks/">Benchmarks</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/renderer/general/basics/">Getting Started</a></li><li><a href="/docs/renderer/general/interactivity/" aria-current="page">Interactivity, Transitions &amp; Animations</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/renderer/tutorials/api/">API Documentation</a></li><li><a href="/docs/renderer/tutorials/examples/">Examples</a></li><li><a href="/docs/renderer/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Renderer" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Renderer" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/renderer/">AngleSharp.Renderer</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="interactivity-transitions-animations">Interactivity, Transitions &amp; Animations</h1>
+<p><code>HtmlRenderer.RenderToPng</code>/<code>BuildDisplayList</code> render one static snapshot of a document by
+themselves. To simulate mouse hover, drive CSS <code>transition</code>s and <code>animation</code>s, or read/set scroll
+position, a document needs an <strong>interactive DOM harness</strong> - a small piece of state, bound to the
+document's browsing context, that tracks things a real browser would (cursor position, scroll
+offsets, a running clock) and feeds them back into rendering.</p>
+<h2 id="getting-a-harness" tabindex="-1">Getting A Harness <a class="anchor" href="#getting-a-harness" aria-hidden="true">#</a></h2>
+<p>A harness needs an <code>IRenderDevice</code> registered on the browsing context, then is created (or
+retrieved, if one already exists) via <code>GetDomHarness()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Renderer</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> renderDevice</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> DefaultRenderDevice</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> { ViewPortWidth </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 320</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, ViewPortHeight </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> };</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithRenderDevice</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(renderDevice));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">request</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> request.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(html));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> harness</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.Context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetDomHarness</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>Every document not wired up this way renders exactly as before - the interactive machinery is a
+no-op until a harness exists for that browsing context.</p>
+<h2 id="simulating-hover" tabindex="-1">Simulating <code>:hover</code> <a class="anchor" href="#simulating-hover" aria-hidden="true">#</a></h2>
+<p>Set <code>MousePosition</code> in viewport coordinates. The harness hit-tests the layout, forces the
+<code>:hover</code> pseudo-class on the topmost element under the cursor <em>and its whole ancestor chain</em>
+(matching how a real pointer makes <code>.card:hover .title</code> work, not just the innermost element), and
+raises <code>PaintInvalidated</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.MousePosition </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">50</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">40</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> image</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PaintToPng</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p><code>harness.HoveredElement</code> exposes the currently hit-tested element if you need it directly.</p>
+<h2 id="selecting-text" tabindex="-1">Selecting Text <a class="anchor" href="#selecting-text" aria-hidden="true">#</a></h2>
+<p>Text can be selected as in a browser. A host forwards the pointer to the harness - after firing
+<code>mousedown</code>, unless that was canceled:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">BeginTextSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x, y);             </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// pressed; clickCount: 2 selects a word, 3 a paragraph</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ExtendTextSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x, y);            </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// moved with the button held</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">EndTextSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();                   </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// released</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> text</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.SelectedText;              </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// as shown, e.g., for the clipboard</span></span>
+<span class="line"></span></code></pre></div><p><code>BeginTextSelection</code> takes <code>extend: true</code> for a press with Shift held, and returns false when
+nothing can be selected there. <code>SelectAllText()</code> is for Ctrl+A and <code>ClearTextSelection()</code> removes
+the selection. <code>PaintInvalidated</code> is raised when the selection changes; showing it needs no layout,
+as <code>UpdateFrame()</code> returns the last frame with the selection painted.</p>
+<p>The selection also is the DOM's: <code>document.GetSelection()</code> (<code>getSelection()</code> for scripts) has the
+members of the <a href="https://w3c.github.io/selection-api/" target="_blank" rel="noopener">Selection API</a> except <code>modify</code>, and its changes are painted just
+the same. <code>selectstart</code> (cancelable) and <code>selectionchange</code> are fired. <code>user-select</code> is honored
+(<code>none</code>, <code>text</code>, <code>all</code>), what form controls show cannot be selected, and <code>::selection</code> gives the colors
+of the highlight and the text.</p>
+<p>A host shows the cursor of text where <code>frame.HasTextAt(x, y)</code> is true, which does not touch the DOM.</p>
+<p>Selecting is on by default. It can be turned off for a document that has no use for it, in which case
+layouts do not record where their text comes from:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.IsTextSelectionEnabled </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> false</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span></code></pre></div><h2 id="selecting-text-headlessly" tabindex="-1">Selecting Text Headlessly <a class="anchor" href="#selecting-text-headlessly" aria-hidden="true">#</a></h2>
+<p>No pointer is needed to select text, e.g. to highlight search hits in a screenshot or to test what a
+selection covers. Select through the DOM and render; the harness only has to exist, since a document
+without one paints no selection:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> device</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> DefaultRenderDevice</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> { ViewPortWidth </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 400</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, ViewPortHeight </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> };</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithRenderDevice</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(device));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">request</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> request.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"&#x3C;p id='intro'>Hello World&#x3C;/p>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> harness</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.Context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetDomHarness</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> text</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetElementById</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"intro"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">!</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.FirstChild</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">!</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> selection</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">selection.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">SetBaseAndExtent</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(text, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">6</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, text, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">11</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);    </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// "World"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> image</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">RenderToPng</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();               </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// with the highlight</span></span>
+<span class="line"></span></code></pre></div><p>Any way of the Selection API selects: <code>SelectAllChildren(element)</code>, <code>Collapse</code>/<code>Extend</code>, or
+<code>AddRange</code> with a range from <code>document.CreateRange()</code>. <code>RemoveAllRanges()</code> takes the highlight away
+again.</p>
+<p><code>selection.ToString()</code> and <code>harness.SelectedText</code> are the selected text as it is shown (collapsed
+white space, <code>text-transform</code>, line breaks between blocks), i.e., what a browser copies to the
+clipboard. Without a harness, <code>ToString()</code> is the text of the selected nodes.</p>
+<p>Where it is comes from the range: <code>selection.GetRangeAt(0).GetClientRects()</code> gives a rectangle per
+line box, and <code>GetBoundingClientRect()</code> the one around them, both in viewport coordinates.</p>
+<p>The pointer gestures above work headlessly too, at coordinates of your choosing. For example, a
+double click selects the word under the point:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">BeginTextSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">30</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">15</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">clickCount</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">EndTextSelection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> word</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.SelectedText;</span></span>
+<span class="line"></span></code></pre></div><h2 id="frames-and-their-metrics" tabindex="-1">Frames and Their Metrics <a class="anchor" href="#frames-and-their-metrics" aria-hidden="true">#</a></h2>
+<p>An interactive host lays out a frame with <code>PrepareFrame()</code> and rasterizes it on any thread, as it
+no longer refers to the DOM. Every frame tells what its layout took, e.g., to show it in the
+developer tools of a browser:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> frame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> metrics</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> frame.Metrics;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">$"styles </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Style</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">, boxes </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Layout</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">, hit testing </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">HitTesting</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">$"</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Elements</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> elements, </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Boxes</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> boxes, </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">{</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">metrics</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">.</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">TrialLayouts</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">}</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> trial layouts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p><code>Total</code> is the sum of the phases: <code>Setup</code> (web fonts and the page's default text style), <code>Style</code>
+(the render tree, i.e., matching selectors and the cascade), <code>Layout</code> (the boxes and what is painted),
+<code>HitTesting</code> and <code>Subframes</code> (the documents of iframes). The counters tell how much work that was:
+<code>StyleMaps</code>, <code>TextMeasurements</code>, <code>Commands</code> (of the display list), <code>HitTestEntries</code> and the
+<code>AllocatedBytes</code>. A frame patched by <code>UpdateFrame()</code> is <code>IsIncremental</code>, and a frame moved with
+<code>Reposition</code> needed no layout at all: its metrics are <code>RenderMetrics.None</code>.</p>
+<p>A change of an element's state, i.e., hovering or focusing it, is often confined to it: only what
+a selector of that state refers to (e.g., <code>.card:hover .title</code>) is styled again, and a change of
+its colors, backgrounds, borders, outlines, shadows or text decoration is painted again without
+laying out anything, so <code>UpdateFrame()</code> patches the last frame (keeping its hit-test map, unless a
+<code>cursor</code> changed). Selectors that style other elements with the state, like <code>.tip:hover + .note</code>
+or the rules of a shadow tree, still lay out the document again. The harness knows the hovered
+element, while a host that moves the focus tells it so:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">field.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DoFocus</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">NotifyStateChanged</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(field);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> frame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">UpdateFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">??</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>A page that was just loaded can be shown early on: <code>PrepareViewportFrame()</code> styles and lays out
+only what is in the viewport (with the overscan). If the page goes on below, the frame is
+<code>IsPartial</code>: its <code>ContentHeight</code> and hit-test map end there, and it is animating, as the next
+frame lays out the whole page. Reading the geometry (e.g., <code>getBoundingClientRect</code>) lays it out as
+well, and <code>UpdateFrame()</code> doesn't patch a partial frame:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> first</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareViewportFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// show it, then</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> frame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> first.IsPartial </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">?</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">:</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> first;</span></span>
+<span class="line"></span></code></pre></div><p>Images of a page (e.g., <code>RenderToPng</code>) are rendered the same way. A document whose generated
+content uses CSS counters or quotes (with elements they apply to) is styled as a whole, as these
+depend on all elements before.</p>
+<p>For a large document, the computed styles of its elements are read on all cores (as AngleSharp.Css
+matches their selectors), while the DOM is not changed. A host without cores to spare turns this off:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">AppContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">SetSwitch</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"AngleSharp.Renderer.DisableParallelism"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">AppContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">SetSwitch</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"AngleSharp.Css.DisableParallelism"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><h2 id="the-virtual-clock" tabindex="-1">The Virtual Clock <a class="anchor" href="#the-virtual-clock" aria-hidden="true">#</a></h2>
+<p>There is no real-time timer anywhere in this renderer. CSS <code>transition</code>s and <code>animation</code>s are both
+measured against a virtual clock that only moves when you tell it to, via <code>AdvanceTime</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AdvanceTime</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromMilliseconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">500</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> midFrame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PaintToPng</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>Call <code>AdvanceTime</code> with however much time you want a frame to represent, then paint - repeating
+that pair of calls is how you produce a sequence of frames (for example, to assemble a GIF or
+video of an animation) instead of only ever the resting/end states.</p>
+<p>An interactive host gets the frames of animations cheaply from <code>UpdateFrame()</code> after <code>AdvanceTime</code>:
+when the animations and transitions only change the <code>transform</code>, <code>opacity</code> or <code>filter</code> of boxes (or
+what boxes paint of their own, e.g. a background color), the last frame is painted with the new
+values without a layout. Otherwise <code>UpdateFrame()</code> returns null, and <code>PrepareFrame()</code> lays out the
+document:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AdvanceTime</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromMilliseconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">16</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> frame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">UpdateFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">??</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>A frame with sticky boxes can be moved to another scroll position as well (<code>CanReposition</code>): the
+sticky boxes stick there anew, also for its <code>HitTestMap</code>.</p>
+<h2 id="css-transition" tabindex="-1">CSS <code>transition</code> <a class="anchor" href="#css-transition" aria-hidden="true">#</a></h2>
+<p>A <code>transition</code> animates a property when its own natural value changes for some other reason: a
+<code>:hover</code> state change, or anything changing the style of an element between two frames (e.g. a
+script adding a class). An element seen for the first time (just inserted, or no longer
+<code>display: none</code>) has no transition, like in a browser:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> html</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> """</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">    &#x3C;style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">      #box { width: 40px; height: 40px; background-color: blue; transition: background-color 1s ease; }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">      #box:hover { background-color: red; }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">    &#x3C;/style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;/head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;body>&#x3C;div id="box">&#x3C;/div>&#x3C;/body></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;/html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"""</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> harness</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.Context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetDomHarness</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.MousePosition </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// hovers #box, starts the transition</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AdvanceTime</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromMilliseconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">500</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// halfway through the 1s duration</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> midway</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PaintToPng</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// background is purple, not yet fully red</span></span>
+<span class="line"></span></code></pre></div><p>Moving the pointer away mid-transition reverses it smoothly from whatever is currently on screen,
+with its own full declared duration - not a jump back to blue, and not just the remaining
+fraction of the original 1s.</p>
+<p>Like animations, transitions tell the element about themselves once a frame is painted:
+<code>transitionrun</code> (when it is created), <code>transitionstart</code> (once its delay is over), <code>transitionend</code>
+and <code>transitioncancel</code> (replaced or removed before it ended) are dispatched as <code>TransitionEvent</code>s,
+with the <code>propertyName</code> and the <code>elapsedTime</code> in seconds. A property that is not interpolated here
+(see below; e.g. <code>max-height</code> or <code>visibility</code>) still has these events, while its value changes
+right away; a shorthand like <code>padding</code> or <code>border-color</code> transitions its longhands.</p>
+<h2 id="css-animationkeyframes" tabindex="-1">CSS <code>animation</code>/<code>@keyframes</code> <a class="anchor" href="#css-animationkeyframes" aria-hidden="true">#</a></h2>
+<p>An <code>animation</code> needs no trigger at all - one in the first frame of a document is pinned to
+virtual-clock zero (matching a real browser's &quot;starts playing at page load&quot;), one an element gets
+later (e.g. by a class a script adds) starts at the time of the frame that finds it, and either
+keeps looping per <code>animation-iteration-count</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> html</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> """</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">    &#x3C;style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">      @keyframes fade {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        0% { opacity: 0; }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        100% { opacity: 1; }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">      }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">      #box { width: 40px; height: 40px; background-color: blue; animation: fade 2s linear; }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">    &#x3C;/style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;/head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;body>&#x3C;div id="box">&#x3C;/div>&#x3C;/body></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;/html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"""</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> harness</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.Context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetDomHarness</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AdvanceTime</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromMilliseconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">1000</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// halfway through the 2s duration</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> midway</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PaintToPng</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// #box is 50% opaque</span></span>
+<span class="line"></span></code></pre></div><p><code>animation-name</code> (including multiple, comma-separated animations on one element),
+<code>-duration</code>, <code>-delay</code>, <code>-timing-function</code> (<code>ease</code>/<code>linear</code>/<code>cubic-bezier()</code>/<code>steps()</code>),
+<code>-iteration-count</code> (a number, or <code>infinite</code>), <code>-direction</code> (<code>normal</code>/<code>reverse</code>/<code>alternate</code>/
+<code>alternate-reverse</code>), and <code>-fill-mode</code> (<code>none</code>/<code>forwards</code>/<code>backwards</code>/<code>both</code>) are all supported.
+<code>animation-play-state: paused</code> freezes an animation where it is, and the time it is paused does
+not count.</p>
+<p>The frames tell the element about its animations, like a browser: once a frame (or a picture) is
+painted, <code>animationstart</code>, <code>animationiteration</code>, <code>animationend</code> and <code>animationcancel</code> (an
+animation the element no longer names before it ended) are dispatched as <code>AnimationEvent</code>s, with
+the <code>animationName</code> and the <code>elapsedTime</code> in seconds. With an event loop they are a task of it,
+else they are dispatched right after painting. Pages often wait for <code>animationend</code> before going
+on, e.g. to show the next view of a form.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">box.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AddEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"animationend"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">_</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ev</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">AnimationEvent</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)ev).AnimationName));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();                            </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// animationstart</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AdvanceTime</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(TimeSpan.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FromSeconds</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();                            </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// animationend: "fade"</span></span>
+<span class="line"></span></code></pre></div><h2 id="what-can-be-animated" tabindex="-1">What Can Be Animated <a class="anchor" href="#what-can-be-animated" aria-hidden="true">#</a></h2>
+<p>Both <code>transition</code> and <code>animation</code> only ever interpolate a fixed set of properties:</p>
+<ul>
+<li><strong>Colors</strong> (channel-wise): <code>background-color</code>, <code>color</code>, <code>border-top-color</code>,
+<code>border-right-color</code>, <code>border-bottom-color</code>, <code>border-left-color</code></li>
+<li><strong>Numeric lengths/<code>opacity</code></strong> (plain numeric lerp): <code>opacity</code>, <code>width</code>, <code>height</code>, <code>font-size</code>,
+<code>margin-top</code>/<code>-right</code>/<code>-bottom</code>/<code>-left</code>, <code>padding-top</code>/<code>-right</code>/<code>-bottom</code>/<code>-left</code>,
+<code>border-top-width</code>/<code>-right-width</code>/<code>-bottom-width</code>/<code>-left-width</code>, <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code></li>
+<li><strong>Function lists</strong> (function by function): <code>transform</code>, <code>translate</code>, <code>rotate</code>, <code>scale</code>,
+<code>filter</code>, <code>backdrop-filter</code></li>
+</ul>
+<p><code>transition-property: all</code> and any other property named in a <code>@keyframes</code> block are limited to
+this same list; other properties change right away (a transition of one still has its events).</p>
+<h2 id="animated-images" tabindex="-1">Animated Images <a class="anchor" href="#animated-images" aria-hidden="true">#</a></h2>
+<p>A GIF or WebP of several frames plays without a layout: rasterizing a frame shows the image's frame
+whose time has come, from the moment the image was first painted, as often as the image loops (the
+wall clock, not the virtual one). <code>GetTimeToNextImageFrame()</code> tells when an animated image in or near
+the viewport of the frame changes next, so a host knows when to rasterize it again:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> frame</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> harness.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PrepareFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> pixels</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> frame.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Rasterize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (frame.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetTimeToNextImageFrame</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">is</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> { } </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">delay</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Task.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Delay</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(delay);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    pixels </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> frame.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Rasterize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();                    </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the next frame of the GIF</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><h2 id="media-controls" tabindex="-1">Media Controls <a class="anchor" href="#media-controls" aria-hidden="true">#</a></h2>
+<p>An <code>audio</code> element with the <code>controls</code> attribute is painted with the controls of Chrome (300x54 by
+default): a play/pause button, the time, a timeline and a mute button, showing the state of the
+element (<code>paused</code>, <code>currentTime</code>, <code>duration</code>, <code>muted</code>). While the media plays, the time and the
+timeline are painted for the moment the frame is rasterized, so they go on without a layout, and
+<code>GetTimeToNextImageFrame()</code> also tells when they change next. Without <code>controls</code>, an <code>audio</code> element
+is not rendered.</p>
+<p>The controls are painted, not boxes, so a host finds the part a press is on, in viewport
+coordinates, and acts on the element itself:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">switch</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (audio.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetMediaControlAt</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x, y))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    case</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MediaControlPart</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PlayPause</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">        // play() or pause(), depending on audio.IsPaused</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    case</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MediaControlPart</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Mute</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        audio.IsMuted </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> !</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">audio.IsMuted;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    case</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MediaControlPart</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Timeline</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        audio.CurrentTime </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> audio.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetMediaTimelinePosition</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x)</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">!</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.Value </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">*</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> audio.Duration;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><h2 id="input-pickers" tabindex="-1">Input Pickers <a class="anchor" href="#input-pickers" aria-hidden="true">#</a></h2>
+<p>The <code>color</code>, <code>date</code>, <code>datetime-local</code>, <code>month</code>, <code>time</code> and <code>week</code> inputs open a picker as in a
+browser: a color picker (saturation and brightness area, hue slider, the suggestions of the input's
+<code>list</code> or a few common colors), a calendar (of days, weeks with their ISO numbers, or months; with
+columns of hours, minutes and AM/PM for <code>datetime-local</code>), or the columns of a time. Like the list of
+a dropdown (<code>SelectPopup</code>), a picker is not part of the layout: a host opens it, shows it on top of a
+frame and forwards the pointer and the keyboard to it, in viewport coordinates:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> picker</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> input.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenInputPicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();          </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// null if the input has none, or is disabled or read-only</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">frame </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> frame.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithOverlay</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(picker.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Render</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// a press on the picker; a press anywhere else closes it with picker.Close()</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> result</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> picker.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">PointerDown</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x, y);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// also PointerMove, PointerUp, Wheel(x, y, deltaY) and KeyDown("ArrowLeft", "Enter", "Escape", ...)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">switch</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (result)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    case</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> InputPickerResult</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Repaint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        frame </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> frame.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithOverlay</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(picker.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Render</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    case</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> InputPickerResult</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Close</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">        // hide the picker</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        break</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Choosing sets the input's value and fires <code>input</code>; <code>change</code> is fired when the picker closes with a
+value other than the one it opened with. <code>picker.Close(cancel: true)</code> (and Escape) brings that value
+back. <code>min</code>, <code>max</code> and <code>step</code> disable what they don't allow: days, weeks or months off the step
+(counted from <code>min</code>, else the <code>value</code> attribute) are greyed out, and the time columns only list
+the hours, minutes and seconds the step allows (a seconds column appears when the step isn't a
+whole number of minutes); a chosen time moves to the nearest allowed one. <code>step=&quot;any&quot;</code> allows
+everything. <code>InputValueConstraints.For(input)</code> gives custom pickers the same rules. The picker follows the color scheme of the
+input (as the list of a dropdown does) and its <code>accent-color</code>. <code>InputPickerOptions</code> sets where the
+viewport of the input's document is (for an input in an iframe), the page's device and the current
+time, which marks today and is shown when the input has no value.</p>
+<h3 id="custom-controls" tabindex="-1">Custom Controls <a class="anchor" href="#custom-controls" aria-hidden="true">#</a></h3>
+<p>How an input is shown is up to its <code>IInputControl</code>: <code>GetIntrinsicSize</code> gives its size when <code>width</code>
+or <code>height</code> is <code>auto</code>, <code>Paint</code> paints the content of the input (its border, padding and background
+come from the style sheets) and <code>CreatePicker</code> creates its picker. A size is of the content box
+(padding and border are added, as for a text field) or of the border box
+(<code>InputControlSizeBox.BorderBox</code>, as for the swatch of a color input); a side left null, or a null
+size, is the built-in one of the type. The built-in ones are
+<code>ColorInputControl</code> and <code>DateTimeInputControl</code> with the pickers <code>ColorPicker</code>, <code>CalendarPicker</code> and
+<code>TimePicker</code>; all of them can be derived from. Another control is registered with the configuration,
+for any input type:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithRenderDevice</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(device)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithInputControl</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"color"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MyColorControl</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());   </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the other types keep the built-in controls</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">sealed</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MyColorControl</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> : </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ColorInputControl</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> override</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> InputControlSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">? </span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetIntrinsicSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">InputControlSizeContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        new</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">MeasureText</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"#000000"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 40f</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, context.LineHeight);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> override</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> Paint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">InputControlPaintContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">        // what to paint, in the coordinates of context.DisplayList</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        context.DisplayList.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FillRect</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context.ContentBox, MyColors.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Parse</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context.Value));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DrawText</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context.Value, context.ContentBox.X </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 4f</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, context.TextBaseline);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> override</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IInputPicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">? </span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">CreatePicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">InputPickerContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MyColorPicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p><code>InputControlPaintContext</code> measures and paints text as the input's text is painted (<code>MeasureText</code>,
+<code>DrawText</code>). <code>InputPickerContext</code> gives the input's place in the viewport (<code>Anchor</code>, and <code>Place</code> for
+putting a picker below or above it), its font, the colors of its scheme (<code>Palette</code>) and a text
+measurer. Deriving from <code>InputPicker</code> brings setting the value with its events (<code>SetValue</code>,
+<code>Choose</code>), closing, and painting text in the input's font. <code>WithInputControls(provider)</code> replaces
+the registry with any <code>IInputControlProvider</code>; returning null for an input leaves it to the
+built-in control of its type, if any. The painting happens during layout, so it must only depend on
+the state of the input.</p>
+<h2 id="scrolling" tabindex="-1">Scrolling <a class="anchor" href="#scrolling" aria-hidden="true">#</a></h2>
+<p>The same harness also tracks per-element scroll position, read and set through the standard
+CSSOM-view properties/methods (<code>element.scrollTop</code>, <code>element.scrollTo(...)</code>,
+<code>element.scrollIntoView()</code>, ...) - <code>RenderToPng</code>/<code>BuildDisplayList</code> honor whatever scroll position
+is currently set once a harness exists for the document.</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Renderer/edit/devel/docs/general/02-Interactivity.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/renderer/general/interactivity/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Renderer/tree/0a71fb1145856a0e638852edb3b9de0385eb01fa" target="_blank" rel="noopener"><code>0a71fb1</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/renderer/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
+      <a class="pager-next" href="/docs/renderer/tutorials/api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>API Documentation</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#getting-a-harness" title="Getting A Harness">Getting A Harness</a></li><li class="toc-l2"><a href="#simulating-hover" title="Simulating :hover">Simulating :hover</a></li><li class="toc-l2"><a href="#selecting-text" title="Selecting Text">Selecting Text</a></li><li class="toc-l2"><a href="#selecting-text-headlessly" title="Selecting Text Headlessly">Selecting Text Headlessly</a></li><li class="toc-l2"><a href="#frames-and-their-metrics" title="Frames and Their Metrics">Frames and Their Metrics</a></li><li class="toc-l2"><a href="#the-virtual-clock" title="The Virtual Clock">The Virtual Clock</a></li><li class="toc-l2"><a href="#css-transition" title="CSS transition">CSS transition</a></li><li class="toc-l2"><a href="#css-animationkeyframes" title="CSS animation/@keyframes">CSS animation/@keyframes</a></li><li class="toc-l2"><a href="#what-can-be-animated" title="What Can Be Animated">What Can Be Animated</a></li><li class="toc-l2"><a href="#animated-images" title="Animated Images">Animated Images</a></li><li class="toc-l2"><a href="#media-controls" title="Media Controls">Media Controls</a></li><li class="toc-l2"><a href="#input-pickers" title="Input Pickers">Input Pickers</a></li><li class="toc-l3"><a href="#custom-controls" title="Custom Controls">Custom Controls</a></li><li class="toc-l2"><a href="#scrolling" title="Scrolling">Scrolling</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

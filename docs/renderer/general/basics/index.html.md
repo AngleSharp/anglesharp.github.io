@@ -1,0 +1,82 @@
+# Getting Started (AngleSharp.Renderer)
+
+> Source: https://anglesharp.github.io/docs/renderer/general/basics/
+> Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
+> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+
+## Requirements
+
+AngleSharp.Renderer builds on top of AngleSharp and AngleSharp.Css. Install the packages you need via NuGet:
+
+```ps1
+Install-Package AngleSharp
+Install-Package AngleSharp.Css
+Install-Package AngleSharp.Renderer
+```
+
+## Rendering Pipeline
+
+The renderer works in three steps:
+
+1. AngleSharp parses the HTML document.
+2. AngleSharp.Css provides computed styles and the render tree.
+3. AngleSharp.Renderer converts the tree into a display list and rasterizes it with Skia.
+
+```cs
+using AngleSharp;
+using AngleSharp.Css;
+using AngleSharp.Renderer;
+
+var device = new DefaultRenderDevice { ViewPortWidth = 800, ViewPortHeight = 600 };
+var context = BrowsingContext.New(Configuration.Default.WithCss().WithRenderDevice(device).WithRendering());
+var document = await context.OpenAsync(request => request.Content("<html><body>Hello</body></html>"));
+
+var image = document.RenderToPng();
+```
+
+## The Render Device
+
+The renderer takes the viewport from AngleSharp.Css's `IRenderDevice`, the same object that media queries are evaluated against:
+
+- `ViewPortWidth` and `ViewPortHeight` are the size of the viewport, and so of the image.
+- `FontSize` is the default font size (`medium`, the size `rem` refers to).
+- The other properties (`Resolution`, `ColorBits`, ...) feed media queries; images are always rendered at one device pixel per CSS pixel.
+
+Register it once with `WithRenderDevice(device)`, or pass it to a single call with `new HtmlRenderer().RenderToPng(document, device)`. Without a render device, a document renders in an 800×600 viewport (`HtmlRenderer.FallbackViewportWidth`/`FallbackViewportHeight`). The interactive harness and the geometry APIs (`GetBoundingClientRect`, ...) still need a registered device, since AngleSharp.Css evaluates `window.innerWidth` and the media queries of computed styles against it.
+
+## Canvas Support
+
+The renderer can also be configured to expose a basic 2D drawing context for `<canvas>` elements. Register the rendering service once on the browsing context with `Configuration.Default.WithCss().WithRendering()` and then resolve the context through `canvas.GetContext("2d")`.
+
+```cs
+using AngleSharp;
+using AngleSharp.Renderer;
+
+var context = BrowsingContext.New(Configuration.Default.WithCss().WithRendering());
+var document = await context.OpenAsync(request => request.Content("<html><body><canvas width='120' height='80'></canvas></body></html>"));
+
+var canvas = document.QuerySelector("canvas") as IHtmlCanvasElement;
+var canvasContext = canvas?.GetContext("2d") as Canvas2DRenderingContext;
+
+canvasContext?.SetFillStyle("#ff0000");
+canvasContext?.FillRect(10f, 10f, 80f, 40f);
+```
+
+This implementation is intentionally lightweight and bitmap-backed, but it supports common operations such as rectangles, paths, text, clear operations, and save/restore state.
+
+## Text And Fonts
+
+The renderer supports text styling such as font size, weight, italic, alignment, letter and word spacing, `text-transform`, decorations, shadows, `white-space`, `word-break`, `overflow-wrap`, and `text-overflow`.
+Inline content is laid out in line boxes, so nested inline elements keep their own styles, share a baseline with the surrounding text, and wrap together with it.
+
+Generic font families like `serif`, `sans-serif`, and `monospace` always map to fonts bundled with the renderer, so they render the same on every machine.
+Named families resolve only when installed on the host (or declared via `@font-face`), so prefer generic families when you need predictable output in visual tests.
+
+Text is shaped with HarfBuzz, so kerning and ligatures (`fi`, `fl`) apply, Arabic letters join, and complex scripts such as Devanagari form their conjuncts.
+`font-feature-settings`, `font-kerning`, `font-variant-ligatures` and `font-variant-numeric` select the OpenType features of the font; a non-zero `letter-spacing` turns optional ligatures off.
+The bundled fonts cover Latin, Greek, Cyrillic, Hebrew and Arabic (DejaVu) and Devanagari (Noto Sans Devanagari, used only as a fallback); other scripts need an installed font or an `@font-face` that covers them.
+
+## Visual Testing
+
+The test suite uses PNG snapshots under `verification-assets/`. Missing baselines are created automatically unless strict mode is enabled with `ANGLESHARP_SNAPSHOT_STRICT=1`.

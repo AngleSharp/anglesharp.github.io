@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AngleSharp 1.10.0 · AngleSharp</title>
+<meta name="description" content="Happy to share that we have some big release party today:">
+<link rel="canonical" href="https://anglesharp.github.io/blog/2026/anglesharp-v110-release/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AngleSharp 1.10.0 · AngleSharp">
+<meta property="og:description" content="Happy to share that we have some big release party today:">
+<meta property="og:url" content="https://anglesharp.github.io/blog/2026/anglesharp-v110-release/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/blog/2026/anglesharp-v110-release/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-post" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/" aria-current="page">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<article class="post container">
+  <header class="post-header">
+    <a class="back-link" href="/blog/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All posts</a>
+    <div class="post-tags"><span class="tag">release</span></div>
+    <h1>AngleSharp 1.10.0</h1>
+    <div class="post-meta">
+      <img class="avatar" src="https://github.com/FlorianRappl.png?size=64" alt="" width="32" height="32" loading="lazy">
+      <span>Florian Rappl</span>
+      <time datetime="2026-11-06">Nov 6, 2026</time>
+      <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 9 min read</span>
+    </div>
+  </header>
+  <div class="prose prose-post"><p>Happy to share that we have some big release party today:</p>
+<p><strong>AngleSharp 1.10.0 is here!</strong> 🚀</p>
+<p>AngleSharp is a web utility library for .NET written exclusivly in C#. It is the de-facto standard for parsing HTML5 on the .NET platform. Through its architecture it is actually more than just an HTML parser - it is the core of a headless browser. With associated libraries such as AngleSharp.Css or AngleSharp.Js more web capabilities such as style computation or script evaluation are possible.</p>
+<p>The v1.10 release marks an important milestone in the AngleSharp project. Many DOM APIs have been implemented that previously did not appear at all. While these APIs did not make much of a difference for standard HTML parsing they are crucial in the JavaScript evaluation of many websites.</p>
+<h2 id="a-new-milestone-for-the-entire-ecosystem" tabindex="-1">A New Milestone for the Entire Ecosystem <a class="anchor" href="#a-new-milestone-for-the-entire-ecosystem" aria-hidden="true">#</a></h2>
+<p>Today marks an important milestone for AngleSharp! We are happy to announce the release of <strong>AngleSharp 1.10.0</strong>, accompanied by new releases across the entire ecosystem: AngleSharp.Css 1.4.0, AngleSharp.Js 1.2.0, AngleSharp.Io 1.3.0, and AngleSharp.Renderer 0.11.0.</p>
+<p>This is more than just another round of package updates. AngleSharp 1.10.0 represents a significant step forward for the core library and establishes a new common foundation for the ecosystem. All the latest releases of the companion libraries are built on top of AngleSharp 1.10.0 and require it as their underlying dependency.</p>
+<p>Let's take a closer look at what's new and why this release is particularly exciting.</p>
+<h2 id="anglesharp-1100-the-foundation" tabindex="-1">AngleSharp 1.10.0 – The Foundation <a class="anchor" href="#anglesharp-1100-the-foundation" aria-hidden="true">#</a></h2>
+<p><a href="https://github.com/AngleSharp/AngleSharp/releases/tag/v1.10.0" target="_blank" rel="noopener">AngleSharp 1.10.0</a> is the centerpiece of this release cycle.</p>
+<p>As the foundation on which the other libraries build, improvements to AngleSharp have an impact that reaches far beyond the core package itself. Better DOM behavior, more complete browser API implementations, improved security, and additional standards support benefit the entire ecosystem.</p>
+<p>There are several noteworthy additions and improvements.</p>
+<h3 id="better-dom-and-browser-api-compatibility" tabindex="-1">Better DOM and browser API compatibility <a class="anchor" href="#better-dom-and-browser-api-compatibility" aria-hidden="true">#</a></h3>
+<p>This release brings a considerable number of improvements to DOM behavior and browser API compatibility.</p>
+<p>Among the highlights are:</p>
+<ul>
+<li><strong>Custom Elements:</strong> Support for the <code>customElements</code> registry, including <code>define</code>, <code>get</code>, <code>getName</code>, <code>whenDefined</code>, and <code>upgrade</code>, as well as the <code>:defined</code> pseudo-class.</li>
+<li><strong>Event handling:</strong> Support for the <code>capture</code>, <code>once</code>, <code>passive</code>, and <code>signal</code> options in <code>addEventListener</code> and <code>removeEventListener</code>.</li>
+<li><strong>DOM improvements:</strong> Added <code>isConnected</code>, <code>toggleAttribute</code>, <code>replaceChildren</code>, <code>getRootNode</code>, and several other useful DOM APIs.</li>
+<li><strong>Form improvements:</strong> Added <code>requestSubmit</code>, <code>reportValidity</code>, and <code>SubmitEvent</code>, including form validation, cancellation, and submitter reporting.</li>
+<li><strong>Popover API:</strong> Added support for the <code>popover</code> attribute.</li>
+<li><strong>Pointer and keyboard events:</strong> Expanded event support with <code>PointerEvent</code>, additional keyboard properties, and improved mouse event information.</li>
+</ul>
+<p>There are also numerous correctness fixes, including improvements to live DOM collections, <code>TreeWalker</code>, frame initialization, event propagation, and document writing.</p>
+<p>These changes make AngleSharp behave more consistently with the browser platform and provide a stronger foundation for applications that depend on accurate DOM semantics.</p>
+<h3 id="security-improvements" tabindex="-1">Security improvements <a class="anchor" href="#security-improvements" aria-hidden="true">#</a></h3>
+<p>Security remains an important consideration when implementing browser behavior outside an actual browser.</p>
+<p>AngleSharp 1.10.0 adds support for the <code>sandbox</code> attribute on iframes, applying the corresponding security restrictions to their browsing contexts.</p>
+<p>It also introduces support for <code>X-Frame-Options</code> and the <code>frame-ancestors</code> directive of Content Security Policy. These mechanisms help prevent documents from being displayed in frames when their embedding policies prohibit it.</p>
+<p>These additions strengthen the security model around embedded documents and bring AngleSharp closer to the behavior expected from modern browsers.</p>
+<h3 id="more-control-over-document-creation" tabindex="-1">More control over document creation <a class="anchor" href="#more-control-over-document-creation" aria-hidden="true">#</a></h3>
+<p>Two new document creation options deserve special attention:</p>
+<ul>
+<li><code>CreateDocumentOptions.IsScriptingDisabled</code></li>
+<li><code>CreateDocumentOptions.IsNavigationDisabled</code></li>
+</ul>
+<p>They provide more precise control over document creation, including scenarios such as DOM parsing where scripting and navigation should not be enabled.</p>
+<p>Together with the other improvements, these additions make AngleSharp more flexible for different embedding and processing scenarios.</p>
+<p><strong>In short:</strong> AngleSharp 1.10.0 is a substantial improvement to the core platform, combining standards compatibility, better DOM behavior, security enhancements, and additional browser APIs.</p>
+<h2 id="anglesharpcss-140-better-styling-and-rendering" tabindex="-1">AngleSharp.Css 1.4.0 – Better Styling and Rendering <a class="anchor" href="#anglesharpcss-140-better-styling-and-rendering" aria-hidden="true">#</a></h2>
+<p><a href="https://github.com/AngleSharp/AngleSharp.Css/releases/tag/v1.4.0" target="_blank" rel="noopener">AngleSharp.Css 1.4.0</a> brings improvements to CSS processing and its integration with the DOM.</p>
+<p>Importantly, this release now requires at least AngleSharp 1.10.0.</p>
+<p>Some of the highlights include:</p>
+<ul>
+<li>Improved rendering by creating pseudo-elements and specified styles only when needed.</li>
+<li>Reduced memory consumption of render trees.</li>
+<li>Improved <code>GetInnerText</code> by using the render tree, correctly skipping hidden content and accessing shadow hosts through their slots.</li>
+<li>Improved presentational hints without relying on reflection.</li>
+<li>Added support for <code>CSSStyleSheet</code> and <code>adoptedStyleSheets</code>.</li>
+<li>Added support for <code>::selection</code> pseudo-elements.</li>
+<li>Improved <code>getComputedStyle</code> and its handling of initial values.</li>
+<li>Added support for the popover API through <code>:popover-open</code> and <code>::backdrop</code>.</li>
+<li>Expanded CSS style property access from JavaScript, including properties such as <code>gap</code>, <code>aspectRatio</code>, <code>gridTemplateColumns</code>, and <code>inset</code>.</li>
+</ul>
+<p>There are also improvements to <code>CSS.supports</code>, media query handling, and CSS supports conditions.</p>
+<p>Of particular interest are the rendering and memory improvements. Avoiding unnecessary style and pseudo-element creation, together with more efficient render trees, helps make CSS processing more economical.</p>
+<h2 id="anglesharpjs-120-more-reliable-javascript-integration" tabindex="-1">AngleSharp.Js 1.2.0 – More Reliable JavaScript Integration <a class="anchor" href="#anglesharpjs-120-more-reliable-javascript-integration" aria-hidden="true">#</a></h2>
+<p><a href="https://github.com/AngleSharp/AngleSharp.Js/releases/tag/v1.2.0" target="_blank" rel="noopener">AngleSharp.Js 1.2.0</a> focuses on improving the integration between JavaScript and the DOM.</p>
+<p>This release addresses several subtle but important compatibility issues.</p>
+<p>Highlights include:</p>
+<ul>
+<li>Fixed the origin of frames without their own address so that they correctly inherit the origin of their creator.</li>
+<li>Fixed <code>append</code>, <code>prepend</code>, and related methods to correctly turn strings into text nodes.</li>
+<li>Improved prototype-chain behavior for classes derived from DOM types.</li>
+<li>Improved support for event listeners and callbacks, including objects implementing <code>handleEvent</code>.</li>
+<li>Fixed promise jobs not being executed after host callbacks, which could otherwise cause <code>await</code> operations to hang.</li>
+<li>Improved callback handling for APIs such as <code>navigator.locks.request</code>.</li>
+<li>Fixed event listener removal and error propagation.</li>
+<li>Improved the handling of DOM exceptions, dates, structured cloning, and iterable DOM collections.</li>
+<li>Fixed bound functions and callable proxies not being accepted as callbacks.</li>
+</ul>
+<p>One particularly important improvement concerns module loading: JavaScript modules are now loaded through the configured requesters rather than directly from the local filesystem.</p>
+<p>This is an important step towards consistent and controlled resource loading, especially when applications provide their own resource access policies.</p>
+<p>Overall, AngleSharp.Js 1.2.0 makes JavaScript execution more predictable and improves compatibility with the browser APIs that applications expect.</p>
+<h2 id="anglesharpio-130-expanded-web-platform-apis" tabindex="-1">AngleSharp.Io 1.3.0 – Expanded Web Platform APIs <a class="anchor" href="#anglesharpio-130-expanded-web-platform-apis" aria-hidden="true">#</a></h2>
+<p><a href="https://github.com/AngleSharp/AngleSharp.Io/releases/tag/v1.3.0" target="_blank" rel="noopener">AngleSharp.Io 1.3.0</a> brings a substantial expansion of the available web platform APIs.</p>
+<p>The release includes several improvements to existing networking functionality, as well as a number of new APIs.</p>
+<h3 id="improved-networking" tabindex="-1">Improved networking <a class="anchor" href="#improved-networking" aria-hidden="true">#</a></h3>
+<p><code>XMLHttpRequest</code> now reads response bodies in chunks. Progress events are fired approximately every 50 milliseconds, providing updated <code>loaded</code> and <code>total</code> values when the content length is available. The <code>responseText</code> also grows while the request is in the <code>LOADING</code> state.</p>
+<p>The final event sequence of <code>XMLHttpRequest</code> has also been corrected to follow the expected order.</p>
+<p>Other improvements include better WebSocket error reporting and a nesting limit for JSON parsing to handle deeply nested documents more safely.</p>
+<h3 id="more-browser-apis" tabindex="-1">More browser APIs <a class="anchor" href="#more-browser-apis" aria-hidden="true">#</a></h3>
+<p>Some particularly interesting additions include:</p>
+<ul>
+<li><code>Request</code>, <code>Headers</code>, and <code>Response</code> constructors and additional associated functionality.</li>
+<li>IndexedDB support for JavaScript, including transactions, indexes, cursors, keys, and structured values.</li>
+<li><code>Blob</code>, <code>File</code>, and <code>FileReader</code>.</li>
+<li>Readable, writable, and transform streams.</li>
+<li><code>TextEncoderStream</code> and <code>TextDecoderStream</code>.</li>
+<li><code>CompressionStream</code> and <code>DecompressionStream</code>.</li>
+<li>Streaming response bodies.</li>
+<li><code>AbortController</code> and <code>AbortSignal</code>, including cancellation support for <code>fetch</code>.</li>
+<li><code>ProgressEvent</code> and upload progress events.</li>
+<li>File System Access API support through <code>showOpenFilePicker</code> and <code>showSaveFilePicker</code>.</li>
+<li>Additional service worker capabilities, including background sync and push management.</li>
+<li>Notification support with an injectable delivery platform.</li>
+</ul>
+<p>There are also improvements to RTC ICE server URL handling and cookie validation.</p>
+<p>One important security fix concerns cookie paths containing control characters. Such paths are now rejected, preventing unwanted line injection into cookie files.</p>
+<p>This release makes the I/O package considerably more capable and brings its API surface closer to what modern web applications expect.</p>
+<h2 id="anglesharprenderer-0110-taking-rendering-further" tabindex="-1">AngleSharp.Renderer 0.11.0 – Taking Rendering Further <a class="anchor" href="#anglesharprenderer-0110-taking-rendering-further" aria-hidden="true">#</a></h2>
+<p><a href="https://github.com/AngleSharp/AngleSharp.Renderer/releases/tag/v0.11.0" target="_blank" rel="noopener">AngleSharp.Renderer 0.11.0</a> continues to improve the rendering capabilities built on top of AngleSharp.</p>
+<p>The release brings several important layout, geometry, and interaction improvements.</p>
+<p>Highlights include:</p>
+<ul>
+<li>Improved resolution of used pixel values for margins and positioned insets in <code>getComputedStyle</code>.</li>
+<li>Fixed handling of mixed percentage and absolute lengths, including expressions such as <code>calc(50% + 10px)</code> and <code>min(240px, 55%)</code>.</li>
+<li>Improved grid track calculations involving expressions with more than two terms.</li>
+<li>Fixed scroll dimension calculations involving positioned and clipped content.</li>
+<li>Added <code>elementFromPoint</code> and <code>elementsFromPoint</code>.</li>
+<li>Expanded mouse event geometry with <code>pageX</code>, <code>pageY</code>, <code>offsetX</code>, and <code>offsetY</code>.</li>
+<li>Added more used values to <code>getComputedStyle</code>, including dimensions, padding, border widths, and inherited text properties.</li>
+<li>Added text selection support, including the DOM's <code>getSelection()</code> API and the corresponding selection events.</li>
+<li>Added <code>ResizeObserver</code> and <code>IntersectionObserver</code>.</li>
+<li>Added <code>Range.getClientRects()</code> and <code>Range.getBoundingClientRect()</code>.</li>
+<li>Added <code>element.animate()</code> and related Web Animations APIs using the renderer's virtual clock.</li>
+<li>Integrated <code>document.fonts</code> and script-created <code>FontFace</code> objects into font matching and layout.</li>
+</ul>
+<p>These additions are particularly interesting because they expand the interaction between the DOM, CSS, JavaScript, and actual layout.</p>
+<p>With observers, text selection, geometry APIs, and animation support, the renderer continues to move beyond simply calculating layouts towards providing a richer browser-like environment.</p>
+<h2 id="a-stronger-ecosystem-together" tabindex="-1">A Stronger Ecosystem, Together <a class="anchor" href="#a-stronger-ecosystem-together" aria-hidden="true">#</a></h2>
+<p>One of the most important aspects of this release cycle is the alignment of all the companion libraries.</p>
+<p>The latest versions are:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Package</th>
+<th style="text-align:right">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AngleSharp</td>
+<td style="text-align:right"><strong>1.10.0</strong></td>
+</tr>
+<tr>
+<td>AngleSharp.Css</td>
+<td style="text-align:right"><strong>1.4.0</strong></td>
+</tr>
+<tr>
+<td>AngleSharp.Js</td>
+<td style="text-align:right"><strong>1.2.0</strong></td>
+</tr>
+<tr>
+<td>AngleSharp.Io</td>
+<td style="text-align:right"><strong>1.3.0</strong></td>
+</tr>
+<tr>
+<td>AngleSharp.Renderer</td>
+<td style="text-align:right"><strong>0.11.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>All these libraries build on top of AngleSharp, and their latest releases target AngleSharp 1.10.0 as their common foundation.</p>
+<p>This is an important point for anyone maintaining an existing application: upgrading only one component may not be sufficient to benefit from the latest ecosystem improvements. We recommend updating the related packages together to ensure that they work with the same core version and take advantage of the improvements introduced throughout the stack.</p>
+<p>The result is a more consistent platform, where DOM behavior, CSS processing, JavaScript execution, resource loading, and rendering can evolve together.</p>
+<h2 id="thank-you-to-the-community" tabindex="-1">Thank You to the Community! <a class="anchor" href="#thank-you-to-the-community" aria-hidden="true">#</a></h2>
+<p>No open-source project grows in isolation, and this release cycle is a great example of that.</p>
+<p>We would particularly like to acknowledge the contributions from <strong>michaelthyregod</strong>, who contributed improvements across AngleSharp.Css and AngleSharp.Io.</p>
+<p>These contributions include performance optimizations, reduced memory usage, improvements to CSS processing, and security-related fixes.</p>
+<p>We also appreciate everyone who reports issues, tests new releases, provides feedback, and helps improve the project.</p>
+<p>Community contributions are especially valuable in a project like AngleSharp, where correctness and compatibility depend on getting many small details right. A seemingly minor fix in event handling, DOM behavior, resource loading, or CSS processing can have a meaningful impact on applications built on top of the library.</p>
+<p>The improvements in these releases reflect exactly that: a continuous effort to make the implementation more correct, more secure, and more efficient.</p>
+<p>Thank you to everyone involved!</p>
+<h2 id="getting-started" tabindex="-1">Getting Started <a class="anchor" href="#getting-started" aria-hidden="true">#</a></h2>
+<p>All five releases are available now.</p>
+<p>You can find the packages and their detailed release notes here:</p>
+<ul>
+<li><a href="https://github.com/AngleSharp/AngleSharp/releases/tag/v1.10.0" target="_blank" rel="noopener">AngleSharp 1.10.0</a></li>
+<li><a href="https://github.com/AngleSharp/AngleSharp.Css/releases/tag/v1.4.0" target="_blank" rel="noopener">AngleSharp.Css 1.4.0</a></li>
+<li><a href="https://github.com/AngleSharp/AngleSharp.Js/releases/tag/v1.2.0" target="_blank" rel="noopener">AngleSharp.Js 1.2.0</a></li>
+<li><a href="https://github.com/AngleSharp/AngleSharp.Io/releases/tag/v1.3.0" target="_blank" rel="noopener">AngleSharp.Io 1.3.0</a></li>
+<li><a href="https://github.com/AngleSharp/AngleSharp.Renderer/releases/tag/v0.11.0" target="_blank" rel="noopener">AngleSharp.Renderer 0.11.0</a></li>
+</ul>
+<p>If you are using AngleSharp in an existing project, now is a great time to update.</p>
+<p><strong>Thank you for being part of the AngleSharp community. Here's to another milestone and many more improvements ahead!</strong></p>
+<h2 id="supporting-the-project" tabindex="-1">Supporting the Project <a class="anchor" href="#supporting-the-project" aria-hidden="true">#</a></h2>
+<p>Open source projects don't evolve like this by accident.</p>
+<p>AngleSharp, AngleSharp.Css, AngleSharp.Io, AngleSharp.Js, AngleSharp.Renderer and the surrounding ecosystem represent thousands of hours spent implementing standards, fixing edge cases, optimizing performance, reviewing issues, and helping users.</p>
+<p>If these libraries save you time, power your products, or simply make your life a little easier, please consider supporting their continued development.</p>
+<p>You can sponsor the project through GitHub Sponsors or Buy Me a Coffee:</p>
+<ul>
+<li>GitHub Sponsors: <a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">github.com/sponsors/FlorianRappl</a></li>
+<li>Buy Me a Coffee: <a href="https://buymeacoffee.com/florianrappl" target="_blank" rel="noopener">buymeacoffee.com/florianrappl</a></li>
+</ul>
+<p>Every contribution helps make future releases—and ambitious projects like AngleSharp.Browser—possible. ❤️</p>
+</div>
+  <nav class="pager" aria-label="More posts">
+    <span></span>
+    <a class="pager-next" href="/blog/2026/anglesharp-js-v100-release/"><small>Older <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>AngleSharp.Js 1.0.0</span></a>
+  </nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

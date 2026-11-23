@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Included Features · AngleSharp · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/anglesharp/general/features/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Included Features · AngleSharp · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/anglesharp/general/features/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/anglesharp/general/features/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/anglesharp/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/" selected>AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/anglesharp/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/anglesharp/general/basics/">Getting Started</a></li><li><a href="/docs/anglesharp/general/features/" aria-current="page">Included Features</a></li><li><a href="/docs/anglesharp/general/upcoming/">Roadmap and Ecosystem</a></li><li><a href="/docs/anglesharp/general/performance/">Performance</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/anglesharp/tutorials/api/">API Documentation</a></li><li><a href="/docs/anglesharp/tutorials/options/">Configuration</a></li><li><a href="/docs/anglesharp/tutorials/examples/">Examples</a></li><li><a href="/docs/anglesharp/tutorials/forms/">Forms</a></li><li><a href="/docs/anglesharp/tutorials/migration/">Upgrading</a></li><li><a href="/docs/anglesharp/tutorials/questions/">Questions</a></li><li><a href="/docs/anglesharp/tutorials/popovers/">Popovers</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/anglesharp/">AngleSharp</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="included-features">Included Features</h1>
+<p>This section collects historical implementation notes for major features. It does not aim to be an exhaustive, up-to-date product matrix. For the current package layout and companion projects, see the roadmap and ecosystem page.</p>
+<h2 id="mutation-records" tabindex="-1">Mutation Records <a class="anchor" href="#mutation-records" aria-hidden="true">#</a></h2>
+<p>There are types like <code>MutationObserver</code>, <code>MutationObserverInit</code> and <code>IMutationRecord</code> that have been implemented.</p>
+<p>These types can act like generic notification listeners, that fire when something in the DOM changes. They would be also used internally by nodes, which may need to know when their content changes. As an example: The <code>HtmlStyleElement</code> needs to know when its content changes, since the new content has to be parsed and evaluated.</p>
+<p>A <code>MutationObserver</code> reports <em>what</em> changed, allocates a record per mutation and delivers asynchronously. When the question is only <em>whether</em> anything changed - invalidating a cache over a live collection, for instance - <code>Document.MutationVersion</code> answers it without any of that. It is advanced synchronously with the mutation itself, costs a single increment, and covers every scripted and programmatic DOM write, so two equal readings mean nothing in the document changed in between. Compare two readings for equality; the value itself is opaque. It is declared on <code>Document</code> rather than on <code>IDocument</code>, so reaching it means a cast: <code>((Document)document).MutationVersion</code>.</p>
+<p>Parsing does not advance it. The tree builder constructs the tree through raw child list, attribute and character data operations that run no mutation logic at all, so a freshly parsed document still reads the value it started at - which is also what keeps the counter free on the parse path. A cache keyed on the version is therefore valid across two equal readings of one parsed document, but a parse boundary is an invalidation point of its own: that includes <code>document.open</code>, which discards the tree without notification, and anything a script writes with <code>document.write</code>, which goes to the tokenizer rather than to the DOM.</p>
+<p><em>Status</em>: Implemented, tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://updates.html5rocks.com/2012/02/Detect-DOM-changes-with-Mutation-Observers" target="_blank" rel="noopener">HTML5 Rocks Introduction</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/API/MutationObserver" target="_blank" rel="noopener">MDN Mutation Observer</a></li>
+<li><a href="http://www.w3.org/TR/2014/WD-dom-20140710/#mutation-observers" target="_blank" rel="noopener">W3C DOM 4</a></li>
+<li><a href="http://dom.spec.whatwg.org/#mutation-observers" target="_blank" rel="noopener">WHATWG DOM Standard</a></li>
+</ul>
+<h2 id="provide-various-uri-implementations" tabindex="-1">Provide Various Uri Implementations <a class="anchor" href="#provide-various-uri-implementations" aria-hidden="true">#</a></h2>
+<p>A URI parser has been included within AngleSharp. This parser is nearly finished, but it does not do unicode normalization for the host part. This would be too heavy and should usually be provided by the .NET-Framework, however, for our PCL target it is not.</p>
+<p><em>Status</em>: Implemented, tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/html5/browsers.html#the-location-interface" target="_blank" rel="noopener">W3C Location IDL</a></li>
+<li><a href="http://www.w3.org/TR/url/" target="_blank" rel="noopener">W3C URL Definition</a></li>
+<li><a href="http://url.spec.whatwg.org/" target="_blank" rel="noopener">WHATWG URL Standard</a></li>
+<li><a href="https://datatracker.ietf.org/doc/rfc3986/" target="_blank" rel="noopener">RFC3986 Specification</a></li>
+</ul>
+<h2 id="pseudoelement-integration" tabindex="-1">PseudoElement Integration <a class="anchor" href="#pseudoelement-integration" aria-hidden="true">#</a></h2>
+<p>CSS provides several extensions to the DOM described in the HTML standard. One of these extensions is the integration of so-called pseudo-elements. These elements do not really exist in the DOM, however, they can be queried, and they are also part of the visual tree.</p>
+<p>A pseudo-element is not like a real element, and it only implements a special IDL, which will be called <code>IPseudoElement</code> in AngleSharp. Most importantly, this interface implies the implementation of the <code>IGetStyleUtils</code> interface. So, even though a pseudo-element is not a real element, it has the most important properties, which are required for being part of the drawing process.</p>
+<p><em>Status</em>: Minimal implementation provided. No tests yet.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://dev.w3.org/csswg/cssom/#pseudoelement" target="_blank" rel="noopener">W3C CSSOM PseudoElement</a></li>
+<li><a href="http://www.w3.org/TR/css3-selectors/" target="_blank" rel="noopener">W3C CSS3 Selectors</a></li>
+</ul>
+<h2 id="extend-the-iwindow-interface" tabindex="-1">Extend the IWindow Interface <a class="anchor" href="#extend-the-iwindow-interface" aria-hidden="true">#</a></h2>
+<p>Central for any interaction with the DOM (at least from the perspective of a JavaScript developer) is the root context object, usually a <code>Window</code> object. AngleSharp uses the <code>IWindow</code> interface as IDL for such objects. AngleSharp provides a general-purpose <code>Window</code> implementation that can cooperate with device and rendering abstractions supplied by the active configuration.</p>
+<p>The <code>Window</code> implementation also includes timers and more and can be really handy. It is quite crucial and used heavily from the browsing context. However, it is still possible to provide custom implementations.</p>
+<p><em>Status</em>: Minimal implementation provided. No tests yet.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/Window/" target="_blank" rel="noopener">W3C Window Module v1</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_blank" rel="noopener">MDN Window</a></li>
+<li><a href="http://www.w3.org/TR/cssom-view/" target="_blank" rel="noopener">CSS View Model</a></li>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/#the-window-object" target="_blank" rel="noopener">WHATWG DOM Standard</a></li>
+<li><a href="https://dvcs.w3.org/hg/editing/raw-file/tip/editing.html#dom-document-getselection" target="_blank" rel="noopener">Selection extension</a></li>
+</ul>
+<h2 id="event-handling" tabindex="-1">Event Handling <a class="anchor" href="#event-handling" aria-hidden="true">#</a></h2>
+<p>The ability to add or remove event listeners, along with the <code>dispatch</code> function have been included. What is also finished is the transformation of all .NET event handlers to their explicit form.</p>
+<p>Consider the following example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> event </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">EventListener</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Aborted</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span></code></pre></div><p>This is an implicit event handler. The C# compiler will create a backing delegate field, which will be initialized to <code>null</code>. The <code>add</code> (<code>+=</code>) and <code>remove</code> parts (<code>-=</code>) will be used when these operators are applied on the <code>Aborted</code> field.</p>
+<p>A transformation resulted in the following code:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> event EventListener Aborted</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    add { </span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AddEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(EventNames.Abort, value); }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    remove { </span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">RemoveEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(EventNames.Abort, value); }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Here the backing field is no longer generated. We explicitly define the <code>add</code> and <code>remove</code> methods, which will just call the <code>AddEventListener</code> / <code>RemoveEventListener</code> methods. The name of the event can be found at the MDN event reference. Usually it is the official DOM name, e.g., <em>onabort</em>, without the <em>on</em>-prefix.</p>
+<p>This will be added to the <code>EventNames</code> class as a readonly static field:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> readonly</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Abort</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "abort"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span></code></pre></div><p><em>Status</em>: Implemented, tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#eventhandler" target="_blank" rel="noopener">WHATWG WebApp APIs</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank" rel="noopener">MDN event reference</a></li>
+<li><a href="http://www.w3.org/TR/DOM-Level-3-Events" target="_blank" rel="noopener">W3C DOM3 events</a></li>
+<li><a href="https://dvcs.w3.org/hg/d4e/raw-file/tip/source_respec.htm" target="_blank" rel="noopener">W3C UIEvent extension</a></li>
+</ul>
+<h2 id="rework-core-dom-algorithms" tabindex="-1">Rework Core DOM Algorithms <a class="anchor" href="#rework-core-dom-algorithms" aria-hidden="true">#</a></h2>
+<p>The core DOM algorithms have been implemented using MDN and W3C documentation. Nevertheless, it has been obvious that some of these inner workings do not work as expected in edge cases. Therefore, the WHATWG documentation will be considered, as it provides more detailed information with more related information.</p>
+<p>As a side effect, the API will also be adapted partially. In the end this will not only be beneficial from a standard compliance perspective, but also for users. Edge cases have to work not only within the HTML5 parser, but also during DOM interaction.</p>
+<p><em>Status</em>: Implemented, some tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://dom.spec.whatwg.org/" target="_blank" rel="noopener">WHATWG DOM Standard</a></li>
+</ul>
+<h2 id="browsing-context" tabindex="-1">Browsing Context <a class="anchor" href="#browsing-context" aria-hidden="true">#</a></h2>
+<p>Right now AngleSharp tries to be purely focused on doing a great job in parsing HTML (and CSS), however, at a later stage one might want to build more on top of this library. Therefore, (and to be fully W3C conform), the ability to register / create / open a real browsing context is required.</p>
+<p>A browsing context connects various parts. It contains a list with the (previous) documents and knows what document is currently viewed. It provides the <code>IWindowProxy</code> implementation, which forwards every call to the <code>IWindow</code> object of the currently active document.</p>
+<p>Currently, the specification is evaluated and a proper interface is planned. AngleSharp provides a straightforward default implementation, which basically just holds the configuration to use.</p>
+<p><em>Status</em>: Minimal implementation provided. No tests yet.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/2013/CR-html5-20130806/browsers.html#windows" target="_blank" rel="noopener">W3C browsers spec.</a></li>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/browsers.html" target="_blank" rel="noopener">WHAT about browsing</a></li>
+</ul>
+<h2 id="reshape-css-api" tabindex="-1">Reshape CSS API <a class="anchor" href="#reshape-css-api" aria-hidden="true">#</a></h2>
+<p>The HTML API has been completely reworked. Some of these principles have also been applied for CSS. Since there is nothing available in the official specification, it is hard to provide an API that does not conflict with the official one. Nevertheless, to make AngleSharp effective and useful for working with CSS, an object-oriented API is required.</p>
+<p>Using just strings is useful in JavaScript, but not in a language like C# (or F#, VB, ...). We require the compiler to check rules, detect errors and help us by telling the IDE what methods and properties are available. Therefore, a non-standard object-oriented API has been implemented, which sits directly on top of the CSSOM that is being used.</p>
+<p><em>Status</em>: Implemented, tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://dev.w3.org/csswg/cssom/#the-getstyleutils-interface" target="_blank" rel="noopener">W3C CSSOM</a></li>
+</ul>
+<h2 id="webidl-attributes" tabindex="-1">WebIDL Attributes <a class="anchor" href="#webidl-attributes" aria-hidden="true">#</a></h2>
+<p>The Interface Definition Language (IDL) is used for describing the interfaces accessible from languages such as JavaScript. AngleSharp implements the named interface and algorithms. However, the naming has been changed (sometimes more, sometimes less). In order to automate wrapper generation for, e.g., JavaScript engines, and documentation generators, AngleSharp provides a custom attribute called <code>DomNameAttribute</code>. This attribute decorates methods, properties, types and more. Finally one is able to get the <code>OfficialName</code> by querying the corresponding <code>Type</code> instance.</p>
+<p>There are more such attributes, which reveal more sophisticated properties of a member. An example would be if the method should actually be treated like an index getter or setter (or both). Maybe setting a property should be redirected to a property of the property. There are many specified actions, that are described in the official IDL language. Some of these are easy to deduce by using reflection, some might require the help of a custom attribute.</p>
+<p>This work package deals with finding important IDL constructs. Then a proper way of dealing with them (e.g., decoration with a custom attribute) has to be found. Finally, the existing interfaces need to be investigated / extended, depending on what has been decided in the second step.</p>
+<p><em>Status</em>: Most important ones implemented, more to come upon request / requirement.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/WebIDL/" target="_blank" rel="noopener">W3C WebIDL</a></li>
+</ul>
+<h2 id="complete-the-idocument-interface" tabindex="-1">Complete the IDocument Interface <a class="anchor" href="#complete-the-idocument-interface" aria-hidden="true">#</a></h2>
+<p>The central node of a document is certainly the <code>IDocument</code> object itself. It is the owner of every attached node (directly or indirectly) and it has the connection to the <code>IWindow</code> object and the <code>IBrowsingContext</code> (only accessible internally), which has the <code>IConfiguration</code> instance attached.</p>
+<p>Right now the <code>IDocument</code> interface is nearly complete and even includes some properties / methods that seem exotic at first. While some of these members do not contribute much (at least at the moment), others are certainly more interesting, especially in conjunction with scripting. One example is the <code>currentScript</code> property, which represents the currently executed <code>IHtmlScriptElement</code>.</p>
+<p>Also, the command API is implemented and can be connected via an available extension. All in all, the <code>IDocument</code> interface and its implementation (<code>Document</code>) can be said to be completely finished.</p>
+<p><em>Status</em>: Implemented, some tests available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/dom.html#the-document-object" target="_blank" rel="noopener">WHATWG Document Object</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/document" target="_blank" rel="noopener">MDN Document</a></li>
+<li><a href="http://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-26809268" target="_blank" rel="noopener">W3C DOM2 (HTMLDocument), now merged into Document</a></li>
+<li><a href="https://dvcs.w3.org/hg/pointerlock/raw-file/default/index.html#extensions-to-the-document-interface" target="_blank" rel="noopener">PointerLock extension</a></li>
+<li><a href="http://dev.w3.org/csswg/cssom/#extensions-to-the-document-interface" target="_blank" rel="noopener">CSSOM extensions</a></li>
+<li><a href="http://www.w3.org/TR/DOM-Level-3-Core/#i-Document" target="_blank" rel="noopener">W3C DOM3 (Document)</a></li>
+<li><a href="http://www.w3.org/TR/2014/WD-dom-20140710/#interface-document" target="_blank" rel="noopener">W3C DOM4 (Document)</a></li>
+</ul>
+<h2 id="improve-async-parsing" tabindex="-1">Improve Async Parsing <a class="anchor" href="#improve-async-parsing" aria-hidden="true">#</a></h2>
+<p>Asynchronous parsing is quite important. Even though standard (even large) processing may only take a few milliseconds, AngleSharp will also be used with sources that are (network) streams. There are two possible strategies: The first is to download everything before (asynchronous, and is an array of bytes), while the second is to continuously download data while processing the document. The latter has the advantage that even though the document may be long and the transfer may be broken at some point, at least parts of the document are already available.</p>
+<p>The other advantage of the second approach is the possibility of starting other downloads, while the original one is still in progress. So instead of having one download after another, we have multiple downloads at once, which uses the available bandwidth even better.</p>
+<p>AngleSharp will therefore try to implement the second approach. The <code>TextSource</code> class can already handle (network) streams well - and does use the &quot;natively&quot; provided asynchronous callback possibilities. Nevertheless, the <code>ParseAsync</code> method only relies on the synchronous one, wrapping it in another <code>Task</code> (which is just another <code>Thread</code> in this scenario).</p>
+<p>The idea is to provide a real asynchronous method, i.e. a method that makes use of the async methods provided in <code>TextSource</code>. This will eventually result in a lot of copy / paste with only a few changes, but it is worth the duplication. Of course, some techniques to reduce duplication have to be used to minimize maintenance.</p>
+<p>The concrete <code>HtmlParser</code> also provides an opt-in <code>HtmlStreamSourceMode.Streaming</code> mode. It decodes a byte stream incrementally into pooled buffers, retains a bounded tokenizer lookback window, and supports BOM or <code>&lt;meta charset&gt;</code> detection during a restartable 1024-byte prelude. The existing stream overload remains buffered for compatibility.</p>
+<p>Streaming mode does not retain the complete source text. Parsing can still fall back to a synchronous refill when a token exceeds the asynchronously prefetched window, and scripting uses the buffered source because source insertion requires mutable retained input.</p>
+<p>As an important hint here: Any <code>await</code> call should be only used with <code>ConfigureAwait(false)</code>. This is required to ensure that calling the method synchronously will not result in any deadlocks regardless of the environment.</p>
+<p><em>Status</em>: Implemented and the parser is also internally awaiting further tasks such as script execution or stylesheet resolution.</p>
+<h2 id="the-picture-element" tabindex="-1">The Picture Element <a class="anchor" href="#the-picture-element" aria-hidden="true">#</a></h2>
+<p>The picture element is the solution to responsive images and their problems. Images need to be adjusted for the pixel density and viewing device. The problem is, that the existing <code>HtmlImageElement</code> could only handle a single source. Now that changed due to the (not yet implemented) <code>srcset</code> and <code>sizes</code> attributes. The first one gives various sources along with their potential media queries. The latter is useful for setting the image size depending on the pixel density or width of the viewport.</p>
+<p>However, if we want a more fine-grained solution than provided by the new <code>img</code>-attributes, then we should look at the <code>picture</code>-element. The element has been implemented in the <code>HtmlPictureElement</code> class, however, nothing has yet been included. A solution that might work just fine is to port the polyfill to the element. That solution would be a great start and could then be adjusted, if necessary.</p>
+<p><em>Status</em>: Element available. An <code>img</code> requests nothing by itself, as only what shows it knows which source fits the device and when the image is needed: AngleSharp.Css picks the source (<code>GetImageSource()</code>, considering <code>srcset</code>, <code>sizes</code> and the <code>source</code> children of a picture), and AngleSharp.Renderer loads it via <code>LoadAsync</code> once it lays the image out (or right away for an image not in a document).</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://ericportis.com/posts/2014/srcset-sizes/" target="_blank" rel="noopener">Article about srcset and sizes</a></li>
+<li><a href="https://github.com/scottjehl/picturefill/blob/master/src/picturefill.js" target="_blank" rel="noopener">Polyfill for picture</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/embedded-content.html#embedded-content" target="_blank" rel="noopener">WHATWG about Embedded Content</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/master/embedded-content.html#the-picture-element" target="_blank" rel="noopener">W3C Embedded Content specification</a></li>
+</ul>
+<h2 id="loading-resources" tabindex="-1">Loading Resources <a class="anchor" href="#loading-resources" aria-hidden="true">#</a></h2>
+<p>There is more to loading resources than meets the eye. Right now AngleSharp implements very rudimentary algorithms of fetching any external data. This will change in the future.</p>
+<p>This change will align with more extensions (and probably constraints) for the <code>IBrowsingContext</code>. The browsing context is also from a security point of view crucial. Here the basic flags are set to determine what rights the underlying APIs may have. Another direct implication is to do the correct unloading of the document. This is not yet implemented.</p>
+<p><em>Status</em>: Simple implementations available, more sophisticated ones required. The sandboxing parsing is already implemented.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/html5/browsers.html#unit-of-related-similar-origin-browsing-contexts" target="_blank" rel="noopener">Browser context names for initial rights</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#top-level-browsing-context" target="_blank" rel="noopener">The role of the top browsing context</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#unload-a-document" target="_blank" rel="noopener">Unload a document</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#navigate" target="_blank" rel="noopener">Navigate to a webpage</a></li>
+<li><a href="http://www.w3.org/html/wg/drafts/html/CR/browsers.html#sandboxing" target="_blank" rel="noopener">Sandboxing</a></li>
+</ul>
+<h2 id="include-touch-events" tabindex="-1">Include Touch Events <a class="anchor" href="#include-touch-events" aria-hidden="true">#</a></h2>
+<p>There are several events in the DOM. Even though, some of these events are just plain notifications; others may transport custom data. In this group we find classics such as keyboard or mouse events. The W3C also created special touch events, which carry touch data in the form of a list of touch points.</p>
+<p>The purpose of this task is to supply all required interface, implementations and extension points to allow the creation and handling of touch events. This will extend the <code>IDocument</code>, <code>IElement</code> and other existing interfaces. This will also create new interfaces such as <code>ITouchEvent</code> or <code>ITouchList</code>.</p>
+<p>There are no tricky algorithms, touch implementation or OS specific bindings to create. This is just the layer that allows creation of POD objects.</p>
+<p><em>Status</em>: Everything available.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/touch-events/" target="_blank" rel="noopener">W3C Touch events Recommendation</a></li>
+</ul>
+<h2 id="possibility-of-xpath-parsing" tabindex="-1">Possibility of XPath Parsing <a class="anchor" href="#possibility-of-xpath-parsing" aria-hidden="true">#</a></h2>
+<p>Right now CSS selectors is the way of querying the document from an official perspective. Nevertheless, there are people who are quite dissatisfied with this solution. Most of those people are not web developers, and are familiar with even more powerful queries in the form of XPath. Unfortunately XPath is currently not support on a standard level.</p>
+<p><em>Status</em>: Available in the <code>AngleSharp.XPath</code> library.</p>
+<p>More information can be found at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathEvaluator" target="_blank" rel="noopener">W3C XPathEvaluator IDL</a></li>
+<li><a href="http://www.w3.org/TR/xpath/" target="_blank" rel="noopener">W3C XPath Specification</a></li>
+</ul>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp/edit/devel/docs/general/02-Features.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/anglesharp/general/features/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp/tree/c7ac782c5ef0c35aca936f44696bdea7e2b70851" target="_blank" rel="noopener"><code>c7ac782</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/anglesharp/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
+      <a class="pager-next" href="/docs/anglesharp/general/upcoming/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Roadmap and Ecosystem</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#mutation-records" title="Mutation Records">Mutation Records</a></li><li class="toc-l2"><a href="#provide-various-uri-implementations" title="Provide Various Uri Implementations">Provide Various Uri Implementations</a></li><li class="toc-l2"><a href="#pseudoelement-integration" title="PseudoElement Integration">PseudoElement Integration</a></li><li class="toc-l2"><a href="#extend-the-iwindow-interface" title="Extend the IWindow Interface">Extend the IWindow Interface</a></li><li class="toc-l2"><a href="#event-handling" title="Event Handling">Event Handling</a></li><li class="toc-l2"><a href="#rework-core-dom-algorithms" title="Rework Core DOM Algorithms">Rework Core DOM Algorithms</a></li><li class="toc-l2"><a href="#browsing-context" title="Browsing Context">Browsing Context</a></li><li class="toc-l2"><a href="#reshape-css-api" title="Reshape CSS API">Reshape CSS API</a></li><li class="toc-l2"><a href="#webidl-attributes" title="WebIDL Attributes">WebIDL Attributes</a></li><li class="toc-l2"><a href="#complete-the-idocument-interface" title="Complete the IDocument Interface">Complete the IDocument Interface</a></li><li class="toc-l2"><a href="#improve-async-parsing" title="Improve Async Parsing">Improve Async Parsing</a></li><li class="toc-l2"><a href="#the-picture-element" title="The Picture Element">The Picture Element</a></li><li class="toc-l2"><a href="#loading-resources" title="Loading Resources">Loading Resources</a></li><li class="toc-l2"><a href="#include-touch-events" title="Include Touch Events">Include Touch Events</a></li><li class="toc-l2"><a href="#possibility-of-xpath-parsing" title="Possibility of XPath Parsing">Possibility of XPath Parsing</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

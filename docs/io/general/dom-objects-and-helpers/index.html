@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOM Objects and Helpers · AngleSharp.Io · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/io/general/dom-objects-and-helpers/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DOM Objects and Helpers · AngleSharp.Io · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/io/general/dom-objects-and-helpers/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/io/general/dom-objects-and-helpers/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Io menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/io/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/" selected>AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Io documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/io/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/io/general/basics/">Getting Started</a></li><li><a href="/docs/io/general/dom-objects-and-helpers/" aria-current="page">DOM Objects and Helpers</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/io/tutorials/api/">API Documentation</a></li><li><a href="/docs/io/tutorials/examples/">Examples</a></li><li><a href="/docs/io/tutorials/common-workflows/">Common Workflows</a></li><li><a href="/docs/io/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Io" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Io" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/io/">AngleSharp.Io</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="dom-objects-and-helpers">DOM Objects and Helpers</h1>
+<p>AngleSharp.Io extends AngleSharp with additional DOM-related building blocks and convenience methods. This page summarizes what they are and when to use them.</p>
+<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<p>The package adds the following DOM-oriented types:</p>
+<ul>
+<li><code>InputFile</code> in <code>AngleSharp.Io.Dom</code></li>
+<li><code>WebSocket</code> in <code>AngleSharp.Io.Dom</code></li>
+<li><code>IStorage</code> interface in <code>AngleSharp.Io.Dom</code></li>
+<li><code>ElementExtensions</code> helper methods in <code>AngleSharp.Io.Dom</code></li>
+</ul>
+<h2 id="inputfile" tabindex="-1">InputFile <a class="anchor" href="#inputfile" aria-hidden="true">#</a></h2>
+<p><code>InputFile</code> implements <code>IFile</code> and is meant for programmatic file input scenarios, e.g., test automation for <code>&lt;input type=&quot;file&quot;&gt;</code>.</p>
+<h3 id="constructors" tabindex="-1">Constructors <a class="anchor" href="#constructors" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>InputFile(String fileName, String type, Stream content, DateTime modified)</code></li>
+<li><code>InputFile(String fileName, String type, Stream content)</code></li>
+<li><code>InputFile(String fileName, String type, Byte[] content)</code></li>
+</ul>
+<h3 id="key-members" tabindex="-1">Key members <a class="anchor" href="#key-members" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>Name</code>: the file name as exposed to DOM consumers</li>
+<li><code>Type</code>: MIME type</li>
+<li><code>Length</code>: stream length</li>
+<li><code>LastModified</code>: last modification timestamp</li>
+<li><code>Body</code>: underlying content stream</li>
+<li><code>Slice(...)</code>: returns an <code>IBlob</code> over a selected byte range</li>
+</ul>
+<h3 id="notes" tabindex="-1">Notes <a class="anchor" href="#notes" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>InputFile</code> uses the provided stream directly. Ownership and disposal rules should be considered in tests and long-running automation.</li>
+<li>The <code>Slice</code> method returns a new <code>InputFile</code>-backed blob over copied bytes.</li>
+</ul>
+<h2 id="elementextensions" tabindex="-1">ElementExtensions <a class="anchor" href="#elementextensions" aria-hidden="true">#</a></h2>
+<p><code>ElementExtensions</code> provides utility methods for <code>IHtmlInputElement</code> and URL-capable DOM elements.</p>
+<h3 id="file-attachment-helpers" tabindex="-1">File attachment helpers <a class="anchor" href="#file-attachment-helpers" aria-hidden="true">#</a></h3>
+<p>You can attach files to a file input in multiple ways:</p>
+<ul>
+<li><code>AppendFile(input, InputFile file)</code></li>
+<li><code>AppendFile(input, String filePath)</code></li>
+<li><code>AppendFile(input, String fileName, Stream content, String mimeType = null)</code></li>
+</ul>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> input</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IHtmlInputElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">>(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"input[type=file]"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">input</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AppendFile</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"avatar.png"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MemoryStream</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(imageBytes), </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"image/png"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AppendFile</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"contract.pdf"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>If the input element is not of type <code>file</code>, no file is appended.</p>
+<h3 id="download-helper" tabindex="-1">Download helper <a class="anchor" href="#download-helper" aria-hidden="true">#</a></h3>
+<p><code>DownloadAsync</code> allows direct download from a link-like element (<code>IUrlUtilities</code> + <code>IElement</code>) via the configured loader.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> link</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IHtmlAnchorElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">>(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"a.download"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> response</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> link.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DownloadAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span></code></pre></div><p>Requirements:</p>
+<ul>
+<li>The element must belong to a browsing context.</li>
+<li>A document loader must be registered (usually via <code>WithDefaultLoader</code>).</li>
+</ul>
+<h2 id="websocket" tabindex="-1">WebSocket <a class="anchor" href="#websocket" aria-hidden="true">#</a></h2>
+<p><code>WebSocket</code> is a DOM-facing wrapper around <code>ClientWebSocket</code> with familiar browser-style events.</p>
+<h3 id="events" tabindex="-1">Events <a class="anchor" href="#events" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>Opened</code> (<code>open</code>)</li>
+<li><code>Message</code> (<code>message</code>)</li>
+<li><code>Error</code> (<code>error</code>)</li>
+<li><code>Closed</code> (<code>close</code>)</li>
+</ul>
+<h3 id="methods" tabindex="-1">Methods <a class="anchor" href="#methods" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>Send(String data)</code></li>
+<li><code>Close()</code></li>
+</ul>
+<h3 id="properties" tabindex="-1">Properties <a class="anchor" href="#properties" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>Url</code></li>
+<li><code>ReadyState</code></li>
+<li><code>Protocol</code></li>
+<li><code>Buffered</code></li>
+</ul>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> ws</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> WebSocket</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DefaultView, </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"wss://echo.websocket.events/"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">ws.Opened </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">s</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> ws.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Send</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"hello"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">ws.Message </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">s</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(e.Type);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">ws.Error </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">s</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"socket error"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">ws.Closed </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">s</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"socket closed"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><h2 id="istorage" tabindex="-1">IStorage <a class="anchor" href="#istorage" aria-hidden="true">#</a></h2>
+<p><code>IStorage</code> models the Web Storage API shape (<code>Storage</code>) and exposes:</p>
+<ul>
+<li><code>Length</code></li>
+<li><code>Key(Int32 index)</code></li>
+<li>indexer <code>this[String key]</code></li>
+<li><code>Remove(String key)</code></li>
+<li><code>Clear()</code></li>
+</ul>
+<p>It exists as a DOM contract abstraction, suitable for integration and host-specific implementations.</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Io/edit/devel/docs/general/02-Dom-Objects-and-Helpers.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/io/general/dom-objects-and-helpers/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Io/tree/04108d0016949a158c855c362073b1883c674c2b" target="_blank" rel="noopener"><code>04108d0</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/io/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
+      <a class="pager-next" href="/docs/io/tutorials/api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>API Documentation</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#overview" title="Overview">Overview</a></li><li class="toc-l2"><a href="#inputfile" title="InputFile">InputFile</a></li><li class="toc-l3"><a href="#constructors" title="Constructors">Constructors</a></li><li class="toc-l3"><a href="#key-members" title="Key members">Key members</a></li><li class="toc-l3"><a href="#notes" title="Notes">Notes</a></li><li class="toc-l2"><a href="#elementextensions" title="ElementExtensions">ElementExtensions</a></li><li class="toc-l3"><a href="#file-attachment-helpers" title="File attachment helpers">File attachment helpers</a></li><li class="toc-l3"><a href="#download-helper" title="Download helper">Download helper</a></li><li class="toc-l2"><a href="#websocket" title="WebSocket">WebSocket</a></li><li class="toc-l3"><a href="#events" title="Events">Events</a></li><li class="toc-l3"><a href="#methods" title="Methods">Methods</a></li><li class="toc-l3"><a href="#properties" title="Properties">Properties</a></li><li class="toc-l2"><a href="#istorage" title="IStorage">IStorage</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

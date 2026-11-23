@@ -1,0 +1,187 @@
+# API Documentation (AngleSharp.Wasm)
+
+> Source: https://anglesharp.github.io/docs/wasm/tutorials/api/
+> Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
+> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+
+This page summarizes the currently available public API surface.
+
+## Configuration Extensions
+
+Extension methods are available on `IConfiguration` via `AngleSharp.Wasm`:
+
+### `WithWasm()`
+
+Registers the default Wasmtime-backed runtime factory.
+
+```cs
+var config = Configuration.Default.WithWasm();
+```
+
+### `WithWasm(WasmRuntimeOptions)`
+
+Registers the default Wasmtime-backed runtime factory with resource limits. Every limit is off by
+default; set them when pages with untrusted WebAssembly are loaded.
+
+```cs
+var config = Configuration.Default.WithWasm(new WasmRuntimeOptions
+{
+    MaximumMemorySize = 64 * 1024 * 1024, // bytes per linear memory
+    MaximumTableElements = 10_000,        // elements per table
+    Fuel = 100_000_000,                   // per call from the host and per instantiation
+});
+```
+
+- `MaximumMemorySize` and `MaximumTableElements` make instantiation fail when a memory or table
+  starts larger, and make growing beyond them fail.
+- `Fuel` is roughly one unit per executed WebAssembly instruction. A call that spends it traps,
+  which the bridge reports as `RuntimeError`; the next call gets a full budget again. Calls that
+  WebAssembly makes back into its own instance through a host import share the outer call's budget.
+  Fuel metering slows execution down, so it is only enabled when `Fuel` is set.
+
+The same options can be passed to `new WasmtimeWasmRuntime(options)` and
+`new WasmtimeWasmRuntimeFactory(options)`.
+
+### `WithWasm(Func<IBrowsingContext, IWasmRuntimeFactory>)`
+
+Registers a custom runtime factory creator.
+
+### `WithWasmImports(IWasmImportProvider)`
+
+Registers a host import provider.
+
+### `WithWasmImports(Func<IBrowsingContext, IEnumerable<WasmImportFunction>>)`
+
+Registers host imports via delegate.
+
+## DOM-Facing API (`AngleSharp.Wasm.Dom`)
+
+When used with a scripting integration that discovers DOM attributes, the following surface is exposed under `WebAssembly`.
+
+### `WebAssembly.compile(byte[] moduleBytes)`
+
+Compiles bytes and returns a `WasmJsModule`.
+
+An overload accepts `WasmCompileOptions`.
+
+### `WebAssembly.validate(byte[] moduleBytes)`
+
+Returns whether the bytes form a valid WebAssembly module without instantiating it.
+
+### `WebAssembly.compileStreaming(IResponse source)`
+
+Synchronously consumes a successful `application/wasm` response and returns a compiled `WasmJsModule`.
+
+An overload accepts `WasmCompileOptions`.
+
+### `WebAssembly.instantiateStreaming(IResponse source)`
+
+Synchronously consumes a successful `application/wasm` response and returns a `WasmJsInstantiationResult` containing `module` and `instance`.
+
+An overload accepts `WasmCompileOptions`.
+
+### `WebAssembly.instantiate(WasmJsModule module)`
+
+Instantiates a compiled module and returns a `WasmJsInstance`.
+
+Byte-array overloads compile and instantiate in one operation and return `WasmJsInstantiationResult`; compile options can be supplied.
+
+## `WasmCompileOptions`
+
+- `builtins`: requested builtin sets; currently the standard `js-string` value is recognized.
+- `importedStringConstants`: module namespace for imported string constants.
+
+Options are forwarded to runtimes implementing `IWasmCompileOptionsCompiler`. Wasmtime 44 does not expose either feature and rejects non-empty options.
+
+## `WasmJsModule`
+
+### `exports()`
+
+Returns `WasmModuleExportDescriptor[]` with:
+
+- `name`
+- `kind` (`function`, `table`, `memory`, `global`, `tag`)
+
+### `imports()`
+
+Returns `WasmModuleImportDescriptor[]` with:
+
+- `module`
+- `name`
+- `kind`
+
+### `customSections(string sectionName)`
+
+Returns all matching custom section payloads as `byte[][]`.
+
+## `WasmJsInstance`
+
+### `exports` (getter)
+
+Returns a `WasmJsExports` object.
+
+### `invoke(string exportName, params object?[] arguments)`
+
+Invokes an exported function by name.
+
+## `WasmJsExports`
+
+### `this[string name]`
+
+Returns an export entry by name:
+
+- `WasmJsExportedFunction` for function exports
+- `WasmJsMemory` for memory exports
+- `WasmJsTable` for table exports
+- `WasmJsGlobal` for global exports
+- `WasmJsTag` for tag exports
+- `WasmJsExportValue` for other non-function exports
+- `null` if no export is found
+
+### `keys()`
+
+Returns all export names.
+
+## `WasmJsExportedFunction`
+
+### `invoke(params object?[] arguments)`
+
+Invokes the wrapped exported function.
+
+## `WasmJsMemory`
+
+Provides `buffer`, `read(offset, count)`, `write(offset, bytes)`, and `grow(delta)`.
+
+## `WasmJsTable`
+
+Provides `length`, `get(index)`, `set(index, value)`, and `grow(delta, value)`. Function references returned by `get(...)` expose `invoke(...)`.
+
+## `WasmJsGlobal`
+
+Provides a `value` accessor and `valueOf()`. Assigning to an immutable global throws `InvalidOperationException`.
+
+## `WasmJsTag`
+
+Can be constructed with an ordered array of WebAssembly value type names. Provides `type()`, whose descriptor exposes the tag's `parameters`.
+
+## `WasmJsException`
+
+Construct with a `WasmJsTag` and matching payload array. Provides `is(tag)` and `getArg(tag, index)` and can be thrown and caught as a .NET exception. Runtime-thrown Wasm exceptions are not available through the default Wasmtime 44 backend.
+
+## Error Constructors
+
+`WasmJsCompileError`, `WasmJsLinkError`, and `WasmJsRuntimeError` expose the standard `CompileError`, `LinkError`, and `RuntimeError` DOM names. Each can be constructed with an optional message. Bridge compilation, linking, and execution failures are translated automatically.
+
+## `WasmJsExportValue`
+
+Descriptor type for non-function exports.
+
+- `name`
+- `kind`
+
+## Notes on Scope
+
+This API is intentionally focused on a practical subset of the full WebAssembly JS API spec. See [Questions](https://anglesharp.github.io/docs/wasm/tutorials/questions/index.html.md) for limitations and expected behavior.
+
+For a section-by-section status overview, see [Spec Coverage Matrix](https://anglesharp.github.io/docs/wasm/general/spec-coverage/index.html.md).

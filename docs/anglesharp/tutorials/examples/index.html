@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examples · AngleSharp · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/anglesharp/tutorials/examples/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Examples · AngleSharp · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/anglesharp/tutorials/examples/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/anglesharp/tutorials/examples/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/anglesharp/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/" selected>AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/anglesharp/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/anglesharp/general/basics/">Getting Started</a></li><li><a href="/docs/anglesharp/general/features/">Included Features</a></li><li><a href="/docs/anglesharp/general/upcoming/">Roadmap and Ecosystem</a></li><li><a href="/docs/anglesharp/general/performance/">Performance</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/anglesharp/tutorials/api/">API Documentation</a></li><li><a href="/docs/anglesharp/tutorials/options/">Configuration</a></li><li><a href="/docs/anglesharp/tutorials/examples/" aria-current="page">Examples</a></li><li><a href="/docs/anglesharp/tutorials/forms/">Forms</a></li><li><a href="/docs/anglesharp/tutorials/migration/">Upgrading</a></li><li><a href="/docs/anglesharp/tutorials/questions/">Questions</a></li><li><a href="/docs/anglesharp/tutorials/popovers/">Popovers</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/anglesharp/">AngleSharp</a>
+      <span>/</span><span>Tutorials</span>
+    </nav>
+    
+    <div class="prose"><h1 id="example-code">Example Code</h1>
+<p>This is a (growing) list of examples for every-day usage of AngleSharp.</p>
+<h2 id="parsing-a-well-defined-document" tabindex="-1">Parsing a Well-Defined Document <a class="anchor" href="#parsing-a-well-defined-document" aria-hidden="true">#</a></h2>
+<p>Of course AngleSharp can handle well-defined documents very well. But what about a document that seems ill-defined, however, is in fact well-defined. The following document works, has no errors at all and is also used in production by Google. The serialized output of the document generation can be compared with the serialization done by browsers such as IE, Chrome or Firefox.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> @"</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;!DOCTYPE html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">&#x3C;html lang=en></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;meta charset=utf-8></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;meta name=viewport content=</span><span style="--shiki-light:#005CC5;--shiki-dark:#FF7B72">""</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">initial-scale=1, minimum-scale=1, width=device-width</span><span style="--shiki-light:#005CC5;--shiki-dark:#FF7B72">""</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;title>Error 404 (Not Found)!!1&#x3C;/title></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/errors/logo_sm_2.png) no-repeat}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/errors/logo_sm_2_hr.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/errors/logo_sm_2_hr.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/errors/logo_sm_2_hr.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:55px;width:150px}</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;/style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;a href=//www.google.com/>&#x3C;span id=logo aria-label=Google>&#x3C;/span>&#x3C;/a></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;p>&#x3C;b>404.&#x3C;/b> &#x3C;ins>That’s an error.&#x3C;/ins></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">  &#x3C;p>The requested URL &#x3C;code>/error&#x3C;/code> was not found on this server.  &#x3C;ins>That’s all we know.&#x3C;/ins>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//Use the default configuration for AngleSharp</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//Create a new context for evaluating webpages with the given config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//Just get the DOM representation</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//Serialize it back to the console</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"></span></code></pre></div><p>So we define some source code, call the <code>OpenAsync</code> method of a an <code>BrowsingContext</code> instance. The <code>OpenAsync</code> method allows us to parse documents from any kind of requests, e.g., from a webserver. The callback style is called a &quot;virtual request&quot;, which does not invoke a real request, but stays within our code.</p>
+<p>In this case we use the provided source code to determine the content of the request's response. This content of the response is then parsed into an HTML document. Afterwards we serialize the DOM back to a string. Finally, we output this string in the console.</p>
+<h2 id="parsing-raw-bytes-from-httpclient" tabindex="-1">Parsing Raw Bytes from HttpClient <a class="anchor" href="#parsing-raw-bytes-from-httpclient" aria-hidden="true">#</a></h2>
+<p>When an HTTP response is already available as bytes, it can be parsed directly without wrapping the
+buffer in a <code>MemoryStream</code> or decoding it to a <code>string</code> first.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> System</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> System</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Net</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Http</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Html</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Parser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> client</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HttpClient</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> response</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> client.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"https://example.com/"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">response.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">EnsureSuccessStatusCode</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ReadOnlyMemory</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">byte</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">html</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> response.Content.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ReadAsByteArrayAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HtmlParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ParseDocument</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(html);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.Title);</span></span>
+<span class="line"></span></code></pre></div><p>Without an explicit encoding, AngleSharp detects a byte order mark and starts with UTF-8 while still
+allowing an HTML encoding declaration to restart decoding. If the transport supplies an authoritative
+encoding, pass it as the second argument to <code>ParseDocument</code>.</p>
+<h2 id="simple-document-manipulation" tabindex="-1">Simple Document Manipulation <a class="anchor" href="#simple-document-manipulation" aria-hidden="true">#</a></h2>
+<p>AngleSharp constructs a DOM according to the official HTML5 specification. This also means that the resulting model is fully interactive and could be used for simple manipulation. The following example creates a document and changes the tree structure by inserting another paragraph element with some text.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Task</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> FirstExample</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Use the default configuration for AngleSharp</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the given config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Parse the document from the content of a response to a virtual request</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"&#x3C;h1>Some example source&#x3C;/h1>&#x3C;p>This is a paragraph element"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Do something with document like the following</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Serializing the (original) document:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IElement</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> p</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">CreateElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"p"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    p.TextContent </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "This is another paragraph."</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Inserting another element in the body ..."</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    document.Body.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AppendChild</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(p);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Serializing the document again:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Here the parser will create a new <code>IHtmlDocument</code> instance, which is then queried to find some matching nodes. In the example code above we also create another <code>IElement</code>, which is the <code>IHtmlParagraphElement</code>. This one is then appended to the <code>Body</code> node of the document.</p>
+<h2 id="getting-certain-elements" tabindex="-1">Getting Certain Elements <a class="anchor" href="#getting-certain-elements" aria-hidden="true">#</a></h2>
+<p>AngleSharp exposes all DOM lists as <code>IEnumerable&lt;T&gt;</code> like <code>IEnumerable&lt;Node&gt;</code> for the <code>NodeList</code> class. This allows us to use LINQ in combination with some already given DOM capabilities like the <code>QuerySelectorAll</code> method.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Task</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> UsingLinq</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the default config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a document from a virtual request / response pattern</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"&#x3C;ul>&#x3C;li>First item&#x3C;li>Second item&#x3C;li class='blue'>Third item!&#x3C;li class='blue red'>Last item!&#x3C;/ul>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Do something with LINQ</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IEnumerable</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">blueListItemsLinq</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.All.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Where</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">m</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> m.LocalName </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">==</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "li"</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> &#x26;&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> m.ClassList.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Contains</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"blue"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Or directly with CSS selectors</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IHtmlCollection</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">blueListItemsCssSelector</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelectorAll</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"li.blue"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Comparing both ways ..."</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"LINQ:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    foreach</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> item</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> in</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> blueListItemsLinq)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(item.TextContent);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"CSS:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    foreach</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> item</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> in</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> blueListItemsCssSelector)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(item.TextContent);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Since the <code>All</code> property of an <code>IDocument</code> returns all <code>IElement</code> nodes that are contained in a document, we can use it very efficiently with LINQ. On the other hand the <code>QuerySelectorAll</code> also returns (same as <code>All</code>) an <code>IHtmlCollection</code> object. Hence, this can be filtered with LINQ as well! Additionally, this list is already filtered.</p>
+<p>It is also possible to get the same as <code>All</code> with a selector - the special asterisk <code>*</code> selector:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//Same as document.All</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IEnumerable</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">blueListItemsLinq</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelectorAll</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"*"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Where</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">m</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> m.LocalName </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">==</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "li"</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> &#x26;&#x26;</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> m.ClassList.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Contains</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"blue"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span></code></pre></div><p>Is this exactly the same? Actually no - <code>All</code> returns a so-called <em>live</em> DOM list, i.e. if we save the object somewhere we will always have access to the latest DOM changes.</p>
+<h2 id="getting-single-elements" tabindex="-1">Getting Single Elements <a class="anchor" href="#getting-single-elements" aria-hidden="true">#</a></h2>
+<p>Additionally, we have the <code>QuerySelector</code> method. This one is quite close to LINQ statements that use <code>FirstOrDefault()</code> for generating results. The tree traversal might be a bit more efficient using the <code>QuerySelector</code> method.</p>
+<p>Let's see some sample code:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Task</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> SingleElements</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the default config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new document</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"&#x3C;b>&#x3C;i>This is some &#x3C;em> bold &#x3C;u>and&#x3C;/u> italic &#x3C;/em> text!&#x3C;/i>&#x3C;/b>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IElement</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> emphasize</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"em"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Difference between several ways of getting text:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"Only from C# / AngleSharp:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(emphasize.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ToHtml</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());   </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//&#x3C;em> bold &#x3C;u>and&#x3C;/u> italic &#x3C;/em></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(emphasize.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Text</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());</span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// bold and italic</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"From the DOM:"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(emphasize.InnerHtml);  </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// bold &#x3C;u>and&#x3C;/u> italic</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(emphasize.OuterHtml);  </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">//&#x3C;em> bold &#x3C;u>and&#x3C;/u> italic &#x3C;/em></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(emphasize.TextContent);</span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// bold and italic</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>The output commands try to demonstrate the differences between several ways of getting back strings from nodes. In fact the DOM property <code>OuterHtml</code> uses the <code>ToHtml()</code> version to generate the HTML code. The other variants are all different. While <code>Text()</code> is just a helper to strip text (and omit unwanted text contents like in <code>&lt;script&gt;</code> tags), the other two variants behave like the official W3C specified properties, leaving everything as it is.</p>
+<p>Extension methods such as <code>Text()</code> can be found in the namespace <code>AngleSharp.Dom</code>.</p>
+<h2 id="connecting-javascript-evaluation" tabindex="-1">Connecting JavaScript Evaluation <a class="anchor" href="#connecting-javascript-evaluation" aria-hidden="true">#</a></h2>
+<p>The project also contains a sample JavaScript engine based on Jint (JavaScript Interpreter).</p>
+<p>The sample starts by creating a customized version based on the pre-defined <code>Configuration</code> class. Here we just include another engine, located in <code>AngleSharp.Scripting</code> (namespace and project). It is important to also enable scripting. AngleSharp knows that having script engines and using them are two different things.</p>
+<p>Here is the full sample code.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Task</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> SimpleScriptingSample</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //We require a custom configuration</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the given config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //This is our sample source, we will set the title and write on the document</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> @"&#x3C;!doctype html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">            &#x3C;head>&#x3C;title>Sample&#x3C;/title>&#x3C;/head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;body></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">            &#x3C;script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">                document.title = 'Simple manipulation...';</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">                document.write('&#x3C;span class=greeting>Hello World!&#x3C;/span>');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">            &#x3C;/script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/body>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Modified HTML will be output</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>This code just parses the given HTML code, encounters the provided JavaScript and executes it. The JavaScript will manipulate the document at the given point, changing the title of the document and appending some more HTML to parse. In the end we will see, that the printed (serialized) HTML is different to the original one.</p>
+<h2 id="more-complex-javascript-dom-interaction" tabindex="-1">More Complex JavaScript DOM Interaction <a class="anchor" href="#more-complex-javascript-dom-interaction" aria-hidden="true">#</a></h2>
+<p>Using JavaScript with AngleSharp is no problem. In the current state we can also easily use DOM manipulation like creating elements, appending or removing them.</p>
+<p>The following example code performs DOM queries, creates new elements and removes existing ones.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> ExtendedScriptingSample</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //We require a custom configuration with JavaScript and CSS</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the given config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //This is our sample source, we will do some DOM manipulation</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> @"&#x3C;!doctype html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;head>&#x3C;title>Sample&#x3C;/title>&#x3C;/head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        .bold {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          font-weight: bold;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        .italic {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          font-style: italic;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        span {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          font-size: 12pt;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        div {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          background: #777;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          color: #f3f3f3;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        }</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/style></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;body></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;div id=content>&#x3C;/div></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        (function() {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          var doc = document;</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          var content = doc.querySelector('#content');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          var span = doc.createElement('span');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          span.id = 'myspan';</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          span.classList.add('bold', 'italic');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          span.textContent = 'Some sample text';</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          content.appendChild(span);</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          var script = doc.querySelector('script');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          script.parentNode.removeChild(script);</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        })();</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/body>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //HTML will have changed completely (e.g., no more script element)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>In principle other JavaScript engines can be added as well. Of course manually wrapping the objects would give a superior performance compared to the automatic version that is based on reflection. Nevertheless, the <code>AngleSharp.Js</code> library (available on NuGet) shows the possibilities and the basics of binding an existing JavaScript engine to AngleSharp.</p>
+<h2 id="events-in-javascript-and-c" tabindex="-1">Events in JavaScript and C# <a class="anchor" href="#events-in-javascript-and-c" aria-hidden="true">#</a></h2>
+<p>The beginning of the following example is exactly the same as the previous two examples. We create a custom configuration, which contains the <code>JavaScriptEngine</code> engine. After enabling scripting (and styling in this case), we can parse our document.</p>
+<p>The sample document of this example consists of a single script, that calls the <code>console.log</code> method. One time before adding a listener, another time after adding the listener.</p>
+<p>The listener is called once the document is fully loaded. This happens after executing the provided JavaScript, hence we should see this event at the end. We also registered another event listener, which will be invoked once the custom event <strong>hello</strong> is dispatched.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> EventScriptingExample</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //We require a custom configuration</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Create a new context for evaluating webpages with the given config</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //This is our sample source, we will trigger the load event</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> @"&#x3C;!doctype html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;html></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;head>&#x3C;title>Event sample&#x3C;/title>&#x3C;/head></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;body></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        console.log('Before setting the handler!');</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        document.addEventListener('load', function() {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          console.log('Document loaded!');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        });</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        document.addEventListener('hello', function() {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">          console.log('hello world from JavaScript!');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        });</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        console.log('After setting the handler!');</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/script></span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">        &#x3C;/body>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">OpenAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">req</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> req.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Content</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //HTML should be output in the end</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(document.DocumentElement.OuterHtml);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    //Register Hello event listener from C# (we also have one in JS)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AddEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"hello"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">s</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ev</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"hello world from C#!"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> e</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">CreateEvent</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"event"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    e.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Init</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"hello"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Dispatch</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(e);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>We also register an event listener for this custom event in C#. Here we have intelli sense and all other comfortable tools. After initiating the event via the official API we will recognize output from both registered event listeners (coming from JavaScript and C#).</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp/edit/devel/docs/tutorials/03-Examples.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/anglesharp/tutorials/examples/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp/tree/c7ac782c5ef0c35aca936f44696bdea7e2b70851" target="_blank" rel="noopener"><code>c7ac782</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/anglesharp/tutorials/options/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Configuration</span></a>
+      <a class="pager-next" href="/docs/anglesharp/tutorials/forms/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Forms</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#parsing-a-well-defined-document" title="Parsing a Well-Defined Document">Parsing a Well-Defined Document</a></li><li class="toc-l2"><a href="#parsing-raw-bytes-from-httpclient" title="Parsing Raw Bytes from HttpClient">Parsing Raw Bytes from HttpClient</a></li><li class="toc-l2"><a href="#simple-document-manipulation" title="Simple Document Manipulation">Simple Document Manipulation</a></li><li class="toc-l2"><a href="#getting-certain-elements" title="Getting Certain Elements">Getting Certain Elements</a></li><li class="toc-l2"><a href="#getting-single-elements" title="Getting Single Elements">Getting Single Elements</a></li><li class="toc-l2"><a href="#connecting-javascript-evaluation" title="Connecting JavaScript Evaluation">Connecting JavaScript Evaluation</a></li><li class="toc-l2"><a href="#more-complex-javascript-dom-interaction" title="More Complex JavaScript DOM Interaction">More Complex JavaScript DOM Interaction</a></li><li class="toc-l2"><a href="#events-in-javascript-and-c" title="Events in JavaScript and C#">Events in JavaScript and C#</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

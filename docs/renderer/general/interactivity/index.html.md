@@ -1,0 +1,442 @@
+# Interactivity, Transitions & Animations (AngleSharp.Renderer)
+
+> Source: https://anglesharp.github.io/docs/renderer/general/interactivity/
+> Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
+> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+
+`HtmlRenderer.RenderToPng`/`BuildDisplayList` render one static snapshot of a document by
+themselves. To simulate mouse hover, drive CSS `transition`s and `animation`s, or read/set scroll
+position, a document needs an **interactive DOM harness** - a small piece of state, bound to the
+document's browsing context, that tracks things a real browser would (cursor position, scroll
+offsets, a running clock) and feeds them back into rendering.
+
+## Getting A Harness
+
+A harness needs an `IRenderDevice` registered on the browsing context, then is created (or
+retrieved, if one already exists) via `GetDomHarness()`:
+
+```cs
+using AngleSharp;
+using AngleSharp.Css;
+using AngleSharp.Renderer;
+
+var renderDevice = new DefaultRenderDevice { ViewPortWidth = 320, ViewPortHeight = 200 };
+var context = BrowsingContext.New(Configuration.Default.WithCss().WithRenderDevice(renderDevice));
+var document = await context.OpenAsync(request => request.Content(html));
+
+var harness = document.Context.GetDomHarness();
+```
+
+Every document not wired up this way renders exactly as before - the interactive machinery is a
+no-op until a harness exists for that browsing context.
+
+## Simulating `:hover`
+
+Set `MousePosition` in viewport coordinates. The harness hit-tests the layout, forces the
+`:hover` pseudo-class on the topmost element under the cursor *and its whole ancestor chain*
+(matching how a real pointer makes `.card:hover .title` work, not just the innermost element), and
+raises `PaintInvalidated`:
+
+```cs
+harness.MousePosition = (50, 40);
+var image = harness.PaintToPng();
+```
+
+`harness.HoveredElement` exposes the currently hit-tested element if you need it directly.
+
+## Selecting Text
+
+Text can be selected as in a browser. A host forwards the pointer to the harness - after firing
+`mousedown`, unless that was canceled:
+
+```cs
+harness.BeginTextSelection(x, y);             // pressed; clickCount: 2 selects a word, 3 a paragraph
+harness.ExtendTextSelection(x, y);            // moved with the button held
+harness.EndTextSelection();                   // released
+
+var text = harness.SelectedText;              // as shown, e.g., for the clipboard
+```
+
+`BeginTextSelection` takes `extend: true` for a press with Shift held, and returns false when
+nothing can be selected there. `SelectAllText()` is for Ctrl+A and `ClearTextSelection()` removes
+the selection. `PaintInvalidated` is raised when the selection changes; showing it needs no layout,
+as `UpdateFrame()` returns the last frame with the selection painted.
+
+The selection also is the DOM's: `document.GetSelection()` (`getSelection()` for scripts) has the
+members of the [Selection API](https://w3c.github.io/selection-api/) except `modify`, and its changes are painted just
+the same. `selectstart` (cancelable) and `selectionchange` are fired. `user-select` is honored
+(`none`, `text`, `all`), what form controls show cannot be selected, and `::selection` gives the colors
+of the highlight and the text.
+
+A host shows the cursor of text where `frame.HasTextAt(x, y)` is true, which does not touch the DOM.
+
+Selecting is on by default. It can be turned off for a document that has no use for it, in which case
+layouts do not record where their text comes from:
+
+```cs
+harness.IsTextSelectionEnabled = false;
+```
+
+## Selecting Text Headlessly
+
+No pointer is needed to select text, e.g. to highlight search hits in a screenshot or to test what a
+selection covers. Select through the DOM and render; the harness only has to exist, since a document
+without one paints no selection:
+
+```cs
+var device = new DefaultRenderDevice { ViewPortWidth = 400, ViewPortHeight = 200 };
+var context = BrowsingContext.New(Configuration.Default.WithCss().WithRenderDevice(device));
+var document = await context.OpenAsync(request => request.Content("<p id='intro'>Hello World</p>"));
+var harness = document.Context.GetDomHarness();
+
+var text = document.GetElementById("intro")!.FirstChild!;
+var selection = document.GetSelection();
+selection.SetBaseAndExtent(text, 6, text, 11);    // "World"
+
+var image = document.RenderToPng();               // with the highlight
+```
+
+Any way of the Selection API selects: `SelectAllChildren(element)`, `Collapse`/`Extend`, or
+`AddRange` with a range from `document.CreateRange()`. `RemoveAllRanges()` takes the highlight away
+again.
+
+`selection.ToString()` and `harness.SelectedText` are the selected text as it is shown (collapsed
+white space, `text-transform`, line breaks between blocks), i.e., what a browser copies to the
+clipboard. Without a harness, `ToString()` is the text of the selected nodes.
+
+Where it is comes from the range: `selection.GetRangeAt(0).GetClientRects()` gives a rectangle per
+line box, and `GetBoundingClientRect()` the one around them, both in viewport coordinates.
+
+The pointer gestures above work headlessly too, at coordinates of your choosing. For example, a
+double click selects the word under the point:
+
+```cs
+harness.BeginTextSelection(30, 15, clickCount: 2);
+harness.EndTextSelection();
+var word = harness.SelectedText;
+```
+
+## Frames and Their Metrics
+
+An interactive host lays out a frame with `PrepareFrame()` and rasterizes it on any thread, as it
+no longer refers to the DOM. Every frame tells what its layout took, e.g., to show it in the
+developer tools of a browser:
+
+```cs
+var frame = harness.PrepareFrame();
+var metrics = frame.Metrics;
+
+Console.WriteLine($"styles {metrics.Style}, boxes {metrics.Layout}, hit testing {metrics.HitTesting}");
+Console.WriteLine($"{metrics.Elements} elements, {metrics.Boxes} boxes, {metrics.TrialLayouts} trial layouts");
+```
+
+`Total` is the sum of the phases: `Setup` (web fonts and the page's default text style), `Style`
+(the render tree, i.e., matching selectors and the cascade), `Layout` (the boxes and what is painted),
+`HitTesting` and `Subframes` (the documents of iframes). The counters tell how much work that was:
+`StyleMaps`, `TextMeasurements`, `Commands` (of the display list), `HitTestEntries` and the
+`AllocatedBytes`. A frame patched by `UpdateFrame()` is `IsIncremental`, and a frame moved with
+`Reposition` needed no layout at all: its metrics are `RenderMetrics.None`.
+
+A change of an element's state, i.e., hovering or focusing it, is often confined to it: only what
+a selector of that state refers to (e.g., `.card:hover .title`) is styled again, and a change of
+its colors, backgrounds, borders, outlines, shadows or text decoration is painted again without
+laying out anything, so `UpdateFrame()` patches the last frame (keeping its hit-test map, unless a
+`cursor` changed). Selectors that style other elements with the state, like `.tip:hover + .note`
+or the rules of a shadow tree, still lay out the document again. The harness knows the hovered
+element, while a host that moves the focus tells it so:
+
+```cs
+field.DoFocus();
+harness.NotifyStateChanged(field);
+var frame = harness.UpdateFrame() ?? harness.PrepareFrame();
+```
+
+A page that was just loaded can be shown early on: `PrepareViewportFrame()` styles and lays out
+only what is in the viewport (with the overscan). If the page goes on below, the frame is
+`IsPartial`: its `ContentHeight` and hit-test map end there, and it is animating, as the next
+frame lays out the whole page. Reading the geometry (e.g., `getBoundingClientRect`) lays it out as
+well, and `UpdateFrame()` doesn't patch a partial frame:
+
+```cs
+var first = harness.PrepareViewportFrame();
+// show it, then
+var frame = first.IsPartial ? harness.PrepareFrame() : first;
+```
+
+Images of a page (e.g., `RenderToPng`) are rendered the same way. A document whose generated
+content uses CSS counters or quotes (with elements they apply to) is styled as a whole, as these
+depend on all elements before.
+
+For a large document, the computed styles of its elements are read on all cores (as AngleSharp.Css
+matches their selectors), while the DOM is not changed. A host without cores to spare turns this off:
+
+```cs
+AppContext.SetSwitch("AngleSharp.Renderer.DisableParallelism", true);
+AppContext.SetSwitch("AngleSharp.Css.DisableParallelism", true);
+```
+
+## The Virtual Clock
+
+There is no real-time timer anywhere in this renderer. CSS `transition`s and `animation`s are both
+measured against a virtual clock that only moves when you tell it to, via `AdvanceTime`:
+
+```cs
+harness.AdvanceTime(TimeSpan.FromMilliseconds(500));
+var midFrame = harness.PaintToPng();
+```
+
+Call `AdvanceTime` with however much time you want a frame to represent, then paint - repeating
+that pair of calls is how you produce a sequence of frames (for example, to assemble a GIF or
+video of an animation) instead of only ever the resting/end states.
+
+An interactive host gets the frames of animations cheaply from `UpdateFrame()` after `AdvanceTime`:
+when the animations and transitions only change the `transform`, `opacity` or `filter` of boxes (or
+what boxes paint of their own, e.g. a background color), the last frame is painted with the new
+values without a layout. Otherwise `UpdateFrame()` returns null, and `PrepareFrame()` lays out the
+document:
+
+```cs
+harness.AdvanceTime(TimeSpan.FromMilliseconds(16));
+var frame = harness.UpdateFrame() ?? harness.PrepareFrame();
+```
+
+A frame with sticky boxes can be moved to another scroll position as well (`CanReposition`): the
+sticky boxes stick there anew, also for its `HitTestMap`.
+
+## CSS `transition`
+
+A `transition` animates a property when its own natural value changes for some other reason: a
+`:hover` state change, or anything changing the style of an element between two frames (e.g. a
+script adding a class). An element seen for the first time (just inserted, or no longer
+`display: none`) has no transition, like in a browser:
+
+```cs
+var html = """
+<html>
+  <head>
+    <style>
+      #box { width: 40px; height: 40px; background-color: blue; transition: background-color 1s ease; }
+      #box:hover { background-color: red; }
+    </style>
+  </head>
+  <body><div id="box"></div></body>
+</html>
+""";
+
+var harness = document.Context.GetDomHarness();
+harness.MousePosition = (20, 20); // hovers #box, starts the transition
+harness.AdvanceTime(TimeSpan.FromMilliseconds(500)); // halfway through the 1s duration
+
+var midway = harness.PaintToPng(); // background is purple, not yet fully red
+```
+
+Moving the pointer away mid-transition reverses it smoothly from whatever is currently on screen,
+with its own full declared duration - not a jump back to blue, and not just the remaining
+fraction of the original 1s.
+
+Like animations, transitions tell the element about themselves once a frame is painted:
+`transitionrun` (when it is created), `transitionstart` (once its delay is over), `transitionend`
+and `transitioncancel` (replaced or removed before it ended) are dispatched as `TransitionEvent`s,
+with the `propertyName` and the `elapsedTime` in seconds. A property that is not interpolated here
+(see below; e.g. `max-height` or `visibility`) still has these events, while its value changes
+right away; a shorthand like `padding` or `border-color` transitions its longhands.
+
+## CSS `animation`/`@keyframes`
+
+An `animation` needs no trigger at all - one in the first frame of a document is pinned to
+virtual-clock zero (matching a real browser's "starts playing at page load"), one an element gets
+later (e.g. by a class a script adds) starts at the time of the frame that finds it, and either
+keeps looping per `animation-iteration-count`:
+
+```cs
+var html = """
+<html>
+  <head>
+    <style>
+      @keyframes fade {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      #box { width: 40px; height: 40px; background-color: blue; animation: fade 2s linear; }
+    </style>
+  </head>
+  <body><div id="box"></div></body>
+</html>
+""";
+
+var harness = document.Context.GetDomHarness();
+harness.AdvanceTime(TimeSpan.FromMilliseconds(1000)); // halfway through the 2s duration
+
+var midway = harness.PaintToPng(); // #box is 50% opaque
+```
+
+`animation-name` (including multiple, comma-separated animations on one element),
+`-duration`, `-delay`, `-timing-function` (`ease`/`linear`/`cubic-bezier()`/`steps()`),
+`-iteration-count` (a number, or `infinite`), `-direction` (`normal`/`reverse`/`alternate`/
+`alternate-reverse`), and `-fill-mode` (`none`/`forwards`/`backwards`/`both`) are all supported.
+`animation-play-state: paused` freezes an animation where it is, and the time it is paused does
+not count.
+
+The frames tell the element about its animations, like a browser: once a frame (or a picture) is
+painted, `animationstart`, `animationiteration`, `animationend` and `animationcancel` (an
+animation the element no longer names before it ended) are dispatched as `AnimationEvent`s, with
+the `animationName` and the `elapsedTime` in seconds. With an event loop they are a task of it,
+else they are dispatched right after painting. Pages often wait for `animationend` before going
+on, e.g. to show the next view of a form.
+
+```cs
+box.AddEventListener("animationend", (_, ev) => Console.WriteLine(((AnimationEvent)ev).AnimationName));
+harness.PrepareFrame();                            // animationstart
+harness.AdvanceTime(TimeSpan.FromSeconds(2));
+harness.PrepareFrame();                            // animationend: "fade"
+```
+
+## What Can Be Animated
+
+Both `transition` and `animation` only ever interpolate a fixed set of properties:
+
+- **Colors** (channel-wise): `background-color`, `color`, `border-top-color`,
+  `border-right-color`, `border-bottom-color`, `border-left-color`
+- **Numeric lengths/`opacity`** (plain numeric lerp): `opacity`, `width`, `height`, `font-size`,
+  `margin-top`/`-right`/`-bottom`/`-left`, `padding-top`/`-right`/`-bottom`/`-left`,
+  `border-top-width`/`-right-width`/`-bottom-width`/`-left-width`, `top`, `left`, `right`, `bottom`
+- **Function lists** (function by function): `transform`, `translate`, `rotate`, `scale`,
+  `filter`, `backdrop-filter`
+
+`transition-property: all` and any other property named in a `@keyframes` block are limited to
+this same list; other properties change right away (a transition of one still has its events).
+
+## Animated Images
+
+A GIF or WebP of several frames plays without a layout: rasterizing a frame shows the image's frame
+whose time has come, from the moment the image was first painted, as often as the image loops (the
+wall clock, not the virtual one). `GetTimeToNextImageFrame()` tells when an animated image in or near
+the viewport of the frame changes next, so a host knows when to rasterize it again:
+
+```cs
+var frame = harness.PrepareFrame();
+var pixels = frame.Rasterize();
+
+if (frame.GetTimeToNextImageFrame() is { } delay)
+{
+    await Task.Delay(delay);
+    pixels = frame.Rasterize();                    // the next frame of the GIF
+}
+```
+
+## Media Controls
+
+An `audio` element with the `controls` attribute is painted with the controls of Chrome (300x54 by
+default): a play/pause button, the time, a timeline and a mute button, showing the state of the
+element (`paused`, `currentTime`, `duration`, `muted`). While the media plays, the time and the
+timeline are painted for the moment the frame is rasterized, so they go on without a layout, and
+`GetTimeToNextImageFrame()` also tells when they change next. Without `controls`, an `audio` element
+is not rendered.
+
+The controls are painted, not boxes, so a host finds the part a press is on, in viewport
+coordinates, and acts on the element itself:
+
+```cs
+switch (audio.GetMediaControlAt(x, y))
+{
+    case MediaControlPart.PlayPause:
+        // play() or pause(), depending on audio.IsPaused
+        break;
+    case MediaControlPart.Mute:
+        audio.IsMuted = !audio.IsMuted;
+        break;
+    case MediaControlPart.Timeline:
+        audio.CurrentTime = audio.GetMediaTimelinePosition(x)!.Value * audio.Duration;
+        break;
+}
+```
+
+## Input Pickers
+
+The `color`, `date`, `datetime-local`, `month`, `time` and `week` inputs open a picker as in a
+browser: a color picker (saturation and brightness area, hue slider, the suggestions of the input's
+`list` or a few common colors), a calendar (of days, weeks with their ISO numbers, or months; with
+columns of hours, minutes and AM/PM for `datetime-local`), or the columns of a time. Like the list of
+a dropdown (`SelectPopup`), a picker is not part of the layout: a host opens it, shows it on top of a
+frame and forwards the pointer and the keyboard to it, in viewport coordinates:
+
+```cs
+var picker = input.OpenInputPicker();          // null if the input has none, or is disabled or read-only
+frame = frame.WithOverlay(picker.Render());
+
+// a press on the picker; a press anywhere else closes it with picker.Close()
+var result = picker.PointerDown(x, y);
+// also PointerMove, PointerUp, Wheel(x, y, deltaY) and KeyDown("ArrowLeft", "Enter", "Escape", ...)
+
+switch (result)
+{
+    case InputPickerResult.Repaint:
+        frame = frame.WithOverlay(picker.Render());
+        break;
+    case InputPickerResult.Close:
+        // hide the picker
+        break;
+}
+```
+
+Choosing sets the input's value and fires `input`; `change` is fired when the picker closes with a
+value other than the one it opened with. `picker.Close(cancel: true)` (and Escape) brings that value
+back. `min`, `max` and `step` disable what they don't allow: days, weeks or months off the step
+(counted from `min`, else the `value` attribute) are greyed out, and the time columns only list
+the hours, minutes and seconds the step allows (a seconds column appears when the step isn't a
+whole number of minutes); a chosen time moves to the nearest allowed one. `step="any"` allows
+everything. `InputValueConstraints.For(input)` gives custom pickers the same rules. The picker follows the color scheme of the
+input (as the list of a dropdown does) and its `accent-color`. `InputPickerOptions` sets where the
+viewport of the input's document is (for an input in an iframe), the page's device and the current
+time, which marks today and is shown when the input has no value.
+
+### Custom Controls
+
+How an input is shown is up to its `IInputControl`: `GetIntrinsicSize` gives its size when `width`
+or `height` is `auto`, `Paint` paints the content of the input (its border, padding and background
+come from the style sheets) and `CreatePicker` creates its picker. A size is of the content box
+(padding and border are added, as for a text field) or of the border box
+(`InputControlSizeBox.BorderBox`, as for the swatch of a color input); a side left null, or a null
+size, is the built-in one of the type. The built-in ones are
+`ColorInputControl` and `DateTimeInputControl` with the pickers `ColorPicker`, `CalendarPicker` and
+`TimePicker`; all of them can be derived from. Another control is registered with the configuration,
+for any input type:
+
+```cs
+var config = Configuration.Default
+    .WithCss()
+    .WithRenderDevice(device)
+    .WithInputControl("color", new MyColorControl());   // the other types keep the built-in controls
+
+sealed class MyColorControl : ColorInputControl
+{
+    public override InputControlSize? GetIntrinsicSize(InputControlSizeContext context) =>
+        new(context.MeasureText("#000000") + 40f, context.LineHeight);
+
+    public override void Paint(InputControlPaintContext context)
+    {
+        // what to paint, in the coordinates of context.DisplayList
+        context.DisplayList.FillRect(context.ContentBox, MyColors.Parse(context.Value));
+        context.DrawText(context.Value, context.ContentBox.X + 4f, context.TextBaseline);
+    }
+
+    public override IInputPicker? CreatePicker(InputPickerContext context) => new MyColorPicker(context);
+}
+```
+
+`InputControlPaintContext` measures and paints text as the input's text is painted (`MeasureText`,
+`DrawText`). `InputPickerContext` gives the input's place in the viewport (`Anchor`, and `Place` for
+putting a picker below or above it), its font, the colors of its scheme (`Palette`) and a text
+measurer. Deriving from `InputPicker` brings setting the value with its events (`SetValue`,
+`Choose`), closing, and painting text in the input's font. `WithInputControls(provider)` replaces
+the registry with any `IInputControlProvider`; returning null for an input leaves it to the
+built-in control of its type, if any. The painting happens during layout, so it must only depend on
+the state of the input.
+
+## Scrolling
+
+The same harness also tracks per-element scroll position, read and set through the standard
+CSSOM-view properties/methods (`element.scrollTop`, `element.scrollTo(...)`,
+`element.scrollIntoView()`, ...) - `RenderToPng`/`BuildDisplayList` honor whatever scroll position
+is currently set once a harness exists for the document.

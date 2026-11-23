@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painting API · AngleSharp.Css · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/css/general/painting-api/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Painting API · AngleSharp.Css · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/css/general/painting-api/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/css/general/painting-api/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Css menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/css/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/" selected>AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Css documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/css/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/css/general/basics/">Getting Started</a></li><li><a href="/docs/css/general/values/">Types of Values</a></li><li><a href="/docs/css/general/cssom/">CSSOM</a></li><li><a href="/docs/css/general/core-interfaces/">Core Interfaces</a></li><li><a href="/docs/css/general/extensibility/">Extensibility</a></li><li><a href="/docs/css/general/provided-services/">Provided Services</a></li><li><a href="/docs/css/general/supported-at-rules/">Supported Rules</a></li><li><a href="/docs/css/general/supported-declarations/">Supported Declarations</a></li><li><a href="/docs/css/general/typed-om/">Typed OM</a></li><li><a href="/docs/css/general/painting-api/" aria-current="page">Painting API</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/css/tutorials/api/">API Documentation</a></li><li><a href="/docs/css/tutorials/examples/">Examples</a></li><li><a href="/docs/css/tutorials/render-tree/">Render Tree</a></li><li><a href="/docs/css/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/css/">AngleSharp.Css</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="painting-api">Painting API</h1>
+<p>AngleSharp.Css implements the <a href="https://www.w3.org/TR/css-paint-api-1/" target="_blank" rel="noopener">CSS Painting API Level 1</a> in the <code>AngleSharp.Css.Painting</code> namespace. A <em>paint definition</em>, registered under a name, draws the images of the <code>paint()</code> functions that use this name, e.g., a background:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">CSS</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#79C0FF">.element</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> {</span></span>
+<span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFA657">    --stripe-color</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">tomato</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">    background-image</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">: paint(stripes, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">8</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>The API is split into three parts, none of which needs a scripting engine:</p>
+<ol>
+<li><strong>CSS</strong> - <code>paint()</code> is parsed, kept in the value model, computed, and serialized, whether a paint definition exists or not.</li>
+<li><strong>Registry and drawing</strong> - the paint worklet of a document holds the paint definitions and draws the images for elements.</li>
+<li><strong>Extension points</strong> - interfaces that a scripting engine (e.g., AngleSharp.Js) or an application implements to run paint worklet modules or to draw into a real bitmap.</li>
+</ol>
+<h2 id="the-paint-function" tabindex="-1">The <code>paint()</code> Function <a class="anchor" href="#the-paint-function" aria-hidden="true">#</a></h2>
+<p><code>paint( &lt;ident&gt;, &lt;declaration-value&gt;? )</code> is an <code>&lt;image&gt;</code>, so it is accepted wherever images are: <code>background-image</code>, <code>background</code>, <code>border-image-source</code>, <code>border-image</code>, <code>mask-image</code>, <code>list-style-image</code>, <code>image-set()</code>, and custom properties registered with the syntax <code>&lt;image&gt;</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> property</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> style.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetProperty</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"background-image"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> paint</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> property.RawValue.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetPaintValues</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Single</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// CssPaintValue</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">paint.PainterName;  </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// "stripes"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">paint.Arguments;    </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// [8px], each one as written (split at the top-level commas)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">paint.CssText;      </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// "paint(stripes, 8px)"</span></span>
+<span class="line"></span></code></pre></div><ul>
+<li>The arguments are kept as written, since only the paint definition knows their syntax (its <code>InputArguments</code>). <code>var()</code> in the arguments is substituted like anywhere else.</li>
+<li>The computed value is as specified.</li>
+<li>In the Typed OM, <code>paint()</code> is a <code>CssImageValue</code>.</li>
+<li><code>GetPaintValues()</code> finds the <code>paint()</code> functions in any value, e.g., in the layers of a <code>background-image</code> or the options of an <code>image-set()</code>.</li>
+</ul>
+<p>Parsing never depends on a paint definition: a <code>paint()</code> with an unknown name is a valid value, it is just drawn as an invalid image (i.e., transparent).</p>
+<h2 id="registering-paint-definitions" tabindex="-1">Registering Paint Definitions <a class="anchor" href="#registering-paint-definitions" aria-hidden="true">#</a></h2>
+<p>The paint worklet of a document (<code>CSS.paintWorklet</code>) is <code>window.GetPaintWorklet()</code> or <code>document.GetPaintWorklet()</code>. A paint definition implements <code>IPaintDefinition</code>, or uses <code>PaintDefinition</code> with a callback:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Dom</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Painting</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">TypedOm</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> worklet</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.DefaultView.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetPaintWorklet</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">worklet.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">RegisterPaint</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"stripes"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> PaintDefinition</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ctx</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">size</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">properties</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">arguments</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> width</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> ((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">CssUnitValue</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)arguments[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">]).Value;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    ctx.FillStyle </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> properties.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Get</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"--stripe-color"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">?</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ToString</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">??</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "black"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> x</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 0.0</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">; x </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">&#x3C;</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> size.Width; x </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">+=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 2</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> *</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> width)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        ctx.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">FillRect</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(x, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, width, size.Height);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">})</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    InputProperties </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">[] { </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"--stripe-color"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    InputArguments </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">[] { </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"&#x3C;length>"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    ContextOptions </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> PaintRenderingContext2DSettings</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> { Alpha </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">});</span></span>
+<span class="line"></span></code></pre></div><div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InputProperties</code></td>
+<td>The properties of the element given to <code>Paint</code> (standard or custom). Unknown properties are ignored. Read once at registration.</td>
+</tr>
+<tr>
+<td><code>InputArguments</code></td>
+<td>The syntax of each argument (as for <code>@property</code>, e.g., <code>&lt;length&gt;</code>, <code>&lt;color&gt;+</code>, <code>*</code>). Without any, the arguments are given as <code>CssUnparsedValue</code>. Read once at registration.</td>
+</tr>
+<tr>
+<td><code>ContextOptions</code></td>
+<td><code>Alpha = false</code> asks for an opaque image.</td>
+</tr>
+<tr>
+<td><code>Paint(ctx, size, properties, arguments)</code></td>
+<td>Draws the image. <code>properties</code> is a <code>IStylePropertyMapReadOnly</code> of the computed values of the input properties (typed according to their registration, e.g., a <code>--radius</code> registered as <code>&lt;length&gt;</code> is a <code>CssUnitValue</code> in pixels); <code>arguments</code> are typed by <code>InputArguments</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>RegisterPaint</code> follows the specification: an empty name or an invalid syntax of an input argument is a <code>TypeError</code> (<code>ArgumentException</code>), registering a name twice is an <code>InvalidModificationError</code> (<code>DomException</code>). The same method is on <code>worklet.GlobalScope</code>, which is what a module sees as <code>registerPaint()</code>. <code>worklet.Get(name)</code>, <code>Contains(name)</code>, <code>Names</code>, and <code>GetInputProperties(name)</code> tell what has been registered.</p>
+<p>Each document has its own paint worklet, which only lives as long as the document.</p>
+<h2 id="drawing-paint-images" tabindex="-1">Drawing Paint Images <a class="anchor" href="#drawing-paint-images" aria-hidden="true">#</a></h2>
+<p>AngleSharp.Css does no layout, so whoever draws the image (e.g., a renderer that knows the box of the element) gives its size in CSS pixels:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> element</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">".element"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// all paint() functions in the computed value of the property</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IReadOnlyList</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PaintImage</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">?> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">images</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> element.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DrawPaintImages</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"background-image"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> PaintSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// a single paint() function, optionally with a known computed style</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PaintImage</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">? </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">image</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> element.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DrawPaintImage</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(paint, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> PaintSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// or for a node of the render tree, using its computed style</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> images2</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> renderNode.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">DrawPaintImages</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"background-image"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> PaintSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"></span></code></pre></div><p>A <code>PaintImage</code> gives the <code>Source</code> (<code>CssPaintValue</code>), <code>Name</code>, <code>Size</code>, <code>DevicePixelRatio</code>, and the <code>Context</code> that was drawn with, which holds the output.</p>
+<p>The image is invalid, i.e., <code>null</code>, if:</p>
+<ul>
+<li>no paint definition has been registered under its name (a definition registered later is used by later drawing),</li>
+<li>the arguments do not match <code>InputArguments</code> (a different count or a value not matching its syntax),</li>
+<li><code>Paint</code> throws.</li>
+</ul>
+<p>An invalid image is meant to be drawn as transparent black. None of these cases affects parsing or computing styles.</p>
+<h2 id="rendering-contexts" tabindex="-1">Rendering Contexts <a class="anchor" href="#rendering-contexts" aria-hidden="true">#</a></h2>
+<p><code>Paint</code> draws with an <code>IPaintRenderingContext2D</code>, the subset of the canvas 2D context the specification allows: state (<code>Save</code>, <code>Restore</code>, <code>Reset</code>), transforms, compositing, image smoothing, fill and stroke styles (colors, <code>CanvasGradient</code>, <code>CanvasPattern</code>), shadows, rectangles, paths (<code>ICanvasPath</code>, <code>Path2D</code>), clipping, hit testing (<code>IsPointInPath</code>, <code>IsPointInStroke</code>), <code>DrawImage</code> (of <code>CssImageValue</code>s), and line styles. There is no text and no access to pixels.</p>
+<h3 id="the-default-recording" tabindex="-1">The Default: Recording <a class="anchor" href="#the-default-recording" aria-hidden="true">#</a></h3>
+<p>Without further configuration, the context is a <code>RecordingPaintRenderingContext2D</code>, which draws nothing but records the operations as <code>PaintCommand</code>s, a display list any renderer can replay:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> recording</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">RecordingPaintRenderingContext2D</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)image.Context;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">foreach</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> command</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> in</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> recording.Commands)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    // e.g., fillStyle("#ff6347"), fillRect(0, 0, 8, 100), ...</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    Console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WriteLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(command);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">    // command.Name: "fillRect", command.Arguments: [0.0, 0.0, 8.0, 100.0]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><ul>
+<li>Commands are named like the canvas operations (a setter is recorded under the name of its property, e.g., <code>fillStyle</code>), with validated and normalized arguments: colors are serialized (<code>#rrggbb</code> or <code>rgba(r, g, b, a)</code>), and calls the canvas API ignores (e.g., non-finite coordinates, a negative <code>lineWidth</code>, an unknown composite operation) are not recorded.</li>
+<li>The drawing state works as in a canvas, so reading <code>FillStyle</code> gives what has been set, <code>Save</code> / <code>Restore</code> apply, and <code>Reset</code> clears the recording.</li>
+<li>Paths drawn with <code>Fill(path)</code>, <code>Stroke(path)</code>, or <code>Clip(path)</code> are recorded as snapshots, and gradients are recorded by reference.</li>
+<li>Hit testing works on the flattened geometry of the path (curves and arcs are approximated). <code>IsPointInStroke</code> considers the line width but not joins, caps, or dashes. The SVG path data of <code>new Path2D(&quot;M 0 0 ...&quot;)</code> is kept as a command named <code>d</code> and not used for hit testing.</li>
+<li>Coordinates are CSS pixels, i.e., the <code>DevicePixelRatio</code> is left to the renderer replaying the commands.</li>
+</ul>
+<h3 id="custom-rendering-contexts" tabindex="-1">Custom Rendering Contexts <a class="anchor" href="#custom-rendering-contexts" aria-hidden="true">#</a></h3>
+<p>To draw into a real bitmap (e.g., with SkiaSharp or System.Drawing), register an <code>IPaintRenderingContextFactory</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> sealed</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> SkiaPaintContextFactory</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> : </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IPaintRenderingContextFactory</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    public</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IPaintRenderingContext2D</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> Create</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PaintSize</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> size</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Double</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> devicePixelRatio</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PaintRenderingContext2DSettings</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> settings</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">        new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> SkiaPaintRenderingContext</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(size, devicePixelRatio, settings.Alpha);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">With</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> SkiaPaintContextFactory</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());</span></span>
+<span class="line"></span></code></pre></div><p>A new context is created for each image, and <code>PaintImage.Context</code> is that context, so the bitmap is obtained by casting it back. The device pixel ratio is the <code>Resolution</code> of the <code>IRenderDevice</code> divided by 96 (or 1 without a render device), as is <code>devicePixelRatio</code> of the global scope.</p>
+<h2 id="integrating-a-scripting-engine" tabindex="-1">Integrating a Scripting Engine <a class="anchor" href="#integrating-a-scripting-engine" aria-hidden="true">#</a></h2>
+<p>In a browser, paint definitions are classes of a script module loaded with <code>CSS.paintWorklet.addModule(url)</code>. AngleSharp.Css does not depend on any scripting engine; instead, <code>AddModule</code> hands the module to the <code>IPaintWorkletModuleLoader</code> of the configuration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> interface</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> IPaintWorkletModuleLoader</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">    Task</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> LoadAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">PaintWorkletGlobalScope</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> scope</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Url</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> moduleUrl</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">CancellationToken</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> cancellationToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>Without a loader, <code>AddModule</code> fails with a <code>NotSupportedError</code> (<code>DomException</code>), while paint definitions can still be registered directly. A loader, e.g., one provided by AngleSharp.Js, would:</p>
+<ol>
+<li>Fetch the module (<code>moduleUrl</code> is already resolved against the base URL of the document; <code>scope.Document.Context</code> gives the browsing context to load it with).</li>
+<li>Run it in a new script global that exposes <code>registerPaint(name, class)</code> and <code>devicePixelRatio</code> of the <code>PaintWorkletGlobalScope</code> (both carry <code>[DomName]</code> attributes for that purpose).</li>
+<li>For each <code>registerPaint(name, class)</code> call, read the static <code>inputProperties</code>, <code>inputArguments</code>, and <code>contextOptions</code> of the class, and register an <code>IPaintDefinition</code> adapter with <code>scope.RegisterPaint(name, adapter)</code>. Its <code>Paint</code> constructs (or reuses) an instance of the class and calls its <code>paint(ctx, size, properties, args)</code> method, passing the .NET objects, which are annotated with <code>[DomName]</code> (<code>PaintRenderingContext2D</code>, <code>PaintSize</code>, <code>StylePropertyMapReadOnly</code>, <code>CSSStyleValue</code>, <code>Path2D</code>, <code>CanvasGradient</code>, ...).</li>
+<li>Complete the task once the module has run, or fail it, e.g., for a syntax error of the module.</li>
+</ol>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">With</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> MyScriptPaintWorkletLoader</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.DefaultView.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetPaintWorklet</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">AddModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"painters/stripes.js"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Exceptions thrown by a paint definition while drawing make the image invalid, which is how errors of script painters are expected to surface, too.</p>
+<h2 id="mapping-to-the-specification" tabindex="-1">Mapping to the Specification <a class="anchor" href="#mapping-to-the-specification" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Specification</th>
+<th>AngleSharp.Css</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paint()</code></td>
+<td><code>CssPaintValue</code> (<code>PainterName</code>, <code>Arguments</code>)</td>
+</tr>
+<tr>
+<td><code>CSS.paintWorklet</code></td>
+<td><code>window.GetPaintWorklet()</code> / <code>document.GetPaintWorklet()</code> (<code>PaintWorklet</code>)</td>
+</tr>
+<tr>
+<td><code>paintWorklet.addModule(url)</code></td>
+<td><code>PaintWorklet.AddModule(url)</code>, run by <code>IPaintWorkletModuleLoader</code></td>
+</tr>
+<tr>
+<td><code>PaintWorkletGlobalScope</code></td>
+<td><code>PaintWorkletGlobalScope</code> (<code>RegisterPaint</code>, <code>DevicePixelRatio</code>)</td>
+</tr>
+<tr>
+<td>paint definition (class)</td>
+<td><code>IPaintDefinition</code> / <code>PaintDefinition</code></td>
+</tr>
+<tr>
+<td><code>PaintSize</code></td>
+<td><code>PaintSize</code></td>
+</tr>
+<tr>
+<td><code>PaintRenderingContext2D</code></td>
+<td><code>IPaintRenderingContext2D</code>, by default <code>RecordingPaintRenderingContext2D</code></td>
+</tr>
+<tr>
+<td><code>PaintRenderingContext2DSettings</code></td>
+<td><code>PaintRenderingContext2DSettings</code></td>
+</tr>
+<tr>
+<td>draw a paint image</td>
+<td><code>DrawPaintImage</code> / <code>DrawPaintImages</code> (<code>PaintImage</code>, <code>null</code> for an invalid image)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Not supported: invalidating and repainting (the caller draws when it needs an image), several global scopes per worklet, and <code>getTransform()</code> / <code>DOMMatrix</code> arguments of the canvas API.</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Css/edit/devel/docs/general/10-Painting-API.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/css/general/painting-api/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/b35861044ecc148031849ea5a1cfd6316be1b90a" target="_blank" rel="noopener"><code>b358610</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/css/general/typed-om/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Typed OM</span></a>
+      <a class="pager-next" href="/docs/css/tutorials/api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>API Documentation</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#the-paint-function" title="The paint() Function">The paint() Function</a></li><li class="toc-l2"><a href="#registering-paint-definitions" title="Registering Paint Definitions">Registering Paint Definitions</a></li><li class="toc-l2"><a href="#drawing-paint-images" title="Drawing Paint Images">Drawing Paint Images</a></li><li class="toc-l2"><a href="#rendering-contexts" title="Rendering Contexts">Rendering Contexts</a></li><li class="toc-l3"><a href="#the-default-recording" title="The Default: Recording">The Default: Recording</a></li><li class="toc-l3"><a href="#custom-rendering-contexts" title="Custom Rendering Contexts">Custom Rendering Contexts</a></li><li class="toc-l2"><a href="#integrating-a-scripting-engine" title="Integrating a Scripting Engine">Integrating a Scripting Engine</a></li><li class="toc-l2"><a href="#mapping-to-the-specification" title="Mapping to the Specification">Mapping to the Specification</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

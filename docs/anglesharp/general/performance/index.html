@@ -1,0 +1,3792 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance · AngleSharp · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/anglesharp/general/performance/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Performance · AngleSharp · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/anglesharp/general/performance/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/anglesharp/general/performance/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/anglesharp/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/" selected>AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/anglesharp/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/anglesharp/general/basics/">Getting Started</a></li><li><a href="/docs/anglesharp/general/features/">Included Features</a></li><li><a href="/docs/anglesharp/general/upcoming/">Roadmap and Ecosystem</a></li><li><a href="/docs/anglesharp/general/performance/" aria-current="page">Performance</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/anglesharp/tutorials/api/">API Documentation</a></li><li><a href="/docs/anglesharp/tutorials/options/">Configuration</a></li><li><a href="/docs/anglesharp/tutorials/examples/">Examples</a></li><li><a href="/docs/anglesharp/tutorials/forms/">Forms</a></li><li><a href="/docs/anglesharp/tutorials/migration/">Upgrading</a></li><li><a href="/docs/anglesharp/tutorials/questions/">Questions</a></li><li><a href="/docs/anglesharp/tutorials/popovers/">Popovers</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/anglesharp/">AngleSharp</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="performance-evaluations">Performance Evaluations</h1>
+<p>This page contains historical benchmark snapshots and qualitative guidance. For current numbers, rerun the benchmark projects in <code>src/AngleSharp.Benchmarks</code>, since parser performance and .NET runtime behavior change over time.</p>
+<h2 id="general-considerations" tabindex="-1">General Considerations <a class="anchor" href="#general-considerations" aria-hidden="true">#</a></h2>
+<p>The library is not small (it's not huge either), which makes preloading or &quot;warming-up&quot; (or using NGen) a candidate for productive usage. The first runs will always be slower than the following. This is a property of C# / the MSIL (or the JIT process in general), which has nothing to do with AngleSharp.</p>
+<p>AngleSharp has been written with performance in mind. Actually the priority is:</p>
+<ol>
+<li>Standard conformance</li>
+<li>Performance</li>
+<li>Helpers / extensions</li>
+<li>Tooling</li>
+</ol>
+<p>Even though there are still optimizations possible (since everything had to be working first, i.e. standard conformance has been considered), the performance is promising. Parsers in established web browsers (usually written in C/C++) will still have a faster execution time, but for a completely managed process the whole parsing / DOM creation procedure is very fast.</p>
+<p>In the following AngleSharp will be compared to other popular libraries, which are either very popular (like the HtmlAgilityPack) or ambitious (like CsQuery).</p>
+<h2 id="comparison-with-the-html-agility-pack" tabindex="-1">Comparison with the Html Agility Pack <a class="anchor" href="#comparison-with-the-html-agility-pack" aria-hidden="true">#</a></h2>
+<p>The Html Agility Pack (HAP) is a good comparison target, since it is most used and established since a long time. Obviously AngleSharp is a great replacement for HAP due to the following reasons:</p>
+<ul>
+<li>Standardized HTML5 parsing model</li>
+<li>Much better error correction / handling</li>
+<li>Also parses SVG / MathML elements correctly</li>
+<li>Can handle CSS (selectors, rules, ...)</li>
+<li>Better performance</li>
+</ul>
+<p>While the first points are all quite obvious and clear (that is why AngleSharp has been developed in the first place), the last point is controversial.</p>
+<p>To proof this point a small test program has been written. The following code snippet represents the kernel of this program.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> async</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Task</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Int64</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Test</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Func</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Int64</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">> </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">test</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> min</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Int64.MaxValue;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    for</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">int</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> i</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">; i </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">&#x3C;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 20</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">; i</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        min </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Math.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Min</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(min, </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Task.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Run</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=></span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> test</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source)));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> min;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Int64</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> TestAngle</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> sw</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Stopwatch.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">StartNew</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HtmlParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Parse</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    sw.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Stop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> sw.ElapsedMilliseconds;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">static</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> Int64</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF"> TestAgility</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">String</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> source</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> sw</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Stopwatch.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">StartNew</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> document</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HtmlDocument</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">LoadHtml</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(source);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    sw.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Stop</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> sw.ElapsedMilliseconds;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre></div><p>This program then calls the <code>Test</code> method with the source code of several webpages. All of them are quite important / used very often and some of them are quite big. The biggest is definitely the official W3C syntax specification.</p>
+<p>The following image shows the outcome of running this test. (caution: Outdated versions of <em>all</em> included parser; just for illustration)</p>
+<p><img src="http://www.florian-rappl.de/img/0/comparison_as_hap_csq.png" alt="Comparison AngleSharp HtmlAgilityPack" loading="lazy"></p>
+<p>Note that we took the lowest wall-time in 20 trials. The outcome details change slightly if we take the average - since AngleSharp has more code-paths and therefore requires a greater mix in warm-up runs than the HAP, however, the overall outcome is still the same with AngleSharp being faster.</p>
+<p>The only entry where HAP excels is &quot;GoogleNews&quot;. This is, however, a false impression. The true speedup comes from omitting the (large) inline style-sheet. Here AngleSharp has to parse CSS as well, which of course takes some additional time. The official benchmark program below excludes such edge cases by disabling CSS parsing (therefore only HTML parsing is benchmarked as intended).</p>
+<h2 id="comparison-with-csquery-validatornu-html-parser" tabindex="-1">Comparison with CsQuery / validator.nu HTML Parser <a class="anchor" href="#comparison-with-csquery-validatornu-html-parser" aria-hidden="true">#</a></h2>
+<p>The CsQuery project aims to be a C# port of jQuery. To parse HTML a port of the validator.nu HTML5 engine has been selected. The validity of the resulting DOM should therefore on roughly the same level as AngleSharp, however, missing important elements such as <code>template</code> or <code>main</code>. The above image also includes the performance measurement for the HTML parser.</p>
+<p>The parsing performance is mixed compared to AngleSharp. AngleSharp has been measured in an early stage (v0.8.6), i.e. it is likely that the performance of AngleSharp will increase even further. While the CsQuery project is ambitious and contains some interesting ideas and features, AngleSharp tries to solve the problem from the other side - follow the standards first and add nice features on top afterwards. The past has shown that implementing fancy features or a non-standard, but better, API first, will lead to problems later on.</p>
+<p>In general there are areas where AngleSharp is performing better, and other pages where the validator.nu parser is faster. In most cases the winner does not really matter (cases such as 2ms vs 3ms).</p>
+<h2 id="comparison-with-other-solutions" tabindex="-1">Comparison with Other Solutions <a class="anchor" href="#comparison-with-other-solutions" aria-hidden="true">#</a></h2>
+<p>One could also make comparisons to other projects. In the official <strong>Performance</strong> project (contained in the Visual Studio solution) you will find the <em>Majestic</em> (Majestic 13) parser. This one is nearly always faster than any other solution. Is it the right choice for your project? Probably not. The reason is simple: Majestic does not build a DOM, it also does not care about special tags, meanings and the HTML error correction. Basically Majestic is AngleSharp reduced to its tokenizer, with the tokenizer being a bit simpler.</p>
+<p>This is also the reason for excluding Majestic from the performance comparison. However, you are (for your own pleasure) of course allowed to include Majestic again. The code is already checked-in.</p>
+<h2 id="current-performance" tabindex="-1">Current Performance <a class="anchor" href="#current-performance" aria-hidden="true">#</a></h2>
+<p>Performance is valued high - even though standard-compliance is valued higher. AngleSharp's repository comes with a set of benchmarks.</p>
+<h3 id="html-parser" tabindex="-1">HTML Parser <a class="anchor" href="#html-parser" aria-hidden="true">#</a></h3>
+<p>The setup for this test was:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">INI</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki"><code>BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19042
+AMD Ryzen 7 2700X, 1 CPU, 16 logical and 8 physical cores
+  [Host]   : .NET Framework 4.8 (4.8.4341.0), X64 RyuJIT
+  ShortRun : .NET Framework 4.8 (4.8.4341.0), X64 RyuJIT
+
+Job=ShortRun  IterationCount=3  LaunchCount=1
+WarmupCount=3
+</code></pre></div><p>The results are displayed below.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>UrlTest</th>
+<th style="text-align:right">Mean</th>
+<th style="text-align:right">Error</th>
+<th style="text-align:right">StdDev</th>
+<th style="text-align:right">Gen 0</th>
+<th style="text-align:right">Gen 1</th>
+<th style="text-align:right">Gen 2</th>
+<th style="text-align:right">Allocated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>163</strong></td>
+<td style="text-align:right"><strong>26,572.23 μs</strong></td>
+<td style="text-align:right"><strong>8,325.645 μs</strong></td>
+<td style="text-align:right"><strong>456.357 μs</strong></td>
+<td style="text-align:right"><strong>3500.0000</strong></td>
+<td style="text-align:right"><strong>843.7500</strong></td>
+<td style="text-align:right"><strong>312.5000</strong></td>
+<td style="text-align:right"><strong>17524.19 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>163</td>
+<td style="text-align:right">31,582.19 μs</td>
+<td style="text-align:right">10,016.229 μs</td>
+<td style="text-align:right">549.023 μs</td>
+<td style="text-align:right">2687.5000</td>
+<td style="text-align:right">937.5000</td>
+<td style="text-align:right">312.5000</td>
+<td style="text-align:right">15171.18 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>163</td>
+<td style="text-align:right">33,778.85 μs</td>
+<td style="text-align:right">2,390.223 μs</td>
+<td style="text-align:right">131.016 μs</td>
+<td style="text-align:right">1866.6667</td>
+<td style="text-align:right">800.0000</td>
+<td style="text-align:right">266.6667</td>
+<td style="text-align:right">11667.82 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>360.cn</strong></td>
+<td style="text-align:right"><strong>5,183.12 μs</strong></td>
+<td style="text-align:right"><strong>388.822 μs</strong></td>
+<td style="text-align:right"><strong>21.313 μs</strong></td>
+<td style="text-align:right"><strong>421.8750</strong></td>
+<td style="text-align:right"><strong>210.9375</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>2170.52 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>360.cn</td>
+<td style="text-align:right">5,995.97 μs</td>
+<td style="text-align:right">217.311 μs</td>
+<td style="text-align:right">11.912 μs</td>
+<td style="text-align:right">585.9375</td>
+<td style="text-align:right">289.0625</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">3530.83 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>360.cn</td>
+<td style="text-align:right">9,059.31 μs</td>
+<td style="text-align:right">1,809.919 μs</td>
+<td style="text-align:right">99.208 μs</td>
+<td style="text-align:right">468.7500</td>
+<td style="text-align:right">234.3750</td>
+<td style="text-align:right">31.2500</td>
+<td style="text-align:right">2350.3 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>aliexpress</strong></td>
+<td style="text-align:right"><strong>1,048.39 μs</strong></td>
+<td style="text-align:right"><strong>76.373 μs</strong></td>
+<td style="text-align:right"><strong>4.186 μs</strong></td>
+<td style="text-align:right"><strong>167.9688</strong></td>
+<td style="text-align:right"><strong>54.6875</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>610.8 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>aliexpress</td>
+<td style="text-align:right">2,426.29 μs</td>
+<td style="text-align:right">501.179 μs</td>
+<td style="text-align:right">27.471 μs</td>
+<td style="text-align:right">640.6250</td>
+<td style="text-align:right">179.6875</td>
+<td style="text-align:right">15.6250</td>
+<td style="text-align:right">2251.48 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>aliexpress</td>
+<td style="text-align:right">2,058.30 μs</td>
+<td style="text-align:right">334.734 μs</td>
+<td style="text-align:right">18.348 μs</td>
+<td style="text-align:right">156.2500</td>
+<td style="text-align:right">58.5938</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">591.33 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>amazon</strong></td>
+<td style="text-align:right"><strong>109.46 μs</strong></td>
+<td style="text-align:right"><strong>7.386 μs</strong></td>
+<td style="text-align:right"><strong>0.405 μs</strong></td>
+<td style="text-align:right"><strong>138.6719</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>106.57 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>amazon</td>
+<td style="text-align:right">57.12 μs</td>
+<td style="text-align:right">0.217 μs</td>
+<td style="text-align:right">0.012 μs</td>
+<td style="text-align:right">32.9590</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">25.33 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>amazon</td>
+<td style="text-align:right">108.14 μs</td>
+<td style="text-align:right">5.729 μs</td>
+<td style="text-align:right">0.314 μs</td>
+<td style="text-align:right">32.5928</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">25.07 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>ask</strong></td>
+<td style="text-align:right"><strong>2,855.16 μs</strong></td>
+<td style="text-align:right"><strong>136.272 μs</strong></td>
+<td style="text-align:right"><strong>7.470 μs</strong></td>
+<td style="text-align:right"><strong>386.7188</strong></td>
+<td style="text-align:right"><strong>175.7813</strong></td>
+<td style="text-align:right"><strong>42.9688</strong></td>
+<td style="text-align:right"><strong>1917.87 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>ask</td>
+<td style="text-align:right">6,720.90 μs</td>
+<td style="text-align:right">654.156 μs</td>
+<td style="text-align:right">35.856 μs</td>
+<td style="text-align:right">1187.5000</td>
+<td style="text-align:right">585.9375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">6688.45 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>ask</td>
+<td style="text-align:right">5,309.43 μs</td>
+<td style="text-align:right">440.766 μs</td>
+<td style="text-align:right">24.160 μs</td>
+<td style="text-align:right">296.8750</td>
+<td style="text-align:right">156.2500</td>
+<td style="text-align:right">70.3125</td>
+<td style="text-align:right">1789.05 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>baidu</strong></td>
+<td style="text-align:right"><strong>9,185.98 μs</strong></td>
+<td style="text-align:right"><strong>2,700.571 μs</strong></td>
+<td style="text-align:right"><strong>148.027 μs</strong></td>
+<td style="text-align:right"><strong>12015.6250</strong></td>
+<td style="text-align:right"><strong>11531.2500</strong></td>
+<td style="text-align:right"><strong>11109.3750</strong></td>
+<td style="text-align:right"><strong>58430.78 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>baidu</td>
+<td style="text-align:right">19,836.76 μs</td>
+<td style="text-align:right">1,686.464 μs</td>
+<td style="text-align:right">92.441 μs</td>
+<td style="text-align:right">28000.0000</td>
+<td style="text-align:right">968.7500</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">25856.31 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>baidu</td>
+<td style="text-align:right">5,330.41 μs</td>
+<td style="text-align:right">1,213.111 μs</td>
+<td style="text-align:right">66.495 μs</td>
+<td style="text-align:right">679.6875</td>
+<td style="text-align:right">593.7500</td>
+<td style="text-align:right">414.0625</td>
+<td style="text-align:right">2754.81 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>bing</strong></td>
+<td style="text-align:right"><strong>1,787.21 μs</strong></td>
+<td style="text-align:right"><strong>173.355 μs</strong></td>
+<td style="text-align:right"><strong>9.502 μs</strong></td>
+<td style="text-align:right"><strong>851.5625</strong></td>
+<td style="text-align:right"><strong>421.8750</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>4629.7 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>bing</td>
+<td style="text-align:right">4,301.44 μs</td>
+<td style="text-align:right">237.596 μs</td>
+<td style="text-align:right">13.023 μs</td>
+<td style="text-align:right">1671.8750</td>
+<td style="text-align:right">335.9375</td>
+<td style="text-align:right">62.5000</td>
+<td style="text-align:right">4831.79 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>bing</td>
+<td style="text-align:right">2,191.32 μs</td>
+<td style="text-align:right">107.560 μs</td>
+<td style="text-align:right">5.896 μs</td>
+<td style="text-align:right">183.5938</td>
+<td style="text-align:right">89.8438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">798.45 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>blogspot</strong></td>
+<td style="text-align:right"><strong>118.00 μs</strong></td>
+<td style="text-align:right"><strong>4.659 μs</strong></td>
+<td style="text-align:right"><strong>0.255 μs</strong></td>
+<td style="text-align:right"><strong>89.2334</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>68.8 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>blogspot</td>
+<td style="text-align:right">224.73 μs</td>
+<td style="text-align:right">18.088 μs</td>
+<td style="text-align:right">0.991 μs</td>
+<td style="text-align:right">291.2598</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">224.22 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>blogspot</td>
+<td style="text-align:right">284.27 μs</td>
+<td style="text-align:right">21.215 μs</td>
+<td style="text-align:right">1.163 μs</td>
+<td style="text-align:right">106.4453</td>
+<td style="text-align:right">8.7891</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">91.93 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>codeproject</strong></td>
+<td style="text-align:right"><strong>7,574.01 μs</strong></td>
+<td style="text-align:right"><strong>1,090.559 μs</strong></td>
+<td style="text-align:right"><strong>59.777 μs</strong></td>
+<td style="text-align:right"><strong>19085.9375</strong></td>
+<td style="text-align:right"><strong>750.0000</strong></td>
+<td style="text-align:right"><strong>351.5625</strong></td>
+<td style="text-align:right"><strong>29326.3 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>codeproject</td>
+<td style="text-align:right">8,439.77 μs</td>
+<td style="text-align:right">1,165.335 μs</td>
+<td style="text-align:right">63.876 μs</td>
+<td style="text-align:right">2234.3750</td>
+<td style="text-align:right">656.2500</td>
+<td style="text-align:right">15.6250</td>
+<td style="text-align:right">8052.49 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>codeproject</td>
+<td style="text-align:right">4,944.07 μs</td>
+<td style="text-align:right">142.958 μs</td>
+<td style="text-align:right">7.836 μs</td>
+<td style="text-align:right">312.5000</td>
+<td style="text-align:right">164.0625</td>
+<td style="text-align:right">39.0625</td>
+<td style="text-align:right">1648.52 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>ebay</strong></td>
+<td style="text-align:right"><strong>8,113.73 μs</strong></td>
+<td style="text-align:right"><strong>813.583 μs</strong></td>
+<td style="text-align:right"><strong>44.595 μs</strong></td>
+<td style="text-align:right"><strong>828.1250</strong></td>
+<td style="text-align:right"><strong>484.3750</strong></td>
+<td style="text-align:right"><strong>156.2500</strong></td>
+<td style="text-align:right"><strong>4488.56 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>ebay</td>
+<td style="text-align:right">13,586.42 μs</td>
+<td style="text-align:right">817.790 μs</td>
+<td style="text-align:right">44.826 μs</td>
+<td style="text-align:right">1921.8750</td>
+<td style="text-align:right">578.1250</td>
+<td style="text-align:right">218.7500</td>
+<td style="text-align:right">9665.77 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>ebay</td>
+<td style="text-align:right">13,333.32 μs</td>
+<td style="text-align:right">3,862.157 μs</td>
+<td style="text-align:right">211.698 μs</td>
+<td style="text-align:right">703.1250</td>
+<td style="text-align:right">468.7500</td>
+<td style="text-align:right">203.1250</td>
+<td style="text-align:right">3515.6 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>en.wikipedia</strong></td>
+<td style="text-align:right"><strong>28,638.36 μs</strong></td>
+<td style="text-align:right"><strong>3,969.680 μs</strong></td>
+<td style="text-align:right"><strong>217.592 μs</strong></td>
+<td style="text-align:right"><strong>1687.5000</strong></td>
+<td style="text-align:right"><strong>781.2500</strong></td>
+<td style="text-align:right"><strong>218.7500</strong></td>
+<td style="text-align:right"><strong>9941.59 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>en.wikipedia</td>
+<td style="text-align:right">50,891.40 μs</td>
+<td style="text-align:right">28,096.639 μs</td>
+<td style="text-align:right">1,540.072 μs</td>
+<td style="text-align:right">2800.0000</td>
+<td style="text-align:right">1200.0000</td>
+<td style="text-align:right">400.0000</td>
+<td style="text-align:right">14571.52 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>en.wikipedia</td>
+<td style="text-align:right">40,260.49 μs</td>
+<td style="text-align:right">9,929.362 μs</td>
+<td style="text-align:right">544.262 μs</td>
+<td style="text-align:right">1692.3077</td>
+<td style="text-align:right">923.0769</td>
+<td style="text-align:right">307.6923</td>
+<td style="text-align:right">9609.23 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>flickr</strong></td>
+<td style="text-align:right"><strong>5,523.62 μs</strong></td>
+<td style="text-align:right"><strong>528.198 μs</strong></td>
+<td style="text-align:right"><strong>28.952 μs</strong></td>
+<td style="text-align:right"><strong>2187.5000</strong></td>
+<td style="text-align:right"><strong>1953.1250</strong></td>
+<td style="text-align:right"><strong>1343.7500</strong></td>
+<td style="text-align:right"><strong>11630.04 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>flickr</td>
+<td style="text-align:right">16,674.56 μs</td>
+<td style="text-align:right">1,738.980 μs</td>
+<td style="text-align:right">95.319 μs</td>
+<td style="text-align:right">11187.5000</td>
+<td style="text-align:right">343.7500</td>
+<td style="text-align:right">125.0000</td>
+<td style="text-align:right">18192.6 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>flickr</td>
+<td style="text-align:right">8,770.69 μs</td>
+<td style="text-align:right">3,034.916 μs</td>
+<td style="text-align:right">166.354 μs</td>
+<td style="text-align:right">640.6250</td>
+<td style="text-align:right">531.2500</td>
+<td style="text-align:right">359.3750</td>
+<td style="text-align:right">2906.85 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>florian-rappl</strong></td>
+<td style="text-align:right"><strong>707.50 μs</strong></td>
+<td style="text-align:right"><strong>25.038 μs</strong></td>
+<td style="text-align:right"><strong>1.372 μs</strong></td>
+<td style="text-align:right"><strong>142.5781</strong></td>
+<td style="text-align:right"><strong>39.0625</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>326.33 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>florian-rappl</td>
+<td style="text-align:right">713.63 μs</td>
+<td style="text-align:right">90.272 μs</td>
+<td style="text-align:right">4.948 μs</td>
+<td style="text-align:right">134.7656</td>
+<td style="text-align:right">40.0391</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">457.35 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>florian-rappl</td>
+<td style="text-align:right">1,227.61 μs</td>
+<td style="text-align:right">69.995 μs</td>
+<td style="text-align:right">3.837 μs</td>
+<td style="text-align:right">121.0938</td>
+<td style="text-align:right">39.0625</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">342.15 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>godaddy</strong></td>
+<td style="text-align:right"><strong>6,863.21 μs</strong></td>
+<td style="text-align:right"><strong>385.012 μs</strong></td>
+<td style="text-align:right"><strong>21.104 μs</strong></td>
+<td style="text-align:right"><strong>843.7500</strong></td>
+<td style="text-align:right"><strong>421.8750</strong></td>
+<td style="text-align:right"><strong>70.3125</strong></td>
+<td style="text-align:right"><strong>3965.29 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>godaddy</td>
+<td style="text-align:right">17,099.53 μs</td>
+<td style="text-align:right">2,352.418 μs</td>
+<td style="text-align:right">128.944 μs</td>
+<td style="text-align:right">3156.2500</td>
+<td style="text-align:right">562.5000</td>
+<td style="text-align:right">218.7500</td>
+<td style="text-align:right">14457.44 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>godaddy</td>
+<td style="text-align:right">10,710.47 μs</td>
+<td style="text-align:right">4,228.312 μs</td>
+<td style="text-align:right">231.768 μs</td>
+<td style="text-align:right">531.2500</td>
+<td style="text-align:right">312.5000</td>
+<td style="text-align:right">125.0000</td>
+<td style="text-align:right">2959.15 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>google</strong></td>
+<td style="text-align:right"><strong>2,475.83 μs</strong></td>
+<td style="text-align:right"><strong>66.243 μs</strong></td>
+<td style="text-align:right"><strong>3.631 μs</strong></td>
+<td style="text-align:right"><strong>1820.3125</strong></td>
+<td style="text-align:right"><strong>511.7188</strong></td>
+<td style="text-align:right"><strong>35.1563</strong></td>
+<td style="text-align:right"><strong>6307.94 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>google</td>
+<td style="text-align:right">8,117.38 μs</td>
+<td style="text-align:right">889.700 μs</td>
+<td style="text-align:right">48.767 μs</td>
+<td style="text-align:right">8265.6250</td>
+<td style="text-align:right">531.2500</td>
+<td style="text-align:right">46.8750</td>
+<td style="text-align:right">9687.47 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>google</td>
+<td style="text-align:right">2,852.58 μs</td>
+<td style="text-align:right">207.706 μs</td>
+<td style="text-align:right">11.385 μs</td>
+<td style="text-align:right">230.4688</td>
+<td style="text-align:right">121.0938</td>
+<td style="text-align:right">54.6875</td>
+<td style="text-align:right">1118.61 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>html5rocks</strong></td>
+<td style="text-align:right"><strong>165.07 μs</strong></td>
+<td style="text-align:right"><strong>5.314 μs</strong></td>
+<td style="text-align:right"><strong>0.291 μs</strong></td>
+<td style="text-align:right"><strong>96.4355</strong></td>
+<td style="text-align:right"><strong>9.2773</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>91.02 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>html5rocks</td>
+<td style="text-align:right">185.48 μs</td>
+<td style="text-align:right">21.314 μs</td>
+<td style="text-align:right">1.168 μs</td>
+<td style="text-align:right">129.6387</td>
+<td style="text-align:right">16.1133</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">143.17 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>html5rocks</td>
+<td style="text-align:right">344.76 μs</td>
+<td style="text-align:right">10.928 μs</td>
+<td style="text-align:right">0.599 μs</td>
+<td style="text-align:right">102.0508</td>
+<td style="text-align:right">8.7891</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">94.98 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>html5test</strong></td>
+<td style="text-align:right"><strong>549.88 μs</strong></td>
+<td style="text-align:right"><strong>29.206 μs</strong></td>
+<td style="text-align:right"><strong>1.601 μs</strong></td>
+<td style="text-align:right"><strong>347.6563</strong></td>
+<td style="text-align:right"><strong>96.6797</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>812.11 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>html5test</td>
+<td style="text-align:right">1,100.92 μs</td>
+<td style="text-align:right">113.205 μs</td>
+<td style="text-align:right">6.205 μs</td>
+<td style="text-align:right">412.1094</td>
+<td style="text-align:right">136.7188</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1225.64 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>html5test</td>
+<td style="text-align:right">832.16 μs</td>
+<td style="text-align:right">80.749 μs</td>
+<td style="text-align:right">4.426 μs</td>
+<td style="text-align:right">127.9297</td>
+<td style="text-align:right">41.9922</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">326.65 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>huffingtonpost</strong></td>
+<td style="text-align:right"><strong>19,952.34 μs</strong></td>
+<td style="text-align:right"><strong>12,220.195 μs</strong></td>
+<td style="text-align:right"><strong>669.830 μs</strong></td>
+<td style="text-align:right"><strong>5125.0000</strong></td>
+<td style="text-align:right"><strong>2156.2500</strong></td>
+<td style="text-align:right"><strong>1218.7500</strong></td>
+<td style="text-align:right"><strong>20271.86 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>huffingtonpost</td>
+<td style="text-align:right">23,360.13 μs</td>
+<td style="text-align:right">267.385 μs</td>
+<td style="text-align:right">14.656 μs</td>
+<td style="text-align:right">13531.2500</td>
+<td style="text-align:right">687.5000</td>
+<td style="text-align:right">187.5000</td>
+<td style="text-align:right">19993.95 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>huffingtonpost</td>
+<td style="text-align:right">21,286.14 μs</td>
+<td style="text-align:right">1,466.969 μs</td>
+<td style="text-align:right">80.410 μs</td>
+<td style="text-align:right">1093.7500</td>
+<td style="text-align:right">718.7500</td>
+<td style="text-align:right">343.7500</td>
+<td style="text-align:right">5560.22 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>imdb</strong></td>
+<td style="text-align:right"><strong>28,846.69 μs</strong></td>
+<td style="text-align:right"><strong>13,103.589 μs</strong></td>
+<td style="text-align:right"><strong>718.252 μs</strong></td>
+<td style="text-align:right"><strong>6937.5000</strong></td>
+<td style="text-align:right"><strong>2093.7500</strong></td>
+<td style="text-align:right"><strong>1406.2500</strong></td>
+<td style="text-align:right"><strong>53164.72 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>imdb</td>
+<td style="text-align:right">53,782.78 μs</td>
+<td style="text-align:right">14,400.153 μs</td>
+<td style="text-align:right">789.321 μs</td>
+<td style="text-align:right">46000.0000</td>
+<td style="text-align:right">1700.0000</td>
+<td style="text-align:right">600.0000</td>
+<td style="text-align:right">47500.36 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>imdb</td>
+<td style="text-align:right">33,662.42 μs</td>
+<td style="text-align:right">4,272.336 μs</td>
+<td style="text-align:right">234.181 μs</td>
+<td style="text-align:right">1666.6667</td>
+<td style="text-align:right">1200.0000</td>
+<td style="text-align:right">533.3333</td>
+<td style="text-align:right">10612.3 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>kickass.to</strong></td>
+<td style="text-align:right"><strong>62.52 μs</strong></td>
+<td style="text-align:right"><strong>15.028 μs</strong></td>
+<td style="text-align:right"><strong>0.824 μs</strong></td>
+<td style="text-align:right"><strong>34.4238</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>26.47 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>kickass.to</td>
+<td style="text-align:right">21.91 μs</td>
+<td style="text-align:right">4.389 μs</td>
+<td style="text-align:right">0.241 μs</td>
+<td style="text-align:right">26.5198</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">20.39 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>kickass.to</td>
+<td style="text-align:right">48.39 μs</td>
+<td style="text-align:right">10.936 μs</td>
+<td style="text-align:right">0.599 μs</td>
+<td style="text-align:right">21.8506</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">16.79 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>linkedin</strong></td>
+<td style="text-align:right"><strong>3,926.10 μs</strong></td>
+<td style="text-align:right"><strong>765.055 μs</strong></td>
+<td style="text-align:right"><strong>41.935 μs</strong></td>
+<td style="text-align:right"><strong>289.0625</strong></td>
+<td style="text-align:right"><strong>140.6250</strong></td>
+<td style="text-align:right"><strong>23.4375</strong></td>
+<td style="text-align:right"><strong>1599.7 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>linkedin</td>
+<td style="text-align:right">3,327.32 μs</td>
+<td style="text-align:right">415.856 μs</td>
+<td style="text-align:right">22.794 μs</td>
+<td style="text-align:right">343.7500</td>
+<td style="text-align:right">171.8750</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1832.89 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>linkedin</td>
+<td style="text-align:right">5,978.55 μs</td>
+<td style="text-align:right">261.960 μs</td>
+<td style="text-align:right">14.359 μs</td>
+<td style="text-align:right">257.8125</td>
+<td style="text-align:right">125.0000</td>
+<td style="text-align:right">54.6875</td>
+<td style="text-align:right">1385.39 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>live</strong></td>
+<td style="text-align:right"><strong>1,896.05 μs</strong></td>
+<td style="text-align:right"><strong>90.959 μs</strong></td>
+<td style="text-align:right"><strong>4.986 μs</strong></td>
+<td style="text-align:right"><strong>162.1094</strong></td>
+<td style="text-align:right"><strong>70.3125</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>875.95 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>live</td>
+<td style="text-align:right">1,728.75 μs</td>
+<td style="text-align:right">160.758 μs</td>
+<td style="text-align:right">8.812 μs</td>
+<td style="text-align:right">189.4531</td>
+<td style="text-align:right">93.7500</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1068.87 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>live</td>
+<td style="text-align:right">2,967.42 μs</td>
+<td style="text-align:right">374.529 μs</td>
+<td style="text-align:right">20.529 μs</td>
+<td style="text-align:right">148.4375</td>
+<td style="text-align:right">74.2188</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">783.66 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>mail.ru</strong></td>
+<td style="text-align:right"><strong>14,738.88 μs</strong></td>
+<td style="text-align:right"><strong>12,151.966 μs</strong></td>
+<td style="text-align:right"><strong>666.090 μs</strong></td>
+<td style="text-align:right"><strong>55000.0000</strong></td>
+<td style="text-align:right"><strong>1640.6250</strong></td>
+<td style="text-align:right"><strong>593.7500</strong></td>
+<td style="text-align:right"><strong>62888.42 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>mail.ru</td>
+<td style="text-align:right">20,945.32 μs</td>
+<td style="text-align:right">6,117.784 μs</td>
+<td style="text-align:right">335.336 μs</td>
+<td style="text-align:right">14500.0000</td>
+<td style="text-align:right">406.2500</td>
+<td style="text-align:right">187.5000</td>
+<td style="text-align:right">22585.69 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>mail.ru</td>
+<td style="text-align:right">10,070.01 μs</td>
+<td style="text-align:right">757.617 μs</td>
+<td style="text-align:right">41.528 μs</td>
+<td style="text-align:right">656.2500</td>
+<td style="text-align:right">468.7500</td>
+<td style="text-align:right">250.0000</td>
+<td style="text-align:right">3241.27 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>msn</strong></td>
+<td style="text-align:right"><strong>10,318.80 μs</strong></td>
+<td style="text-align:right"><strong>2,216.914 μs</strong></td>
+<td style="text-align:right"><strong>121.517 μs</strong></td>
+<td style="text-align:right"><strong>1406.2500</strong></td>
+<td style="text-align:right"><strong>625.0000</strong></td>
+<td style="text-align:right"><strong>78.1250</strong></td>
+<td style="text-align:right"><strong>6484.48 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>msn</td>
+<td style="text-align:right">11,391.01 μs</td>
+<td style="text-align:right">998.940 μs</td>
+<td style="text-align:right">54.755 μs</td>
+<td style="text-align:right">2875.0000</td>
+<td style="text-align:right">859.3750</td>
+<td style="text-align:right">15.6250</td>
+<td style="text-align:right">7951.19 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>msn</td>
+<td style="text-align:right">16,140.33 μs</td>
+<td style="text-align:right">613.836 μs</td>
+<td style="text-align:right">33.646 μs</td>
+<td style="text-align:right">781.2500</td>
+<td style="text-align:right">468.7500</td>
+<td style="text-align:right">125.0000</td>
+<td style="text-align:right">4571.39 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>myspace</strong></td>
+<td style="text-align:right"><strong>22,910.76 μs</strong></td>
+<td style="text-align:right"><strong>2,477.144 μs</strong></td>
+<td style="text-align:right"><strong>135.781 μs</strong></td>
+<td style="text-align:right"><strong>62437.5000</strong></td>
+<td style="text-align:right"><strong>781.2500</strong></td>
+<td style="text-align:right"><strong>250.0000</strong></td>
+<td style="text-align:right"><strong>62789.61 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>myspace</td>
+<td style="text-align:right">20,529.88 μs</td>
+<td style="text-align:right">5,132.015 μs</td>
+<td style="text-align:right">281.303 μs</td>
+<td style="text-align:right">1781.2500</td>
+<td style="text-align:right">781.2500</td>
+<td style="text-align:right">250.0000</td>
+<td style="text-align:right">10333.3 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>myspace</td>
+<td style="text-align:right">20,662.87 μs</td>
+<td style="text-align:right">1,721.811 μs</td>
+<td style="text-align:right">94.378 μs</td>
+<td style="text-align:right">906.2500</td>
+<td style="text-align:right">437.5000</td>
+<td style="text-align:right">125.0000</td>
+<td style="text-align:right">5388.78 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>nbc</strong></td>
+<td style="text-align:right"><strong>153,610.90 μs</strong></td>
+<td style="text-align:right"><strong>241,305.708 μs</strong></td>
+<td style="text-align:right"><strong>13,226.780 μs</strong></td>
+<td style="text-align:right"><strong>42000.0000</strong></td>
+<td style="text-align:right"><strong>39000.0000</strong></td>
+<td style="text-align:right"><strong>38000.0000</strong></td>
+<td style="text-align:right"><strong>847835.7 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>nbc</td>
+<td style="text-align:right">131,026.33 μs</td>
+<td style="text-align:right">252,456.797 μs</td>
+<td style="text-align:right">13,838.009 μs</td>
+<td style="text-align:right">163750.0000</td>
+<td style="text-align:right">1500.0000</td>
+<td style="text-align:right">500.0000</td>
+<td style="text-align:right">142509.96 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>nbc</td>
+<td style="text-align:right">68,009.41 μs</td>
+<td style="text-align:right">10,392.195 μs</td>
+<td style="text-align:right">569.631 μs</td>
+<td style="text-align:right">3125.0000</td>
+<td style="text-align:right">1250.0000</td>
+<td style="text-align:right">500.0000</td>
+<td style="text-align:right">30147.35 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>neobux</strong></td>
+<td style="text-align:right"><strong>157.14 μs</strong></td>
+<td style="text-align:right"><strong>5.539 μs</strong></td>
+<td style="text-align:right"><strong>0.304 μs</strong></td>
+<td style="text-align:right"><strong>99.3652</strong></td>
+<td style="text-align:right"><strong>5.6152</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>86.08 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>neobux</td>
+<td style="text-align:right">216.95 μs</td>
+<td style="text-align:right">6.915 μs</td>
+<td style="text-align:right">0.379 μs</td>
+<td style="text-align:right">216.3086</td>
+<td style="text-align:right">14.8926</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">199.43 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>neobux</td>
+<td style="text-align:right">266.50 μs</td>
+<td style="text-align:right">9.616 μs</td>
+<td style="text-align:right">0.527 μs</td>
+<td style="text-align:right">85.9375</td>
+<td style="text-align:right">2.9297</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">69.35 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>netflix</strong></td>
+<td style="text-align:right"><strong>7,751.63 μs</strong></td>
+<td style="text-align:right"><strong>6,590.316 μs</strong></td>
+<td style="text-align:right"><strong>361.237 μs</strong></td>
+<td style="text-align:right"><strong>7031.2500</strong></td>
+<td style="text-align:right"><strong>5687.5000</strong></td>
+<td style="text-align:right"><strong>5093.7500</strong></td>
+<td style="text-align:right"><strong>36962.4 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>netflix</td>
+<td style="text-align:right">20,402.40 μs</td>
+<td style="text-align:right">532.399 μs</td>
+<td style="text-align:right">29.183 μs</td>
+<td style="text-align:right">30218.7500</td>
+<td style="text-align:right">187.5000</td>
+<td style="text-align:right">62.5000</td>
+<td style="text-align:right">28514.5 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>netflix</td>
+<td style="text-align:right">5,932.85 μs</td>
+<td style="text-align:right">370.366 μs</td>
+<td style="text-align:right">20.301 μs</td>
+<td style="text-align:right">781.2500</td>
+<td style="text-align:right">718.7500</td>
+<td style="text-align:right">500.0000</td>
+<td style="text-align:right">3935.91 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>news.google</strong></td>
+<td style="text-align:right"><strong>15,521.61 μs</strong></td>
+<td style="text-align:right"><strong>1,692.227 μs</strong></td>
+<td style="text-align:right"><strong>92.757 μs</strong></td>
+<td style="text-align:right"><strong>15578.1250</strong></td>
+<td style="text-align:right"><strong>12843.7500</strong></td>
+<td style="text-align:right"><strong>11515.6250</strong></td>
+<td style="text-align:right"><strong>66116.9 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>news.google</td>
+<td style="text-align:right">22,252.10 μs</td>
+<td style="text-align:right">1,478.085 μs</td>
+<td style="text-align:right">81.019 μs</td>
+<td style="text-align:right">27093.7500</td>
+<td style="text-align:right">968.7500</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">26119.47 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>news.google</td>
+<td style="text-align:right">11,707.40 μs</td>
+<td style="text-align:right">923.723 μs</td>
+<td style="text-align:right">50.632 μs</td>
+<td style="text-align:right">1015.6250</td>
+<td style="text-align:right">1000.0000</td>
+<td style="text-align:right">656.2500</td>
+<td style="text-align:right">4325.95 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>nytimes</strong></td>
+<td style="text-align:right"><strong>124,187.17 μs</strong></td>
+<td style="text-align:right"><strong>251,118.584 μs</strong></td>
+<td style="text-align:right"><strong>13,764.657 μs</strong></td>
+<td style="text-align:right"><strong>49000.0000</strong></td>
+<td style="text-align:right"><strong>46000.0000</strong></td>
+<td style="text-align:right"><strong>45000.0000</strong></td>
+<td style="text-align:right"><strong>718302.89 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>nytimes</td>
+<td style="text-align:right">95,744.94 μs</td>
+<td style="text-align:right">7,128.314 μs</td>
+<td style="text-align:right">390.727 μs</td>
+<td style="text-align:right">156333.3333</td>
+<td style="text-align:right">333.3333</td>
+<td style="text-align:right">166.6667</td>
+<td style="text-align:right">135003.91 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>nytimes</td>
+<td style="text-align:right">27,782.88 μs</td>
+<td style="text-align:right">10,274.712 μs</td>
+<td style="text-align:right">563.192 μs</td>
+<td style="text-align:right">1187.5000</td>
+<td style="text-align:right">781.2500</td>
+<td style="text-align:right">375.0000</td>
+<td style="text-align:right">17691.08 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>pcmag</strong></td>
+<td style="text-align:right"><strong>62.39 μs</strong></td>
+<td style="text-align:right"><strong>1.935 μs</strong></td>
+<td style="text-align:right"><strong>0.106 μs</strong></td>
+<td style="text-align:right"><strong>36.1328</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>27.81 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>pcmag</td>
+<td style="text-align:right">45.43 μs</td>
+<td style="text-align:right">3.050 μs</td>
+<td style="text-align:right">0.167 μs</td>
+<td style="text-align:right">65.0024</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">49.94 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>pcmag</td>
+<td style="text-align:right">52.58 μs</td>
+<td style="text-align:right">4.139 μs</td>
+<td style="text-align:right">0.227 μs</td>
+<td style="text-align:right">23.8647</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.36 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>peace(...)emark [22]</strong></td>
+<td style="text-align:right"><strong>990.19 μs</strong></td>
+<td style="text-align:right"><strong>81.206 μs</strong></td>
+<td style="text-align:right"><strong>4.451 μs</strong></td>
+<td style="text-align:right"><strong>144.5313</strong></td>
+<td style="text-align:right"><strong>46.8750</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>460.6 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>peace(...)emark [22]</td>
+<td style="text-align:right">1,367.17 μs</td>
+<td style="text-align:right">120.318 μs</td>
+<td style="text-align:right">6.595 μs</td>
+<td style="text-align:right">218.7500</td>
+<td style="text-align:right">103.5156</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1039.6 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>peace(...)emark [22]</td>
+<td style="text-align:right">1,632.73 μs</td>
+<td style="text-align:right">134.103 μs</td>
+<td style="text-align:right">7.351 μs</td>
+<td style="text-align:right">119.1406</td>
+<td style="text-align:right">46.8750</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">499.36 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>pinterest</strong></td>
+<td style="text-align:right"><strong>1,081.07 μs</strong></td>
+<td style="text-align:right"><strong>115.151 μs</strong></td>
+<td style="text-align:right"><strong>6.312 μs</strong></td>
+<td style="text-align:right"><strong>537.1094</strong></td>
+<td style="text-align:right"><strong>226.5625</strong></td>
+<td style="text-align:right"><strong>146.4844</strong></td>
+<td style="text-align:right"><strong>2078.93 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>pinterest</td>
+<td style="text-align:right">5,919.82 μs</td>
+<td style="text-align:right">683.017 μs</td>
+<td style="text-align:right">37.438 μs</td>
+<td style="text-align:right">7679.6875</td>
+<td style="text-align:right">210.9375</td>
+<td style="text-align:right">62.5000</td>
+<td style="text-align:right">7936.13 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>pinterest</td>
+<td style="text-align:right">2,269.28 μs</td>
+<td style="text-align:right">142.931 μs</td>
+<td style="text-align:right">7.835 μs</td>
+<td style="text-align:right">136.7188</td>
+<td style="text-align:right">128.9063</td>
+<td style="text-align:right">128.9063</td>
+<td style="text-align:right">1121.95 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>qq</strong></td>
+<td style="text-align:right"><strong>6,051.05 μs</strong></td>
+<td style="text-align:right"><strong>521.770 μs</strong></td>
+<td style="text-align:right"><strong>28.600 μs</strong></td>
+<td style="text-align:right"><strong>453.1250</strong></td>
+<td style="text-align:right"><strong>226.5625</strong></td>
+<td style="text-align:right"><strong>31.2500</strong></td>
+<td style="text-align:right"><strong>2471.28 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>qq</td>
+<td style="text-align:right">5,935.02 μs</td>
+<td style="text-align:right">478.857 μs</td>
+<td style="text-align:right">26.248 μs</td>
+<td style="text-align:right">593.7500</td>
+<td style="text-align:right">296.8750</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">3345.35 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>qq</td>
+<td style="text-align:right">8,620.11 μs</td>
+<td style="text-align:right">605.321 μs</td>
+<td style="text-align:right">33.180 μs</td>
+<td style="text-align:right">406.2500</td>
+<td style="text-align:right">203.1250</td>
+<td style="text-align:right">46.8750</td>
+<td style="text-align:right">2134.35 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>reddit</strong></td>
+<td style="text-align:right"><strong>28,485.33 μs</strong></td>
+<td style="text-align:right"><strong>16,629.956 μs</strong></td>
+<td style="text-align:right"><strong>911.544 μs</strong></td>
+<td style="text-align:right"><strong>7343.7500</strong></td>
+<td style="text-align:right"><strong>6656.2500</strong></td>
+<td style="text-align:right"><strong>5937.5000</strong></td>
+<td style="text-align:right"><strong>97804.74 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>reddit</td>
+<td style="text-align:right">55,492.40 μs</td>
+<td style="text-align:right">2,706.110 μs</td>
+<td style="text-align:right">148.331 μs</td>
+<td style="text-align:right">74000.0000</td>
+<td style="text-align:right">400.0000</td>
+<td style="text-align:right">200.0000</td>
+<td style="text-align:right">68976.93 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>reddit</td>
+<td style="text-align:right">18,756.14 μs</td>
+<td style="text-align:right">3,652.892 μs</td>
+<td style="text-align:right">200.227 μs</td>
+<td style="text-align:right">1343.7500</td>
+<td style="text-align:right">1125.0000</td>
+<td style="text-align:right">687.5000</td>
+<td style="text-align:right">8795.31 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>sitepoint</strong></td>
+<td style="text-align:right"><strong>5,456.44 μs</strong></td>
+<td style="text-align:right"><strong>75.188 μs</strong></td>
+<td style="text-align:right"><strong>4.121 μs</strong></td>
+<td style="text-align:right"><strong>1039.0625</strong></td>
+<td style="text-align:right"><strong>648.4375</strong></td>
+<td style="text-align:right"><strong>328.1250</strong></td>
+<td style="text-align:right"><strong>3999.25 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>sitepoint</td>
+<td style="text-align:right">9,606.40 μs</td>
+<td style="text-align:right">996.101 μs</td>
+<td style="text-align:right">54.600 μs</td>
+<td style="text-align:right">2796.8750</td>
+<td style="text-align:right">484.3750</td>
+<td style="text-align:right">46.8750</td>
+<td style="text-align:right">7479.26 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>sitepoint</td>
+<td style="text-align:right">11,834.08 μs</td>
+<td style="text-align:right">1,248.806 μs</td>
+<td style="text-align:right">68.451 μs</td>
+<td style="text-align:right">718.7500</td>
+<td style="text-align:right">437.5000</td>
+<td style="text-align:right">187.5000</td>
+<td style="text-align:right">3421.89 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>smashing</strong></td>
+<td style="text-align:right"><strong>107.09 μs</strong></td>
+<td style="text-align:right"><strong>3.101 μs</strong></td>
+<td style="text-align:right"><strong>0.170 μs</strong></td>
+<td style="text-align:right"><strong>76.1719</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>58.63 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>smashing</td>
+<td style="text-align:right">97.93 μs</td>
+<td style="text-align:right">8.065 μs</td>
+<td style="text-align:right">0.442 μs</td>
+<td style="text-align:right">118.7744</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">91.27 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>smashing</td>
+<td style="text-align:right">146.05 μs</td>
+<td style="text-align:right">9.340 μs</td>
+<td style="text-align:right">0.512 μs</td>
+<td style="text-align:right">55.4199</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">42.68 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>sohu</strong></td>
+<td style="text-align:right"><strong>8,609.93 μs</strong></td>
+<td style="text-align:right"><strong>1,500.603 μs</strong></td>
+<td style="text-align:right"><strong>82.253 μs</strong></td>
+<td style="text-align:right"><strong>546.8750</strong></td>
+<td style="text-align:right"><strong>281.2500</strong></td>
+<td style="text-align:right"><strong>62.5000</strong></td>
+<td style="text-align:right"><strong>3279.43 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>sohu</td>
+<td style="text-align:right">8,968.81 μs</td>
+<td style="text-align:right">633.634 μs</td>
+<td style="text-align:right">34.732 μs</td>
+<td style="text-align:right">765.6250</td>
+<td style="text-align:right">375.0000</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">4585.71 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>sohu</td>
+<td style="text-align:right">13,511.16 μs</td>
+<td style="text-align:right">3,160.689 μs</td>
+<td style="text-align:right">173.248 μs</td>
+<td style="text-align:right">546.8750</td>
+<td style="text-align:right">328.1250</td>
+<td style="text-align:right">109.3750</td>
+<td style="text-align:right">3361.91 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>spiegel</strong></td>
+<td style="text-align:right"><strong>211,519.63 μs</strong></td>
+<td style="text-align:right"><strong>372,492.375 μs</strong></td>
+<td style="text-align:right"><strong>20,417.564 μs</strong></td>
+<td style="text-align:right"><strong>34000.0000</strong></td>
+<td style="text-align:right"><strong>15000.0000</strong></td>
+<td style="text-align:right"><strong>10000.0000</strong></td>
+<td style="text-align:right"><strong>576924.01 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>spiegel</td>
+<td style="text-align:right">75,016.80 μs</td>
+<td style="text-align:right">53,364.569 μs</td>
+<td style="text-align:right">2,925.092 μs</td>
+<td style="text-align:right">12125.0000</td>
+<td style="text-align:right">2125.0000</td>
+<td style="text-align:right">750.0000</td>
+<td style="text-align:right">31002.63 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>spiegel</td>
+<td style="text-align:right">76,223.27 μs</td>
+<td style="text-align:right">10,207.845 μs</td>
+<td style="text-align:right">559.526 μs</td>
+<td style="text-align:right">3000.0000</td>
+<td style="text-align:right">1000.0000</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17287.29 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>stackoverflow</strong></td>
+<td style="text-align:right"><strong>7,908.16 μs</strong></td>
+<td style="text-align:right"><strong>24.694 μs</strong></td>
+<td style="text-align:right"><strong>1.354 μs</strong></td>
+<td style="text-align:right"><strong>687.5000</strong></td>
+<td style="text-align:right"><strong>343.7500</strong></td>
+<td style="text-align:right"><strong>46.8750</strong></td>
+<td style="text-align:right"><strong>4275.74 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>stackoverflow</td>
+<td style="text-align:right">6,521.56 μs</td>
+<td style="text-align:right">373.698 μs</td>
+<td style="text-align:right">20.484 μs</td>
+<td style="text-align:right">718.7500</td>
+<td style="text-align:right">343.7500</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">3761.42 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>stackoverflow</td>
+<td style="text-align:right">11,342.72 μs</td>
+<td style="text-align:right">171.985 μs</td>
+<td style="text-align:right">9.427 μs</td>
+<td style="text-align:right">515.6250</td>
+<td style="text-align:right">296.8750</td>
+<td style="text-align:right">93.7500</td>
+<td style="text-align:right">2645.64 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>taobao</strong></td>
+<td style="text-align:right"><strong>8,823.25 μs</strong></td>
+<td style="text-align:right"><strong>4,057.001 μs</strong></td>
+<td style="text-align:right"><strong>222.378 μs</strong></td>
+<td style="text-align:right"><strong>10671.8750</strong></td>
+<td style="text-align:right"><strong>3562.5000</strong></td>
+<td style="text-align:right"><strong>2468.7500</strong></td>
+<td style="text-align:right"><strong>28015.66 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>taobao</td>
+<td style="text-align:right">24,314.95 μs</td>
+<td style="text-align:right">2,437.444 μs</td>
+<td style="text-align:right">133.605 μs</td>
+<td style="text-align:right">29437.5000</td>
+<td style="text-align:right">906.2500</td>
+<td style="text-align:right">31.2500</td>
+<td style="text-align:right">30738.97 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>taobao</td>
+<td style="text-align:right">7,903.38 μs</td>
+<td style="text-align:right">422.405 μs</td>
+<td style="text-align:right">23.153 μs</td>
+<td style="text-align:right">953.1250</td>
+<td style="text-align:right">828.1250</td>
+<td style="text-align:right">546.8750</td>
+<td style="text-align:right">4200.56 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>tmall</strong></td>
+<td style="text-align:right"><strong>20,233.00 μs</strong></td>
+<td style="text-align:right"><strong>9,593.654 μs</strong></td>
+<td style="text-align:right"><strong>525.861 μs</strong></td>
+<td style="text-align:right"><strong>35156.2500</strong></td>
+<td style="text-align:right"><strong>24750.0000</strong></td>
+<td style="text-align:right"><strong>22781.2500</strong></td>
+<td style="text-align:right"><strong>132866.65 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>tmall</td>
+<td style="text-align:right">3,106.31 μs</td>
+<td style="text-align:right">365.161 μs</td>
+<td style="text-align:right">20.016 μs</td>
+<td style="text-align:right">761.7188</td>
+<td style="text-align:right">238.2813</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">2274 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>tmall</td>
+<td style="text-align:right">3,624.70 μs</td>
+<td style="text-align:right">51.738 μs</td>
+<td style="text-align:right">2.836 μs</td>
+<td style="text-align:right">234.3750</td>
+<td style="text-align:right">175.7813</td>
+<td style="text-align:right">175.7813</td>
+<td style="text-align:right">1540.94 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>tumblr</strong></td>
+<td style="text-align:right"><strong>1,257.62 μs</strong></td>
+<td style="text-align:right"><strong>103.290 μs</strong></td>
+<td style="text-align:right"><strong>5.662 μs</strong></td>
+<td style="text-align:right"><strong>187.5000</strong></td>
+<td style="text-align:right"><strong>62.5000</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>591.96 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>tumblr</td>
+<td style="text-align:right">1,522.42 μs</td>
+<td style="text-align:right">12.835 μs</td>
+<td style="text-align:right">0.704 μs</td>
+<td style="text-align:right">210.9375</td>
+<td style="text-align:right">101.5625</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1236.02 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>tumblr</td>
+<td style="text-align:right">2,845.86 μs</td>
+<td style="text-align:right">119.163 μs</td>
+<td style="text-align:right">6.532 μs</td>
+<td style="text-align:right">148.4375</td>
+<td style="text-align:right">58.5938</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">659.3 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>vk</strong></td>
+<td style="text-align:right"><strong>2,879.40 μs</strong></td>
+<td style="text-align:right"><strong>307.347 μs</strong></td>
+<td style="text-align:right"><strong>16.847 μs</strong></td>
+<td style="text-align:right"><strong>1398.4375</strong></td>
+<td style="text-align:right"><strong>472.6563</strong></td>
+<td style="text-align:right"><strong>468.7500</strong></td>
+<td style="text-align:right"><strong>6900.75 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>vk</td>
+<td style="text-align:right">5,018.50 μs</td>
+<td style="text-align:right">932.314 μs</td>
+<td style="text-align:right">51.103 μs</td>
+<td style="text-align:right">1039.0625</td>
+<td style="text-align:right">492.1875</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">6016.33 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>vk</td>
+<td style="text-align:right">2,900.81 μs</td>
+<td style="text-align:right">79.652 μs</td>
+<td style="text-align:right">4.366 μs</td>
+<td style="text-align:right">214.8438</td>
+<td style="text-align:right">156.2500</td>
+<td style="text-align:right">156.2500</td>
+<td style="text-align:right">1174.17 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>weibo</strong></td>
+<td style="text-align:right"><strong>6,864.06 μs</strong></td>
+<td style="text-align:right"><strong>753.160 μs</strong></td>
+<td style="text-align:right"><strong>41.283 μs</strong></td>
+<td style="text-align:right"><strong>64468.7500</strong></td>
+<td style="text-align:right"><strong>1523.4375</strong></td>
+<td style="text-align:right"><strong>328.1250</strong></td>
+<td style="text-align:right"><strong>55621.54 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>weibo</td>
+<td style="text-align:right">6,301.79 μs</td>
+<td style="text-align:right">533.409 μs</td>
+<td style="text-align:right">29.238 μs</td>
+<td style="text-align:right">6210.9375</td>
+<td style="text-align:right">242.1875</td>
+<td style="text-align:right">78.1250</td>
+<td style="text-align:right">7947.5 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>weibo</td>
+<td style="text-align:right">1,957.82 μs</td>
+<td style="text-align:right">58.780 μs</td>
+<td style="text-align:right">3.222 μs</td>
+<td style="text-align:right">203.1250</td>
+<td style="text-align:right">85.9375</td>
+<td style="text-align:right">35.1563</td>
+<td style="text-align:right">972.91 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>wordpress</strong></td>
+<td style="text-align:right"><strong>1,548.06 μs</strong></td>
+<td style="text-align:right"><strong>51.681 μs</strong></td>
+<td style="text-align:right"><strong>2.833 μs</strong></td>
+<td style="text-align:right"><strong>197.2656</strong></td>
+<td style="text-align:right"><strong>76.1719</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>715.13 KB</strong></td>
+</tr>
+<tr>
+<td>CsQuery</td>
+<td>wordpress</td>
+<td style="text-align:right">1,517.53 μs</td>
+<td style="text-align:right">86.715 μs</td>
+<td style="text-align:right">4.753 μs</td>
+<td style="text-align:right">197.2656</td>
+<td style="text-align:right">76.1719</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">715.13 KB</td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>wordpress</td>
+<td style="text-align:right">2,479.26 μs</td>
+<td style="text-align:right">82.376 μs</td>
+<td style="text-align:right">4.515 μs</td>
+<td style="text-align:right">546.8750</td>
+<td style="text-align:right">203.1250</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1891.62 KB</td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>wordpress</td>
+<td style="text-align:right">2,492.86 μs</td>
+<td style="text-align:right">109.191 μs</td>
+<td style="text-align:right">5.985 μs</td>
+<td style="text-align:right">546.8750</td>
+<td style="text-align:right">203.1250</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">1891.62 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>wordpress</td>
+<td style="text-align:right">3,326.00 μs</td>
+<td style="text-align:right">172.623 μs</td>
+<td style="text-align:right">9.462 μs</td>
+<td style="text-align:right">171.8750</td>
+<td style="text-align:right">82.0313</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">898.76 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>wordpress</td>
+<td style="text-align:right">3,315.28 μs</td>
+<td style="text-align:right">70.997 μs</td>
+<td style="text-align:right">3.892 μs</td>
+<td style="text-align:right">171.8750</td>
+<td style="text-align:right">82.0313</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">898.76 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>yahoo</strong></td>
+<td style="text-align:right"><strong>23,053.18 μs</strong></td>
+<td style="text-align:right"><strong>13,648.954 μs</strong></td>
+<td style="text-align:right"><strong>748.145 μs</strong></td>
+<td style="text-align:right"><strong>12718.7500</strong></td>
+<td style="text-align:right"><strong>11000.0000</strong></td>
+<td style="text-align:right"><strong>9250.0000</strong></td>
+<td style="text-align:right"><strong>74161.32 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>yahoo</td>
+<td style="text-align:right">42,640.78 μs</td>
+<td style="text-align:right">5,029.334 μs</td>
+<td style="text-align:right">275.675 μs</td>
+<td style="text-align:right">45500.0000</td>
+<td style="text-align:right">333.3333</td>
+<td style="text-align:right">166.6667</td>
+<td style="text-align:right">49719.34 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>yahoo</td>
+<td style="text-align:right">19,797.23 μs</td>
+<td style="text-align:right">910.398 μs</td>
+<td style="text-align:right">49.902 μs</td>
+<td style="text-align:right">1468.7500</td>
+<td style="text-align:right">1187.5000</td>
+<td style="text-align:right">718.7500</td>
+<td style="text-align:right">7284.6 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>youtube</strong></td>
+<td style="text-align:right"><strong>183.10 μs</strong></td>
+<td style="text-align:right"><strong>4.834 μs</strong></td>
+<td style="text-align:right"><strong>0.265 μs</strong></td>
+<td style="text-align:right"><strong>103.7598</strong></td>
+<td style="text-align:right"><strong>14.4043</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>108.58 KB</strong></td>
+</tr>
+<tr>
+<td>HTMLAgilityPack</td>
+<td>youtube</td>
+<td style="text-align:right">368.96 μs</td>
+<td style="text-align:right">45.489 μs</td>
+<td style="text-align:right">2.493 μs</td>
+<td style="text-align:right">324.7070</td>
+<td style="text-align:right">39.5508</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">346.6 KB</td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>youtube</td>
+<td style="text-align:right">454.85 μs</td>
+<td style="text-align:right">41.482 μs</td>
+<td style="text-align:right">2.274 μs</td>
+<td style="text-align:right">119.6289</td>
+<td style="text-align:right">20.0195</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">144.41 KB</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="dom-querying-css-selectors" tabindex="-1">DOM Querying / CSS Selectors <a class="anchor" href="#dom-querying-css-selectors" aria-hidden="true">#</a></h3>
+<p>The setup for this test was:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">INI</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki"><code>BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19042
+AMD Ryzen 7 2700X, 1 CPU, 16 logical and 8 physical cores
+  [Host]   : .NET Framework 4.8 (4.8.4341.0), X64 RyuJIT
+  ShortRun : .NET Framework 4.8 (4.8.4341.0), X64 RyuJIT
+
+Job=ShortRun  IterationCount=3  LaunchCount=1
+WarmupCount=3
+</code></pre></div><p>The results are displayed below.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Selector</th>
+<th style="text-align:right">Mean</th>
+<th style="text-align:right">Error</th>
+<th style="text-align:right">StdDev</th>
+<th style="text-align:right">Gen 0</th>
+<th style="text-align:right">Gen 1</th>
+<th style="text-align:right">Gen 2</th>
+<th style="text-align:right">Allocated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>#title</strong></td>
+<td style="text-align:right"><strong>2.866 μs</strong></td>
+<td style="text-align:right"><strong>0.1455 μs</strong></td>
+<td style="text-align:right"><strong>0.0080 μs</strong></td>
+<td style="text-align:right"><strong>4.4479</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>3.42 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>#title</td>
+<td style="text-align:right">313.784 μs</td>
+<td style="text-align:right">13.9545 μs</td>
+<td style="text-align:right">0.7649 μs</td>
+<td style="text-align:right">21.4844</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">16.91 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>.note</strong></td>
+<td style="text-align:right"><strong>7.283 μs</strong></td>
+<td style="text-align:right"><strong>1.2611 μs</strong></td>
+<td style="text-align:right"><strong>0.0691 μs</strong></td>
+<td style="text-align:right"><strong>8.1787</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>6.28 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>.note</td>
+<td style="text-align:right">326.217 μs</td>
+<td style="text-align:right">25.8384 μs</td>
+<td style="text-align:right">1.4163 μs</td>
+<td style="text-align:right">21.9727</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.13 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>a[href]</strong></td>
+<td style="text-align:right"><strong>335.407 μs</strong></td>
+<td style="text-align:right"><strong>38.2870 μs</strong></td>
+<td style="text-align:right"><strong>2.0986 μs</strong></td>
+<td style="text-align:right"><strong>346.6797</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>266.64 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>a[href]</td>
+<td style="text-align:right">344.184 μs</td>
+<td style="text-align:right">9.6133 μs</td>
+<td style="text-align:right">0.5269 μs</td>
+<td style="text-align:right">27.3438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">21.21 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>a[href][lang][class]</strong></td>
+<td style="text-align:right"><strong>424.967 μs</strong></td>
+<td style="text-align:right"><strong>22.9636 μs</strong></td>
+<td style="text-align:right"><strong>1.2587 μs</strong></td>
+<td style="text-align:right"><strong>454.1016</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>349.71 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>a[href][lang][class]</td>
+<td style="text-align:right">331.470 μs</td>
+<td style="text-align:right">37.9205 μs</td>
+<td style="text-align:right">2.0786 μs</td>
+<td style="text-align:right">21.9727</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.25 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>body</strong></td>
+<td style="text-align:right"><strong>3.672 μs</strong></td>
+<td style="text-align:right"><strong>0.6654 μs</strong></td>
+<td style="text-align:right"><strong>0.0365 μs</strong></td>
+<td style="text-align:right"><strong>4.5700</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>3.51 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>body</td>
+<td style="text-align:right">313.239 μs</td>
+<td style="text-align:right">27.4278 μs</td>
+<td style="text-align:right">1.5034 μs</td>
+<td style="text-align:right">21.4844</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">16.91 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>body div</strong></td>
+<td style="text-align:right"><strong>28.863 μs</strong></td>
+<td style="text-align:right"><strong>3.9254 μs</strong></td>
+<td style="text-align:right"><strong>0.2152 μs</strong></td>
+<td style="text-align:right"><strong>28.3813</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>21.83 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>body div</td>
+<td style="text-align:right">334.852 μs</td>
+<td style="text-align:right">21.7180 μs</td>
+<td style="text-align:right">1.1904 μs</td>
+<td style="text-align:right">32.2266</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">25.01 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div</strong></td>
+<td style="text-align:right"><strong>20.936 μs</strong></td>
+<td style="text-align:right"><strong>2.8753 μs</strong></td>
+<td style="text-align:right"><strong>0.1576 μs</strong></td>
+<td style="text-align:right"><strong>20.3857</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>15.67 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div</td>
+<td style="text-align:right">333.623 μs</td>
+<td style="text-align:right">12.5988 μs</td>
+<td style="text-align:right">0.6906 μs</td>
+<td style="text-align:right">22.9492</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.92 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div #title</strong></td>
+<td style="text-align:right"><strong>81.408 μs</strong></td>
+<td style="text-align:right"><strong>0.8466 μs</strong></td>
+<td style="text-align:right"><strong>0.0464 μs</strong></td>
+<td style="text-align:right"><strong>78.9795</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>60.67 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div #title</td>
+<td style="text-align:right">330.792 μs</td>
+<td style="text-align:right">45.5623 μs</td>
+<td style="text-align:right">2.4974 μs</td>
+<td style="text-align:right">22.4609</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.33 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div + p</strong></td>
+<td style="text-align:right"><strong>58.216 μs</strong></td>
+<td style="text-align:right"><strong>3.6349 μs</strong></td>
+<td style="text-align:right"><strong>0.1992 μs</strong></td>
+<td style="text-align:right"><strong>54.5654</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>41.92 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div + p</td>
+<td style="text-align:right">420.089 μs</td>
+<td style="text-align:right">53.8564 μs</td>
+<td style="text-align:right">2.9521 μs</td>
+<td style="text-align:right">42.4805</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">32.99 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div &gt; p</strong></td>
+<td style="text-align:right"><strong>167.408 μs</strong></td>
+<td style="text-align:right"><strong>0.7517 μs</strong></td>
+<td style="text-align:right"><strong>0.0412 μs</strong></td>
+<td style="text-align:right"><strong>139.6484</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>107.47 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div &gt; p</td>
+<td style="text-align:right">355.433 μs</td>
+<td style="text-align:right">198.0923 μs</td>
+<td style="text-align:right">10.8581 μs</td>
+<td style="text-align:right">47.3633</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">36.54 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div &gt; p &gt; a</strong></td>
+<td style="text-align:right"><strong>359.735 μs</strong></td>
+<td style="text-align:right"><strong>16.1910 μs</strong></td>
+<td style="text-align:right"><strong>0.8875 μs</strong></td>
+<td style="text-align:right"><strong>308.1055</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>236.69 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div &gt; p &gt; a</td>
+<td style="text-align:right">347.709 μs</td>
+<td style="text-align:right">52.0621 μs</td>
+<td style="text-align:right">2.8537 μs</td>
+<td style="text-align:right">45.4102</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">35.02 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div p</strong></td>
+<td style="text-align:right"><strong>163.559 μs</strong></td>
+<td style="text-align:right"><strong>1.0895 μs</strong></td>
+<td style="text-align:right"><strong>0.0597 μs</strong></td>
+<td style="text-align:right"><strong>141.3574</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>108.61 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div p</td>
+<td style="text-align:right">377.680 μs</td>
+<td style="text-align:right">22.3904 μs</td>
+<td style="text-align:right">1.2273 μs</td>
+<td style="text-align:right">84.4727</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">64.98 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div p a</strong></td>
+<td style="text-align:right"><strong>366.239 μs</strong></td>
+<td style="text-align:right"><strong>15.9706 μs</strong></td>
+<td style="text-align:right"><strong>0.8754 μs</strong></td>
+<td style="text-align:right"><strong>317.8711</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>244.52 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div p a</td>
+<td style="text-align:right">437.168 μs</td>
+<td style="text-align:right">30.2473 μs</td>
+<td style="text-align:right">1.6580 μs</td>
+<td style="text-align:right">106.4453</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">82.09 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div ~ p</strong></td>
+<td style="text-align:right"><strong>5,177.381 μs</strong></td>
+<td style="text-align:right"><strong>205.7935 μs</strong></td>
+<td style="text-align:right"><strong>11.2802 μs</strong></td>
+<td style="text-align:right"><strong>6203.1250</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>4769.67 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div ~ p</td>
+<td style="text-align:right">1,895.874 μs</td>
+<td style="text-align:right">435.0403 μs</td>
+<td style="text-align:right">23.8460 μs</td>
+<td style="text-align:right">957.0313</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">736.77 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div, p, a</strong></td>
+<td style="text-align:right"><strong>380.255 μs</strong></td>
+<td style="text-align:right"><strong>33.9667 μs</strong></td>
+<td style="text-align:right"><strong>1.8618 μs</strong></td>
+<td style="text-align:right"><strong>172.8516</strong></td>
+<td style="text-align:right"><strong>18.5547</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>170.5 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div, p, a</td>
+<td style="text-align:right">365.555 μs</td>
+<td style="text-align:right">37.8889 μs</td>
+<td style="text-align:right">2.0768 μs</td>
+<td style="text-align:right">43.4570</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">33.48 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div.example</strong></td>
+<td style="text-align:right"><strong>58.140 μs</strong></td>
+<td style="text-align:right"><strong>6.4138 μs</strong></td>
+<td style="text-align:right"><strong>0.3516 μs</strong></td>
+<td style="text-align:right"><strong>66.5283</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>51.14 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div.example</td>
+<td style="text-align:right">342.246 μs</td>
+<td style="text-align:right">3.7113 μs</td>
+<td style="text-align:right">0.2034 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.11 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div.e(...).note [21]</strong></td>
+<td style="text-align:right"><strong>98.881 μs</strong></td>
+<td style="text-align:right"><strong>4.8513 μs</strong></td>
+<td style="text-align:right"><strong>0.2659 μs</strong></td>
+<td style="text-align:right"><strong>110.4736</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>84.91 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div.e(...).note [21]</td>
+<td style="text-align:right">347.342 μs</td>
+<td style="text-align:right">40.8616 μs</td>
+<td style="text-align:right">2.2398 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.52 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div:not(.example)</strong></td>
+<td style="text-align:right"><strong>44.816 μs</strong></td>
+<td style="text-align:right"><strong>0.7542 μs</strong></td>
+<td style="text-align:right"><strong>0.0413 μs</strong></td>
+<td style="text-align:right"><strong>34.9121</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>26.83 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div:not(.example)</td>
+<td style="text-align:right">322.179 μs</td>
+<td style="text-align:right">10.9380 μs</td>
+<td style="text-align:right">0.5995 μs</td>
+<td style="text-align:right">22.4609</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.59 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class!=made_up]</strong></td>
+<td style="text-align:right"><strong>45.888 μs</strong></td>
+<td style="text-align:right"><strong>12.9403 μs</strong></td>
+<td style="text-align:right"><strong>0.7093 μs</strong></td>
+<td style="text-align:right"><strong>49.8657</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>38.35 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class!=made_up]</td>
+<td style="text-align:right">312.672 μs</td>
+<td style="text-align:right">2.2162 μs</td>
+<td style="text-align:right">0.1215 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.21 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class$=mple]</strong></td>
+<td style="text-align:right"><strong>83.416 μs</strong></td>
+<td style="text-align:right"><strong>5.0121 μs</strong></td>
+<td style="text-align:right"><strong>0.2747 μs</strong></td>
+<td style="text-align:right"><strong>97.6563</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>75.09 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class$=mple]</td>
+<td style="text-align:right">320.199 μs</td>
+<td style="text-align:right">4.9361 μs</td>
+<td style="text-align:right">0.2706 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.21 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><em><em>div[class</em>=e]</em>*</td>
+<td style="text-align:right"><strong>84.710 μs</strong></td>
+<td style="text-align:right"><strong>8.6005 μs</strong></td>
+<td style="text-align:right"><strong>0.4714 μs</strong></td>
+<td style="text-align:right"><strong>95.9473</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>73.76 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class*=e]</td>
+<td style="text-align:right">313.320 μs</td>
+<td style="text-align:right">11.9783 μs</td>
+<td style="text-align:right">0.6566 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.21 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class=example]</strong></td>
+<td style="text-align:right"><strong>83.916 μs</strong></td>
+<td style="text-align:right"><strong>2.8985 μs</strong></td>
+<td style="text-align:right"><strong>0.1589 μs</strong></td>
+<td style="text-align:right"><strong>95.5811</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>73.45 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class=example]</td>
+<td style="text-align:right">316.863 μs</td>
+<td style="text-align:right">28.4840 μs</td>
+<td style="text-align:right">1.5613 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.22 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class]</strong></td>
+<td style="text-align:right"><strong>61.271 μs</strong></td>
+<td style="text-align:right"><strong>1.7982 μs</strong></td>
+<td style="text-align:right"><strong>0.0986 μs</strong></td>
+<td style="text-align:right"><strong>69.0918</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>53.14 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class]</td>
+<td style="text-align:right">316.051 μs</td>
+<td style="text-align:right">14.2653 μs</td>
+<td style="text-align:right">0.7819 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.15 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class^=exa]</strong></td>
+<td style="text-align:right"><strong>83.783 μs</strong></td>
+<td style="text-align:right"><strong>18.9781 μs</strong></td>
+<td style="text-align:right"><strong>1.0403 μs</strong></td>
+<td style="text-align:right"><strong>96.9238</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>74.54 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class^=exa]</td>
+<td style="text-align:right">311.789 μs</td>
+<td style="text-align:right">16.0779 μs</td>
+<td style="text-align:right">0.8813 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.21 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[c(...)mple] [28]</strong></td>
+<td style="text-align:right"><strong>135.848 μs</strong></td>
+<td style="text-align:right"><strong>6.9089 μs</strong></td>
+<td style="text-align:right"><strong>0.3787 μs</strong></td>
+<td style="text-align:right"><strong>166.5039</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>128.02 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[c(...)mple] [28]</td>
+<td style="text-align:right">320.242 μs</td>
+<td style="text-align:right">19.4510 μs</td>
+<td style="text-align:right">1.0662 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.33 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td>**div[class</td>
+<td style="text-align:right">=dialog]**</td>
+<td style="text-align:right"><strong>80.618 μs</strong></td>
+<td style="text-align:right"><strong>3.2140 μs</strong></td>
+<td style="text-align:right"><strong>0.1762 μs</strong></td>
+<td style="text-align:right"><strong>77.3926</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class</td>
+<td style="text-align:right">=dialog]</td>
+<td style="text-align:right">310.329 μs</td>
+<td style="text-align:right">13.1120 μs</td>
+<td style="text-align:right">0.7187 μs</td>
+<td style="text-align:right">21.9727</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>div[class~=example]</strong></td>
+<td style="text-align:right"><strong>102.342 μs</strong></td>
+<td style="text-align:right"><strong>2.3261 μs</strong></td>
+<td style="text-align:right"><strong>0.1275 μs</strong></td>
+<td style="text-align:right"><strong>117.5537</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>90.3 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>div[class~=example]</td>
+<td style="text-align:right">334.092 μs</td>
+<td style="text-align:right">10.3627 μs</td>
+<td style="text-align:right">0.5680 μs</td>
+<td style="text-align:right">46.3867</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">36.08 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>h1#title</strong></td>
+<td style="text-align:right"><strong>4.880 μs</strong></td>
+<td style="text-align:right"><strong>0.2186 μs</strong></td>
+<td style="text-align:right"><strong>0.0120 μs</strong></td>
+<td style="text-align:right"><strong>6.7062</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>5.16 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>h1#title</td>
+<td style="text-align:right">325.145 μs</td>
+<td style="text-align:right">103.5076 μs</td>
+<td style="text-align:right">5.6736 μs</td>
+<td style="text-align:right">21.9727</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.11 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>h1#title + div &gt; p</strong></td>
+<td style="text-align:right"><strong>8.236 μs</strong></td>
+<td style="text-align:right"><strong>0.1216 μs</strong></td>
+<td style="text-align:right"><strong>0.0067 μs</strong></td>
+<td style="text-align:right"><strong>9.7656</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>7.51 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>h1#title + div &gt; p</td>
+<td style="text-align:right">417.149 μs</td>
+<td style="text-align:right">28.1992 μs</td>
+<td style="text-align:right">1.5457 μs</td>
+<td style="text-align:right">50.2930</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">38.96 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>h1[id(...)tors) [26]</strong></td>
+<td style="text-align:right"><strong>9.698 μs</strong></td>
+<td style="text-align:right"><strong>0.4063 μs</strong></td>
+<td style="text-align:right"><strong>0.0223 μs</strong></td>
+<td style="text-align:right"><strong>9.8114</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>7.55 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>h1[id(...)tors) [26]</td>
+<td style="text-align:right">333.738 μs</td>
+<td style="text-align:right">47.5316 μs</td>
+<td style="text-align:right">2.6054 μs</td>
+<td style="text-align:right">22.4609</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.7 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:con(...)tors) [21]</strong></td>
+<td style="text-align:right"><strong>383.667 μs</strong></td>
+<td style="text-align:right"><strong>7.8307 μs</strong></td>
+<td style="text-align:right"><strong>0.4292 μs</strong></td>
+<td style="text-align:right"><strong>59.0820</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>45.61 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:con(...)tors) [21]</td>
+<td style="text-align:right">717.665 μs</td>
+<td style="text-align:right">17.4106 μs</td>
+<td style="text-align:right">0.9543 μs</td>
+<td style="text-align:right">313.4766</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">241.68 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:first-child</strong></td>
+<td style="text-align:right"><strong>110.793 μs</strong></td>
+<td style="text-align:right"><strong>17.4810 μs</strong></td>
+<td style="text-align:right"><strong>0.9582 μs</strong></td>
+<td style="text-align:right"><strong>78.8574</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>60.62 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:first-child</td>
+<td style="text-align:right">338.089 μs</td>
+<td style="text-align:right">60.8125 μs</td>
+<td style="text-align:right">3.3333 μs</td>
+<td style="text-align:right">22.9492</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.11 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:last-child</strong></td>
+<td style="text-align:right"><strong>102.990 μs</strong></td>
+<td style="text-align:right"><strong>39.6095 μs</strong></td>
+<td style="text-align:right"><strong>2.1711 μs</strong></td>
+<td style="text-align:right"><strong>66.5283</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>51.15 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:last-child</td>
+<td style="text-align:right">336.307 μs</td>
+<td style="text-align:right">17.5237 μs</td>
+<td style="text-align:right">0.9605 μs</td>
+<td style="text-align:right">22.4609</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.57 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:nth-child(2n)</strong></td>
+<td style="text-align:right"><strong>585.353 μs</strong></td>
+<td style="text-align:right"><strong>15.8116 μs</strong></td>
+<td style="text-align:right"><strong>0.8667 μs</strong></td>
+<td style="text-align:right"><strong>166.0156</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>127.86 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:nth-child(2n)</td>
+<td style="text-align:right">1,202.662 μs</td>
+<td style="text-align:right">62.5433 μs</td>
+<td style="text-align:right">3.4282 μs</td>
+<td style="text-align:right">27.3438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">21.32 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:nth-child(2n+1)</strong></td>
+<td style="text-align:right"><strong>587.156 μs</strong></td>
+<td style="text-align:right"><strong>4.7381 μs</strong></td>
+<td style="text-align:right"><strong>0.2597 μs</strong></td>
+<td style="text-align:right"><strong>166.9922</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>129.01 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:nth-child(2n+1)</td>
+<td style="text-align:right">1,240.121 μs</td>
+<td style="text-align:right">124.2185 μs</td>
+<td style="text-align:right">6.8088 μs</td>
+<td style="text-align:right">27.3438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">21.34 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:nth-child(even)</strong></td>
+<td style="text-align:right"><strong>581.644 μs</strong></td>
+<td style="text-align:right"><strong>13.6114 μs</strong></td>
+<td style="text-align:right"><strong>0.7461 μs</strong></td>
+<td style="text-align:right"><strong>166.0156</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>127.88 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:nth-child(even)</td>
+<td style="text-align:right">1,250.388 μs</td>
+<td style="text-align:right">354.2351 μs</td>
+<td style="text-align:right">19.4168 μs</td>
+<td style="text-align:right">27.3438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">21.3 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:nth-child(n)</strong></td>
+<td style="text-align:right"><strong>625.485 μs</strong></td>
+<td style="text-align:right"><strong>33.0617 μs</strong></td>
+<td style="text-align:right"><strong>1.8122 μs</strong></td>
+<td style="text-align:right"><strong>225.5859</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>173.52 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:nth-child(n)</td>
+<td style="text-align:right">1,216.186 μs</td>
+<td style="text-align:right">82.9399 μs</td>
+<td style="text-align:right">4.5462 μs</td>
+<td style="text-align:right">31.2500</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">25.32 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:nth-child(odd)</strong></td>
+<td style="text-align:right"><strong>591.015 μs</strong></td>
+<td style="text-align:right"><strong>208.7191 μs</strong></td>
+<td style="text-align:right"><strong>11.4406 μs</strong></td>
+<td style="text-align:right"><strong>166.9922</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>129 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:nth-child(odd)</td>
+<td style="text-align:right">1,190.050 μs</td>
+<td style="text-align:right">45.8750 μs</td>
+<td style="text-align:right">2.5146 μs</td>
+<td style="text-align:right">27.3438</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">21.3 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>p:only-child</strong></td>
+<td style="text-align:right"><strong>140.605 μs</strong></td>
+<td style="text-align:right"><strong>16.9213 μs</strong></td>
+<td style="text-align:right"><strong>0.9275 μs</strong></td>
+<td style="text-align:right"><strong>102.0508</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>78.48 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>p:only-child</td>
+<td style="text-align:right">526.919 μs</td>
+<td style="text-align:right">29.0772 μs</td>
+<td style="text-align:right">1.5938 μs</td>
+<td style="text-align:right">21.4844</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">17.07 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>ul .tocline2</strong></td>
+<td style="text-align:right"><strong>49.207 μs</strong></td>
+<td style="text-align:right"><strong>1.4457 μs</strong></td>
+<td style="text-align:right"><strong>0.0792 μs</strong></td>
+<td style="text-align:right"><strong>45.7153</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>35.13 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>ul .tocline2</td>
+<td style="text-align:right">335.199 μs</td>
+<td style="text-align:right">7.0508 μs</td>
+<td style="text-align:right">0.3865 μs</td>
+<td style="text-align:right">24.4141</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">19.04 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>ul.toc &gt; li.tocline2</strong></td>
+<td style="text-align:right"><strong>95.223 μs</strong></td>
+<td style="text-align:right"><strong>9.4951 μs</strong></td>
+<td style="text-align:right"><strong>0.5205 μs</strong></td>
+<td style="text-align:right"><strong>88.9893</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>68.44 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>ul.toc &gt; li.tocline2</td>
+<td style="text-align:right">343.599 μs</td>
+<td style="text-align:right">32.2316 μs</td>
+<td style="text-align:right">1.7667 μs</td>
+<td style="text-align:right">23.4375</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">18.38 KB</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td><strong>CsQuery</strong></td>
+<td><strong>ul.toc li.tocline2</strong></td>
+<td style="text-align:right"><strong>121.851 μs</strong></td>
+<td style="text-align:right"><strong>2.0593 μs</strong></td>
+<td style="text-align:right"><strong>0.1129 μs</strong></td>
+<td style="text-align:right"><strong>108.8867</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>-</strong></td>
+<td style="text-align:right"><strong>83.7 KB</strong></td>
+</tr>
+<tr>
+<td>AngleSharp</td>
+<td>ul.toc li.tocline2</td>
+<td style="text-align:right">341.464 μs</td>
+<td style="text-align:right">45.5889 μs</td>
+<td style="text-align:right">2.4989 μs</td>
+<td style="text-align:right">24.9023</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">-</td>
+<td style="text-align:right">19.38 KB</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp/edit/devel/docs/general/04-Performance.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/anglesharp/general/performance/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp/tree/c7ac782c5ef0c35aca936f44696bdea7e2b70851" target="_blank" rel="noopener"><code>c7ac782</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/anglesharp/general/upcoming/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Roadmap and Ecosystem</span></a>
+      <a class="pager-next" href="/docs/anglesharp/tutorials/api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>API Documentation</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#general-considerations" title="General Considerations">General Considerations</a></li><li class="toc-l2"><a href="#comparison-with-the-html-agility-pack" title="Comparison with the Html Agility Pack">Comparison with the Html Agility Pack</a></li><li class="toc-l2"><a href="#comparison-with-csquery-validatornu-html-parser" title="Comparison with CsQuery / validator.nu HTML Parser">Comparison with CsQuery / validator.nu HTML Parser</a></li><li class="toc-l2"><a href="#comparison-with-other-solutions" title="Comparison with Other Solutions">Comparison with Other Solutions</a></li><li class="toc-l2"><a href="#current-performance" title="Current Performance">Current Performance</a></li><li class="toc-l3"><a href="#html-parser" title="HTML Parser">HTML Parser</a></li><li class="toc-l3"><a href="#dom-querying-css-selectors" title="DOM Querying / CSS Selectors">DOM Querying / CSS Selectors</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

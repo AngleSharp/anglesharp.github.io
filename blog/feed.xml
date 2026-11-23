@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>AngleSharp Blog</title>
+  <link>https://anglesharp.github.io/blog/</link>
+  <atom:link href="https://anglesharp.github.io/blog/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>News and releases from the AngleSharp project.</description>
+  <language>en</language>
+  <item>
+    <title>AngleSharp 1.10.0</title>
+    <link>https://anglesharp.github.io/blog/2026/anglesharp-v110-release/</link>
+    <guid>https://anglesharp.github.io/blog/2026/anglesharp-v110-release/</guid>
+    <pubDate>Fri, 06 Nov 2026 13:15:00 GMT</pubDate>
+    <description>Happy to share that we have some big release party today:</description>
+  </item>
+  <item>
+    <title>AngleSharp.Js 1.0.0</title>
+    <link>https://anglesharp.github.io/blog/2026/anglesharp-js-v100-release/</link>
+    <guid>https://anglesharp.github.io/blog/2026/anglesharp-js-v100-release/</guid>
+    <pubDate>Sat, 01 Aug 2026 13:15:00 GMT</pubDate>
+    <description>Another long awaited milestone has finally arrived:</description>
+  </item>
+  <item>
+    <title>AngleSharp 1.6.0</title>
+    <link>https://anglesharp.github.io/blog/2026/anglesharp-v160/</link>
+    <guid>https://anglesharp.github.io/blog/2026/anglesharp-v160/</guid>
+    <pubDate>Mon, 27 Jul 2026 00:15:00 GMT</pubDate>
+    <description>It's time for another release! I'm happy to announce that AngleSharp 1.6.0 is now available.</description>
+  </item>
+  <item>
+    <title>AngleSharp.Css 1.0.0</title>
+    <link>https://anglesharp.github.io/blog/2026/anglesharp-css-v1/</link>
+    <guid>https://anglesharp.github.io/blog/2026/anglesharp-css-v1/</guid>
+    <pubDate>Sat, 25 Jul 2026 17:10:00 GMT</pubDate>
+    <description>Some milestones arrive quickly. Others... take a little longer...</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.14.0</title>
+    <link>https://anglesharp.github.io/blog/2020/anglesharp-v0140/</link>
+    <guid>https://anglesharp.github.io/blog/2020/anglesharp-v0140/</guid>
+    <pubDate>Fri, 13 Mar 2020 07:13:00 GMT</pubDate>
+    <description>In the past few months it was a bit more quiet in the whole AngleSharp ecosystem. There have been a couple of reasons for this, but most importantly: AngleSharp has reached maturity and is ready for going into 1.0 .</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.12.1</title>
+    <link>https://anglesharp.github.io/blog/2019/anglesharp-v0121/</link>
+    <guid>https://anglesharp.github.io/blog/2019/anglesharp-v0121/</guid>
+    <pubDate>Wed, 15 May 2019 12:52:00 GMT</pubDate>
+    <description>Yesterday a small hotfix release for AngleSharp v0.12 was released. With AngleSharp v0.12.1 also all the major libraries have been updated to v0.12.1 as well:</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.12 and the future</title>
+    <link>https://anglesharp.github.io/blog/2019/anglesharp-v012-forward/</link>
+    <guid>https://anglesharp.github.io/blog/2019/anglesharp-v012-forward/</guid>
+    <pubDate>Mon, 06 May 2019 22:23:10 GMT</pubDate>
+    <description>Last week the latest version of AngleSharp v0.12 has been released. Not only the core library was updated to v0.12, but we also started updating some related libraries. So far we released:</description>
+  </item>
+  <item>
+    <title>Joining the .NET Foundation</title>
+    <link>https://anglesharp.github.io/blog/2019/dotnet-foundation/</link>
+    <guid>https://anglesharp.github.io/blog/2019/dotnet-foundation/</guid>
+    <pubDate>Thu, 02 May 2019 15:00:00 GMT</pubDate>
+    <description>Today version v0.12 of AngleSharp has been published. Like v0.11 this is only an intermediate release before becoming officially stable with v1.0. Obviously, I could now write a bit on the bugfixes, enhancements, and…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.11.0 released</title>
+    <link>https://anglesharp.github.io/blog/2019/anglesharp-v011-released/</link>
+    <guid>https://anglesharp.github.io/blog/2019/anglesharp-v011-released/</guid>
+    <pubDate>Tue, 12 Feb 2019 09:20:00 GMT</pubDate>
+    <description>Yesterday the latest version of AngleSharp has been released. This version corrects some smaller issues of the big 0.10 release published a month ago. It also brings some further advancements such as improved fragment…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.10.0 released</title>
+    <link>https://anglesharp.github.io/blog/2019/anglesharp-v010-released/</link>
+    <guid>https://anglesharp.github.io/blog/2019/anglesharp-v010-released/</guid>
+    <pubDate>Sun, 06 Jan 2019 10:49:00 GMT</pubDate>
+    <description>After more than 2 years AngleSharp v0.10 has finally become a reality. Jointly with AngleSharp.Io and AngleSharp.Css we now enter the v0.10 release cycle an important milestone before hitting v1. The next step is an…</description>
+  </item>
+  <item>
+    <title>Taking AngleSharp to the Next Level</title>
+    <link>https://anglesharp.github.io/blog/2018/taking-anglesharp-to-the-next-level/</link>
+    <guid>https://anglesharp.github.io/blog/2018/taking-anglesharp-to-the-next-level/</guid>
+    <pubDate>Fri, 09 Mar 2018 10:15:00 GMT</pubDate>
+    <description>In the recent two months some advancements have been made to ensure that AngleSharp will see active development also in the future. Today I am happy to announce that plans for joining the .NET Foundation are becoming…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.9.1 released</title>
+    <link>https://anglesharp.github.io/blog/2018/anglesharp-v099-released/</link>
+    <guid>https://anglesharp.github.io/blog/2018/anglesharp-v099-released/</guid>
+    <pubDate>Wed, 03 Jan 2018 16:01:00 GMT</pubDate>
+    <description>For over a year the development of AngleSharp was stale. But the project is not dead! Today I am proud to release a hotfix to the very successful version v0.9.9, called v0.9.9.1. This hotfix contains some critical fixes…</description>
+  </item>
+  <item>
+    <title>AngleSharp Scripting v0.5.0 released</title>
+    <link>https://anglesharp.github.io/blog/2016/anglesharp-scripting-v050-released/</link>
+    <guid>https://anglesharp.github.io/blog/2016/anglesharp-scripting-v050-released/</guid>
+    <pubDate>Mon, 03 Oct 2016 11:45:00 GMT</pubDate>
+    <description>Just now the latest version of the JavaScript scripting extension AngleSharp.Scripting.JavaScript was released. In the new release with the version 0.5.0 a couple of bug fixes and improvements have been placed. All in…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.8 released</title>
+    <link>https://anglesharp.github.io/blog/2016/anglesharp-v098-released/</link>
+    <guid>https://anglesharp.github.io/blog/2016/anglesharp-v098-released/</guid>
+    <pubDate>Sun, 04 Sep 2016 17:40:00 GMT</pubDate>
+    <description>Yesterday version 0.9.8 of AngleSharp has been released. There are not too many API changes and barely any breaking change so one should not notice anything.</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.7 released</title>
+    <link>https://anglesharp.github.io/blog/2016/anglesharp-v97-released/</link>
+    <guid>https://anglesharp.github.io/blog/2016/anglesharp-v97-released/</guid>
+    <pubDate>Sat, 16 Jul 2016 22:20:00 GMT</pubDate>
+    <description>Too much time has past since the last update. The current release v0.9.7 marks the beginning of a dramatic change in the AngleSharp philosophy. For all related projects the target will change with the upcoming version.…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.6 released</title>
+    <link>https://anglesharp.github.io/blog/2016/anglesharp-v96-released/</link>
+    <guid>https://anglesharp.github.io/blog/2016/anglesharp-v96-released/</guid>
+    <pubDate>Fri, 06 May 2016 13:27:00 GMT</pubDate>
+    <description>More than two months after the release of AngleSharp v0.9.5 the new version v0.9.6 has been published. Besides some bug fixes the version focused on starting some changes regarding the final API touches and…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.5 released</title>
+    <link>https://anglesharp.github.io/blog/2016/anglesharp-v95-released/</link>
+    <guid>https://anglesharp.github.io/blog/2016/anglesharp-v95-released/</guid>
+    <pubDate>Thu, 17 Mar 2016 14:44:00 GMT</pubDate>
+    <description>It has been quite a while until the last release, but better late than never: AngleSharp v0.9.5 is now available. There have been some bug fixes and improvements. Most importantly (and thanks to Jeremy Meng from…</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.4 released</title>
+    <link>https://anglesharp.github.io/blog/2015/anglesharp-v094-released/</link>
+    <guid>https://anglesharp.github.io/blog/2015/anglesharp-v094-released/</guid>
+    <pubDate>Thu, 31 Dec 2015 08:36:00 GMT</pubDate>
+    <description>Finally, after weeks of delays and many discussions, AngleSharp v0.9.4 is available. There have been some bug fixes and improvements. Most importantly, these are encoding and insertion pointer fixes.</description>
+  </item>
+  <item>
+    <title>AngleSharp v0.9.3 released</title>
+    <link>https://anglesharp.github.io/blog/2015/anglesharp-v093-released/</link>
+    <guid>https://anglesharp.github.io/blog/2015/anglesharp-v093-released/</guid>
+    <pubDate>Mon, 12 Oct 2015 11:44:00 GMT</pubDate>
+    <description>AngleSharp v0.9.3 is another round of minor updates. Besides a few bug fixes the CompareDocumentPosition method has been improved. It now passes all tests and works reliably.</description>
+  </item>
+  <item>
+    <title>AngleSharp IO</title>
+    <link>https://anglesharp.github.io/blog/2015/anglesharp-io/</link>
+    <guid>https://anglesharp.github.io/blog/2015/anglesharp-io/</guid>
+    <pubDate>Sun, 04 Oct 2015 23:34:00 GMT</pubDate>
+    <description>In the last days one of the remaining projects was officially launched: AngleSharp.Io . This library will provide many essential IO classes, helper methods, and DOM interfaces. Most importantly it will bring new /…</description>
+  </item>
+</channel>
+</rss>

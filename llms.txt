@@ -1,0 +1,146 @@
+# AngleSharp
+
+> AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.
+
+Important notes:
+
+- AngleSharp is a .NET library (C#). The core package `AngleSharp` has no dependencies and targets .NET Standard 2.0 as well as modern .NET.
+- Everything starts from a `BrowsingContext` created with a `Configuration` (e.g. `BrowsingContext.New(Configuration.Default)`); documents are loaded via `context.OpenAsync(...)` or parsed directly with `HtmlParser`.
+- The DOM follows the W3C/WHATWG specifications, so the API mirrors the browser DOM in PascalCase (`QuerySelector`, `TextContent`, `GetAttribute`, ...).
+- Capabilities beyond the core are opt-in companion packages that extend the configuration, e.g. `.WithCss()` (AngleSharp.Css), `.WithJs()` (AngleSharp.Js), `.WithXml()` (AngleSharp.Xml), `.WithDefaultLoader()` for loading resources.
+- Latest stable version of the core package: 1.10.5.
+- Every page linked below is plain markdown. Append `index.html.md` to any page URL of this site to get its markdown version. All documentation in one file: https://anglesharp.github.io/llms-full.txt
+
+## Projects
+
+- [AngleSharp](https://anglesharp.github.io/docs/anglesharp/index.html.md): The standards-driven HTML5 parser and DOM. — NuGet: AngleSharp 1.10.5 — status: stable
+- [AngleSharp.Css](https://anglesharp.github.io/docs/css/index.html.md): Full CSS parser, CSSOM, and style computation. — NuGet: AngleSharp.Css 1.5.0 — status: stable
+- [AngleSharp.Js](https://anglesharp.github.io/docs/js/index.html.md): Run JavaScript against the DOM via Jint. — NuGet: AngleSharp.Js 1.2.3 — status: stable
+- [AngleSharp.Xml](https://anglesharp.github.io/docs/xml/index.html.md): XML and DTD parsing with DOM capabilities. — NuGet: AngleSharp.Xml 1.3.1 — status: stable
+- [AngleSharp.Io](https://anglesharp.github.io/docs/io/index.html.md): Requesters, downloads, storage, and caching. — NuGet: AngleSharp.Io 1.3.3 — status: stable
+- [AngleSharp.XPath](https://anglesharp.github.io/docs/xpath/index.html.md): Select nodes via XPath expressions. — NuGet: AngleSharp.XPath 2.0.10 — status: stable
+- [AngleSharp.Diffing](https://anglesharp.github.io/docs/diffing/index.html.md): Compare DOM trees and get semantic differences. — NuGet: AngleSharp.Diffing 1.1.1 — status: stable
+- [AngleSharp.Wasm](https://anglesharp.github.io/docs/wasm/index.html.md): WebAssembly support for browsing contexts. — NuGet: AngleSharp.Wasm 1.1.1 — status: stable
+- [AngleSharp.Renderer](https://anglesharp.github.io/docs/renderer/index.html.md): Layout and paint the styled DOM. — NuGet: AngleSharp.Renderer 0.12.0 — status: preview
+- [AngleSharp.Browser](https://anglesharp.github.io/docs/browser/index.html.md): The whole ecosystem, assembled into a browser. — NuGet: AngleSharp.Browser 0.2.0 — status: preview
+
+## AngleSharp documentation
+
+- [Overview](https://anglesharp.github.io/docs/anglesharp/index.html.md): HTML parser, DOM provider, CSS selector engine, and core utilities. Helpers and parsing for MIME types, URLs, source sets, and many more. Provides the extension points used by all other projects.
+- [Getting Started](https://anglesharp.github.io/docs/anglesharp/general/basics/index.html.md): Guides
+- [Included Features](https://anglesharp.github.io/docs/anglesharp/general/features/index.html.md): Guides
+- [Roadmap and Ecosystem](https://anglesharp.github.io/docs/anglesharp/general/upcoming/index.html.md): Guides
+- [Performance](https://anglesharp.github.io/docs/anglesharp/general/performance/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/anglesharp/tutorials/api/index.html.md): Tutorials
+- [Configuration](https://anglesharp.github.io/docs/anglesharp/tutorials/options/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/anglesharp/tutorials/examples/index.html.md): Tutorials
+- [Forms](https://anglesharp.github.io/docs/anglesharp/tutorials/forms/index.html.md): Tutorials
+- [Upgrading](https://anglesharp.github.io/docs/anglesharp/tutorials/migration/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/anglesharp/tutorials/questions/index.html.md): Tutorials
+- [Popovers](https://anglesharp.github.io/docs/anglesharp/tutorials/popovers/index.html.md): Tutorials
+
+## AngleSharp.Css documentation
+
+- [Overview](https://anglesharp.github.io/docs/css/index.html.md): A full CSS parser and CSSOM provider to include support for stylesheets, inline styles, and style computations within AngleSharp.
+- [Getting Started](https://anglesharp.github.io/docs/css/general/basics/index.html.md): Guides
+- [Types of Values](https://anglesharp.github.io/docs/css/general/values/index.html.md): Guides
+- [CSSOM](https://anglesharp.github.io/docs/css/general/cssom/index.html.md): Guides
+- [Core Interfaces](https://anglesharp.github.io/docs/css/general/core-interfaces/index.html.md): Guides
+- [Extensibility](https://anglesharp.github.io/docs/css/general/extensibility/index.html.md): Guides
+- [Provided Services](https://anglesharp.github.io/docs/css/general/provided-services/index.html.md): Guides
+- [Supported Rules](https://anglesharp.github.io/docs/css/general/supported-at-rules/index.html.md): Guides
+- [Supported Declarations](https://anglesharp.github.io/docs/css/general/supported-declarations/index.html.md): Guides
+- [Typed OM](https://anglesharp.github.io/docs/css/general/typed-om/index.html.md): Guides
+- [Painting API](https://anglesharp.github.io/docs/css/general/painting-api/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/css/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/css/tutorials/examples/index.html.md): Tutorials
+- [Render Tree](https://anglesharp.github.io/docs/css/tutorials/render-tree/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/css/tutorials/questions/index.html.md): Tutorials
+
+## AngleSharp.Js documentation
+
+- [Overview](https://anglesharp.github.io/docs/js/index.html.md): Integrates a .NET-based JavaScript engine (Jint) and provides the DOM bindings, so scripts in a page can run and interact with the document.
+- [Getting Started](https://anglesharp.github.io/docs/js/general/basics/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/js/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/js/tutorials/examples/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/js/tutorials/questions/index.html.md): Tutorials
+
+## AngleSharp.Xml documentation
+
+- [Overview](https://anglesharp.github.io/docs/xml/index.html.md): Adds DOM capabilities to XML documents, including XHTML, SVG documents, and DTD validation.
+- [Getting Started](https://anglesharp.github.io/docs/xml/general/basics/index.html.md): Guides
+- [Capabilities](https://anglesharp.github.io/docs/xml/general/capabilities/index.html.md): Guides
+- [Limitations](https://anglesharp.github.io/docs/xml/general/limitations/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/xml/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/xml/tutorials/examples/index.html.md): Tutorials
+- [Practical Use Cases](https://anglesharp.github.io/docs/xml/tutorials/use-cases/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/xml/tutorials/questions/index.html.md): Tutorials
+- [DTD Validation](https://anglesharp.github.io/docs/xml/tutorials/dtd-validation/index.html.md): Tutorials
+
+## AngleSharp.Io documentation
+
+- [Overview](https://anglesharp.github.io/docs/io/index.html.md): IO modules and helpers, including improved requesters, file downloads, storage abilities, and caching mechanisms.
+- [Getting Started](https://anglesharp.github.io/docs/io/general/basics/index.html.md): Guides
+- [DOM Objects and Helpers](https://anglesharp.github.io/docs/io/general/dom-objects-and-helpers/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/io/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/io/tutorials/examples/index.html.md): Tutorials
+- [Common Workflows](https://anglesharp.github.io/docs/io/tutorials/common-workflows/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/io/tutorials/questions/index.html.md): Tutorials
+
+## AngleSharp.XPath documentation
+
+- [Overview](https://anglesharp.github.io/docs/xpath/index.html.md): Adds the ability to select nodes via XPath queries as an alternative to CSS selector syntax.
+
+## AngleSharp.Diffing documentation
+
+- [Overview](https://anglesharp.github.io/docs/diffing/index.html.md): Compares two AngleSharp node lists and yields a list of differences between them. Powers the markup verification in bUnit.
+
+## AngleSharp.Wasm documentation
+
+- [Overview](https://anglesharp.github.io/docs/wasm/index.html.md): Adds support for running and interacting with WebAssembly modules from within AngleSharp browsing contexts.
+- [Getting Started](https://anglesharp.github.io/docs/wasm/general/basics/index.html.md): Guides
+- [Spec Coverage Matrix](https://anglesharp.github.io/docs/wasm/general/spec-coverage/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/wasm/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/wasm/tutorials/examples/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/wasm/tutorials/questions/index.html.md): Tutorials
+
+## AngleSharp.Renderer documentation
+
+- [Overview](https://anglesharp.github.io/docs/renderer/index.html.md): Renders the styled DOM from its render tree: layout, painting, and interactivity on top of AngleSharp.Css.
+- [Benchmarks](https://anglesharp.github.io/docs/renderer/benchmarks/index.html.md): Overview
+- [Getting Started](https://anglesharp.github.io/docs/renderer/general/basics/index.html.md): Guides
+- [Interactivity, Transitions & Animations](https://anglesharp.github.io/docs/renderer/general/interactivity/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/renderer/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/renderer/tutorials/examples/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/renderer/tutorials/questions/index.html.md): Tutorials
+
+## AngleSharp.Browser documentation
+
+- [Overview](https://anglesharp.github.io/docs/browser/index.html.md): Aggregates the entire AngleSharp ecosystem into a browser engine — headless or with actual interactive output.
+- [Getting Started](https://anglesharp.github.io/docs/browser/general/basics/index.html.md): Guides
+- [Browser Engine](https://anglesharp.github.io/docs/browser/general/engine/index.html.md): Guides
+- [Rendering](https://anglesharp.github.io/docs/browser/general/rendering/index.html.md): Guides
+- [Input](https://anglesharp.github.io/docs/browser/general/input/index.html.md): Guides
+- [Configuration](https://anglesharp.github.io/docs/browser/general/configuration/index.html.md): Guides
+- [Avalonia Control](https://anglesharp.github.io/docs/browser/general/avalonia/index.html.md): Guides
+- [Vision Sample](https://anglesharp.github.io/docs/browser/general/vision/index.html.md): Guides
+- [API Documentation](https://anglesharp.github.io/docs/browser/tutorials/api/index.html.md): Tutorials
+- [Examples](https://anglesharp.github.io/docs/browser/tutorials/examples/index.html.md): Tutorials
+- [Writing a Custom Host](https://anglesharp.github.io/docs/browser/tutorials/custom-host/index.html.md): Tutorials
+- [Questions](https://anglesharp.github.io/docs/browser/tutorials/questions/index.html.md): Tutorials
+
+## Optional
+
+- [Resources](https://anglesharp.github.io/resources/index.html.md): Articles, samples, and community resources around AngleSharp.
+- [Blog: AngleSharp 1.10.0](https://anglesharp.github.io/blog/2026/anglesharp-v110-release/index.html.md): 2026-11-06
+- [Blog: AngleSharp.Js 1.0.0](https://anglesharp.github.io/blog/2026/anglesharp-js-v100-release/index.html.md): 2026-08-01
+- [Blog: AngleSharp 1.6.0](https://anglesharp.github.io/blog/2026/anglesharp-v160/index.html.md): 2026-07-27
+- [Blog: AngleSharp.Css 1.0.0](https://anglesharp.github.io/blog/2026/anglesharp-css-v1/index.html.md): 2026-07-25
+- [Blog: AngleSharp v0.14.0](https://anglesharp.github.io/blog/2020/anglesharp-v0140/index.html.md): 2020-03-13
+- [Blog: AngleSharp v0.12.1](https://anglesharp.github.io/blog/2019/anglesharp-v0121/index.html.md): 2019-05-15
+- [Blog: AngleSharp v0.12 and the future](https://anglesharp.github.io/blog/2019/anglesharp-v012-forward/index.html.md): 2019-05-06
+- [Blog: Joining the .NET Foundation](https://anglesharp.github.io/blog/2019/dotnet-foundation/index.html.md): 2019-05-02
+- [Blog: AngleSharp v0.11.0 released](https://anglesharp.github.io/blog/2019/anglesharp-v011-released/index.html.md): 2019-02-12
+- [Blog: AngleSharp v0.10.0 released](https://anglesharp.github.io/blog/2019/anglesharp-v010-released/index.html.md): 2019-01-06
+- [All blog posts](https://anglesharp.github.io/blog/): 24 posts, also available as RSS at https://anglesharp.github.io/blog/feed.xml
+- [Source code](https://github.com/AngleSharp): GitHub organization with all repositories

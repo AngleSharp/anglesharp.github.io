@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AngleSharp 1.6.0 · AngleSharp</title>
+<meta name="description" content="It's time for another release! I'm happy to announce that AngleSharp 1.6.0 is now available.">
+<link rel="canonical" href="https://anglesharp.github.io/blog/2026/anglesharp-v160/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AngleSharp 1.6.0 · AngleSharp">
+<meta property="og:description" content="It's time for another release! I'm happy to announce that AngleSharp 1.6.0 is now available.">
+<meta property="og:url" content="https://anglesharp.github.io/blog/2026/anglesharp-v160/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/blog/2026/anglesharp-v160/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-post" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/" aria-current="page">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<article class="post container">
+  <header class="post-header">
+    <a class="back-link" href="/blog/"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All posts</a>
+    <div class="post-tags"><span class="tag">release</span></div>
+    <h1>AngleSharp 1.6.0</h1>
+    <div class="post-meta">
+      <img class="avatar" src="https://github.com/FlorianRappl.png?size=64" alt="" width="32" height="32" loading="lazy">
+      <span>Florian Rappl</span>
+      <time datetime="2026-07-27">Jul 27, 2026</time>
+      <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 4 min read</span>
+    </div>
+  </header>
+  <div class="prose prose-post"><p>It's time for another release! I'm happy to announce that <strong>AngleSharp 1.6.0</strong> is now available.</p>
+<p>While this release contains plenty of improvements to the core library itself, it's also a good opportunity to look at the bigger picture. There's been a lot of movement across the entire AngleSharp ecosystem recently, and it feels like everything is coming together nicely.</p>
+<h2 id="anglesharp-160-a-stronger-foundation-for-the-ecosystem" tabindex="-1">🚀 AngleSharp 1.6.0: A Stronger Foundation for the Ecosystem <a class="anchor" href="#anglesharp-160-a-stronger-foundation-for-the-ecosystem" aria-hidden="true">#</a></h2>
+<p>The biggest news is undoubtedly the release of <strong>AngleSharp.Css 1.0.0</strong>. After years of preview releases and continuous improvements, the CSS library has finally reached its first stable milestone.</p>
+<p>That also means the ecosystem now offers a production-ready HTML parser together with a fully mature CSS implementation—a combination many users have been waiting for.</p>
+<p>And that's not where the story ends...</p>
+<p>Recently, <strong>AngleSharp.Js</strong> has started receiving renewed attention as well. The goal is clear: bring it to its own <strong>1.0.0</strong> milestone and complete another important piece of the ecosystem. There's still work to do, but it's exciting to see momentum building again.</p>
+<p>It's fair to say that the AngleSharp ecosystem is more active than it has been in quite some time. 🎉</p>
+<h2 id="anglesharp-160" tabindex="-1">AngleSharp 1.6.0 <a class="anchor" href="#anglesharp-160" aria-hidden="true">#</a></h2>
+<p>Of course, this release isn't just about the surrounding projects.</p>
+<p>AngleSharp itself continues to evolve with a focus on standards compliance, correctness, performance, and providing a pleasant API for developers building everything from web scrapers to static site generators, testing frameworks, analyzers, and rendering solutions.</p>
+<p>Version <strong>1.6.0</strong> brings several meaningful improvements.</p>
+<h3 id="faster-under-the-hood" tabindex="-1">Faster Under the Hood ⚡ <a class="anchor" href="#faster-under-the-hood" aria-hidden="true">#</a></h3>
+<p>Performance has always been an important goal for AngleSharp, and this release continues that trend.</p>
+<p>A number of internal optimizations reduce overhead and improve throughput across common parsing scenarios. While many of these improvements aren't immediately visible from the outside, they contribute to making AngleSharp an even better choice for high-performance workloads.</p>
+<h2 id="smarter-url-handling" tabindex="-1">Smarter URL Handling <a class="anchor" href="#smarter-url-handling" aria-hidden="true">#</a></h2>
+<p>One of the more interesting additions in this release is an expansion of the <code>Url</code> class.</p>
+<p>AngleSharp now performs much more comprehensive parsing and normalization of <strong>IPv4</strong> and <strong>IPv6</strong> addresses, following the URL specification more closely.</p>
+<p>That includes support for various numeric representations of IPv4 addresses—including decimal, hexadecimal, octal, and mixed-digit formats—which are all normalized to their canonical representation. While these formats aren't something most developers encounter every day, supporting them correctly is an important part of standards compliance and compatibility with browser behavior.</p>
+<p>It's one of those features that most people will never notice—but when you need it, you'll be glad it's there.</p>
+<h2 id="better-css-selector-support" tabindex="-1">Better CSS Selector Support <a class="anchor" href="#better-css-selector-support" aria-hidden="true">#</a></h2>
+<p>The CSS selector engine has also received additional improvements.</p>
+<p>Selectors are at the heart of many AngleSharp use cases, and every enhancement here benefits developers working with HTML analysis, scraping, testing, document transformations, and much more.</p>
+<p>As browser standards continue to evolve, keeping selector support robust and performant remains a priority.</p>
+<h2 id="looking-beyond-anglesharp" tabindex="-1">Looking Beyond AngleSharp <a class="anchor" href="#looking-beyond-anglesharp" aria-hidden="true">#</a></h2>
+<p>One particularly exciting development is a project that has started to grow just outside the AngleSharp ecosystem while relying heavily on it under the hood: <a href="https://github.com/FlorianRappl/netpack" target="_blank" rel="noopener"><strong>netpack</strong></a>.</p>
+<p>If you haven't heard of it yet, netpack aims to bring a modern, high-performance asset bundler to the .NET world.</p>
+<p>Unlike traditional JavaScript tooling—which typically revolves around npm, Node.js, and a collection of external tools—netpack is built entirely in <strong>.NET</strong>. It can certainly fit into modern web development workflows, but its real strength is that it's also available as a fully managed library.</p>
+<p>Imagine being able to:</p>
+<ul>
+<li>understand HTML, CSS, and JavaScript assets,</li>
+<li>optimize and transform them,</li>
+<li>bundle everything together,</li>
+<li>and serve the results,</li>
+</ul>
+<p>all without ever leaving the .NET ecosystem.</p>
+<p>That's the vision behind netpack, and AngleSharp provides many of the standards-compliant parsing capabilities that make it possible.</p>
+<p>The project is still taking shape, but it's already exciting to see where it's heading. If you're curious, it's definitely worth keeping an eye on.</p>
+<p>👉 <a href="https://netpack.anglevisions.com/" target="_blank" rel="noopener">netpack.anglevisions.com</a></p>
+<h2 id="supporting-anglesharp" tabindex="-1">Supporting AngleSharp <a class="anchor" href="#supporting-anglesharp" aria-hidden="true">#</a></h2>
+<p>AngleSharp has always been an open source project driven by the community. Every issue report, pull request, discussion, and recommendation has helped make the project what it is today.</p>
+<p>If your company or your own projects benefit from AngleSharp, please consider sponsoring its continued development. Even small recurring contributions help justify spending time on maintenance, bug fixes, documentation, and new features.</p>
+<p>You can support the project here:</p>
+<ul>
+<li>GitHub Sponsors: <a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">github.com/sponsors/FlorianRappl</a></li>
+<li>Buy Me a Coffee: <a href="https://buymeacoffee.com/florianrappl" target="_blank" rel="noopener">buymeacoffee.com/florianrappl</a></li>
+</ul>
+<p>Every contribution is genuinely appreciated. 🙏</p>
+<h2 id="more-to-come" tabindex="-1">More to Come <a class="anchor" href="#more-to-come" aria-hidden="true">#</a></h2>
+<p>Between <strong>AngleSharp 1.6.0</strong>, <strong>AngleSharp.Css 1.0.0</strong>, renewed progress on <strong>AngleSharp.Js</strong>, and emerging projects like <strong>netpack</strong>, there's a lot happening right now.</p>
+<p>The long-term vision remains unchanged: provide a complete, standards-compliant toolkit for understanding and working with modern web technologies entirely within .NET.</p>
+<p>Every release moves that vision a little further forward.</p>
+<p>As always, thank you to everyone who has contributed issues, pull requests, ideas, sponsorship, and feedback. Open source only moves forward because of its community, and it's incredibly rewarding to see AngleSharp continue to grow after all these years.</p>
+<p>Here's to the next release—and there's plenty more on the roadmap. 🚀</p>
+</div>
+  <nav class="pager" aria-label="More posts">
+    <a class="pager-prev" href="/blog/2026/anglesharp-js-v100-release/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Newer</small><span>AngleSharp.Js 1.0.0</span></a>
+    <a class="pager-next" href="/blog/2026/anglesharp-css-v1/"><small>Older <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>AngleSharp.Css 1.0.0</span></a>
+  </nav>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

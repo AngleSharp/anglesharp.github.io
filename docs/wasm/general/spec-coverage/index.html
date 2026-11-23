@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spec Coverage Matrix · AngleSharp.Wasm · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/wasm/general/spec-coverage/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spec Coverage Matrix · AngleSharp.Wasm · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/wasm/general/spec-coverage/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/wasm/general/spec-coverage/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Wasm menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/wasm/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/" selected>AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Wasm documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/wasm/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/wasm/general/basics/">Getting Started</a></li><li><a href="/docs/wasm/general/spec-coverage/" aria-current="page">Spec Coverage Matrix</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/wasm/tutorials/api/">API Documentation</a></li><li><a href="/docs/wasm/tutorials/examples/">Examples</a></li><li><a href="/docs/wasm/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Wasm" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Wasm" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/wasm/">AngleSharp.Wasm</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="spec-coverage-matrix">Spec Coverage Matrix</h1>
+<p>This page maps the current AngleSharp.Wasm implementation to the WebAssembly JavaScript API specification.</p>
+<p>Status values:</p>
+<ul>
+<li>Implemented: Available and intended for normal use.</li>
+<li>Partial: Available in a reduced or adapted form.</li>
+<li>Not yet: Not currently implemented.</li>
+</ul>
+<h2 id="coverage-table" tabindex="-1">Coverage Table <a class="anchor" href="#coverage-table" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Spec Area</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WebAssembly namespace: <code>compile(bytes)</code></td>
+<td>Implemented</td>
+<td><code>WebAssembly.compile(bytes)</code> gives a promise of a <code>WebAssembly.Module</code>, rejected with a <code>CompileError</code> for invalid bytes. The synchronous <code>WebAssembly.Compile(window, bytes)</code> remains for C#.</td>
+</tr>
+<tr>
+<td>WebAssembly namespace: <code>instantiate(...)</code></td>
+<td>Implemented</td>
+<td><code>WebAssembly.instantiate(bytes, importObject)</code> gives a promise of <code>{ module, instance }</code>, <code>instantiate(module, importObject)</code> one of the instance. Imports are read from the import object (functions, numbers, BigInts, memories, tables and globals); failures reject with a <code>LinkError</code> or <code>RuntimeError</code>.</td>
+</tr>
+<tr>
+<td>WebAssembly namespace: <code>validate(bytes)</code></td>
+<td>Implemented</td>
+<td>Exposed as synchronous <code>WebAssembly.validate(byte[])</code>, using native Wasmtime validation or compile-and-dispose fallback for custom runtimes.</td>
+</tr>
+<tr>
+<td>WebAssembly namespace: streaming APIs</td>
+<td>Implemented</td>
+<td><code>compileStreaming</code> and <code>instantiateStreaming</code> take a <code>Response</code> of <code>fetch()</code> (or a promise of one, or an AngleSharp <code>IResponse</code>), which has to be successful and of the type <code>application/wasm</code>; the body is read completely before compiling.</td>
+</tr>
+<tr>
+<td>WebAssembly namespace: compile options</td>
+<td>Partial</td>
+<td><code>WasmCompileOptions</code> validates and routes <code>builtins</code> and <code>importedStringConstants</code> through compile, byte instantiate, and streaming entry points. Wasmtime 44 cannot execute these options.</td>
+</tr>
+<tr>
+<td><code>Module.exports(module)</code></td>
+<td>Implemented</td>
+<td><code>WebAssembly.Module.exports(module)</code> gives descriptor objects (<code>name</code>, <code>kind</code>).</td>
+</tr>
+<tr>
+<td><code>Module.imports(module)</code></td>
+<td>Implemented</td>
+<td><code>WebAssembly.Module.imports(module)</code> gives descriptor objects (<code>module</code>, <code>name</code>, <code>kind</code>).</td>
+</tr>
+<tr>
+<td><code>Module.customSections(module, name)</code></td>
+<td>Implemented</td>
+<td><code>WebAssembly.Module.customSections(module, name)</code> gives ArrayBuffers.</td>
+</tr>
+<tr>
+<td><code>Instance.exports</code></td>
+<td>Implemented</td>
+<td>An object with the exports in the order of the module: functions scripts call (the same function for the same export), and <code>WebAssembly.Memory</code>, <code>Table</code> and <code>Global</code> objects. <code>new WebAssembly.Instance(module, importObject)</code> instantiates synchronously.</td>
+</tr>
+<tr>
+<td>Exported function invocation</td>
+<td>Implemented</td>
+<td>Exported functions are functions of scripts, converting their arguments and results as the standard says (<code>i64</code> as BigInt); a trap is a <code>RuntimeError</code>, and what a function of a script imported by the module threw reaches the caller as it is.</td>
+</tr>
+<tr>
+<td>Host import functions</td>
+<td>Implemented</td>
+<td>Functions of scripts in the import object, and C# functions via <code>WithWasmImports(...)</code> and <code>WasmImportFunction</code>.</td>
+</tr>
+<tr>
+<td>Memory object API (<code>Memory</code>)</td>
+<td>Implemented</td>
+<td><code>new WebAssembly.Memory({ initial, maximum })</code>, imports and exports. With the default Wasmtime backend <code>buffer</code> is an ArrayBuffer sharing the bytes of the memory (the memories are pinned .NET arrays, via Wasmtime's host memory creator), which is a new one after the memory has grown. Shared memories are not supported.</td>
+</tr>
+<tr>
+<td>Table object API (<code>Table</code>)</td>
+<td>Implemented</td>
+<td><code>new WebAssembly.Table({ element, initial, maximum })</code>, imports and exports, with <code>length</code>, <code>get(index)</code>, <code>set(index, value)</code> and <code>grow(delta, value)</code>.</td>
+</tr>
+<tr>
+<td>Global object API (<code>Global</code>)</td>
+<td>Implemented</td>
+<td><code>new WebAssembly.Global({ value, mutable }, value)</code>, imports (also of numbers and BigInts) and exports, with <code>value</code> and <code>valueOf()</code>.</td>
+</tr>
+<tr>
+<td>Tag object API (<code>Tag</code>)</td>
+<td>Partial</td>
+<td>Host-created and exported tags expose <code>type().parameters</code>, including re-exported imported tags. Wasmtime 44 does not expose native Tag handles or enable exception modules through its .NET API.</td>
+</tr>
+<tr>
+<td>Exception object API (<code>Exception</code>)</td>
+<td>Partial</td>
+<td>Host-created exceptions validate typed payloads and expose <code>is(tag)</code> and <code>getArg(tag, index)</code>. Runtime-thrown Wasm exceptions cannot be projected through Wasmtime 44.</td>
+</tr>
+<tr>
+<td>Error constructors (<code>CompileError</code>, <code>LinkError</code>, <code>RuntimeError</code>)</td>
+<td>Implemented</td>
+<td>Public DOM-named constructors are available, and compile, instantiate/link, and execution failures are translated at bridge boundaries.</td>
+</tr>
+<tr>
+<td>JS String builtins set</td>
+<td>Partial</td>
+<td>The <code>js-string</code> builtin set is recognized and forwarded to capable custom runtimes; Wasmtime 44 has no corresponding API.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="runtime-and-type-support" tabindex="-1">Runtime and Type Support <a class="anchor" href="#runtime-and-type-support" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runtime backend</td>
+<td>Implemented</td>
+<td>Uses Wasmtime through the default <code>WithWasm()</code> registration.</td>
+</tr>
+<tr>
+<td>Invocation numeric value types</td>
+<td>Implemented</td>
+<td><code>i32</code>, <code>i64</code>, <code>f32</code>, <code>f64</code> are supported for import/export invocation paths.</td>
+</tr>
+<tr>
+<td>Extended/reference value kinds</td>
+<td>Partial</td>
+<td>Table projections support <code>funcref</code> and <code>externref</code>; broader reference-type invocation marshaling is not yet exposed.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="test-backed-behavior" tabindex="-1">Test-Backed Behavior <a class="anchor" href="#test-backed-behavior" aria-hidden="true">#</a></h2>
+<p>The current implementation is validated by runtime and bridge tests in the repository, including:</p>
+<ul>
+<li>compile and instantiate flows</li>
+<li>module validation</li>
+<li>response-based compilation and instantiation</li>
+<li>compile option validation and runtime forwarding</li>
+<li>export invocation</li>
+<li>exported memory read, write, and growth</li>
+<li>exported table access, mutation, and growth</li>
+<li>exported global access and mutation</li>
+<li>exported and re-exported tag type metadata</li>
+<li>host-created exception payload validation and inspection</li>
+<li>compile, link, and runtime error translation</li>
+<li>import descriptor extraction</li>
+<li>export descriptor extraction</li>
+<li>custom section lookup behavior</li>
+<li>host import wiring</li>
+</ul>
+<h2 id="interpretation-notes" tabindex="-1">Interpretation Notes <a class="anchor" href="#interpretation-notes" aria-hidden="true">#</a></h2>
+<p>This matrix reflects API shape and behavior in AngleSharp.Wasm, not strict one-to-one Web IDL signatures.
+Scripts (with AngleSharp.Js) see the API of the standard: <code>WebAssembly</code> is a namespace object holding the interfaces (<code>WebAssembly.Module</code>, <code>Instance</code>, <code>Memory</code>, <code>Table</code>, <code>Global</code>, <code>Tag</code>, <code>Exception</code> and the errors), and its operations give promises. The synchronous bridge methods remain for C#.</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Wasm/edit/devel/docs/general/02-Spec-Coverage.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/wasm/general/spec-coverage/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Wasm/tree/1044be7bc91ea340a048447d74634ebb7b0d909a" target="_blank" rel="noopener"><code>1044be7</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/wasm/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
+      <a class="pager-next" href="/docs/wasm/tutorials/api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>API Documentation</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#coverage-table" title="Coverage Table">Coverage Table</a></li><li class="toc-l2"><a href="#runtime-and-type-support" title="Runtime and Type Support">Runtime and Type Support</a></li><li class="toc-l2"><a href="#test-backed-behavior" title="Test-Backed Behavior">Test-Backed Behavior</a></li><li class="toc-l2"><a href="#interpretation-notes" title="Interpretation Notes">Interpretation Notes</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,75 @@
+{
+  "builtAt": "2026-11-23T18:52:50.255Z",
+  "projects": [
+    {
+      "id": "anglesharp",
+      "repo": "AngleSharp/AngleSharp",
+      "ref": "c7ac782c5ef0c35aca936f44696bdea7e2b70851",
+      "commit": "c7ac782c5ef0c35aca936f44696bdea7e2b70851",
+      "pages": 12
+    },
+    {
+      "id": "css",
+      "repo": "AngleSharp/AngleSharp.Css",
+      "ref": "b35861044ecc148031849ea5a1cfd6316be1b90a",
+      "commit": "b35861044ecc148031849ea5a1cfd6316be1b90a",
+      "pages": 15
+    },
+    {
+      "id": "js",
+      "repo": "AngleSharp/AngleSharp.Js",
+      "ref": "dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af",
+      "commit": "dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af",
+      "pages": 5
+    },
+    {
+      "id": "xml",
+      "repo": "AngleSharp/AngleSharp.Xml",
+      "ref": "1942246134ae20a06d89a996f0bd9f1eaa2fd329",
+      "commit": "1942246134ae20a06d89a996f0bd9f1eaa2fd329",
+      "pages": 9
+    },
+    {
+      "id": "io",
+      "repo": "AngleSharp/AngleSharp.Io",
+      "ref": "04108d0016949a158c855c362073b1883c674c2b",
+      "commit": "04108d0016949a158c855c362073b1883c674c2b",
+      "pages": 7
+    },
+    {
+      "id": "xpath",
+      "repo": "AngleSharp/AngleSharp.XPath",
+      "ref": "4f0ff2799a6b23d00dd177e6252e8dd620b49f5b",
+      "commit": "4f0ff2799a6b23d00dd177e6252e8dd620b49f5b",
+      "pages": 1
+    },
+    {
+      "id": "diffing",
+      "repo": "AngleSharp/AngleSharp.Diffing",
+      "ref": "6b880e4c026d06dfedec11ccdb63b179e73b0268",
+      "commit": "6b880e4c026d06dfedec11ccdb63b179e73b0268",
+      "pages": 1
+    },
+    {
+      "id": "wasm",
+      "repo": "AngleSharp/AngleSharp.Wasm",
+      "ref": "1044be7bc91ea340a048447d74634ebb7b0d909a",
+      "commit": "1044be7bc91ea340a048447d74634ebb7b0d909a",
+      "pages": 6
+    },
+    {
+      "id": "renderer",
+      "repo": "AngleSharp/AngleSharp.Renderer",
+      "ref": "0a71fb1145856a0e638852edb3b9de0385eb01fa",
+      "commit": "0a71fb1145856a0e638852edb3b9de0385eb01fa",
+      "pages": 7
+    },
+    {
+      "id": "browser",
+      "repo": "AngleSharp/AngleSharp.Browser",
+      "ref": "9e2ca98df15342044069b89c6ba35431334e1443",
+      "commit": "9e2ca98df15342044069b89c6ba35431334e1443",
+      "pages": 12
+    }
+  ]
+}

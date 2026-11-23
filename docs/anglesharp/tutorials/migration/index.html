@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upgrading · AngleSharp · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/anglesharp/tutorials/migration/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Upgrading · AngleSharp · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/anglesharp/tutorials/migration/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/anglesharp/tutorials/migration/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/anglesharp/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/" selected>AngleSharp</option><option value="/docs/css/">AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/anglesharp/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/anglesharp/general/basics/">Getting Started</a></li><li><a href="/docs/anglesharp/general/features/">Included Features</a></li><li><a href="/docs/anglesharp/general/upcoming/">Roadmap and Ecosystem</a></li><li><a href="/docs/anglesharp/general/performance/">Performance</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/anglesharp/tutorials/api/">API Documentation</a></li><li><a href="/docs/anglesharp/tutorials/options/">Configuration</a></li><li><a href="/docs/anglesharp/tutorials/examples/">Examples</a></li><li><a href="/docs/anglesharp/tutorials/forms/">Forms</a></li><li><a href="/docs/anglesharp/tutorials/migration/" aria-current="page">Upgrading</a></li><li><a href="/docs/anglesharp/tutorials/questions/">Questions</a></li><li><a href="/docs/anglesharp/tutorials/popovers/">Popovers</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/anglesharp/">AngleSharp</a>
+      <span>/</span><span>Tutorials</span>
+    </nav>
+    
+    <div class="prose"><h1 id="migration-guide">Migration Guide</h1>
+<p>This page is intentionally historical. For current package scope, supported target frameworks, and companion libraries, prefer the main <a href="https://github.com/AngleSharp/AngleSharp/blob/c7ac782c5ef0c35aca936f44696bdea7e2b70851/README.md" target="_blank" rel="noopener">README</a> and the <a href="/docs/anglesharp/general/upcoming/">roadmap and ecosystem page</a>.</p>
+<h2 id="current-targets" tabindex="-1">Current Targets <a class="anchor" href="#current-targets" aria-hidden="true">#</a></h2>
+<p>AngleSharp.Core currently targets <code>netstandard2.0</code>, <code>net8.0</code>, and <code>net10.0</code>, with additional <code>net462</code> and <code>net472</code> targets on Windows builds.</p>
+<h2 id="017-to-10" tabindex="-1">0.17 to 1.0 <a class="anchor" href="#017-to-10" aria-hidden="true">#</a></h2>
+<p>From an API perspective the two versions are compatible, however, the ABI is not compatible as some constructors changed (adding new optional arguments etc.). Therefore, a recompilation is necessary before dynamically using 1.0.</p>
+<h2 id="016-to-017" tabindex="-1">0.16 to 0.17 <a class="anchor" href="#016-to-017" aria-hidden="true">#</a></h2>
+<p>The support for .NET Framework 4.6 has been dropped. AngleSharp now works exclusively on .NET 4.6.1 or newer / .NET Standard 2.0. If you use an older framework you'll either need to fork AngleSharp or remain on an older version of AngleSharp.</p>
+<h2 id="015-to-016" tabindex="-1">0.15 to 0.16 <a class="anchor" href="#015-to-016" aria-hidden="true">#</a></h2>
+<p>The <code>Url</code> class has been moved from <code>AngleSharp</code> to <code>AngleSharp.Dom</code>. Potentially, you'll need to adjust your <code>using</code> statements or use of fully qualified names.</p>
+<h2 id="014-to-015" tabindex="-1">0.14 to 0.15 <a class="anchor" href="#014-to-015" aria-hidden="true">#</a></h2>
+<p>Dropped support for .NET Standard 1.3. AngleSharp now works exclusively on .NET 4.5 or newer / .NET Standard 2.0. If you use an older framework you'll either need to fork AngleSharp or remain on an older version of AngleSharp.</p>
+<h2 id="013-to-014" tabindex="-1">0.13 to 0.14 <a class="anchor" href="#013-to-014" aria-hidden="true">#</a></h2>
+<p>If you implemented <code>IBrowsingContext</code> then you'll also need to implement <code>IDisposable</code>. Most users should not be affected by this.</p>
+<h2 id="012-to-013" tabindex="-1">0.12 to 0.13 <a class="anchor" href="#012-to-013" aria-hidden="true">#</a></h2>
+<p>Renamed the configuration method <code>WithCookies</code> to <code>WithDefaultCookies</code>. Our recommendation is to use <code>WithCookies</code> from <code>AngleSharp.Io</code>.</p>
+<p>Removed the <code>TaskEventLoop</code>. Usually, since this is a low level construct, it should not have any impact on your code.</p>
+<h2 id="011-to-012" tabindex="-1">0.11 to 0.12 <a class="anchor" href="#011-to-012" aria-hidden="true">#</a></h2>
+<p>For this change we do not expect any migration work unless a custom implementation of <code>IElement</code> has been done (unlikely).</p>
+<h2 id="010-to-011" tabindex="-1">0.10 to 0.11 <a class="anchor" href="#010-to-011" aria-hidden="true">#</a></h2>
+<p>This release follows the spirit of 0.10 and prepares for the 1.0 later this year. There are mainly additions, but also one important breaking change: We removed everything that is related to AngleSharp.Xml. This is now part of separate library called AngleSharp.Xml.</p>
+<h3 id="svg" tabindex="-1">SVG <a class="anchor" href="#svg" aria-hidden="true">#</a></h3>
+<p>The <code>ISvgDocument</code> interface and its implementation <code>SvgDocument</code> have been removed. They are now available via the <code>AngleSharp.Xml</code> library. There should be no need to access these types directly - in most cases <code>IDocument</code> should be more than sufficient.</p>
+<h3 id="xml" tabindex="-1">XML <a class="anchor" href="#xml" aria-hidden="true">#</a></h3>
+<p>The full <code>AngleSharp.Xml</code> namespace has been moved to a dedicated library with the same name.</p>
+<h3 id="xhtml" tabindex="-1">XHTML <a class="anchor" href="#xhtml" aria-hidden="true">#</a></h3>
+<p>As with XML also XHTML has been mostly removed. This is not a big change though. It only impacts the <code>AutoSelectedMarkupFormatter</code>, which is now part of the AngleSharp.Xml library. Furthermore, it moved from <code>AngleSharp.Xhtml</code> to the <code>AngleSharp.Xml</code> namespace.</p>
+<h3 id="peer-dependencies" tabindex="-1">Peer Dependencies <a class="anchor" href="#peer-dependencies" aria-hidden="true">#</a></h3>
+<p>The peer dependency to the System.Encoding.CodePages package for the .NET Framework release is gone. This is now also a dependency for the .NET Framework target.</p>
+<h2 id="09x-to-010-or-later" tabindex="-1">0.9.x to 0.10 (or later) <a class="anchor" href="#09x-to-010-or-later" aria-hidden="true">#</a></h2>
+<p>The v0.10 release line of AngleSharp is breaking towards formerly used APIs. Even though the same concepts are mostly applied, many things changed and an upgrade from AngleSharp pre v0.10 to 0.10 will certainly break things. The following points should help you to perform the migration as fast as possible.</p>
+<p>In the following points the v0.10 release line will be named &quot;current&quot;, while older releases will be referred to as &quot;previous&quot;.</p>
+<h3 id="silverlight-pre-net-45" tabindex="-1">Silverlight / Pre .NET 4.5 <a class="anchor" href="#silverlight-pre-net-45" aria-hidden="true">#</a></h3>
+<p>:warn: These platforms are no longer support. No solution planned.</p>
+<blockquote>
+<p>Recommendation: Stay at AngleSharp pre-v0.10 for the moment. Sorry for inconvenience!</p>
+</blockquote>
+<h3 id="configuration" tabindex="-1">Configuration <a class="anchor" href="#configuration" aria-hidden="true">#</a></h3>
+<p>The way to configure AngleSharp was changed. Earlier, the provided configuration was simply referenced by, e.g., the <code>BrowsingContext</code>. Now upon creation the browsing context is doing some evaluation and creates its own copy of the configuration. Thus, a configuration can also be seen as a (re-)usable draft for what will become the options to be considered from a browsing context.</p>
+<p>The extension methods for working with an <code>IConfiguration</code> type of object changed. Along the standard <code>With</code> we now also have</p>
+<ul>
+<li><code>WithOnly</code>, which will remove earlier occurrences of the same type and</li>
+<li><code>Without</code>, which will drop any existing occurrence of the given type.</li>
+</ul>
+<p>Additionally, besides the overloads using a plain object and a specific type of service, we also got a creator overload. This overload features a function <code>Func&lt;IBrowsingContext, T&gt;</code> (with <code>T</code> being the type of the service) to be used once the configuration is used by a browsing context.</p>
+<p>The default configuration extenders remained the same (such as <code>WithDefaultLoader</code>), however, their arguments may have changed. In case of <code>WithDefaultLoader</code> you need to supply an object instead of using a callback. Commonly, instead of doing</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">config.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithDefaultLoader</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">setup</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> setup.IsResourceLoadingEnabled </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)</span></span>
+<span class="line"></span></code></pre></div><p>you now have to write</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">config.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithDefaultLoader</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> LoaderOptions</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> { IsResourceLoadingEnabled </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> })</span></span>
+<span class="line"></span></code></pre></div><h3 id="html" tabindex="-1">HTML <a class="anchor" href="#html" aria-hidden="true">#</a></h3>
+<p>The unified parser interface has been changed. It is no longer possible to call <code>Parse</code>, instead this is now <code>ParseDocument</code>. Hence, some old code like</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> htmlDocument</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Parse</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">""</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>is now</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IDocument</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> htmlDocument</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ParseDocument</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">""</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Note: Same applies to the <code>Async</code> parsing (which is still recommended). Here we now have <code>ParseDocumentAsync</code>.</p>
+<p>Also, the <code>HtmlParser</code> does no longer accept an <code>IConfiguration</code> in the constructor. In this case we implicitly created an <code>BrowsingContext</code>, which we want to avoid to show the user what is really happening. Instead, a browsing context should be passed in now.</p>
+<p>The following old code</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HtmlParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default);</span></span>
+<span class="line"></span></code></pre></div><p>is therefore to be replaced with</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> HtmlParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(context);</span></span>
+<span class="line"></span></code></pre></div><p>but would be much better expressed as</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(Configuration.Default);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetService</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IHtmlParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">>();</span></span>
+<span class="line"></span></code></pre></div><h3 id="css" tabindex="-1">CSS <a class="anchor" href="#css" aria-hidden="true">#</a></h3>
+<p>The current version of AngleSharp split out the CSS parsing (except CSS selectors) in its own library. This library is called <code>AngleSharp.Css</code> and is available via NuGet.</p>
+<p>The new library is much more feature rich than the old integration. Besides an improved object model (CSSOM and beyond) we included support for many things, e.g., CSS custom properties (also known as CSS variables), flexbox, and grid. The correctness tests of the used value conversions have been extended as well.</p>
+<p>The basic usage is to configure AngleSharp using <code>WithCss</code>. Then, e.g., the style can be accessed by using <code>GetStyle</code> from <code>AngleSharp.Css.Dom</code>. Setting the style works now with the <code>SetStyle</code> extension method. This replaces the old <code>Style</code> property.</p>
+<p>The <code>ICssStyleDeclaration</code> does not contain all known declarations as properties. Instead, extension methods are used to dynamically attach these getters and setters, e.g., <code>GetDisplay()</code> and <code>SetDisplay(value)</code>  instead of <code>Display { get; set; }</code>.</p>
+<p>Therefore, the following old code won't work anymore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IHtmlElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)element).Style.Display </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">=</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF"> "flex"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span></code></pre></div><p>Instead, we now have to use the AngleSharp.Css NuGet package, which should be used in the configuration like <code>Configuration.Default.WithCss()</code>. If all this is fulfilled the following extension method will work:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">((</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IHtmlElement</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)element).Style.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">SetDisplay</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"flex"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>In previous versions the <code>IWindow</code> also contained CSS methods for style computation. These are now also available in the new CSS library as extension methods. The <code>WindowExtensions</code> are contained in the namespace <code>AngleSharp.Dom</code>.</p>
+<h3 id="building-query-selectors" tabindex="-1">Building Query Selectors <a class="anchor" href="#building-query-selectors" aria-hidden="true">#</a></h3>
+<p>In AngleSharp v0.9 we can construct an <code>ISelector</code> directly like:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> CssParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ISelector</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> selector</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ParseSelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"p > a"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Starting with AngleSharp v0.10 such direct access should be avoided. The <code>CssParser</code> is gone anyway and exists only in a reduced form within AngleSharp.Core (no CSS support), which implements the <code>ICssSelectorParser</code> interface.</p>
+<p>The current way for accessing this functionality is via the service collection.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IConfiguration</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// use the consuming (or a new) context</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">IBrowsingContext</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> context</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> BrowsingContext.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">New</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(config);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// get the registered parser instance</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ICssSelectorParser</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> parser</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> context.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetService</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">&#x3C;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ICssSelectorParser</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">>();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// use as before</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">ISelector</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> selector</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> parser.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ParseSelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"foo"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><p>Normally, a <code>BrowsingContext</code> instance already exists thus making the access much simpler.</p>
+<h3 id="scripting" tabindex="-1">Scripting <a class="anchor" href="#scripting" aria-hidden="true">#</a></h3>
+<p><code>AngleSharp.Scripting.Js</code> is legacy guidance from the pre-1.0 period.</p>
+<p>For JavaScript integration use <code>AngleSharp.Js</code>, which is maintained as a separate companion project.</p>
+<p>If you need browser-like scripting behavior, wire it in through the configuration system instead of expecting it from <code>AngleSharp.Core</code> alone.</p>
+<h3 id="namespaces" tabindex="-1">Namespaces <a class="anchor" href="#namespaces" aria-hidden="true">#</a></h3>
+<p>The current version of AngleSharp reordered how namespaces are used. While previous versions used a model like <code>AngleSharp.Dom.Html</code>, the new release uses, e.g., <code>AngleSharp.Html.Dom</code>.</p>
+<p>The parsers have also moved. Formerly, you accessed the HTML parser via <code>AngleSharp.Parser.Html</code>. Now the access is done via <code>AngleSharp.Html.Parser</code>.</p>
+<p>The <code>AngleSharp.Network</code> namespace has been removed. All IO related definitions can be found in <code>AngleSharp.Io</code> (same name as the NuGet package). Network related definitions are contained within in <code>AngleSharp.Io.Network</code>.</p>
+<p>Furthermore, any core level text manipulation code can be found in <code>AngleSharp.Text</code>. Things that would be mainly seen as parts of a browser are now in <code>AngleSharp.Browser</code>.</p>
+<h3 id="extension-methods" tabindex="-1">Extension Methods <a class="anchor" href="#extension-methods" aria-hidden="true">#</a></h3>
+<p>The common namespace <code>AngleSharp.Extensions</code> is gone. Now extension methods are always contained in their respective bucket. As an example the node extensions like <code>GetAncestors</code> are now in <code>AngleSharp.Dom</code> (as they are generic <code>INode</code> extensions and independent of <code>IHtmlElement</code>).</p>
+<p>Extension methods are now also considered important for script engines to bring extensibility to AngleSharp. Since C# does not allow us to create extension properties, e.g., <code>Style</code> of <code>IElement</code> is now available in form of an extension method contained in <code>AngleSharp.Css</code>. Indeed, two extension methods, <code>GetStyle</code> and <code>SetStyle</code> are defined. They are defined in a static class containing the <code>DomExposed</code> attribute for each DOM interface to extend. To define the methods as properties the <code>DomAccessor</code> attribute is used.</p>
+<p>Interesting for working with text sources (e.g., in parsers) is the <code>AngleSharp.Text</code> namespace. It carries also the extensions for, e.g., working with a <code>StringSource</code>, which is a source investigation object wrapped around an existing stream (as opposed to a <code>TextSource</code>, which wraps around a text document from a <code>Stream</code>).</p>
+<h3 id="missing" tabindex="-1">Missing? <a class="anchor" href="#missing" aria-hidden="true">#</a></h3>
+<p>Don't hesitate to ask a question at <a href="https://stackoverflow.com/tags/anglesharp" target="_blank" rel="noopener">StackOverflow</a> or here at GitHub. If something important is left unclear regarding the migration it should be included in this guide.</p>
+<p>You can also directly make a PR for this guide if you figured something out that should have been explained here. Thanks!</p>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp/edit/devel/docs/tutorials/05-Migration.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/anglesharp/tutorials/migration/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp/tree/c7ac782c5ef0c35aca936f44696bdea7e2b70851" target="_blank" rel="noopener"><code>c7ac782</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/anglesharp/tutorials/forms/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Forms</span></a>
+      <a class="pager-next" href="/docs/anglesharp/tutorials/questions/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Questions</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#current-targets" title="Current Targets">Current Targets</a></li><li class="toc-l2"><a href="#017-to-10" title="0.17 to 1.0">0.17 to 1.0</a></li><li class="toc-l2"><a href="#016-to-017" title="0.16 to 0.17">0.16 to 0.17</a></li><li class="toc-l2"><a href="#015-to-016" title="0.15 to 0.16">0.15 to 0.16</a></li><li class="toc-l2"><a href="#014-to-015" title="0.14 to 0.15">0.14 to 0.15</a></li><li class="toc-l2"><a href="#013-to-014" title="0.13 to 0.14">0.13 to 0.14</a></li><li class="toc-l2"><a href="#012-to-013" title="0.12 to 0.13">0.12 to 0.13</a></li><li class="toc-l2"><a href="#011-to-012" title="0.11 to 0.12">0.11 to 0.12</a></li><li class="toc-l2"><a href="#010-to-011" title="0.10 to 0.11">0.10 to 0.11</a></li><li class="toc-l3"><a href="#svg" title="SVG">SVG</a></li><li class="toc-l3"><a href="#xml" title="XML">XML</a></li><li class="toc-l3"><a href="#xhtml" title="XHTML">XHTML</a></li><li class="toc-l3"><a href="#peer-dependencies" title="Peer Dependencies">Peer Dependencies</a></li><li class="toc-l2"><a href="#09x-to-010-or-later" title="0.9.x to 0.10 (or later)">0.9.x to 0.10 (or later)</a></li><li class="toc-l3"><a href="#silverlight-pre-net-45" title="Silverlight / Pre .NET 4.5">Silverlight / Pre .NET 4.5</a></li><li class="toc-l3"><a href="#configuration" title="Configuration">Configuration</a></li><li class="toc-l3"><a href="#html" title="HTML">HTML</a></li><li class="toc-l3"><a href="#css" title="CSS">CSS</a></li><li class="toc-l3"><a href="#building-query-selectors" title="Building Query Selectors">Building Query Selectors</a></li><li class="toc-l3"><a href="#scripting" title="Scripting">Scripting</a></li><li class="toc-l3"><a href="#namespaces" title="Namespaces">Namespaces</a></li><li class="toc-l3"><a href="#extension-methods" title="Extension Methods">Extension Methods</a></li><li class="toc-l3"><a href="#missing" title="Missing?">Missing?</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

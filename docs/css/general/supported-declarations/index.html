@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supported Declarations · AngleSharp.Css · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/css/general/supported-declarations/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supported Declarations · AngleSharp.Css · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/css/general/supported-declarations/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/css/general/supported-declarations/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Css menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/css/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/" selected>AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Css documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/css/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/css/general/basics/">Getting Started</a></li><li><a href="/docs/css/general/values/">Types of Values</a></li><li><a href="/docs/css/general/cssom/">CSSOM</a></li><li><a href="/docs/css/general/core-interfaces/">Core Interfaces</a></li><li><a href="/docs/css/general/extensibility/">Extensibility</a></li><li><a href="/docs/css/general/provided-services/">Provided Services</a></li><li><a href="/docs/css/general/supported-at-rules/">Supported Rules</a></li><li><a href="/docs/css/general/supported-declarations/" aria-current="page">Supported Declarations</a></li><li><a href="/docs/css/general/typed-om/">Typed OM</a></li><li><a href="/docs/css/general/painting-api/">Painting API</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/css/tutorials/api/">API Documentation</a></li><li><a href="/docs/css/tutorials/examples/">Examples</a></li><li><a href="/docs/css/tutorials/render-tree/">Render Tree</a></li><li><a href="/docs/css/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/css/">AngleSharp.Css</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="supported-declarations">Supported Declarations</h1>
+<p>This page documents declaration/property support in AngleSharp.Css based on the registration in <code>DefaultDeclarationFactory</code> and declaration classes in <code>src/AngleSharp.Css/Declarations</code>.</p>
+<h2 id="coverage-model" tabindex="-1">Coverage Model <a class="anchor" href="#coverage-model" aria-hidden="true">#</a></h2>
+<ul>
+<li>A declaration is considered supported if a declaration class exists and is registered in the default declaration factory.</li>
+<li>The parser can optionally keep unknown declarations (<code>CssParserOptions.IsIncludingUnknownDeclarations = true</code>), but they are treated as generic unknown properties.</li>
+<li>Support means parsing and round-tripping in the CSSOM; semantic browser behavior (layout/painting) is outside scope.</li>
+<li>Total implemented declaration names: 412.</li>
+</ul>
+<h2 id="by-css-area-spec" tabindex="-1">By CSS Area / Spec <a class="anchor" href="#by-css-area-spec" aria-hidden="true">#</a></h2>
+<h3 id="backgrounds-and-borders" tabindex="-1">Backgrounds and Borders <a class="anchor" href="#backgrounds-and-borders" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Backgrounds and Borders Module.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (82):</li>
+<li><code>background</code></li>
+<li><code>background-attachment</code></li>
+<li><code>background-blend-mode</code></li>
+<li><code>background-clip</code></li>
+<li><code>background-color</code></li>
+<li><code>background-image</code></li>
+<li><code>background-origin</code></li>
+<li><code>background-position</code></li>
+<li><code>background-position-x</code></li>
+<li><code>background-position-y</code></li>
+<li><code>background-repeat</code></li>
+<li><code>background-repeat-x</code></li>
+<li><code>background-repeat-y</code></li>
+<li><code>background-size</code></li>
+<li><code>border</code></li>
+<li><code>border-block</code></li>
+<li><code>border-block-color</code></li>
+<li><code>border-block-end</code></li>
+<li><code>border-block-end-color</code></li>
+<li><code>border-block-end-style</code></li>
+<li><code>border-block-end-width</code></li>
+<li><code>border-block-start</code></li>
+<li><code>border-block-start-color</code></li>
+<li><code>border-block-start-style</code></li>
+<li><code>border-block-start-width</code></li>
+<li><code>border-block-style</code></li>
+<li><code>border-block-width</code></li>
+<li><code>border-bottom</code></li>
+<li><code>border-bottom-color</code></li>
+<li><code>border-bottom-left-radius</code></li>
+<li><code>border-bottom-right-radius</code></li>
+<li><code>border-bottom-style</code></li>
+<li><code>border-bottom-width</code></li>
+<li><code>border-collapse</code></li>
+<li><code>border-color</code></li>
+<li><code>border-end-end-radius</code></li>
+<li><code>border-end-start-radius</code></li>
+<li><code>border-image</code></li>
+<li><code>border-image-outset</code></li>
+<li><code>border-image-repeat</code></li>
+<li><code>border-image-slice</code></li>
+<li><code>border-image-source</code></li>
+<li><code>border-image-width</code></li>
+<li><code>border-inline</code></li>
+<li><code>border-inline-color</code></li>
+<li><code>border-inline-end</code></li>
+<li><code>border-inline-end-color</code></li>
+<li><code>border-inline-end-style</code></li>
+<li><code>border-inline-end-width</code></li>
+<li><code>border-inline-start</code></li>
+<li><code>border-inline-start-color</code></li>
+<li><code>border-inline-start-style</code></li>
+<li><code>border-inline-start-width</code></li>
+<li><code>border-inline-style</code></li>
+<li><code>border-inline-width</code></li>
+<li><code>border-left</code></li>
+<li><code>border-left-color</code></li>
+<li><code>border-left-style</code></li>
+<li><code>border-left-width</code></li>
+<li><code>border-radius</code></li>
+<li><code>border-right</code></li>
+<li><code>border-right-color</code></li>
+<li><code>border-right-style</code></li>
+<li><code>border-right-width</code></li>
+<li><code>border-spacing</code></li>
+<li><code>border-start-end-radius</code></li>
+<li><code>border-start-start-radius</code></li>
+<li><code>border-style</code></li>
+<li><code>border-top</code></li>
+<li><code>border-top-color</code></li>
+<li><code>border-top-left-radius</code></li>
+<li><code>border-top-right-radius</code></li>
+<li><code>border-top-style</code></li>
+<li><code>border-top-width</code></li>
+<li><code>border-width</code></li>
+<li><code>box-decoration-break</code></li>
+<li><code>box-shadow</code></li>
+<li><code>outline</code></li>
+<li><code>outline-color</code></li>
+<li><code>outline-offset</code></li>
+<li><code>outline-style</code></li>
+<li><code>outline-width</code></li>
+</ul>
+<h3 id="fonts-and-text" tabindex="-1">Fonts and Text <a class="anchor" href="#fonts-and-text" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Fonts, CSS Text, CSS Writing Modes.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (52):</li>
+<li><code>direction</code></li>
+<li><code>font</code></li>
+<li><code>font-display</code></li>
+<li><code>font-family</code></li>
+<li><code>font-kerning</code></li>
+<li><code>font-language-override</code></li>
+<li><code>font-optical-sizing</code></li>
+<li><code>font-palette</code></li>
+<li><code>font-size</code></li>
+<li><code>font-size-adjust</code></li>
+<li><code>font-stretch</code></li>
+<li><code>font-style</code></li>
+<li><code>font-synthesis</code></li>
+<li><code>font-synthesis-small-caps</code></li>
+<li><code>font-synthesis-style</code></li>
+<li><code>font-synthesis-weight</code></li>
+<li><code>font-variant</code></li>
+<li><code>font-variation-settings</code></li>
+<li><code>font-weight</code></li>
+<li><code>hanging-punctuation</code></li>
+<li><code>hyphenate-character</code></li>
+<li><code>hyphenate-limit-chars</code></li>
+<li><code>hyphens</code></li>
+<li><code>letter-spacing</code></li>
+<li><code>line-height</code></li>
+<li><code>ruby-align</code></li>
+<li><code>ruby-overhang</code></li>
+<li><code>ruby-position</code></li>
+<li><code>tab-size</code></li>
+<li><code>text-align</code></li>
+<li><code>text-align-last</code></li>
+<li><code>text-anchor</code></li>
+<li><code>text-decoration</code></li>
+<li><code>text-decoration-color</code></li>
+<li><code>text-decoration-line</code></li>
+<li><code>text-decoration-skip-ink</code></li>
+<li><code>text-decoration-style</code></li>
+<li><code>text-decoration-thickness</code></li>
+<li><code>text-indent</code></li>
+<li><code>text-justify</code></li>
+<li><code>text-shadow</code></li>
+<li><code>text-transform</code></li>
+<li><code>text-underline-offset</code></li>
+<li><code>text-wrap</code></li>
+<li><code>text-wrap-mode</code></li>
+<li><code>text-wrap-style</code></li>
+<li><code>unicode-bidi</code></li>
+<li><code>vertical-align</code></li>
+<li><code>white-space</code></li>
+<li><code>word-break</code></li>
+<li><code>word-spacing</code></li>
+<li><code>word-wrap</code></li>
+</ul>
+<h3 id="overflow-scrolling-and-scroll-snap" tabindex="-1">Overflow, Scrolling, and Scroll Snap <a class="anchor" href="#overflow-scrolling-and-scroll-snap" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Overflow, CSS Scroll Snap, CSSOM View.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (47):</li>
+<li><code>overflow</code></li>
+<li><code>overflow-anchor</code></li>
+<li><code>overflow-clip-margin</code></li>
+<li><code>overflow-wrap</code></li>
+<li><code>overflow-x</code></li>
+<li><code>overflow-y</code></li>
+<li><code>overscroll-behavior</code></li>
+<li><code>overscroll-behavior-block</code></li>
+<li><code>overscroll-behavior-inline</code></li>
+<li><code>overscroll-behavior-x</code></li>
+<li><code>overscroll-behavior-y</code></li>
+<li><code>scroll-behavior</code></li>
+<li><code>scroll-margin</code></li>
+<li><code>scroll-margin-block</code></li>
+<li><code>scroll-margin-block-end</code></li>
+<li><code>scroll-margin-block-start</code></li>
+<li><code>scroll-margin-bottom</code></li>
+<li><code>scroll-margin-inline</code></li>
+<li><code>scroll-margin-inline-end</code></li>
+<li><code>scroll-margin-inline-start</code></li>
+<li><code>scroll-margin-left</code></li>
+<li><code>scroll-margin-right</code></li>
+<li><code>scroll-margin-top</code></li>
+<li><code>scroll-padding</code></li>
+<li><code>scroll-padding-block</code></li>
+<li><code>scroll-padding-block-end</code></li>
+<li><code>scroll-padding-block-start</code></li>
+<li><code>scroll-padding-bottom</code></li>
+<li><code>scroll-padding-inline</code></li>
+<li><code>scroll-padding-inline-end</code></li>
+<li><code>scroll-padding-inline-start</code></li>
+<li><code>scroll-padding-left</code></li>
+<li><code>scroll-padding-right</code></li>
+<li><code>scroll-padding-top</code></li>
+<li><code>scroll-snap-stop</code></li>
+<li><code>scroll-snap-type</code></li>
+<li><code>scrollbar-arrow-color</code></li>
+<li><code>scrollbar-base-color</code></li>
+<li><code>scrollbar-color</code></li>
+<li><code>scrollbar-dark-shadow-color</code></li>
+<li><code>scrollbar-face-color</code></li>
+<li><code>scrollbar-gutter</code></li>
+<li><code>scrollbar-highlight-color</code></li>
+<li><code>scrollbar-shadow-color</code></li>
+<li><code>scrollbar-track-color</code></li>
+<li><code>scrollbar-width</code></li>
+<li><code>scrollbar3d-light-color</code></li>
+</ul>
+<h3 id="box-model-and-sizing" tabindex="-1">Box Model and Sizing <a class="anchor" href="#box-model-and-sizing" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Box Model, CSS Sizing.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (36):</li>
+<li><code>aspect-ratio</code></li>
+<li><code>block-size</code></li>
+<li><code>box-sizing</code></li>
+<li><code>height</code></li>
+<li><code>inline-size</code></li>
+<li><code>margin</code></li>
+<li><code>margin-block</code></li>
+<li><code>margin-block-end</code></li>
+<li><code>margin-block-start</code></li>
+<li><code>margin-bottom</code></li>
+<li><code>margin-inline</code></li>
+<li><code>margin-inline-end</code></li>
+<li><code>margin-inline-start</code></li>
+<li><code>margin-left</code></li>
+<li><code>margin-right</code></li>
+<li><code>margin-top</code></li>
+<li><code>max-block-size</code></li>
+<li><code>max-height</code></li>
+<li><code>max-inline-size</code></li>
+<li><code>max-width</code></li>
+<li><code>min-block-size</code></li>
+<li><code>min-height</code></li>
+<li><code>min-inline-size</code></li>
+<li><code>min-width</code></li>
+<li><code>padding</code></li>
+<li><code>padding-block</code></li>
+<li><code>padding-block-end</code></li>
+<li><code>padding-block-start</code></li>
+<li><code>padding-bottom</code></li>
+<li><code>padding-inline</code></li>
+<li><code>padding-inline-end</code></li>
+<li><code>padding-inline-start</code></li>
+<li><code>padding-left</code></li>
+<li><code>padding-right</code></li>
+<li><code>padding-top</code></li>
+<li><code>width</code></li>
+</ul>
+<h3 id="animations-transitions-and-transforms" tabindex="-1">Animations, Transitions, and Transforms <a class="anchor" href="#animations-transitions-and-transforms" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Animations, CSS Transitions, CSS Transforms, View Transitions.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (29):</li>
+<li><code>animation</code></li>
+<li><code>animation-composition</code></li>
+<li><code>animation-delay</code></li>
+<li><code>animation-direction</code></li>
+<li><code>animation-duration</code></li>
+<li><code>animation-fill-mode</code></li>
+<li><code>animation-iteration-count</code></li>
+<li><code>animation-name</code></li>
+<li><code>animation-play-state</code></li>
+<li><code>animation-range</code></li>
+<li><code>animation-range-end</code></li>
+<li><code>animation-range-start</code></li>
+<li><code>animation-timeline</code></li>
+<li><code>animation-timing-function</code></li>
+<li><code>backface-visibility</code></li>
+<li><code>perspective</code></li>
+<li><code>perspective-origin</code></li>
+<li><code>rotate</code></li>
+<li><code>scale</code></li>
+<li><code>transform</code></li>
+<li><code>transform-origin</code></li>
+<li><code>transform-style</code></li>
+<li><code>transition</code></li>
+<li><code>transition-delay</code></li>
+<li><code>transition-duration</code></li>
+<li><code>transition-property</code></li>
+<li><code>transition-timing-function</code></li>
+<li><code>translate</code></li>
+<li><code>view-transition-class</code></li>
+</ul>
+<h3 id="tables-fragmentation-and-multi-column" tabindex="-1">Tables, Fragmentation, and Multi-column <a class="anchor" href="#tables-fragmentation-and-multi-column" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS2 Tables, CSS Fragmentation, CSS Multi-column Layout.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (20):</li>
+<li><code>break-after</code></li>
+<li><code>break-before</code></li>
+<li><code>break-inside</code></li>
+<li><code>caption-side</code></li>
+<li><code>column-count</code></li>
+<li><code>column-fill</code></li>
+<li><code>column-rule</code></li>
+<li><code>column-rule-color</code></li>
+<li><code>column-rule-style</code></li>
+<li><code>column-rule-width</code></li>
+<li><code>column-span</code></li>
+<li><code>column-width</code></li>
+<li><code>columns</code></li>
+<li><code>empty-cells</code></li>
+<li><code>orphans</code></li>
+<li><code>page-break-after</code></li>
+<li><code>page-break-before</code></li>
+<li><code>page-break-inside</code></li>
+<li><code>table-layout</code></li>
+<li><code>widows</code></li>
+</ul>
+<h3 id="compositing-masking-and-effects" tabindex="-1">Compositing, Masking, and Effects <a class="anchor" href="#compositing-masking-and-effects" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: Filter Effects, Compositing and Blending, CSS Masking.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (20):</li>
+<li><code>backdrop-filter</code></li>
+<li><code>clip</code></li>
+<li><code>mask-border</code></li>
+<li><code>mask-border-mode</code></li>
+<li><code>mask-border-outset</code></li>
+<li><code>mask-border-repeat</code></li>
+<li><code>mask-border-slice</code></li>
+<li><code>mask-border-source</code></li>
+<li><code>mask-border-width</code></li>
+<li><code>mask-clip</code></li>
+<li><code>mask-composite</code></li>
+<li><code>mask-image</code></li>
+<li><code>mask-mode</code></li>
+<li><code>mask-origin</code></li>
+<li><code>mask-position</code></li>
+<li><code>mask-repeat</code></li>
+<li><code>mask-size</code></li>
+<li><code>mask-type</code></li>
+<li><code>mix-blend-mode</code></li>
+<li><code>opacity</code></li>
+</ul>
+<h3 id="visual-formatting-and-positioning" tabindex="-1">Visual Formatting and Positioning <a class="anchor" href="#visual-formatting-and-positioning" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS2 Visual Formatting Model, CSS Positioned Layout.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (17):</li>
+<li><code>bottom</code></li>
+<li><code>clear</code></li>
+<li><code>display</code></li>
+<li><code>float</code></li>
+<li><code>inset</code></li>
+<li><code>inset-block</code></li>
+<li><code>inset-block-end</code></li>
+<li><code>inset-block-start</code></li>
+<li><code>inset-inline</code></li>
+<li><code>inset-inline-end</code></li>
+<li><code>inset-inline-start</code></li>
+<li><code>left</code></li>
+<li><code>position</code></li>
+<li><code>right</code></li>
+<li><code>top</code></li>
+<li><code>visibility</code></li>
+<li><code>z-index</code></li>
+</ul>
+<h3 id="lists-counters-and-generated-content" tabindex="-1">Lists, Counters, and Generated Content <a class="anchor" href="#lists-counters-and-generated-content" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Lists and Counters, Generated Content for Paged Media.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (15):</li>
+<li><code>bookmark-label</code></li>
+<li><code>bookmark-level</code></li>
+<li><code>bookmark-state</code></li>
+<li><code>content</code></li>
+<li><code>counter-increment</code></li>
+<li><code>counter-reset</code></li>
+<li><code>counter-set</code></li>
+<li><code>footnote-display</code></li>
+<li><code>footnote-policy</code></li>
+<li><code>list-style</code></li>
+<li><code>list-style-image</code></li>
+<li><code>list-style-position</code></li>
+<li><code>list-style-type</code></li>
+<li><code>quotes</code></li>
+<li><code>running</code></li>
+</ul>
+<h3 id="box-alignment" tabindex="-1">Box Alignment <a class="anchor" href="#box-alignment" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Box Alignment.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (12):</li>
+<li><code>align-content</code></li>
+<li><code>align-items</code></li>
+<li><code>align-self</code></li>
+<li><code>column-gap</code></li>
+<li><code>gap</code></li>
+<li><code>justify-content</code></li>
+<li><code>justify-items</code></li>
+<li><code>justify-self</code></li>
+<li><code>place-content</code></li>
+<li><code>place-items</code></li>
+<li><code>place-self</code></li>
+<li><code>row-gap</code></li>
+</ul>
+<h3 id="grid-layout" tabindex="-1">Grid Layout <a class="anchor" href="#grid-layout" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Grid Layout.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (17):</li>
+<li><code>grid-area</code></li>
+<li><code>grid-auto-columns</code></li>
+<li><code>grid-auto-flow</code></li>
+<li><code>grid-auto-rows</code></li>
+<li><code>grid-column</code></li>
+<li><code>grid-column-end</code></li>
+<li><code>grid-column-gap</code></li>
+<li><code>grid-column-start</code></li>
+<li><code>grid-gap</code></li>
+<li><code>grid-row</code></li>
+<li><code>grid-row-end</code></li>
+<li><code>grid-row-gap</code></li>
+<li><code>grid-row-start</code></li>
+<li><code>grid-template</code></li>
+<li><code>grid-template-areas</code></li>
+<li><code>grid-template-columns</code></li>
+<li><code>grid-template-rows</code></li>
+</ul>
+<h3 id="containment-and-container-queries" tabindex="-1">Containment and Container Queries <a class="anchor" href="#containment-and-container-queries" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Containment and Container Queries.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (10):</li>
+<li><code>contain</code></li>
+<li><code>contain-intrinsic-block-size</code></li>
+<li><code>contain-intrinsic-height</code></li>
+<li><code>contain-intrinsic-inline-size</code></li>
+<li><code>contain-intrinsic-size</code></li>
+<li><code>contain-intrinsic-width</code></li>
+<li><code>container</code></li>
+<li><code>container-name</code></li>
+<li><code>container-type</code></li>
+<li><code>content-visibility</code></li>
+</ul>
+<h3 id="svg-and-graphics-presentation" tabindex="-1">SVG and Graphics Presentation <a class="anchor" href="#svg-and-graphics-presentation" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: SVG/CSS Presentation Attributes.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (10):</li>
+<li><code>image-rendering</code></li>
+<li><code>shape-rendering</code></li>
+<li><code>stroke</code></li>
+<li><code>stroke-dasharray</code></li>
+<li><code>stroke-dashoffset</code></li>
+<li><code>stroke-linecap</code></li>
+<li><code>stroke-linejoin</code></li>
+<li><code>stroke-miterlimit</code></li>
+<li><code>stroke-opacity</code></li>
+<li><code>stroke-width</code></li>
+</ul>
+<h3 id="flexible-box-layout" tabindex="-1">Flexible Box Layout <a class="anchor" href="#flexible-box-layout" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Flexible Box Layout.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (8):</li>
+<li><code>flex</code></li>
+<li><code>flex-basis</code></li>
+<li><code>flex-direction</code></li>
+<li><code>flex-flow</code></li>
+<li><code>flex-grow</code></li>
+<li><code>flex-shrink</code></li>
+<li><code>flex-wrap</code></li>
+<li><code>order</code></li>
+</ul>
+<h3 id="anchor-positioning-and-fallbacks" tabindex="-1">Anchor Positioning and Fallbacks <a class="anchor" href="#anchor-positioning-and-fallbacks" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Anchor Positioning.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (7):</li>
+<li><code>anchor-name</code></li>
+<li><code>anchor-scope</code></li>
+<li><code>position-anchor</code></li>
+<li><code>position-area</code></li>
+<li><code>position-try-fallbacks</code></li>
+<li><code>position-try-order</code></li>
+<li><code>position-visibility</code></li>
+</ul>
+<h3 id="user-interface" tabindex="-1">User Interface <a class="anchor" href="#user-interface" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Basic User Interface.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (6):</li>
+<li><code>accent-color</code></li>
+<li><code>appearance</code></li>
+<li><code>caret-color</code></li>
+<li><code>cursor</code></li>
+<li><code>touch-action</code></li>
+<li><code>user-select</code></li>
+</ul>
+<h3 id="color-and-color-adjustment" tabindex="-1">Color and Color Adjustment <a class="anchor" href="#color-and-color-adjustment" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: CSS Color, CSS Color Adjustment.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (4):</li>
+<li><code>color</code></li>
+<li><code>color-scheme</code></li>
+<li><code>forced-color-adjust</code></li>
+<li><code>print-color-adjust</code></li>
+</ul>
+<h3 id="other-legacy-vendor" tabindex="-1">Other / Legacy / Vendor <a class="anchor" href="#other-legacy-vendor" aria-hidden="true">#</a></h3>
+<ul>
+<li>Primary specs: Legacy / draft / vendor-oriented extensions.</li>
+<li>Potential limitations: Validation depth follows the registered converter; unsupported grammar branches are rejected or normalized by parser behavior.</li>
+<li>Implemented declarations (20):</li>
+<li><code>fill</code></li>
+<li><code>grid</code></li>
+<li><code>image-orientation</code></li>
+<li><code>initial-letter</code></li>
+<li><code>initial-letter-align</code></li>
+<li><code>isolation</code></li>
+<li><code>line-break</code></li>
+<li><code>object-fit</code></li>
+<li><code>object-position</code></li>
+<li><code>pointer-events</code></li>
+<li><code>resize</code></li>
+<li><code>shape-image-threshold</code></li>
+<li><code>shape-margin</code></li>
+<li><code>shape-outside</code></li>
+<li><code>src</code></li>
+<li><code>string-set</code></li>
+<li><code>unicode-range</code></li>
+<li><code>view-transition-name</code></li>
+<li><code>white-space-collapse</code></li>
+<li><code>will-change</code></li>
+</ul>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Css/edit/devel/docs/general/08-Supported-Declarations.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/css/general/supported-declarations/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/b35861044ecc148031849ea5a1cfd6316be1b90a" target="_blank" rel="noopener"><code>b358610</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/css/general/supported-at-rules/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Supported Rules</span></a>
+      <a class="pager-next" href="/docs/css/general/typed-om/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Typed OM</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#coverage-model" title="Coverage Model">Coverage Model</a></li><li class="toc-l2"><a href="#by-css-area-spec" title="By CSS Area / Spec">By CSS Area / Spec</a></li><li class="toc-l3"><a href="#backgrounds-and-borders" title="Backgrounds and Borders">Backgrounds and Borders</a></li><li class="toc-l3"><a href="#fonts-and-text" title="Fonts and Text">Fonts and Text</a></li><li class="toc-l3"><a href="#overflow-scrolling-and-scroll-snap" title="Overflow, Scrolling, and Scroll Snap">Overflow, Scrolling, and Scroll Snap</a></li><li class="toc-l3"><a href="#box-model-and-sizing" title="Box Model and Sizing">Box Model and Sizing</a></li><li class="toc-l3"><a href="#animations-transitions-and-transforms" title="Animations, Transitions, and Transforms">Animations, Transitions, and Transforms</a></li><li class="toc-l3"><a href="#tables-fragmentation-and-multi-column" title="Tables, Fragmentation, and Multi-column">Tables, Fragmentation, and Multi-column</a></li><li class="toc-l3"><a href="#compositing-masking-and-effects" title="Compositing, Masking, and Effects">Compositing, Masking, and Effects</a></li><li class="toc-l3"><a href="#visual-formatting-and-positioning" title="Visual Formatting and Positioning">Visual Formatting and Positioning</a></li><li class="toc-l3"><a href="#lists-counters-and-generated-content" title="Lists, Counters, and Generated Content">Lists, Counters, and Generated Content</a></li><li class="toc-l3"><a href="#box-alignment" title="Box Alignment">Box Alignment</a></li><li class="toc-l3"><a href="#grid-layout" title="Grid Layout">Grid Layout</a></li><li class="toc-l3"><a href="#containment-and-container-queries" title="Containment and Container Queries">Containment and Container Queries</a></li><li class="toc-l3"><a href="#svg-and-graphics-presentation" title="SVG and Graphics Presentation">SVG and Graphics Presentation</a></li><li class="toc-l3"><a href="#flexible-box-layout" title="Flexible Box Layout">Flexible Box Layout</a></li><li class="toc-l3"><a href="#anchor-positioning-and-fallbacks" title="Anchor Positioning and Fallbacks">Anchor Positioning and Fallbacks</a></li><li class="toc-l3"><a href="#user-interface" title="User Interface">User Interface</a></li><li class="toc-l3"><a href="#color-and-color-adjustment" title="Color and Color Adjustment">Color and Color Adjustment</a></li><li class="toc-l3"><a href="#other-legacy-vendor" title="Other / Legacy / Vendor">Other / Legacy / Vendor</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

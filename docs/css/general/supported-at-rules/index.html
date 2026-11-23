@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supported Rules · AngleSharp.Css · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/css/general/supported-at-rules/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supported Rules · AngleSharp.Css · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/css/general/supported-at-rules/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/css/general/supported-at-rules/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Css menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/css/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/" selected>AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Css documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/css/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/css/general/basics/">Getting Started</a></li><li><a href="/docs/css/general/values/">Types of Values</a></li><li><a href="/docs/css/general/cssom/">CSSOM</a></li><li><a href="/docs/css/general/core-interfaces/">Core Interfaces</a></li><li><a href="/docs/css/general/extensibility/">Extensibility</a></li><li><a href="/docs/css/general/provided-services/">Provided Services</a></li><li><a href="/docs/css/general/supported-at-rules/" aria-current="page">Supported Rules</a></li><li><a href="/docs/css/general/supported-declarations/">Supported Declarations</a></li><li><a href="/docs/css/general/typed-om/">Typed OM</a></li><li><a href="/docs/css/general/painting-api/">Painting API</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/css/tutorials/api/">API Documentation</a></li><li><a href="/docs/css/tutorials/examples/">Examples</a></li><li><a href="/docs/css/tutorials/render-tree/">Render Tree</a></li><li><a href="/docs/css/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/css/">AngleSharp.Css</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="supported-at-rules">Supported At-Rules</h1>
+<p>This page documents the at-rules recognized by the AngleSharp.Css parser (<code>CssBuilder.AtRuleMap</code>) and the corresponding CSSOM rule implementations.</p>
+<h2 id="coverage-model" tabindex="-1">Coverage Model <a class="anchor" href="#coverage-model" aria-hidden="true">#</a></h2>
+<ul>
+<li>A rule is considered supported if the parser maps its name to a dedicated <code>Create*</code> path in <code>CssBuilder</code>.</li>
+<li>Unknown at-rules can still be kept as <code>CssUnknownRule</code> when <code>CssParserOptions.IsIncludingUnknownRules = true</code>.</li>
+<li>Support here means parsing and CSSOM representation. Runtime behavior (rendering/layout) is outside scope.</li>
+</ul>
+<h2 id="supported-at-rules" tabindex="-1">Supported At-Rules <a class="anchor" href="#supported-at-rules" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>At-rule</th>
+<th>Primary spec(s)</th>
+<th>Implementation notes</th>
+<th>Potential limitations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@media</code></td>
+<td>Media Queries</td>
+<td>Parsed into <code>CssMediaRule</code> with nested rule list.</td>
+<td>Media query validation follows parser behavior and can normalize unsupported syntax.</td>
+</tr>
+<tr>
+<td><code>@supports</code></td>
+<td>CSS Conditional Rules</td>
+<td>Parsed into <code>CssSupportsRule</code> with nested rule list.</td>
+<td>Condition text parsing is syntax-driven; unsupported condition branches may fail to materialize as a rule.</td>
+</tr>
+<tr>
+<td><code>@import</code></td>
+<td>CSS Cascading and Inheritance</td>
+<td>Parsed into <code>CssImportRule</code> (<code>href</code> + media text).</td>
+<td>Modern import modifiers (e.g. richer layered/supports forms) are not modeled as dedicated properties.</td>
+</tr>
+<tr>
+<td><code>@charset</code></td>
+<td>CSS Syntax</td>
+<td>Parsed into <code>CssCharsetRule</code>.</td>
+<td>Only string charset payload is modeled.</td>
+</tr>
+<tr>
+<td><code>@namespace</code></td>
+<td>CSS Namespaces</td>
+<td>Parsed into <code>CssNamespaceRule</code> (prefix + namespace URI).</td>
+<td>URI assignment path is URL-token centric; some alternate serializations may not round-trip identically.</td>
+</tr>
+<tr>
+<td><code>@page</code></td>
+<td>Paged Media</td>
+<td>Parsed into <code>CssPageRule</code> with declaration block.</td>
+<td>Selector validation is parser-tolerant depending on options (<code>IsToleratingInvalidSelectors</code>).</td>
+</tr>
+<tr>
+<td><code>@font-face</code></td>
+<td>CSS Fonts</td>
+<td>Parsed into <code>CssFontFaceRule</code>.</td>
+<td>Descriptor handling is limited to a fixed subset in <code>ContainedProperties</code> (<code>font-family</code>, <code>src</code>, <code>font-style</code>, <code>font-weight</code>, <code>font-stretch</code>, <code>unicode-range</code>, <code>font-variant</code>).</td>
+</tr>
+<tr>
+<td><code>@keyframes</code></td>
+<td>CSS Animations</td>
+<td>Parsed into <code>CssKeyframesRule</code> with <code>CssKeyframeRule</code> children.</td>
+<td>Keyframe content is declaration parsing only; semantic animation engine behavior is outside scope.</td>
+</tr>
+<tr>
+<td><code>@container</code></td>
+<td>CSS Containment / Container Queries</td>
+<td>Parsed into <code>CssContainerRule</code> with nested rules.</td>
+<td>Condition text parsing is syntax-driven; unsupported condition forms may be rejected.</td>
+</tr>
+<tr>
+<td><code>@layer</code></td>
+<td>CSS Cascade Layers</td>
+<td>Parsed into <code>CssLayerRule</code> (statement and block forms).</td>
+<td>Layer ordering semantics beyond parsed structure are not enforced by a rendering engine here.</td>
+</tr>
+<tr>
+<td><code>@scope</code></td>
+<td>CSS Scoping</td>
+<td>Parsed into <code>CssScopeRule</code> with nested rules.</td>
+<td>Scope prelude is stored as text; advanced selector semantics depend on parser support.</td>
+</tr>
+<tr>
+<td><code>@property</code></td>
+<td>CSS Properties and Values API</td>
+<td>Parsed into <code>CssPropertyRule</code> (<code>Syntax</code>, <code>Inherits</code>, <code>InitialValue</code>, <code>IsValid</code>). Valid rules register the custom property: values are validated against the syntax and computed, the initial value and inheritance apply.</td>
+<td>Registration follows the conditions of enclosing <code>@media</code> / <code>@supports</code> rules like style rules. Script can register custom properties with <code>CSS.registerProperty()</code> (<code>window.RegisterProperty(new PropertyDefinition { ... })</code>), which wins over <code>@property</code> for the same name. The registrations in effect are available as <code>ICssPropertyRegistration</code> via <code>document.GetRegisteredProperties()</code>, see <a href="/docs/css/general/typed-om/#registered-custom-properties">Typed OM</a>.</td>
+</tr>
+<tr>
+<td><code>@starting-style</code></td>
+<td>CSS Transitions Level 2</td>
+<td>Parsed into <code>CssStartingStyleRule</code> with nested rules.</td>
+<td>Behavior-level transition semantics are not evaluated.</td>
+</tr>
+<tr>
+<td><code>@view-transition</code></td>
+<td>View Transitions</td>
+<td>Parsed into <code>CssViewTransitionRule</code> with descriptor storage.</td>
+<td>Descriptors are stored generically, without dedicated descriptor schema validation.</td>
+</tr>
+<tr>
+<td><code>@position-try</code></td>
+<td>CSS Anchor Positioning</td>
+<td>Parsed into <code>CssPositionTryRule</code> with declaration block.</td>
+<td>No layout fallback engine; parsing/serialization only.</td>
+</tr>
+<tr>
+<td><code>@font-palette-values</code></td>
+<td>CSS Fonts Level 4</td>
+<td>Parsed into <code>CssFontPaletteValuesRule</code> with descriptor storage.</td>
+<td>Descriptors are generic and not schema-validated per descriptor name/value.</td>
+</tr>
+<tr>
+<td><code>@color-profile</code></td>
+<td>CSS Color</td>
+<td>Parsed into <code>CssColorProfileRule</code> with descriptor storage.</td>
+<td>Descriptors are generic and not schema-validated per descriptor name/value.</td>
+</tr>
+<tr>
+<td><code>@counter-style</code></td>
+<td>CSS Counter Styles</td>
+<td>Parsed into <code>CssCounterStyleRule</code>.</td>
+<td>Current implementation stores the style name, but descriptor declarations are effectively not materialized (empty contained-property set).</td>
+</tr>
+<tr>
+<td><code>@font-feature-values</code></td>
+<td>CSS Fonts</td>
+<td>Parsed into <code>CssFontFeatureValuesRule</code>.</td>
+<td>Family name is captured, but the inner descriptor block is skipped (not populated into declarations).</td>
+</tr>
+<tr>
+<td><code>@viewport</code></td>
+<td>Device Adaptation (legacy)</td>
+<td>Parsed into <code>CssViewportRule</code>.</td>
+<td>Supports a fixed legacy descriptor subset (<code>min/max-width</code>, <code>min/max-height</code>, <code>zoom</code> family, <code>orientation</code>).</td>
+</tr>
+<tr>
+<td><code>@document</code></td>
+<td>Non-standard / vendor historical</td>
+<td>Parsed into <code>CssDocumentRule</code> with nested rules.</td>
+<td>Non-standard rule; interoperability expectations should be conservative.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="notes" tabindex="-1">Notes <a class="anchor" href="#notes" aria-hidden="true">#</a></h2>
+<ul>
+<li><code>CssRuleType</code> includes additional historical values such as region-style, but only the rules listed above are currently mapped by parser at-rule dispatch.</li>
+<li>If you need strict acceptance/rejection behavior for unknown at-rules, configure <code>CssParserOptions.IsIncludingUnknownRules</code> accordingly.</li>
+</ul>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Css/edit/devel/docs/general/07-Supported-At-Rules.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/css/general/supported-at-rules/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/b35861044ecc148031849ea5a1cfd6316be1b90a" target="_blank" rel="noopener"><code>b358610</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/css/general/provided-services/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Provided Services</span></a>
+      <a class="pager-next" href="/docs/css/general/supported-declarations/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Supported Declarations</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#coverage-model" title="Coverage Model">Coverage Model</a></li><li class="toc-l2"><a href="#supported-at-rules" title="Supported At-Rules">Supported At-Rules</a></li><li class="toc-l2"><a href="#notes" title="Notes">Notes</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typed OM · AngleSharp.Css · AngleSharp</title>
+<meta name="description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<link rel="canonical" href="https://anglesharp.github.io/docs/css/general/typed-om/">
+<meta name="theme-color" content="#070b14">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Typed OM · AngleSharp.Css · AngleSharp">
+<meta property="og:description" content="AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.">
+<meta property="og:url" content="https://anglesharp.github.io/docs/css/general/typed-om/">
+<meta property="og:image" content="https://anglesharp.github.io/assets/projects/anglesharp/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="text/markdown" href="/docs/css/general/typed-om/index.html.md">
+<link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
+<link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
+<script src="/assets/app.js?v=2585d9215d" defer></script>
+</head>
+<body class="page-docs" data-base="/">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="AngleSharp home">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg>
+      <span class="brand-name">Angle<b>Sharp</b></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="/docs/" aria-current="page">Docs</a><a href="/ecosystem/">Ecosystem</a><a href="/blog/">Blog</a><a href="/resources/">Resources</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search docs…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-dark"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></span><span class="theme-light"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      </button>
+      <a class="icon-btn" href="https://github.com/AngleSharp" aria-label="AngleSharp on GitHub" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-label="Open menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<div class="docs-layout container">
+  <button class="docs-menu-btn" type="button" data-sidebar-toggle aria-controls="docs-sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg> AngleSharp.Css menu</button>
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="project-switch">
+      <label for="project-select" class="sr-only">Project</label>
+      <img class="project-logo project-logo-xs" src="/assets/projects/css/logo.png" alt="" width="128" height="128" loading="lazy">
+      <select id="project-select" data-project-select>
+        <option value="/docs/anglesharp/">AngleSharp</option><option value="/docs/css/" selected>AngleSharp.Css</option><option value="/docs/js/">AngleSharp.Js</option><option value="/docs/xml/">AngleSharp.Xml</option><option value="/docs/io/">AngleSharp.Io</option><option value="/docs/xpath/">AngleSharp.XPath</option><option value="/docs/diffing/">AngleSharp.Diffing</option><option value="/docs/wasm/">AngleSharp.Wasm</option><option value="/docs/renderer/">AngleSharp.Renderer</option><option value="/docs/browser/">AngleSharp.Browser</option>
+      </select>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+    <nav class="docs-nav" aria-label="AngleSharp.Css documentation">
+      <div class="docs-nav-group">
+        
+        <ul><li><a href="/docs/css/">Overview</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Guides</h4>
+        <ul><li><a href="/docs/css/general/basics/">Getting Started</a></li><li><a href="/docs/css/general/values/">Types of Values</a></li><li><a href="/docs/css/general/cssom/">CSSOM</a></li><li><a href="/docs/css/general/core-interfaces/">Core Interfaces</a></li><li><a href="/docs/css/general/extensibility/">Extensibility</a></li><li><a href="/docs/css/general/provided-services/">Provided Services</a></li><li><a href="/docs/css/general/supported-at-rules/">Supported Rules</a></li><li><a href="/docs/css/general/supported-declarations/">Supported Declarations</a></li><li><a href="/docs/css/general/typed-om/" aria-current="page">Typed OM</a></li><li><a href="/docs/css/general/painting-api/">Painting API</a></li></ul>
+      </div><div class="docs-nav-group">
+        <h4>Tutorials</h4>
+        <ul><li><a href="/docs/css/tutorials/api/">API Documentation</a></li><li><a href="/docs/css/tutorials/examples/">Examples</a></li><li><a href="/docs/css/tutorials/render-tree/">Render Tree</a></li><li><a href="/docs/css/tutorials/questions/">Questions</a></li></ul>
+      </div>
+    </nav>
+    <div class="docs-sidebar-foot">
+      <a href="https://github.com/AngleSharp/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.39-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> Repository</a>
+      <a href="https://www.nuget.org/packages/AngleSharp.Css" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg> NuGet package</a>
+    </div>
+  </aside>
+  <article class="docs-main">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a><span>/</span>
+      <a href="/docs/css/">AngleSharp.Css</a>
+      <span>/</span><span>Guides</span>
+    </nav>
+    
+    <div class="prose"><h1 id="typed-om">Typed OM</h1>
+<p>AngleSharp.Css implements the <a href="https://www.w3.org/TR/css-typed-om-1/" target="_blank" rel="noopener">CSS Typed Object Model Level 1</a> in the <code>AngleSharp.Css.TypedOm</code> namespace. Instead of strings, values are given as objects: a length is a <code>CssUnitValue</code> with a value and a unit, a <code>calc()</code> is a tree of math values, and a <code>transform</code> is a list of transform components.</p>
+<p>The Typed OM is a view of the CSSOM, not a copy of it. Typed values are created (reified) from the values the CSSOM already parsed whenever they are requested, and values written through a style map are validated and stored by the converter of the property, exactly as <code>SetProperty</code> does. The existing CSSOM interfaces are unchanged.</p>
+<h2 id="style-property-maps" tabindex="-1">Style Property Maps <a class="anchor" href="#style-property-maps" aria-hidden="true">#</a></h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Dom</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">TypedOm</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> element</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">QuerySelector</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"div"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the inline style, i.e., the style attribute (attributeStyleMap)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> map</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> element.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetAttributeStyleMap</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">map.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Set</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"width"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">map.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Set</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"height"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"calc(100% - 2em)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> width</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">CssUnitValue</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">)map.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Get</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"width"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// 100, "px"</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the declarations of a style rule (styleMap)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> ruleMap</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> styleRule.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetStyleMap</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the computed style (computedStyleMap()), which is read-only</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> computed</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> element.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ComputedStyleMap</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> fontSize</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> computed.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Get</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"font-size"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"></span></code></pre></div><ul>
+<li><code>Get</code> gives the (first) value, <code>GetAll</code> all values of a list-valued property (e.g., the images of <code>background-image</code>), <code>Has</code> and <code>Size</code> tell what is declared.</li>
+<li><code>Set</code> and <code>Append</code> take typed values or CSS text. Multiple values (and <code>Append</code>) are only allowed for list-valued properties. An invalid value throws an <code>ArgumentException</code> (the <code>TypeError</code> of the specification) and leaves the declarations unchanged.</li>
+<li>The priority (<code>!important</code>) of a declaration is kept when it is set.</li>
+<li><code>GetStyleMap()</code> is available for any <code>ICssStyleDeclaration</code>, and <code>GetReadOnlyStyleMap()</code> gives a read-only view.</li>
+</ul>
+<h2 id="values" tabindex="-1">Values <a class="anchor" href="#values" aria-hidden="true">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>CSS value</th>
+<th>Typed value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10px</code>, <code>50%</code>, <code>2</code>, <code>1s</code></td>
+<td><code>CssUnitValue</code></td>
+</tr>
+<tr>
+<td><code>calc()</code>, <code>min()</code>, <code>max()</code>, <code>clamp()</code></td>
+<td><code>CssMathSum</code>, <code>CssMathProduct</code>, <code>CssMathNegate</code>, <code>CssMathInvert</code>, <code>CssMathMin</code>, <code>CssMathMax</code>, <code>CssMathClamp</code></td>
+</tr>
+<tr>
+<td><code>auto</code>, <code>block</code>, <code>inherit</code></td>
+<td><code>CssKeywordValue</code></td>
+</tr>
+<tr>
+<td>custom properties, values with <code>var()</code></td>
+<td><code>CssUnparsedValue</code> (strings and <code>CssVariableReferenceValue</code>)</td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td><code>CssTransformValue</code> of <code>CssTranslate</code>, <code>CssRotate</code>, <code>CssScale</code>, <code>CssSkew</code>, <code>CssSkewX</code>, <code>CssSkewY</code>, <code>CssPerspective</code>, <code>CssMatrixComponent</code></td>
+</tr>
+<tr>
+<td><code>url()</code>, gradients</td>
+<td><code>CssImageValue</code></td>
+</tr>
+<tr>
+<td>positions, e.g., of <code>object-position</code></td>
+<td><code>CssPositionValue</code></td>
+</tr>
+<tr>
+<td>anything else, e.g., colors or shorthands</td>
+<td><code>CssStyleValue</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>A value without a more specific representation is a plain <code>CssStyleValue</code>, which only knows its serialization and can only be set for the property it was obtained for.</p>
+<p>Values are parsed with <code>CssStyleValue.Parse(property, text)</code> / <code>ParseAll</code>, or <code>CssNumericValue.Parse(text)</code> for numeric values. An <code>ICssProperty</code> or <code>ICssValue</code> of the CSSOM is turned into a typed value with <code>ToStyleValue()</code>. Every typed value is serialized with <code>ToString()</code>.</p>
+<h2 id="numeric-values" tabindex="-1">Numeric Values <a class="anchor" href="#numeric-values" aria-hidden="true">#</a></h2>
+<p>The factories of the <code>CSS</code> namespace are on <code>CssHelpers</code>, e.g., <code>CssHelpers.Px(10)</code>, <code>CssHelpers.Percent(50)</code>, or <code>CssHelpers.Number(2)</code>. A <code>Double</code> converts implicitly to a number.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> a</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">5</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));      </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// 15px</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> b</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Add</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Em</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">));      </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// calc(10px + 1em)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> c</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Px</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">*</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 2</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;                        </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// 20px</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> d</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> CssHelpers.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">In</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">To</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"px"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);                    </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// 96px</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> e</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> CssNumericValue.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Parse</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"calc(1in + 1em + 1px)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ToSum</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"px"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"em"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// calc(97px + 1em)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> t</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> b.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Type</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();                                     </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// length: 1</span></span>
+<span class="line"></span></code></pre></div><ul>
+<li><code>Add</code>, <code>Sub</code>, <code>Mul</code>, <code>Div</code>, <code>Min</code>, and <code>Max</code> give a <code>CssUnitValue</code> when the units allow it, otherwise a math value. Incompatible types (e.g., a length and a time) throw an <code>ArgumentException</code>.</li>
+<li><code>To</code> and <code>ToSum</code> convert between compatible absolute units (lengths, angles, times, frequencies, resolutions). Relative units such as <code>em</code>, <code>%</code>, or <code>vw</code> are kept as they are, as they can only be resolved during layout.</li>
+<li><code>Equals</code> compares values structurally.</li>
+<li><code>CssTransformValue.ToMatrix()</code> gives the <code>TransformMatrix</code> of a transform with absolute units.</li>
+</ul>
+<h2 id="registered-custom-properties" tabindex="-1">Registered Custom Properties <a class="anchor" href="#registered-custom-properties" aria-hidden="true">#</a></h2>
+<p>A custom property can be registered with a valid <code>@property</code> rule or with <code>CSS.registerProperty()</code> (<code>window.RegisterProperty(new PropertyDefinition { ... })</code>), see the <a href="https://www.w3.org/TR/css-properties-values-api-1/" target="_blank" rel="noopener">CSS Properties and Values API Level 1</a>. Both kinds of registration share one representation, <code>ICssPropertyRegistration</code>, which the cascade, the computed style, and the Typed OM use alike.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Dom</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">using</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> AngleSharp</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">Css</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">TypedOm</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the registrations in effect for the document (script wins over @property for a name)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> registration</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetRegisteredProperty</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"--gap"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> all</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetRegisteredProperties</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.Syntax;           </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// "&#x3C;length>"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.Inherits;         </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// false</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.Origin;           </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// Rule (@property) or Script (CSS.registerProperty)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.IsList;           </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// true for e.g. "&#x3C;length>#" or "&#x3C;length>+"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.InitialValue;     </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// "0px"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.RawInitialValue;  </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the CSSOM value, e.g., a CssLengthValue</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.RawInitialValue.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ToStyleValue</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(registration.Name); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// CssUnitValue 0px</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">registration.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">Match</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"10px"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);    </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the CSSOM value matching the syntax, or null</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// the registration a single @property rule makes, whether it is in effect or not</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> own</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> propertyRule.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">GetRegistration</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#8B949E">// null if the rule is not valid</span></span>
+<span class="line"></span></code></pre></div><p>The registrations always reflect the current style sheets, but they are only collected again after something they depend on changed: the DOM (e.g., an added or removed <code>&lt;style&gt;</code>, its text, or its <code>media</code> attribute), the rules (e.g., an inserted rule or a changed descriptor of a <code>@property</code> rule), the loaded, disabled, adopted, or default style sheets, the registrations of script, or the result of a condition (<code>@media</code>, <code>@supports</code>, the media of a sheet) around a <code>@property</code> rule, e.g., after the viewport of the render device changed. Reading them, e.g., the value of a custom property from a style map, therefore costs a few checks, not a walk over the style sheets. A <code>@property</code> rule follows the conditions of enclosing rules (e.g., <code>@media</code>) like a style rule does.</p>
+<p>In the style maps, a registered custom property behaves like a property with the grammar of its syntax:</p>
+<ul>
+<li><code>Get</code> and <code>GetAll</code> type the value according to the syntax, also for declared values, e.g., <code>--gap: 2em</code> is a <code>CssUnitValue</code> of <code>2em</code> in the <code>attributeStyleMap</code> and of <code>32px</code> in the <code>computedStyleMap()</code>. A list syntax (<code>&lt;length&gt;#</code>, <code>&lt;length&gt;+</code>) gives one value per item.</li>
+<li>A value that has references (e.g., <code>var(--x)</code>), does not match the syntax (it is invalid at computed-value time), or is registered with the universal syntax <code>*</code> stays a <code>CssUnparsedValue</code>, like the value of an unregistered custom property.</li>
+<li><code>Set</code> and <code>Append</code> throw an <code>ArgumentException</code> for a value that does not match the syntax, unless it is a CSS-wide keyword or has references. Only a list syntax is list-valued, i.e., takes multiple values or <code>Append</code>.</li>
+<li><code>CssStyleValue.Parse(property, text, context)</code> uses the registrations of the context's active document.</li>
+</ul>
+<p>The style maps of an element use the registrations of its document, the map of a style rule those of the document owning the style sheet (or else of the active document of the context).</p>
+<h2 id="cssom-and-typed-om" tabindex="-1">CSSOM and Typed OM <a class="anchor" href="#cssom-and-typed-om" aria-hidden="true">#</a></h2>
+<p>The CSSOM and the Typed OM are two representations of the same declarations, and the Typed OM never holds values of its own:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Obtained by</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td><code>GetPropertyValue</code>, <code>ICssProperty.Value</code>, <code>ICssValue.CssText</code></td>
+<td>Serialization, unchanged by the Typed OM</td>
+</tr>
+<tr>
+<td>CSSOM value (<code>ICssValue</code>)</td>
+<td><code>ICssProperty.RawValue</code>, <code>ICssPropertyRegistration.Match</code></td>
+<td>The result of the converters of a property (or the syntax of a registration), which the cascade and computation use</td>
+</tr>
+<tr>
+<td>Typed value (<code>CssStyleValue</code>)</td>
+<td>style maps, <code>ToStyleValue()</code>, <code>CssStyleValue.Parse</code></td>
+<td>The Typed OM, reified from the CSSOM value</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Reading: a typed value is reified from the CSSOM value of a declaration. Nothing is parsed again, unless the declaration only has text (e.g., a used value of a computed style).</li>
+<li>Writing: a typed value is serialized and parsed by the converter of the property (or matched against the syntax of a registration), exactly like a value set with <code>SetProperty</code>. The CSSOM therefore never sees a value it could not have parsed itself, and its serialization does not change.</li>
+<li>The CSSOM stays unaware of registrations for declared values: <code>SetProperty(&quot;--gap&quot;, &quot;red&quot;)</code> keeps the value (custom properties accept any value at parse time), which is then invalid at computed-value time and reified as <code>CssUnparsedValue</code>. Only the Typed OM <code>Set</code> validates against the syntax, as the specification demands.</li>
+</ul>
+<h2 id="specification-coverage" tabindex="-1">Specification Coverage <a class="anchor" href="#specification-coverage" aria-hidden="true">#</a></h2>
+<p>How the CSSOM relates to the <a href="https://www.w3.org/TR/css-properties-values-api-1/" target="_blank" rel="noopener">CSS Properties and Values API Level 1</a>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Specification</th>
+<th>AngleSharp.Css</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@property</code> rule, <code>CSSPropertyRule</code> (<code>name</code>, <code>syntax</code>, <code>inherits</code>, <code>initialValue</code>)</td>
+<td><code>ICssPropertyRule</code> (<code>Name</code>, <code>Syntax</code>, <code>Inherits</code>, <code>InitialValue</code>, plus <code>IsValid</code>)</td>
+</tr>
+<tr>
+<td><code>CSS.registerProperty(PropertyDefinition)</code></td>
+<td><code>RegisterProperty</code> on <code>IWindow</code> / <code>IDocument</code> with <code>PropertyDefinition</code>, <code>SyntaxError</code> / <code>InvalidModificationError</code> as <code>DomException</code></td>
+</tr>
+<tr>
+<td>Registered custom property (the registration map of the document)</td>
+<td><code>ICssPropertyRegistration</code>, <code>GetRegisteredProperties()</code> / <code>GetRegisteredProperty(name)</code>, <code>GetRegistration()</code> of a rule</td>
+</tr>
+<tr>
+<td>Syntax strings and matching</td>
+<td><code>ICssPropertyRegistration.Syntax</code>, <code>Match</code>, <code>IsList</code>, using the existing value converters</td>
+</tr>
+<tr>
+<td>Computed value, inheritance, initial value</td>
+<td>Computed style (<code>ComputeCurrentStyle</code>, <code>GetComputedStyle</code>, render tree)</td>
+</tr>
+<tr>
+<td>Typed OM reification of registered properties</td>
+<td>Style maps and <code>CssStyleValue.Parse</code></td>
+</tr>
+<tr>
+<td>Animation of registered properties</td>
+<td>Not applicable, as there is no animation engine</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="limitations" tabindex="-1">Limitations <a class="anchor" href="#limitations" aria-hidden="true">#</a></h2>
+<ul>
+<li>The computed style map is a snapshot of the computed style at the time of the call.</li>
+<li>Colors and other values beyond the Typed OM Level 1 are given as plain <code>CssStyleValue</code>.</li>
+<li>Custom properties are given as <code>CssUnparsedValue</code>, except for registered ones, which are typed according to their syntax, e.g., a <code>CssUnitValue</code> for <code>&lt;length&gt;</code> (see above).</li>
+<li><code>ToStyleValue()</code> of an <code>ICssProperty</code> or <code>ICssValue</code> knows no document, i.e., the declared value of a registered custom property is a <code>CssUnparsedValue</code> there; use a style map, or match the value with the registration first.</li>
+</ul>
+</div>
+    <div class="doc-foot">
+      <span class="doc-actions">
+        <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Css/edit/devel/docs/general/09-Typed-OM.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
+        <a class="edit-link" href="/docs/css/general/typed-om/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
+      </span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/b35861044ecc148031849ea5a1cfd6316be1b90a" target="_blank" rel="noopener"><code>b358610</code></a></span>
+    </div>
+    <nav class="pager" aria-label="Pagination">
+      <a class="pager-prev" href="/docs/css/general/supported-declarations/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Supported Declarations</span></a>
+      <a class="pager-next" href="/docs/css/general/painting-api/"><small>Next <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></small><span>Painting API</span></a>
+    </nav>
+  </article>
+  <aside class="docs-toc" aria-label="On this page">
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#style-property-maps" title="Style Property Maps">Style Property Maps</a></li><li class="toc-l2"><a href="#values" title="Values">Values</a></li><li class="toc-l2"><a href="#numeric-values" title="Numeric Values">Numeric Values</a></li><li class="toc-l2"><a href="#registered-custom-properties" title="Registered Custom Properties">Registered Custom Properties</a></li><li class="toc-l2"><a href="#cssom-and-typed-om" title="CSSOM and Typed OM">CSSOM and Typed OM</a></li><li class="toc-l2"><a href="#specification-coverage" title="Specification Coverage">Specification Coverage</a></li><li class="toc-l2"><a href="#limitations" title="Limitations">Limitations</a></li></ul>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/"><svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="lm-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a6fd1"/><stop offset="1" stop-color="#0057b0"/></linearGradient>
+    <linearGradient id="lm-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5f4"/><stop offset="1" stop-color="#1ba1e2"/></linearGradient>
+  </defs>
+  <path d="M31 22 9 36l22 14v-8.6L22.4 36 31 30.6Z" fill="url(#lm-a)"/>
+  <path d="M33 8v8.6L41.6 22 33 27.4V36l22-14Z" fill="url(#lm-b)"/>
+</svg><span class="brand-name">Angle<b>Sharp</b></span></a>
+      <p>The ultimate angle brackets parser library for .NET — HTML5, CSS, SVG, MathML, and XML, built to spec.</p>
+      <a class="foundation" href="https://dotnetfoundation.org/" target="_blank" rel="noopener">
+        <span><small>A member project of the</small></span>
+        <img src="/dotnetfoundation.svg" alt=".NET Foundation" width="110" height="40">
+      </a>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul><li><a href="/docs/anglesharp/">AngleSharp</a></li><li><a href="/docs/css/">AngleSharp.Css</a></li><li><a href="/docs/js/">AngleSharp.Js</a></li><li><a href="/docs/xml/">AngleSharp.Xml</a></li><li><a href="/docs/io/">AngleSharp.Io</a></li></ul>
+    </div>
+    <div>
+      <h3>&nbsp;</h3>
+      <ul><li><a href="/docs/xpath/">AngleSharp.XPath</a></li><li><a href="/docs/diffing/">AngleSharp.Diffing</a></li><li><a href="/docs/wasm/">AngleSharp.Wasm</a></li><li><a href="/docs/renderer/">AngleSharp.Renderer</a></li><li><a href="/docs/browser/">AngleSharp.Browser</a></li></ul>
+    </div>
+    <div>
+      <h3>Community</h3>
+      <ul>
+        <li><a href="https://github.com/AngleSharp" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/feed.xml">RSS feed</a></li>
+        <li><a href="/resources/">Articles &amp; samples</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="https://github.com/sponsors/FlorianRappl" target="_blank" rel="noopener">Sponsor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2013–2026 AngleSharp contributors. Licensed under MIT.</span>
+    <span>Built from <a href="https://github.com/AngleSharp/anglesharp.github.io" target="_blank" rel="noopener">AngleSharp/anglesharp.github.io</a> · Published with GitHub Pages</span>
+  </div>
+</footer>
+<dialog class="search-dialog" aria-label="Search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="Search the docs, projects, and blog…" autocomplete="off" spellcheck="false" aria-label="Search query">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="search-results" role="listbox"></ul>
+    <div class="search-footer"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span></div>
+  </div>
+</dialog>
+</body>
+</html>
