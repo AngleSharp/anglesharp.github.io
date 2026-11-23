@@ -1,0 +1,158 @@
+{
+  "$schema": "./site.config.schema.json",
+  "site": {
+    "name": "AngleSharp",
+    "title": "AngleSharp — The ultimate angle brackets parser for .NET",
+    "description": "AngleSharp is a .NET library that parses HTML5, CSS, SVG, MathML, and XML to construct a DOM based on the official W3C specifications. Standards-driven, fast, and extensible.",
+    "url": "https://anglesharp.github.io",
+    "basePath": "/",
+    "author": "Florian Rappl",
+    "since": 2013,
+    "github": "https://github.com/AngleSharp",
+    "repository": "https://github.com/AngleSharp/anglesharp.github.io",
+    "contentBranch": "main",
+    "sponsor": "https://github.com/sponsors/FlorianRappl",
+    "foundation": "https://dotnetfoundation.org/"
+  },
+  "defaults": {
+    "owner": "AngleSharp",
+    "ref": "devel",
+    "logo": "logo.png",
+    "docs": {
+      "root": "docs",
+      "index": "README.md",
+      "include": ["**/*.md", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.gif", "**/*.svg", "**/*.webp"]
+    }
+  },
+  "sections": {
+    "": "Overview",
+    "general": "Guides",
+    "tutorials": "Tutorials",
+    "screenshots": "Screenshots"
+  },
+  "projects": [
+    {
+      "id": "anglesharp",
+      "name": "AngleSharp",
+      "label": "Core",
+      "repo": "AngleSharp/AngleSharp",
+      "localPath": "AngleSharp.Core",
+      "nuget": "AngleSharp",
+      "category": "core",
+      "status": "stable",
+      "tagline": "The standards-driven HTML5 parser and DOM.",
+      "description": "HTML parser, DOM provider, CSS selector engine, and core utilities. Helpers and parsing for MIME types, URLs, source sets, and many more. Provides the extension points used by all other projects."
+    },
+    {
+      "id": "css",
+      "name": "AngleSharp.Css",
+      "label": "Css",
+      "repo": "AngleSharp/AngleSharp.Css",
+      "nuget": "AngleSharp.Css",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "Full CSS parser, CSSOM, and style computation.",
+      "description": "A full CSS parser and CSSOM provider to include support for stylesheets, inline styles, and style computations within AngleSharp."
+    },
+    {
+      "id": "js",
+      "name": "AngleSharp.Js",
+      "label": "Js",
+      "repo": "AngleSharp/AngleSharp.Js",
+      "nuget": "AngleSharp.Js",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "Run JavaScript against the DOM via Jint.",
+      "description": "Integrates a .NET-based JavaScript engine (Jint) and provides the DOM bindings, so scripts in a page can run and interact with the document."
+    },
+    {
+      "id": "xml",
+      "name": "AngleSharp.Xml",
+      "label": "Xml",
+      "repo": "AngleSharp/AngleSharp.Xml",
+      "nuget": "AngleSharp.Xml",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "XML and DTD parsing with DOM capabilities.",
+      "description": "Adds DOM capabilities to XML documents, including XHTML, SVG documents, and DTD validation."
+    },
+    {
+      "id": "io",
+      "name": "AngleSharp.Io",
+      "label": "Io",
+      "repo": "AngleSharp/AngleSharp.Io",
+      "nuget": "AngleSharp.Io",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "Requesters, downloads, storage, and caching.",
+      "description": "IO modules and helpers, including improved requesters, file downloads, storage abilities, and caching mechanisms."
+    },
+    {
+      "id": "xpath",
+      "name": "AngleSharp.XPath",
+      "label": "XPath",
+      "repo": "AngleSharp/AngleSharp.XPath",
+      "ref": "master",
+      "nuget": "AngleSharp.XPath",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "Select nodes via XPath expressions.",
+      "description": "Adds the ability to select nodes via XPath queries as an alternative to CSS selector syntax.",
+      "docs": {
+        "root": "",
+        "index": "README.md",
+        "include": ["README.md"]
+      }
+    },
+    {
+      "id": "diffing",
+      "name": "AngleSharp.Diffing",
+      "label": "Diffing",
+      "repo": "AngleSharp/AngleSharp.Diffing",
+      "nuget": "AngleSharp.Diffing",
+      "category": "tooling",
+      "status": "stable",
+      "tagline": "Compare DOM trees and get semantic differences.",
+      "description": "Compares two AngleSharp node lists and yields a list of differences between them. Powers the markup verification in bUnit.",
+      "docs": {
+        "root": "",
+        "index": "README.md",
+        "include": ["README.md"]
+      }
+    },
+    {
+      "id": "wasm",
+      "name": "AngleSharp.Wasm",
+      "label": "Wasm",
+      "repo": "AngleSharp/AngleSharp.Wasm",
+      "nuget": "AngleSharp.Wasm",
+      "category": "extension",
+      "status": "stable",
+      "tagline": "WebAssembly support for browsing contexts.",
+      "description": "Adds support for running and interacting with WebAssembly modules from within AngleSharp browsing contexts."
+    },
+    {
+      "id": "renderer",
+      "name": "AngleSharp.Renderer",
+      "label": "Renderer",
+      "repo": "AngleSharp/AngleSharp.Renderer",
+      "nuget": "AngleSharp.Renderer",
+      "category": "extension",
+      "status": "preview",
+      "tagline": "Layout and paint the styled DOM.",
+      "description": "Renders the styled DOM from its render tree: layout, painting, and interactivity on top of AngleSharp.Css."
+    },
+    {
+      "id": "browser",
+      "name": "AngleSharp.Browser",
+      "label": "Browser",
+      "repo": "AngleSharp/AngleSharp.Browser",
+      "nuget": "AngleSharp.Browser",
+      "category": "tooling",
+      "status": "preview",
+      "tagline": "The whole ecosystem, assembled into a browser.",
+      "description": "Aggregates the entire AngleSharp ecosystem into a browser engine — headless or with actual interactive output.",
+      "assets": ["header.png"]
+    }
+  ]
+}

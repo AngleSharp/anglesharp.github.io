@@ -1,0 +1,35 @@
+{
+  "name": "@anglesharp/website-2026",
+  "version": "2026.0.0",
+  "description": "The official website of the AngleSharp project (2026 edition).",
+  "author": "Florian Rappl",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "homepage": "https://anglesharp.github.io",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "start": "npm run fetch && npm run build && npm run serve",
+    "dev": "node scripts/serve.mjs --watch",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngleSharp/anglesharp.github.io.git"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "gh-pages": "^6.3.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^15.0.3",
+    "markdown-it-anchor": "^10.1.0",
+    "shiki": "^4.6.0",
+    "tar": "^7.5.23"
+  }
+}

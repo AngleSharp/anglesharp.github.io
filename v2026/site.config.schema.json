@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AngleSharp website configuration",
+  "type": "object",
+  "required": ["site", "projects"],
+  "definitions": {
+    "docs": {
+      "type": "object",
+      "description": "Where to find the documentation inside the repository.",
+      "properties": {
+        "root": {
+          "type": "string",
+          "description": "Directory (relative to the repository root) containing the docs. Use an empty string for the repository root."
+        },
+        "index": {
+          "type": "string",
+          "description": "Entry document, relative to the docs root. Rendered as the project's landing page."
+        },
+        "include": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns (relative to the docs root) of files to download. Supports *, ** and {a,b}."
+        },
+        "exclude": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Glob patterns (relative to the docs root) of files to skip."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "$schema": { "type": "string" },
+    "site": {
+      "type": "object",
+      "required": ["name", "url"],
+      "properties": {
+        "name": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "url": { "type": "string", "description": "Public origin of the site (no trailing slash)." },
+        "basePath": { "type": "string", "description": "Path prefix the site is served from, e.g. \"/\" or \"/v2026/\"." },
+        "author": { "type": "string" },
+        "since": { "type": "integer" },
+        "github": { "type": "string" },
+        "repository": { "type": "string", "description": "Repository of this website (for \"edit this page\" links on local content)." },
+        "contentBranch": { "type": "string" },
+        "sponsor": { "type": "string" },
+        "foundation": { "type": "string" }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "description": "Values applied to every project unless the project overrides them.",
+      "properties": {
+        "owner": { "type": "string" },
+        "ref": { "type": "string", "description": "Default branch, tag, or commit to download." },
+        "logo": { "type": "string" },
+        "docs": { "$ref": "#/definitions/docs" }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "description": "Display names for documentation folders (first folder below the docs root). Unknown folders are title-cased.",
+      "additionalProperties": { "type": "string" }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "repo"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "URL slug, e.g. /docs/<id>/" },
+          "name": { "type": "string" },
+          "label": { "type": "string", "description": "Short name used in compact UI." },
+          "repo": { "type": "string", "pattern": "^[^/]+/[^/]+$", "description": "GitHub repository as owner/name." },
+          "ref": { "type": "string", "description": "Branch, tag, or commit to download." },
+          "nuget": { "type": "string", "description": "NuGet package id; used for version and download stats." },
+          "category": { "enum": ["core", "extension", "tooling", "experimental"] },
+          "status": { "enum": ["stable", "preview", "deprecated"] },
+          "tagline": { "type": "string" },
+          "description": { "type": "string" },
+          "logo": { "type": ["string", "null"], "description": "Path of the logo inside the repository; null to disable." },
+          "assets": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Additional files (repository-relative globs) to download and publish under /assets/projects/<id>/."
+          },
+          "docs": {
+            "oneOf": [{ "$ref": "#/definitions/docs" }, { "type": "null" }]
+          },
+          "localPath": { "type": "string", "description": "Folder name of a local checkout below SITE_LOCAL_ROOT, if it differs from the repository name." },
+          "hidden": { "type": "boolean", "description": "Download and build docs, but do not list the project." }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
