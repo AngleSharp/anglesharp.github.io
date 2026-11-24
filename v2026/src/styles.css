@@ -1866,6 +1866,24 @@ kbd {
   border-radius: var(--radius);
 }
 
+.prose figure {
+  margin: 28px 0;
+}
+
+.prose figure img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+
+.prose figcaption {
+  margin-top: 10px;
+  color: var(--text-dim);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
 .prose blockquote {
   padding: 14px 20px;
   color: var(--text-dim);

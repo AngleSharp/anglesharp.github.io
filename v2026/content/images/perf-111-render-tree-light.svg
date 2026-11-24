@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" width="760" height="362" role="img" aria-labelledby="t d" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">CSS render tree: AngleSharp.Css 1.4.0 → 1.6.0</title>
+<desc id="d">Mean time per operation, 3,000 elements styled by a real-world sheet, lower is better. Render (Bootstrap sheet): AngleSharp.Css 1.4.0 137 ms, AngleSharp.Css 1.6.0 43.1 ms; Render (Yahoo sheet): AngleSharp.Css 1.4.0 98.3 ms, AngleSharp.Css 1.6.0 23.7 ms; Load + render (Bootstrap sheet): AngleSharp.Css 1.4.0 242 ms, AngleSharp.Css 1.6.0 146 ms; Load + render (Yahoo sheet): AngleSharp.Css 1.4.0 182 ms, AngleSharp.Css 1.6.0 92.8 ms.</desc>
+<rect width="760" height="362" rx="12" fill="#ffffff"/>
+<text x="24" y="36" font-size="18" font-weight="600" fill="#0d1729">CSS render tree: AngleSharp.Css 1.4.0 → 1.6.0</text>
+<text x="24" y="58" font-size="13" fill="#536079">Mean time per operation, 3,000 elements styled by a real-world sheet, lower is better</text>
+<rect x="236" y="72" width="12" height="12" rx="3" fill="#8a95a8"/>
+<text x="254" y="82.5" font-size="12" fill="#536079">AngleSharp.Css 1.4.0</text>
+<rect x="418" y="72" width="12" height="12" rx="3" fill="#0a6fd1"/>
+<text x="436" y="82.5" font-size="12" fill="#536079">AngleSharp.Css 1.6.0</text>
+<line x1="236" x2="236" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="236" y="322" font-size="11" fill="#8691a6" text-anchor="middle">0</text>
+<line x1="316.8" x2="316.8" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="316.8" y="322" font-size="11" fill="#8691a6" text-anchor="middle">50 ms</text>
+<line x1="397.6" x2="397.6" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="397.6" y="322" font-size="11" fill="#8691a6" text-anchor="middle">100 ms</text>
+<line x1="478.4" x2="478.4" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="478.4" y="322" font-size="11" fill="#8691a6" text-anchor="middle">150 ms</text>
+<line x1="559.2" x2="559.2" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="559.2" y="322" font-size="11" fill="#8691a6" text-anchor="middle">200 ms</text>
+<line x1="640" x2="640" y1="92" y2="304" stroke="rgba(15,35,70,0.08)" stroke-width="1"/>
+<text x="640" y="322" font-size="11" fill="#8691a6" text-anchor="middle">250 ms</text>
+<line x1="236" x2="236" y1="92" y2="304" stroke="rgba(15,35,70,0.2)" stroke-width="1"/>
+<text x="222" y="119" font-size="13" font-weight="500" fill="#0d1729" text-anchor="end">Render</text>
+<text x="222" y="134" font-size="11" fill="#536079" text-anchor="end">Bootstrap sheet</text>
+<path d="M236,109 H453.58592 Q457.58592,109 457.58592,113 V117 Q457.58592,121 453.58592,121 H236 Z" fill="#8a95a8"/>
+<path d="M236,123 H301.73040000000003 Q305.73040000000003,123 305.73040000000003,127 V131 Q305.73040000000003,135 301.73040000000003,135 H236 Z" fill="#0a6fd1"/>
+<text x="463.58592" y="119" font-size="11" fill="#536079">137 ms</text>
+<text x="311.73040000000003" y="133" font-size="11" font-weight="600" fill="#0d1729">43.1 ms  −69%</text>
+<text x="222" y="171" font-size="13" font-weight="500" fill="#0d1729" text-anchor="end">Render</text>
+<text x="222" y="186" font-size="11" fill="#536079" text-anchor="end">Yahoo sheet</text>
+<path d="M236,161 H390.8528 Q394.8528,161 394.8528,165 V169 Q394.8528,173 390.8528,173 H236 Z" fill="#8a95a8"/>
+<path d="M236,175 H270.23456 Q274.23456,175 274.23456,179 V183 Q274.23456,187 270.23456,187 H236 Z" fill="#0a6fd1"/>
+<text x="400.8528" y="171" font-size="11" fill="#536079">98.3 ms</text>
+<text x="280.23456" y="185" font-size="11" font-weight="600" fill="#0d1729">23.7 ms  −76%</text>
+<text x="222" y="223" font-size="13" font-weight="500" fill="#0d1729" text-anchor="end">Load + render</text>
+<text x="222" y="238" font-size="11" fill="#536079" text-anchor="end">Bootstrap sheet</text>
+<path d="M236,213 H622.81344 Q626.81344,213 626.81344,217 V221 Q626.81344,225 622.81344,225 H236 Z" fill="#8a95a8"/>
+<path d="M236,227 H467.58047999999997 Q471.58047999999997,227 471.58047999999997,231 V235 Q471.58047999999997,239 467.58047999999997,239 H236 Z" fill="#0a6fd1"/>
+<text x="632.81344" y="223" font-size="11" fill="#536079">242 ms</text>
+<text x="477.58047999999997" y="237" font-size="11" font-weight="600" fill="#0d1729">146 ms  −40%</text>
+<text x="222" y="275" font-size="13" font-weight="500" fill="#0d1729" text-anchor="end">Load + render</text>
+<text x="222" y="290" font-size="11" fill="#536079" text-anchor="end">Yahoo sheet</text>
+<path d="M236,265 H525.6595199999999 Q529.6595199999999,265 529.6595199999999,269 V273 Q529.6595199999999,277 525.6595199999999,277 H236 Z" fill="#8a95a8"/>
+<path d="M236,279 H381.91632 Q385.91632,279 385.91632,283 V287 Q385.91632,291 381.91632,291 H236 Z" fill="#0a6fd1"/>
+<text x="535.6595199999999" y="275" font-size="11" fill="#536079">182 ms</text>
+<text x="391.91632" y="289" font-size="11" font-weight="600" fill="#0d1729">92.8 ms  −49%</text>
+<text x="24" y="346" font-size="11" fill="#8691a6">BenchmarkDotNet 0.15.8, .NET 10, AMD Ryzen 7 3700X, mean of 12 iterations.</text>
+</svg>

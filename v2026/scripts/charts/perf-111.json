@@ -1,0 +1,27 @@
+{
+  "note": "BenchmarkDotNet 0.15.8, .NET 10, AMD Ryzen 7 3700X, mean of 12 iterations.",
+  "selectors": [
+    { "label": "Parse 300 selectors", "sub": "simple (e.g. ul.toc > li)", "before": 311.3, "after": 212.1 },
+    { "label": "Parse 300 selectors", "sub": "functional (e.g. :is(), :has())", "before": 619.8, "after": 355.1 },
+    { "label": "p:nth-child(2n+1)", "before": 210.84, "after": 51.18 },
+    { "label": "[class~=tocline2]", "before": 150.45, "after": 72.69 },
+    { "label": "p + p", "before": 111.47, "after": 48.70 },
+    { "label": "li ~ li", "before": 47.17, "after": 44.89 },
+    { "label": "li:only-child", "before": 44.43, "after": 44.40 },
+    { "label": "li:nth-last-child(odd)", "before": 45.79, "after": 50.56 }
+  ],
+  "selectorsScale": { "max": 700, "ticks": [0, 100, 200, 300, 400, 500, 600, 700] },
+  "renderTree": [
+    { "label": "Render", "sub": "Bootstrap sheet", "before": 137.12, "after": 43.15 },
+    { "label": "Render", "sub": "Yahoo sheet", "before": 98.30, "after": 23.66 },
+    { "label": "Load + render", "sub": "Bootstrap sheet", "before": 241.84, "after": 145.78 },
+    { "label": "Load + render", "sub": "Yahoo sheet", "before": 181.72, "after": 92.77 }
+  ],
+  "renderTreeScale": { "max": 250, "ticks": [0, 50, 100, 150, 200, 250] },
+  "rendering": [
+    { "label": "Dashboard", "sub": "flex/grid cards, viewport", "before": 329, "after": 81 },
+    { "label": "1,500 flex-column rows", "sub": "viewport", "before": 349, "after": 128 },
+    { "label": "1,500 block rows", "sub": "viewport", "before": 165, "after": 98 },
+    { "label": "Dashboard", "sub": "full page", "before": 296, "after": 281 }
+  ]
+}
