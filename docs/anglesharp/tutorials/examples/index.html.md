@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/examples/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This is a (growing) list of examples for every-day usage of AngleSharp.
 

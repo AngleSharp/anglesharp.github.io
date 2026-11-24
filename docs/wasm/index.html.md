@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/wasm/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 We have more detailed information regarding the following subjects:
 

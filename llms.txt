@@ -8,19 +8,19 @@ Important notes:
 - Everything starts from a `BrowsingContext` created with a `Configuration` (e.g. `BrowsingContext.New(Configuration.Default)`); documents are loaded via `context.OpenAsync(...)` or parsed directly with `HtmlParser`.
 - The DOM follows the W3C/WHATWG specifications, so the API mirrors the browser DOM in PascalCase (`QuerySelector`, `TextContent`, `GetAttribute`, ...).
 - Capabilities beyond the core are opt-in companion packages that extend the configuration, e.g. `.WithCss()` (AngleSharp.Css), `.WithJs()` (AngleSharp.Js), `.WithXml()` (AngleSharp.Xml), `.WithDefaultLoader()` for loading resources.
-- Latest stable version of the core package: 1.10.5.
+- Latest stable version of the core package: 1.11.0.
 - Every page linked below is plain markdown. Append `index.html.md` to any page URL of this site to get its markdown version. All documentation in one file: https://anglesharp.github.io/llms-full.txt
 
 ## Projects
 
-- [AngleSharp](https://anglesharp.github.io/docs/anglesharp/index.html.md): The standards-driven HTML5 parser and DOM. — NuGet: AngleSharp 1.10.5 — status: stable
-- [AngleSharp.Css](https://anglesharp.github.io/docs/css/index.html.md): Full CSS parser, CSSOM, and style computation. — NuGet: AngleSharp.Css 1.5.0 — status: stable
-- [AngleSharp.Js](https://anglesharp.github.io/docs/js/index.html.md): Run JavaScript against the DOM via Jint. — NuGet: AngleSharp.Js 1.2.3 — status: stable
-- [AngleSharp.Xml](https://anglesharp.github.io/docs/xml/index.html.md): XML and DTD parsing with DOM capabilities. — NuGet: AngleSharp.Xml 1.3.1 — status: stable
-- [AngleSharp.Io](https://anglesharp.github.io/docs/io/index.html.md): Requesters, downloads, storage, and caching. — NuGet: AngleSharp.Io 1.3.3 — status: stable
+- [AngleSharp](https://anglesharp.github.io/docs/anglesharp/index.html.md): The standards-driven HTML5 parser and DOM. — NuGet: AngleSharp 1.11.0 — status: stable
+- [AngleSharp.Css](https://anglesharp.github.io/docs/css/index.html.md): Full CSS parser, CSSOM, and style computation. — NuGet: AngleSharp.Css 1.6.0 — status: stable
+- [AngleSharp.Js](https://anglesharp.github.io/docs/js/index.html.md): Run JavaScript against the DOM via Jint. — NuGet: AngleSharp.Js 1.3.0 — status: stable
+- [AngleSharp.Xml](https://anglesharp.github.io/docs/xml/index.html.md): XML and DTD parsing with DOM capabilities. — NuGet: AngleSharp.Xml 1.4.0 — status: stable
+- [AngleSharp.Io](https://anglesharp.github.io/docs/io/index.html.md): Requesters, downloads, storage, and caching. — NuGet: AngleSharp.Io 1.4.0 — status: stable
 - [AngleSharp.XPath](https://anglesharp.github.io/docs/xpath/index.html.md): Select nodes via XPath expressions. — NuGet: AngleSharp.XPath 2.0.10 — status: stable
 - [AngleSharp.Diffing](https://anglesharp.github.io/docs/diffing/index.html.md): Compare DOM trees and get semantic differences. — NuGet: AngleSharp.Diffing 1.1.1 — status: stable
-- [AngleSharp.Wasm](https://anglesharp.github.io/docs/wasm/index.html.md): WebAssembly support for browsing contexts. — NuGet: AngleSharp.Wasm 1.1.1 — status: stable
+- [AngleSharp.Wasm](https://anglesharp.github.io/docs/wasm/index.html.md): WebAssembly support for browsing contexts. — NuGet: AngleSharp.Wasm 1.2.0 — status: stable
 - [AngleSharp.Renderer](https://anglesharp.github.io/docs/renderer/index.html.md): Layout and paint the styled DOM. — NuGet: AngleSharp.Renderer 0.12.0 — status: preview
 - [AngleSharp.Browser](https://anglesharp.github.io/docs/browser/index.html.md): The whole ecosystem, assembled into a browser. — NuGet: AngleSharp.Browser 0.2.0 — status: preview
 
@@ -132,6 +132,7 @@ Important notes:
 ## Optional
 
 - [Resources](https://anglesharp.github.io/resources/index.html.md): Articles, samples, and community resources around AngleSharp.
+- [Blog: AngleSharp 1.11.0](https://anglesharp.github.io/blog/2026/anglesharp-v111-release/index.html.md): 2026-11-24
 - [Blog: AngleSharp 1.10.0](https://anglesharp.github.io/blog/2026/anglesharp-v110-release/index.html.md): 2026-11-06
 - [Blog: AngleSharp.Js 1.0.0](https://anglesharp.github.io/blog/2026/anglesharp-js-v100-release/index.html.md): 2026-08-01
 - [Blog: AngleSharp 1.6.0](https://anglesharp.github.io/blog/2026/anglesharp-v160/index.html.md): 2026-07-27
@@ -141,6 +142,5 @@ Important notes:
 - [Blog: AngleSharp v0.12 and the future](https://anglesharp.github.io/blog/2019/anglesharp-v012-forward/index.html.md): 2019-05-06
 - [Blog: Joining the .NET Foundation](https://anglesharp.github.io/blog/2019/dotnet-foundation/index.html.md): 2019-05-02
 - [Blog: AngleSharp v0.11.0 released](https://anglesharp.github.io/blog/2019/anglesharp-v011-released/index.html.md): 2019-02-12
-- [Blog: AngleSharp v0.10.0 released](https://anglesharp.github.io/blog/2019/anglesharp-v010-released/index.html.md): 2019-01-06
-- [All blog posts](https://anglesharp.github.io/blog/): 24 posts, also available as RSS at https://anglesharp.github.io/blog/feed.xml
+- [All blog posts](https://anglesharp.github.io/blog/): 25 posts, also available as RSS at https://anglesharp.github.io/blog/feed.xml
 - [Source code](https://github.com/AngleSharp): GitHub organization with all repositories

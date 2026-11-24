@@ -3,7 +3,7 @@
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/examples/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ## Render A Page To PNG
 

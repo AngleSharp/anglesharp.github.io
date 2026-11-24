@@ -18,7 +18,7 @@
 <link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
 <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<link rel="stylesheet" href="/assets/styles.css?v=8449b53a13">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
 <script src="/assets/app.js?v=2585d9215d" defer></script>
 </head>
@@ -93,7 +93,7 @@
 <p>AngleSharp.Wasm currently targets modern .NET runtimes and is available for .NET 8 and .NET 10.</p>
 <p>You need to have AngleSharp installed already. This could be done via NuGet:</p>
 <div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">Install-Package</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> AngleSharp</span></span>
-<span class="line"></span></code></pre></div><p>If you want JavaScript-side access to <code>window.WebAssembly</code>, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies.</p>
+<span class="line"></span></code></pre></div><p>If you want JavaScript-side access to <code>window.WebAssembly</code>, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies, or is given the registration of this library (see below).</p>
 <h2 id="getting-anglesharpwasm-over-nuget" tabindex="-1">Getting AngleSharp.Wasm over NuGet <a class="anchor" href="#getting-anglesharpwasm-over-nuget" aria-hidden="true">#</a></h2>
 <p>The simplest way of integrating AngleSharp.Wasm to your project is by using NuGet. You can install AngleSharp.Wasm by opening the package manager console (PM) and typing in the following statement:</p>
 <div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">Install-Package</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> AngleSharp.Wasm</span></span>
@@ -120,7 +120,13 @@
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">                                callback</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">: </span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657">_</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =></span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF"> 41</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">),</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">                };</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">        });</span></span>
-<span class="line"></span></code></pre></div><h2 id="what-works-today" tabindex="-1">What Works Today <a class="anchor" href="#what-works-today" aria-hidden="true">#</a></h2>
+<span class="line"></span></code></pre></div><h2 id="scripting-without-reflection" tabindex="-1">Scripting Without Reflection <a class="anchor" href="#scripting-without-reflection" aria-hidden="true">#</a></h2>
+<p>AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, <code>AngleSharp.Wasm.WasmDom.Register</code> (a <code>DomRegistration</code> of AngleSharp). It declares the <code>WebAssembly</code> namespace with its interfaces (<code>WebAssembly.Module</code>, <code>WebAssembly.Memory</code>, ...):</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithWasm</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(WasmDom.Register);</span></span>
+<span class="line"></span></code></pre></div><p>The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with <code>DomRegistrations.Combine</code>.</p>
+<h2 id="what-works-today" tabindex="-1">What Works Today <a class="anchor" href="#what-works-today" aria-hidden="true">#</a></h2>
 <ul>
 <li><code>WithWasm()</code> registers a default Wasmtime-backed runtime factory.</li>
 <li><code>WithWasmImports(...)</code> can provide host imports during instantiation.</li>
@@ -159,7 +165,7 @@
         <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Wasm/edit/devel/docs/general/01-Basics.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
         <a class="edit-link" href="/docs/wasm/general/basics/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
       </span>
-      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Wasm/tree/1044be7bc91ea340a048447d74634ebb7b0d909a" target="_blank" rel="noopener"><code>1044be7</code></a></span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Wasm/tree/0d6d9a04aa99fad6de3d2fa43cddb12427b89912" target="_blank" rel="noopener"><code>0d6d9a0</code></a></span>
     </div>
     <nav class="pager" aria-label="Pagination">
       <a class="pager-prev" href="/docs/wasm/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Overview</span></a>
@@ -167,7 +173,7 @@
     </nav>
   </article>
   <aside class="docs-toc" aria-label="On this page">
-    <h4>On this page</h4><ul><li class="toc-l2"><a href="#requirements" title="Requirements">Requirements</a></li><li class="toc-l2"><a href="#getting-anglesharpwasm-over-nuget" title="Getting AngleSharp.Wasm over NuGet">Getting AngleSharp.Wasm over NuGet</a></li><li class="toc-l2"><a href="#setting-up-anglesharpwasm" title="Setting up AngleSharp.Wasm">Setting up AngleSharp.Wasm</a></li><li class="toc-l2"><a href="#optional-register-host-imports" title="Optional: Register Host Imports">Optional: Register Host Imports</a></li><li class="toc-l2"><a href="#what-works-today" title="What Works Today">What Works Today</a></li><li class="toc-l2"><a href="#current-limitations" title="Current Limitations">Current Limitations</a></li></ul>
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#requirements" title="Requirements">Requirements</a></li><li class="toc-l2"><a href="#getting-anglesharpwasm-over-nuget" title="Getting AngleSharp.Wasm over NuGet">Getting AngleSharp.Wasm over NuGet</a></li><li class="toc-l2"><a href="#setting-up-anglesharpwasm" title="Setting up AngleSharp.Wasm">Setting up AngleSharp.Wasm</a></li><li class="toc-l2"><a href="#optional-register-host-imports" title="Optional: Register Host Imports">Optional: Register Host Imports</a></li><li class="toc-l2"><a href="#scripting-without-reflection" title="Scripting Without Reflection">Scripting Without Reflection</a></li><li class="toc-l2"><a href="#what-works-today" title="What Works Today">What Works Today</a></li><li class="toc-l2"><a href="#current-limitations" title="Current Limitations">Current Limitations</a></li></ul>
   </aside>
 </div>
 </main>

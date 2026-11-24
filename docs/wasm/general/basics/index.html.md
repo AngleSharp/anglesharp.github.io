@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/wasm/general/basics/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 ## Requirements
 
@@ -15,7 +15,7 @@ You need to have AngleSharp installed already. This could be done via NuGet:
 Install-Package AngleSharp
 ```
 
-If you want JavaScript-side access to `window.WebAssembly`, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies.
+If you want JavaScript-side access to `window.WebAssembly`, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies, or is given the registration of this library (see below).
 
 ## Getting AngleSharp.Wasm over NuGet
 
@@ -60,6 +60,18 @@ var config = Configuration.Default
                 };
         });
 ```
+
+## Scripting Without Reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Wasm.WasmDom.Register` (a `DomRegistration` of AngleSharp). It declares the `WebAssembly` namespace with its interfaces (`WebAssembly.Module`, `WebAssembly.Memory`, ...):
+
+```cs
+var config = Configuration.Default
+    .WithWasm()
+    .WithJs(WasmDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
 
 ## What Works Today
 

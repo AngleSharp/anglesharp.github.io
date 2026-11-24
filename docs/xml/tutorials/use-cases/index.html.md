@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/use-cases/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 This guide shows when AngleSharp.Xml is a good fit and how to structure real-world usage.
 

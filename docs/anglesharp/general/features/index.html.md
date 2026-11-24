@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/anglesharp/general/features/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This section collects historical implementation notes for major features. It does not aim to be an exhaustive, up-to-date product matrix. For the current package layout and companion projects, see the roadmap and ecosystem page.
 
@@ -155,6 +155,8 @@ There are more such attributes, which reveal more sophisticated properties of a 
 This work package deals with finding important IDL constructs. Then a proper way of dealing with them (e.g., decoration with a custom attribute) has to be found. Finally, the existing interfaces need to be investigated / extended, depending on what has been decided in the second step.
 
 *Status*: Most important ones implemented, more to come upon request / requirement.
+
+Besides being discovered by reflection over these attributes, the DOM surface can be declared in code through the `DomRegistry` contract (namespace `AngleSharp.Scripting`), which is what trimmed and natively compiled (AoT) applications need. See [Declaring the DOM without reflection](https://anglesharp.github.io/docs/anglesharp/tutorials/api/index.html.md#declaring-the-dom-without-reflection).
 
 More information can be found at:
 

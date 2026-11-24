@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/examples/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 This is a (growing) list of examples for every-day usage of AngleSharp.Io.
 

@@ -18,7 +18,7 @@
 <link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
 <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<link rel="stylesheet" href="/assets/styles.css?v=8449b53a13">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
 <script src="/assets/app.js?v=2585d9215d" defer></script>
 </head>
@@ -192,6 +192,12 @@
 </tbody>
 </table></div>
 <p>The value is compared to the queried keyword case insensitively, so a keyword that is newer than this library works as well. Used without a value, e.g., <code>@media (prefers-reduced-motion)</code>, the feature evaluates in a boolean context, where <code>no-preference</code> (and <code>none</code> for <code>forced-colors</code>, <code>hover</code>, <code>any-hover</code>, <code>pointer</code> and <code>any-pointer</code>) is <code>false</code>. Without a preference <code>hover</code> and <code>pointer</code> keep answering as they did before, i.e., as a device with no input mechanism.</p>
+<h2 id="expose-the-cssom-to-scripts-without-reflection" tabindex="-1">Expose The CSSOM To Scripts Without Reflection <a class="anchor" href="#expose-the-cssom-to-scripts-without-reflection" aria-hidden="true">#</a></h2>
+<p>A scripting engine such as AngleSharp.Js finds the CSSOM by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand the engine the registration that is generated for this library at build time, <code>AngleSharp.Css.CssDom.Register</code> (a <code>DomRegistration</code> of AngleSharp). It declares the CSSOM types, the <code>CSS</code> namespace and the members the library adds to the DOM, such as <code>element.style</code> or <code>getComputedStyle</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithCss</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(CssDom.Register);</span></span>
+<span class="line"></span></code></pre></div><p>The registration describes the version of AngleSharp.Css in use, so it never has to be kept in sync by hand. Several libraries are combined with <code>DomRegistrations.Combine</code>.</p>
 <h2 id="composition-pattern" tabindex="-1">Composition Pattern <a class="anchor" href="#composition-pattern" aria-hidden="true">#</a></h2>
 <p>Start from the default registrations and replace only what you need:</p>
 <div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
@@ -210,7 +216,7 @@
         <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Css/edit/devel/docs/general/05-Extensibility.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
         <a class="edit-link" href="/docs/css/general/extensibility/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
       </span>
-      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/b35861044ecc148031849ea5a1cfd6316be1b90a" target="_blank" rel="noopener"><code>b358610</code></a></span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Css/tree/859f5b254e46961272f9ba24ed64ff44e601ed28" target="_blank" rel="noopener"><code>859f5b2</code></a></span>
     </div>
     <nav class="pager" aria-label="Pagination">
       <a class="pager-prev" href="/docs/css/general/core-interfaces/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Core Interfaces</span></a>
@@ -218,7 +224,7 @@
     </nav>
   </article>
   <aside class="docs-toc" aria-label="On this page">
-    <h4>On this page</h4><ul><li class="toc-l2"><a href="#main-extension-points" title="Main Extension Points">Main Extension Points</a></li><li class="toc-l2"><a href="#override-the-default-stylesheet" title="Override The Default Stylesheet">Override The Default Stylesheet</a></li><li class="toc-l2"><a href="#provide-a-custom-render-device" title="Provide A Custom Render Device">Provide A Custom Render Device</a></li><li class="toc-l2"><a href="#provide-the-user-preferences" title="Provide The User Preferences">Provide The User Preferences</a></li><li class="toc-l2"><a href="#composition-pattern" title="Composition Pattern">Composition Pattern</a></li><li class="toc-l2"><a href="#practical-guidance" title="Practical Guidance">Practical Guidance</a></li></ul>
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#main-extension-points" title="Main Extension Points">Main Extension Points</a></li><li class="toc-l2"><a href="#override-the-default-stylesheet" title="Override The Default Stylesheet">Override The Default Stylesheet</a></li><li class="toc-l2"><a href="#provide-a-custom-render-device" title="Provide A Custom Render Device">Provide A Custom Render Device</a></li><li class="toc-l2"><a href="#provide-the-user-preferences" title="Provide The User Preferences">Provide The User Preferences</a></li><li class="toc-l2"><a href="#expose-the-cssom-to-scripts-without-reflection" title="Expose The CSSOM To Scripts Without Reflection">Expose The CSSOM To Scripts Without Reflection</a></li><li class="toc-l2"><a href="#composition-pattern" title="Composition Pattern">Composition Pattern</a></li><li class="toc-l2"><a href="#practical-guidance" title="Practical Guidance">Practical Guidance</a></li></ul>
   </aside>
 </div>
 </main>

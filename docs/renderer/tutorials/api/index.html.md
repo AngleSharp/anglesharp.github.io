@@ -3,7 +3,7 @@
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/api/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ## Configuration
 
@@ -20,6 +20,19 @@ var context = BrowsingContext.New(config);
 ```
 
 The render device's `ViewPortWidth` and `ViewPortHeight` are the size of the viewport, and so of the rendered image (800×600 when the context has no render device); `FontSize` is the default font size. Images are rendered at one device pixel per CSS pixel.
+
+## Scripting Without Reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Renderer.RendererDom.Register` (a `DomRegistration` of AngleSharp). It declares the layout members of the library (`getBoundingClientRect`, `offsetWidth`, ...), the observers, animations and the 2D canvas, which replace the stubs of AngleSharp.Js as they do by reflection:
+
+```cs
+var config = Configuration.Default
+    .WithCss()
+    .WithRendering()
+    .WithJs(RendererDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
 
 ## Rendering A Document
 

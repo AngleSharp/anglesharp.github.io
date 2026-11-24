@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/css/tutorials/api/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 ## Quick API Map
 

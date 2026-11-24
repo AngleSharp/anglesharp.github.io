@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 570" width="760" height="570" role="img" aria-labelledby="t d" font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<title id="t">CSS selectors: AngleSharp 1.10.0 → 1.11.0</title>
+<desc id="d">Mean time per operation, lower is better. Parse 300 selectors (simple (e.g. ul.toc > li)): AngleSharp 1.10.0 311 µs, AngleSharp 1.11.0 212 µs; Parse 300 selectors (functional (e.g. :is(), :has())): AngleSharp 1.10.0 620 µs, AngleSharp 1.11.0 355 µs; p:nth-child(2n+1): AngleSharp 1.10.0 211 µs, AngleSharp 1.11.0 51 µs; [class~=tocline2]: AngleSharp 1.10.0 150 µs, AngleSharp 1.11.0 73 µs; p + p: AngleSharp 1.10.0 111 µs, AngleSharp 1.11.0 49 µs; li ~ li: AngleSharp 1.10.0 47 µs, AngleSharp 1.11.0 45 µs; li:only-child: AngleSharp 1.10.0 44 µs, AngleSharp 1.11.0 44 µs; li:nth-last-child(odd): AngleSharp 1.10.0 46 µs, AngleSharp 1.11.0 51 µs.</desc>
+<rect width="760" height="570" rx="12" fill="#0c1220"/>
+<text x="24" y="36" font-size="18" font-weight="600" fill="#e7eef8">CSS selectors: AngleSharp 1.10.0 → 1.11.0</text>
+<text x="24" y="58" font-size="13" fill="#93a1b8">Mean time per operation, lower is better</text>
+<rect x="236" y="72" width="12" height="12" rx="3" fill="#6b7891"/>
+<text x="254" y="82.5" font-size="12" fill="#93a1b8">AngleSharp 1.10.0</text>
+<rect x="397" y="72" width="12" height="12" rx="3" fill="#36c5f4"/>
+<text x="415" y="82.5" font-size="12" fill="#93a1b8">AngleSharp 1.11.0</text>
+<line x1="236" x2="236" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="236" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">0</text>
+<line x1="293.7142857142857" x2="293.7142857142857" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="293.7142857142857" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">100 µs</text>
+<line x1="351.42857142857144" x2="351.42857142857144" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="351.42857142857144" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">200 µs</text>
+<line x1="409.1428571428571" x2="409.1428571428571" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="409.1428571428571" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">300 µs</text>
+<line x1="466.85714285714283" x2="466.85714285714283" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="466.85714285714283" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">400 µs</text>
+<line x1="524.5714285714286" x2="524.5714285714286" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="524.5714285714286" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">500 µs</text>
+<line x1="582.2857142857142" x2="582.2857142857142" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="582.2857142857142" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">600 µs</text>
+<line x1="640" x2="640" y1="92" y2="512" stroke="rgba(148,178,230,0.08)" stroke-width="1"/>
+<text x="640" y="530" font-size="11" fill="#5f6d84" text-anchor="middle">700 µs</text>
+<line x1="236" x2="236" y1="92" y2="512" stroke="rgba(148,178,230,0.22)" stroke-width="1"/>
+<text x="222" y="119" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">Parse 300 selectors</text>
+<text x="222" y="134" font-size="11" fill="#93a1b8" text-anchor="end">simple (e.g. ul.toc &gt; li)</text>
+<path d="M236,109 H411.66457142857143 Q415.66457142857143,109 415.66457142857143,113 V117 Q415.66457142857143,121 411.66457142857143,121 H236 Z" fill="#6b7891"/>
+<path d="M236,123 H354.412 Q358.412,123 358.412,127 V131 Q358.412,135 354.412,135 H236 Z" fill="#36c5f4"/>
+<text x="421.66457142857143" y="119" font-size="11" fill="#93a1b8">311 µs</text>
+<text x="364.412" y="133" font-size="11" font-weight="600" fill="#e7eef8">212 µs  −32%</text>
+<text x="222" y="171" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">Parse 300 selectors</text>
+<text x="222" y="186" font-size="11" fill="#93a1b8" text-anchor="end">functional (e.g. :is(), :has())</text>
+<path d="M236,161 H589.7131428571429 Q593.7131428571429,161 593.7131428571429,165 V169 Q593.7131428571429,173 589.7131428571429,173 H236 Z" fill="#6b7891"/>
+<path d="M236,175 H436.9434285714286 Q440.9434285714286,175 440.9434285714286,179 V183 Q440.9434285714286,187 436.9434285714286,187 H236 Z" fill="#36c5f4"/>
+<text x="599.7131428571429" y="171" font-size="11" fill="#93a1b8">620 µs</text>
+<text x="446.9434285714286" y="185" font-size="11" font-weight="600" fill="#e7eef8">355 µs  −43%</text>
+<text x="222" y="230.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">p:nth-child(2n+1)</text>
+<path d="M236,213 H353.6848 Q357.6848,213 357.6848,217 V221 Q357.6848,225 353.6848,225 H236 Z" fill="#6b7891"/>
+<path d="M236,227 H261.53817142857145 Q265.53817142857145,227 265.53817142857145,231 V235 Q265.53817142857145,239 261.53817142857145,239 H236 Z" fill="#36c5f4"/>
+<text x="363.6848" y="223" font-size="11" fill="#93a1b8">211 µs</text>
+<text x="271.53817142857145" y="237" font-size="11" font-weight="600" fill="#e7eef8">51 µs  −76%</text>
+<text x="222" y="282.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">[class~=tocline2]</text>
+<path d="M236,265 H318.8311428571428 Q322.8311428571428,265 322.8311428571428,269 V273 Q322.8311428571428,277 318.8311428571428,277 H236 Z" fill="#6b7891"/>
+<path d="M236,279 H273.9525142857143 Q277.9525142857143,279 277.9525142857143,283 V287 Q277.9525142857143,291 273.9525142857143,291 H236 Z" fill="#36c5f4"/>
+<text x="328.8311428571428" y="275" font-size="11" fill="#93a1b8">150 µs</text>
+<text x="283.9525142857143" y="289" font-size="11" font-weight="600" fill="#e7eef8">73 µs  −52%</text>
+<text x="222" y="334.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">p + p</text>
+<path d="M236,317 H296.3341142857143 Q300.3341142857143,317 300.3341142857143,321 V325 Q300.3341142857143,329 296.3341142857143,329 H236 Z" fill="#6b7891"/>
+<path d="M236,331 H260.10685714285717 Q264.10685714285717,331 264.10685714285717,335 V339 Q264.10685714285717,343 260.10685714285717,343 H236 Z" fill="#36c5f4"/>
+<text x="306.3341142857143" y="327" font-size="11" fill="#93a1b8">111 µs</text>
+<text x="270.10685714285717" y="341" font-size="11" font-weight="600" fill="#e7eef8">49 µs  −56%</text>
+<text x="222" y="386.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">li ~ li</text>
+<path d="M236,369 H259.22382857142856 Q263.22382857142856,369 263.22382857142856,373 V377 Q263.22382857142856,381 259.22382857142856,381 H236 Z" fill="#6b7891"/>
+<path d="M236,383 H257.90794285714287 Q261.90794285714287,383 261.90794285714287,387 V391 Q261.90794285714287,395 257.90794285714287,395 H236 Z" fill="#36c5f4"/>
+<text x="269.22382857142856" y="379" font-size="11" fill="#93a1b8">47 µs</text>
+<text x="267.90794285714287" y="393" font-size="11" font-weight="600" fill="#e7eef8">45 µs  −5%</text>
+<text x="222" y="438.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">li:only-child</text>
+<path d="M236,421 H257.64245714285715 Q261.64245714285715,421 261.64245714285715,425 V429 Q261.64245714285715,433 257.64245714285715,433 H236 Z" fill="#6b7891"/>
+<path d="M236,435 H257.62514285714286 Q261.62514285714286,435 261.62514285714286,439 V443 Q261.62514285714286,447 257.62514285714286,447 H236 Z" fill="#36c5f4"/>
+<text x="267.64245714285715" y="431" font-size="11" fill="#93a1b8">44 µs</text>
+<text x="267.62514285714286" y="445" font-size="11" font-weight="600" fill="#e7eef8">44 µs  ±0%</text>
+<text x="222" y="490.5" font-size="13" font-weight="500" fill="#e7eef8" text-anchor="end">li:nth-last-child(odd)</text>
+<path d="M236,473 H258.4273714285714 Q262.4273714285714,473 262.4273714285714,477 V481 Q262.4273714285714,485 258.4273714285714,485 H236 Z" fill="#6b7891"/>
+<path d="M236,487 H261.1803428571429 Q265.1803428571429,487 265.1803428571429,491 V495 Q265.1803428571429,499 261.1803428571429,499 H236 Z" fill="#36c5f4"/>
+<text x="268.4273714285714" y="483" font-size="11" fill="#93a1b8">46 µs</text>
+<text x="271.1803428571429" y="497" font-size="11" font-weight="600" fill="#e7eef8">51 µs  +10%</text>
+<text x="24" y="554" font-size="11" fill="#5f6d84">BenchmarkDotNet 0.15.8, .NET 10, AMD Ryzen 7 3700X, mean of 12 iterations.</text>
+</svg>

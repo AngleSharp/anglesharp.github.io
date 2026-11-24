@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/js/general/basics/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 AngleSharp.Js runs JavaScript against an AngleSharp document. It integrates the [Jint](https://github.com/sebastienros/jint) interpreter with AngleSharp, so scripts can read and change the same DOM that your .NET code uses. This is useful when processing pages whose behavior depends on script execution, evaluating a snippet in a document context, or hosting JavaScript APIs alongside your application.
 

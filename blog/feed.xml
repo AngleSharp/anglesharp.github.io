@@ -7,6 +7,13 @@
   <description>News and releases from the AngleSharp project.</description>
   <language>en</language>
   <item>
+    <title>AngleSharp 1.11.0</title>
+    <link>https://anglesharp.github.io/blog/2026/anglesharp-v111-release/</link>
+    <guid>https://anglesharp.github.io/blog/2026/anglesharp-v111-release/</guid>
+    <pubDate>Tue, 24 Nov 2026 13:15:00 GMT</pubDate>
+    <description>Release day again, and this one is special:</description>
+  </item>
+  <item>
     <title>AngleSharp 1.10.0</title>
     <link>https://anglesharp.github.io/blog/2026/anglesharp-v110-release/</link>
     <guid>https://anglesharp.github.io/blog/2026/anglesharp-v110-release/</guid>
@@ -138,13 +145,6 @@
     <guid>https://anglesharp.github.io/blog/2015/anglesharp-v093-released/</guid>
     <pubDate>Mon, 12 Oct 2015 11:44:00 GMT</pubDate>
     <description>AngleSharp v0.9.3 is another round of minor updates. Besides a few bug fixes the CompareDocumentPosition method has been improved. It now passes all tests and works reliably.</description>
-  </item>
-  <item>
-    <title>AngleSharp IO</title>
-    <link>https://anglesharp.github.io/blog/2015/anglesharp-io/</link>
-    <guid>https://anglesharp.github.io/blog/2015/anglesharp-io/</guid>
-    <pubDate>Sun, 04 Oct 2015 23:34:00 GMT</pubDate>
-    <description>In the last days one of the remaining projects was officially launched: AngleSharp.Io . This library will provide many essential IO classes, helper methods, and DOM interfaces. Most importantly it will bring new /…</description>
   </item>
 </channel>
 </rss>

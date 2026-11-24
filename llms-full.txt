@@ -10,8 +10,8 @@ This file concatenates the documentation of all 10 AngleSharp projects. Index: h
 
 > Source: https://anglesharp.github.io/docs/anglesharp/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This documentation focuses on AngleSharp.Core, the standards-driven parser, DOM, selector engine, and browsing-context infrastructure that the other AngleSharp projects build on.
 
@@ -69,8 +69,8 @@ AngleSharp.Core intentionally keeps the parser and DOM implementation focused. T
 
 > Source: https://anglesharp.github.io/docs/anglesharp/general/basics/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 ### Requirements
 
@@ -234,8 +234,8 @@ The reason for this behavior is quite simple: Applying e.g. `Html` will remove a
 
 > Source: https://anglesharp.github.io/docs/anglesharp/general/features/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This section collects historical implementation notes for major features. It does not aim to be an exhaustive, up-to-date product matrix. For the current package layout and companion projects, see the roadmap and ecosystem page.
 
@@ -388,6 +388,8 @@ This work package deals with finding important IDL constructs. Then a proper way
 
 *Status*: Most important ones implemented, more to come upon request / requirement.
 
+Besides being discovered by reflection over these attributes, the DOM surface can be declared in code through the `DomRegistry` contract (namespace `AngleSharp.Scripting`), which is what trimmed and natively compiled (AoT) applications need. See [Declaring the DOM without reflection](https://anglesharp.github.io/docs/anglesharp/tutorials/api/index.html.md#declaring-the-dom-without-reflection).
+
 More information can be found at:
 
 * [W3C WebIDL](http://www.w3.org/TR/WebIDL/)
@@ -493,8 +495,8 @@ More information can be found at:
 
 > Source: https://anglesharp.github.io/docs/anglesharp/general/upcoming/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This page replaces the older time-based "upcoming features" notes. Those notes were tied to pre-1.0 milestones and no longer describe the current project accurately.
 
@@ -553,8 +555,8 @@ Avoid reading old roadmap language as a promise of current support. For up-to-da
 
 > Source: https://anglesharp.github.io/docs/anglesharp/general/performance/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This page contains historical benchmark snapshots and qualitative guidance. For current numbers, rerun the benchmark projects in `src/AngleSharp.Benchmarks`, since parser performance and .NET runtime behavior change over time.
 
@@ -1010,8 +1012,8 @@ The results are displayed below.
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/api/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 ### Core API
 
@@ -1068,6 +1070,37 @@ However, right now there are no intentions in providing an official / integrated
 Officially, we try to establish `AngleSharp.Js` as the solution. This is a separate project from the core, which requires high maintenance and lots of efforts. Any participation on this one would be highly appreciated.
 
 Script hosts that cache event-handler properties can subscribe to the .NET `EventTarget.OnReset` event. `RemoveEventListeners` clears native registrations and then raises the event once, allowing the host to discard its cached handlers for that target. `ListenerResetVersion` changes before notification so a handler assigned by an earlier subscriber during the reset is not discarded by a later subscriber. Individual `RemoveEventListener` calls do not raise the event. These are CLR integration members, not DOM events or properties exposed to scripts.
+
+##### Declaring the DOM without reflection
+
+By default a script engine finds the DOM surface by reflecting over the WebIDL attributes (`DomName` and friends) of every library in use. Reflection keeps no type alive for the trimmer and is unavailable under native AoT, so the namespace `AngleSharp.Scripting` also contains a contract by which the DOM can be declared in code instead:
+
+- `DomRegistration` is a delegate taking a `DomRegistry`. Each AngleSharp library ships one for its own DOM, so it always matches the version in use.
+- `DomRegistry` declares types (`Type<T>`), mixins (`Mixin<T>`), constant objects, WebIDL enumerations (`Literals<TEnum>`), named constructors and window instances. Each type then gets its prototype chain, members, constructors, static members, indexers and event handlers.
+- `DomArguments` gives a registered member the arguments script passed, converted on request, and `DomCallback` stands for a function passed by script.
+- `DomRegistrations.Combine` joins the registrations of several libraries. They run in order, so a later library can add members to a type declared by an earlier one.
+
+```cs
+DomRegistration registration = registry =>
+{
+    registry.Type<INode>("Node")
+        .Property("textContent", node => node.TextContent, (node, value) => node.TextContent = value);
+
+    registry.Type<IElement>("Element")
+        .Inherits<INode>()
+        .Method("getAttribute", (element, args) => element.GetAttribute(args.Get<String>(0)), length: 1);
+};
+```
+
+Every member is a strongly typed delegate, so an engine needs no reflection to invoke it, and what is registered is exactly what the trimmer keeps. The registry is implemented by the engine; `AngleSharp.Js` takes a registration through `WithJs(registration)` and falls back to reflection when none is given.
+
+Writing such a registration by hand is not needed for a library that already carries the DOM attributes: the package of AngleSharp includes a source generator that writes it at build time. A library asks for it with an assembly attribute naming the static class to generate:
+
+```cs
+[assembly: GenerateDomRegistration("MyLibrary.MyLibraryDom")]
+```
+
+The generated `MyLibraryDom.Register` follows the rules a reflecting engine applies to the same attributes, including the members the library adds to the DOM of others (`[DomExposed]`). Members it cannot express are reported as warnings (`ASDOM001` to `ASDOM003`). The DOM of AngleSharp itself is declared by `AngleSharp.Scripting.CoreDom.Register`.
 
 #### ISpellCheckService
 
@@ -1139,8 +1172,8 @@ The API of the interfaces / DOM objects has been changed in such a way, that it 
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/options/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 The HTML parser comes with some options, which may be helpful to cover specific scenarios.
 
@@ -1400,8 +1433,8 @@ Setting `MaximumDepth` to zero or a negative value restores the default. Setting
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/examples/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 This is a (growing) list of examples for every-day usage of AngleSharp.
 
@@ -1746,8 +1779,8 @@ We also register an event listener for this custom event in C#. Here we have int
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/forms/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 ### Standard Forms
 
@@ -1820,10 +1853,10 @@ Once a form is no longer a real form, but relies on JavaScript manipulation (or 
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/migration/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
-This page is intentionally historical. For current package scope, supported target frameworks, and companion libraries, prefer the main [README](https://github.com/AngleSharp/AngleSharp/blob/c7ac782c5ef0c35aca936f44696bdea7e2b70851/README.md) and the [roadmap and ecosystem page](https://anglesharp.github.io/docs/anglesharp/general/upcoming/index.html.md).
+This page is intentionally historical. For current package scope, supported target frameworks, and companion libraries, prefer the main [README](https://github.com/AngleSharp/AngleSharp/blob/f9edfbecb8a147550d2c7bfe9a158633f4b94ec2/README.md) and the [roadmap and ecosystem page](https://anglesharp.github.io/docs/anglesharp/general/upcoming/index.html.md).
 
 ### Current Targets
 
@@ -2043,8 +2076,8 @@ You can also directly make a PR for this guide if you figured something out that
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/questions/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 ### How to download a picture?
 
@@ -2513,8 +2546,8 @@ In any case, there is also the complication of a "guess" vs a "confident" pick. 
 
 > Source: https://anglesharp.github.io/docs/anglesharp/tutorials/popovers/
 > Project: AngleSharp (https://github.com/AngleSharp/AngleSharp)
-> Package: AngleSharp 1.10.5 — install with `dotnet add package AngleSharp`
-> Docs revision: c7ac782c5ef0c35aca936f44696bdea7e2b70851
+> Package: AngleSharp 1.11.0 — install with `dotnet add package AngleSharp`
+> Docs revision: f9edfbecb8a147550d2c7bfe9a158633f4b94ec2
 
 AngleSharp.Core provides the DOM state and events for HTML popovers. A popover can be opened or
 closed through `showPopover()`, `hidePopover()`, and `togglePopover()`. `beforetoggle` fires
@@ -2545,8 +2578,8 @@ CSS, renderer, or browser integrations.
 
 > Source: https://anglesharp.github.io/docs/css/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 We have more detailed information regarding the following subjects:
 
@@ -2600,8 +2633,8 @@ Typical use cases include:
 
 > Source: https://anglesharp.github.io/docs/css/general/basics/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 ### Requirements
 
@@ -2755,8 +2788,8 @@ If no specific `IRenderDevice` is supplied, a default implementation is used.
 
 > Source: https://anglesharp.github.io/docs/css/general/values/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 For details see [CSS2 specification](https://www.w3.org/TR/CSS2/cascade.html#value-stages).
 
@@ -2853,8 +2886,8 @@ support still determine which resolved values can be used by a consuming propert
 
 > Source: https://anglesharp.github.io/docs/css/general/cssom/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 The CSS Object Model (CSSOM) in AngleSharp.Css gives you structured access to stylesheet rules, declarations, and values.
 
@@ -2947,8 +2980,8 @@ Console.WriteLine(computed.GetPropertyValue("color"));
 
 > Source: https://anglesharp.github.io/docs/css/general/core-interfaces/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 This page summarizes the interfaces you will touch most often when building with AngleSharp.Css.
 
@@ -3063,8 +3096,8 @@ This applies to any pseudo-class the selector engine recognizes (`:hover`, `:act
 
 > Source: https://anglesharp.github.io/docs/css/general/extensibility/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 AngleSharp.Css is designed to be composed through services in the AngleSharp configuration.
 
@@ -3151,6 +3184,18 @@ The dictionary is keyed by the media feature name and holds the keyword the feat
 
 The value is compared to the queried keyword case insensitively, so a keyword that is newer than this library works as well. Used without a value, e.g., `@media (prefers-reduced-motion)`, the feature evaluates in a boolean context, where `no-preference` (and `none` for `forced-colors`, `hover`, `any-hover`, `pointer` and `any-pointer`) is `false`. Without a preference `hover` and `pointer` keep answering as they did before, i.e., as a device with no input mechanism.
 
+### Expose The CSSOM To Scripts Without Reflection
+
+A scripting engine such as AngleSharp.Js finds the CSSOM by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand the engine the registration that is generated for this library at build time, `AngleSharp.Css.CssDom.Register` (a `DomRegistration` of AngleSharp). It declares the CSSOM types, the `CSS` namespace and the members the library adds to the DOM, such as `element.style` or `getComputedStyle`:
+
+```cs
+var config = Configuration.Default
+    .WithCss()
+    .WithJs(CssDom.Register);
+```
+
+The registration describes the version of AngleSharp.Css in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
+
 ### Composition Pattern
 
 Start from the default registrations and replace only what you need:
@@ -3176,8 +3221,8 @@ This preserves compatibility with the built-in pipeline while still allowing tar
 
 > Source: https://anglesharp.github.io/docs/css/general/provided-services/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 Calling `WithCss()` registers a set of CSS-related services in the AngleSharp configuration.
 
@@ -3255,8 +3300,8 @@ Console.WriteLine($"Parser: {hasParser}, RenderDevice: {hasDevice}");
 
 > Source: https://anglesharp.github.io/docs/css/general/supported-at-rules/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 This page documents the at-rules recognized by the AngleSharp.Css parser (`CssBuilder.AtRuleMap`) and the corresponding CSSOM rule implementations.
 
@@ -3304,8 +3349,8 @@ This page documents the at-rules recognized by the AngleSharp.Css parser (`CssBu
 
 > Source: https://anglesharp.github.io/docs/css/general/supported-declarations/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 This page documents declaration/property support in AngleSharp.Css based on the registration in `DefaultDeclarationFactory` and declaration classes in `src/AngleSharp.Css/Declarations`.
 
@@ -3845,8 +3890,8 @@ This page documents declaration/property support in AngleSharp.Css based on the 
 
 > Source: https://anglesharp.github.io/docs/css/general/typed-om/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 AngleSharp.Css implements the [CSS Typed Object Model Level 1](https://www.w3.org/TR/css-typed-om-1/) in the `AngleSharp.Css.TypedOm` namespace. Instead of strings, values are given as objects: a length is a `CssUnitValue` with a value and a unit, a `calc()` is a tree of math values, and a `transform` is a list of transform components.
 
@@ -3992,8 +4037,8 @@ How the CSSOM relates to the [CSS Properties and Values API Level 1](https://www
 
 > Source: https://anglesharp.github.io/docs/css/general/painting-api/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 AngleSharp.Css implements the [CSS Painting API Level 1](https://www.w3.org/TR/css-paint-api-1/) in the `AngleSharp.Css.Painting` namespace. A *paint definition*, registered under a name, draws the images of the `paint()` functions that use this name, e.g., a background:
 
@@ -4190,8 +4235,8 @@ Not supported: invalidating and repainting (the caller draws when it needs an im
 
 > Source: https://anglesharp.github.io/docs/css/tutorials/api/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 ### Quick API Map
 
@@ -4313,8 +4358,8 @@ Console.WriteLine(computed.GetPropertyValue("padding"));
 
 > Source: https://anglesharp.github.io/docs/css/tutorials/examples/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 This page collects practical recipes for every-day AngleSharp.Css usage.
 
@@ -4548,8 +4593,8 @@ button.RemovePseudoClass("hover");
 
 > Source: https://anglesharp.github.io/docs/css/tutorials/render-tree/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 This tutorial shows practical workflows using the document render tree.
 
@@ -4683,8 +4728,8 @@ var tree = document.DefaultView!.Render(device);
 
 > Source: https://anglesharp.github.io/docs/css/tutorials/questions/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
-> Package: AngleSharp.Css 1.5.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: b35861044ecc148031849ea5a1cfd6316be1b90a
+> Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
+> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
 
 ### How to change the color output?
 
@@ -4776,8 +4821,8 @@ var sheetB = await parser.ParseStyleSheetAsync(stream);
 
 > Source: https://anglesharp.github.io/docs/js/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 We have more detailed information regarding the following subjects:
 
@@ -4793,8 +4838,8 @@ We have more detailed information regarding the following subjects:
 
 > Source: https://anglesharp.github.io/docs/js/general/basics/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 AngleSharp.Js runs JavaScript against an AngleSharp document. It integrates the [Jint](https://github.com/sebastienros/jint) interpreter with AngleSharp, so scripts can read and change the same DOM that your .NET code uses. This is useful when processing pages whose behavior depends on script execution, evaluating a snippet in a document context, or hosting JavaScript APIs alongside your application.
 
@@ -5042,8 +5087,8 @@ Notable limitations include:
 
 > Source: https://anglesharp.github.io/docs/js/tutorials/api/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 This page lists the public .NET API of AngleSharp.Js and explains how .NET types become JavaScript objects. For a guided introduction see [Getting Started](https://anglesharp.github.io/docs/js/general/basics/index.html.md).
 
@@ -5053,7 +5098,7 @@ The package targets `netstandard2.0`, `net462`, `net472`, `net8.0` and `net10.0`
 
 | Type / member | Namespace | Purpose |
 | --- | --- | --- |
-| `WithJs()`, `WithJs(JsScriptingOptions)` | `AngleSharp` | Registers the JavaScript engine and its auxiliary services. |
+| `WithJs()`, `WithJs(JsScriptingOptions)`, `WithJs(DomRegistration)` | `AngleSharp` | Registers the JavaScript engine and its auxiliary services. |
 | `WithEventLoop()` and overloads | `AngleSharp` | Registers the event loop that runs scripts, timers and callbacks. |
 | `WithConsoleLogger(Func<IBrowsingContext, IConsoleLogger>)` | `AngleSharp` | Routes `console.*` output to your code. |
 | `ExecuteScript(document, code, type, sourceUrl)` | `AngleSharp.Js` | Runs JavaScript in the document's engine and returns the result. |
@@ -5090,6 +5135,22 @@ Registers:
 - a custom element host, so `customElements.define` works with JavaScript classes.
 
 Calling `WithJs` does **not** register an event loop or a loader. Most documents that run scripts need both (see `WithEventLoop` and AngleSharp's `WithDefaultLoader`).
+
+#### `WithJs(DomRegistration registration)`
+
+By default the engine finds the DOM exposed to scripts by reflecting over the DOM attributes of the AngleSharp libraries behind the services of the browsing context. Given a registration (also `JsScriptingOptions.DomRegistration`), it exposes exactly what is registered instead: nothing is reflected over, which is what a trimmed or natively compiled (AoT) application needs.
+
+Each library ships the registration of its DOM, generated at build time from its DOM attributes: `CssDom.Register` of AngleSharp.Css, `IoDom.Register` of AngleSharp.Io, and so on. The DOM of AngleSharp itself (`CoreDom`) and of this library are always registered first, so a registration only names the further libraries in use:
+
+```cs
+var config = Configuration.Default
+    .WithCss()
+    .WithIo()
+    .WithJs(DomRegistrations.Combine(CssDom.Register, IoDom.Register))
+    .WithEventLoop();
+```
+
+A library that is a service of the context but not part of the registration is not exposed to scripts. An application can add its own types with `[DomName]` attributes and `[assembly: GenerateDomRegistration("MyApp.AppDom")]`, or declare members by hand on the `DomRegistry` (see AngleSharp's documentation).
 
 #### `WithEventLoop()`
 
@@ -5298,8 +5359,8 @@ Value conversions follow WebIDL:
 
 > Source: https://anglesharp.github.io/docs/js/tutorials/examples/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 This is a (growing) list of examples for every-day usage of AngleSharp.Js. All examples assume these `using` directives:
 
@@ -5658,8 +5719,8 @@ var config = Configuration.Default
 
 > Source: https://anglesharp.github.io/docs/js/tutorials/questions/
 > Project: AngleSharp.Js (https://github.com/AngleSharp/AngleSharp.Js)
-> Package: AngleSharp.Js 1.2.3 — install with `dotnet add package AngleSharp.Js`
-> Docs revision: dfd5fb3a9a4a0412ecd0af5ab760881e2705e4af
+> Package: AngleSharp.Js 1.3.0 — install with `dotnet add package AngleSharp.Js`
+> Docs revision: d06a2901adfb4f7634c99dd8f8f09a427e5d964b
 
 ### Why do the scripts of my page not run?
 
@@ -5781,8 +5842,8 @@ The package targets `netstandard2.0`, `net462`, `net472`, `net8.0` and `net10.0`
 
 > Source: https://anglesharp.github.io/docs/xml/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 We have more detailed information regarding the following subjects:
 
@@ -5804,8 +5865,8 @@ We have more detailed information regarding the following subjects:
 
 > Source: https://anglesharp.github.io/docs/xml/general/basics/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 ### Requirements
 
@@ -5849,8 +5910,8 @@ This will register a parser for XML related content.
 
 > Source: https://anglesharp.github.io/docs/xml/general/capabilities/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 AngleSharp.Xml extends the AngleSharp ecosystem with XML-native parsing and serialization while keeping a familiar DOM programming model.
 
@@ -5871,6 +5932,18 @@ AngleSharp.Xml extends the AngleSharp ecosystem with XML-native parsing and seri
 - Resolve effective XML Base URIs and URLs
 - Normalize and look up live `xml:id` values
 - Resolve inherited `xml:lang` values
+
+### Scripting without reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Xml.XmlDom.Register` (a `DomRegistration` of AngleSharp). It declares the XML and SVG document types of the library:
+
+```cs
+var config = Configuration.Default
+    .WithXml()
+    .WithJs(XmlDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
 
 ### Namespace handling
 
@@ -5918,8 +5991,8 @@ AngleSharp.Xml extends the AngleSharp ecosystem with XML-native parsing and seri
 
 > Source: https://anglesharp.github.io/docs/xml/general/limitations/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 AngleSharp.Xml is designed for practical XML parsing and DOM workflows in the AngleSharp ecosystem. It is not intended to replace every specialized XML stack.
 
@@ -5978,8 +6051,8 @@ Use additional tooling when you need:
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/api/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 AngleSharp.Xml can be used in two complementary ways:
 
@@ -6278,8 +6351,8 @@ These are useful for diagnostics, telemetry, and observability in hosted applica
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/examples/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 This is a (growing) list of examples for every-day usage of AngleSharp.Xml.
 
@@ -6373,8 +6446,8 @@ This mode is useful when you want uniform loading behavior for HTML, XML, and SV
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/use-cases/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 This guide shows when AngleSharp.Xml is a good fit and how to structure real-world usage.
 
@@ -6511,8 +6584,8 @@ Combine with specialized XML libraries when your priority is:
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/questions/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 ### Do I need AngleSharp.Xml if I already use AngleSharp?
 
@@ -6565,8 +6638,8 @@ This package is focused on the AngleSharp DOM and parser integration. Most users
 
 > Source: https://anglesharp.github.io/docs/xml/tutorials/dtd-validation/
 > Project: AngleSharp.Xml (https://github.com/AngleSharp/AngleSharp.Xml)
-> Package: AngleSharp.Xml 1.3.1 — install with `dotnet add package AngleSharp.Xml`
-> Docs revision: 1942246134ae20a06d89a996f0bd9f1eaa2fd329
+> Package: AngleSharp.Xml 1.4.0 — install with `dotnet add package AngleSharp.Xml`
+> Docs revision: eacce16b2afcfd5457e57ce293c7bdcb4831502b
 
 This guide explains what a DTD is, how AngleSharp.Xml uses it, and what validation behavior is currently supported.
 
@@ -6722,8 +6795,8 @@ If document.IsValid is unexpectedly true or false:
 
 > Source: https://anglesharp.github.io/docs/io/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 We have more detailed information regarding the following subjects:
 
@@ -6741,8 +6814,8 @@ We have more detailed information regarding the following subjects:
 
 > Source: https://anglesharp.github.io/docs/io/general/basics/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 ### Requirements
 
@@ -7815,8 +7888,8 @@ Alternatively, use `WithDownload`, which allows you to distinguish also on the p
 
 > Source: https://anglesharp.github.io/docs/io/general/dom-objects-and-helpers/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 AngleSharp.Io extends AngleSharp with additional DOM-related building blocks and convenience methods. This page summarizes what they are and when to use them.
 
@@ -7937,6 +8010,18 @@ ws.Closed += (s, e) => Console.WriteLine("socket closed");
 
 It exists as a DOM contract abstraction, suitable for integration and host-specific implementations.
 
+### Scripting Without Reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Io.IoDom.Register` (a `DomRegistration` of AngleSharp). It declares the Web APIs of the library (`fetch`, `XMLHttpRequest`, `WebSocket`, storage, ...) and the members it adds to the DOM:
+
+```cs
+var config = Configuration.Default
+    .WithIo()
+    .WithJs(IoDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
+
 
 ---
 
@@ -7944,8 +8029,8 @@ It exists as a DOM contract abstraction, suitable for integration and host-speci
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/api/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 The AngleSharp.Io package brings a new DOM interface `IStorage` into AngleSharp. Furthermore, the `InputFile` and `WebSocket` classes have been implemented in AngleSharp.Io.
 
@@ -7984,8 +8069,8 @@ Like the cookies, the cache entries can be stored temporarily (`MemoryHttpCacheH
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/examples/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 This is a (growing) list of examples for every-day usage of AngleSharp.Io.
 
@@ -8018,8 +8103,8 @@ var document = await context.OpenAsync("https://some-page.com/foo");
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/common-workflows/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 This tutorial collects practical, copy-paste-friendly workflows for common AngleSharp.Io scenarios.
 
@@ -8210,8 +8295,8 @@ Notes:
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/questions/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 ### How can the new requesters be used?
 
@@ -8370,8 +8455,8 @@ The _control_ nodes represents the expected HTML tree, i.e. how the nodes are ex
 
 > Source: https://anglesharp.github.io/docs/wasm/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 We have more detailed information regarding the following subjects:
 
@@ -8404,8 +8489,8 @@ For details about supported behavior and known limitations, see:
 
 > Source: https://anglesharp.github.io/docs/wasm/general/basics/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 ### Requirements
 
@@ -8417,7 +8502,7 @@ You need to have AngleSharp installed already. This could be done via NuGet:
 Install-Package AngleSharp
 ```
 
-If you want JavaScript-side access to `window.WebAssembly`, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies.
+If you want JavaScript-side access to `window.WebAssembly`, you also need a scripting setup (for example, AngleSharp.Js) that discovers exported DOM members from loaded assemblies, or is given the registration of this library (see below).
 
 ### Getting AngleSharp.Wasm over NuGet
 
@@ -8463,6 +8548,18 @@ var config = Configuration.Default
         });
 ```
 
+### Scripting Without Reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Wasm.WasmDom.Register` (a `DomRegistration` of AngleSharp). It declares the `WebAssembly` namespace with its interfaces (`WebAssembly.Module`, `WebAssembly.Memory`, ...):
+
+```cs
+var config = Configuration.Default
+    .WithWasm()
+    .WithJs(WasmDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
+
 ### What Works Today
 
 - `WithWasm()` registers a default Wasmtime-backed runtime factory.
@@ -8499,8 +8596,8 @@ These limitations are intentional for the current release scope and can be evolv
 
 > Source: https://anglesharp.github.io/docs/wasm/general/spec-coverage/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 This page maps the current AngleSharp.Wasm implementation to the WebAssembly JavaScript API specification.
 
@@ -8573,8 +8670,8 @@ Scripts (with AngleSharp.Js) see the API of the standard: `WebAssembly` is a nam
 
 > Source: https://anglesharp.github.io/docs/wasm/tutorials/api/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 This page summarizes the currently available public API surface.
 
@@ -8764,8 +8861,8 @@ For a section-by-section status overview, see [Spec Coverage Matrix](https://ang
 
 > Source: https://anglesharp.github.io/docs/wasm/tutorials/examples/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 This is a (growing) list of examples for every-day usage of AngleSharp.Wasm.
 
@@ -8874,8 +8971,8 @@ var keys = instance.Exports.Keys();
 
 > Source: https://anglesharp.github.io/docs/wasm/tutorials/questions/
 > Project: AngleSharp.Wasm (https://github.com/AngleSharp/AngleSharp.Wasm)
-> Package: AngleSharp.Wasm 1.1.1 — install with `dotnet add package AngleSharp.Wasm`
-> Docs revision: 1044be7bc91ea340a048447d74634ebb7b0d909a
+> Package: AngleSharp.Wasm 1.2.0 — install with `dotnet add package AngleSharp.Wasm`
+> Docs revision: 0d6d9a04aa99fad6de3d2fa43cddb12427b89912
 
 For a compact section-by-section status view, see [Spec Coverage Matrix](https://anglesharp.github.io/docs/wasm/general/spec-coverage/index.html.md).
 
@@ -8959,7 +9056,7 @@ These limits are expected at this stage and can be expanded in future versions.
 > Source: https://anglesharp.github.io/docs/renderer/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 We have more detailed information regarding the following subjects:
 
@@ -8982,7 +9079,7 @@ We have more detailed information regarding the following subjects:
 > Source: https://anglesharp.github.io/docs/renderer/benchmarks/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 All benchmarks have been run using .NET 10 on an Apple M5 Pro with 24 GB of memory.
 
@@ -9036,7 +9133,7 @@ rasterization/encoding was always a small, roughly fixed slice of total time. Se
 > Source: https://anglesharp.github.io/docs/renderer/general/basics/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ### Requirements
 
@@ -9122,7 +9219,7 @@ The test suite uses PNG snapshots under `verification-assets/`. Missing baseline
 > Source: https://anglesharp.github.io/docs/renderer/general/interactivity/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 `HtmlRenderer.RenderToPng`/`BuildDisplayList` render one static snapshot of a document by
 themselves. To simulate mouse hover, drive CSS `transition`s and `animation`s, or read/set scroll
@@ -9568,7 +9665,7 @@ is currently set once a harness exists for the document.
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/api/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ### Configuration
 
@@ -9585,6 +9682,19 @@ var context = BrowsingContext.New(config);
 ```
 
 The render device's `ViewPortWidth` and `ViewPortHeight` are the size of the viewport, and so of the rendered image (800×600 when the context has no render device); `FontSize` is the default font size. Images are rendered at one device pixel per CSS pixel.
+
+### Scripting Without Reflection
+
+AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, `AngleSharp.Renderer.RendererDom.Register` (a `DomRegistration` of AngleSharp). It declares the layout members of the library (`getBoundingClientRect`, `offsetWidth`, ...), the observers, animations and the 2D canvas, which replace the stubs of AngleSharp.Js as they do by reflection:
+
+```cs
+var config = Configuration.Default
+    .WithCss()
+    .WithRendering()
+    .WithJs(RendererDom.Register);
+```
+
+The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with `DomRegistrations.Combine`.
 
 ### Rendering A Document
 
@@ -9716,7 +9826,7 @@ A canvas in a page shows its bitmap when the page is rendered.
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/examples/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ### Render A Page To PNG
 
@@ -9829,7 +9939,7 @@ Inspecting the display list is often the fastest way to debug box-model or text-
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/questions/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
 > Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 0a71fb1145856a0e638852edb3b9de0385eb01fa
+> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
 
 ### Why do web-safe fonts look the same on my machine?
 

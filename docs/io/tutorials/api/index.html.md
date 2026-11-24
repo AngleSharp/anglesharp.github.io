@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/io/tutorials/api/
 > Project: AngleSharp.Io (https://github.com/AngleSharp/AngleSharp.Io)
-> Package: AngleSharp.Io 1.3.3 — install with `dotnet add package AngleSharp.Io`
-> Docs revision: 04108d0016949a158c855c362073b1883c674c2b
+> Package: AngleSharp.Io 1.4.0 — install with `dotnet add package AngleSharp.Io`
+> Docs revision: 0fc4ac7f4fe290560fa414651b08ab19c1e2f405
 
 The AngleSharp.Io package brings a new DOM interface `IStorage` into AngleSharp. Furthermore, the `InputFile` and `WebSocket` classes have been implemented in AngleSharp.Io.
 

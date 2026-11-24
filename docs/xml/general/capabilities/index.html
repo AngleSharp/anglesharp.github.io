@@ -18,7 +18,7 @@
 <link rel="help" type="text/plain" href="/llms.txt" title="llms.txt">
 <link rel="alternate" type="application/rss+xml" title="AngleSharp Blog" href="/blog/feed.xml">
 <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css?v=1079ba07e8">
+<link rel="stylesheet" href="/assets/styles.css?v=8449b53a13">
 <script>(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t}catch(e){}})()</script>
 <script src="/assets/app.js?v=2585d9215d" defer></script>
 </head>
@@ -108,6 +108,12 @@
 <li>Normalize and look up live <code>xml:id</code> values</li>
 <li>Resolve inherited <code>xml:lang</code> values</li>
 </ul>
+<h2 id="scripting-without-reflection" tabindex="-1">Scripting without reflection <a class="anchor" href="#scripting-without-reflection" aria-hidden="true">#</a></h2>
+<p>AngleSharp.Js finds the DOM of this library by reflecting over its DOM attributes by default. A trimmed or natively compiled (AoT) application can instead hand it the registration generated for this library at build time, <code>AngleSharp.Xml.XmlDom.Register</code> (a <code>DomRegistration</code> of AngleSharp). It declares the XML and SVG document types of the library:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">var</span><span style="--shiki-light:#6F42C1;--shiki-dark:#FFA657"> config</span><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> Configuration.Default</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithXml</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">    .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">WithJs</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(XmlDom.Register);</span></span>
+<span class="line"></span></code></pre></div><p>The registration describes the version of the library in use, so it never has to be kept in sync by hand. Several libraries are combined with <code>DomRegistrations.Combine</code>.</p>
 <h2 id="namespace-handling" tabindex="-1">Namespace handling <a class="anchor" href="#namespace-handling" aria-hidden="true">#</a></h2>
 <ul>
 <li>Supports prefixed and default namespaces</li>
@@ -153,7 +159,7 @@
         <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Xml/edit/devel/docs/general/02-Capabilities.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
         <a class="edit-link" href="/docs/xml/general/capabilities/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
       </span>
-      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Xml/tree/1942246134ae20a06d89a996f0bd9f1eaa2fd329" target="_blank" rel="noopener"><code>1942246</code></a></span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Xml/tree/eacce16b2afcfd5457e57ce293c7bdcb4831502b" target="_blank" rel="noopener"><code>eacce16</code></a></span>
     </div>
     <nav class="pager" aria-label="Pagination">
       <a class="pager-prev" href="/docs/xml/general/basics/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Getting Started</span></a>
@@ -161,7 +167,7 @@
     </nav>
   </article>
   <aside class="docs-toc" aria-label="On this page">
-    <h4>On this page</h4><ul><li class="toc-l2"><a href="#parsing" title="Parsing">Parsing</a></li><li class="toc-l2"><a href="#dom-integration" title="DOM integration">DOM integration</a></li><li class="toc-l2"><a href="#namespace-handling" title="Namespace handling">Namespace handling</a></li><li class="toc-l2"><a href="#document-type-support" title="Document type support">Document type support</a></li><li class="toc-l2"><a href="#serialization" title="Serialization">Serialization</a></li><li class="toc-l2"><a href="#diagnostics-and-control" title="Diagnostics and control">Diagnostics and control</a></li><li class="toc-l2"><a href="#typical-high-value-scenarios" title="Typical high-value scenarios">Typical high-value scenarios</a></li></ul>
+    <h4>On this page</h4><ul><li class="toc-l2"><a href="#parsing" title="Parsing">Parsing</a></li><li class="toc-l2"><a href="#dom-integration" title="DOM integration">DOM integration</a></li><li class="toc-l2"><a href="#scripting-without-reflection" title="Scripting without reflection">Scripting without reflection</a></li><li class="toc-l2"><a href="#namespace-handling" title="Namespace handling">Namespace handling</a></li><li class="toc-l2"><a href="#document-type-support" title="Document type support">Document type support</a></li><li class="toc-l2"><a href="#serialization" title="Serialization">Serialization</a></li><li class="toc-l2"><a href="#diagnostics-and-control" title="Diagnostics and control">Diagnostics and control</a></li><li class="toc-l2"><a href="#typical-high-value-scenarios" title="Typical high-value scenarios">Typical high-value scenarios</a></li></ul>
   </aside>
 </div>
 </main>
