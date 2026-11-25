@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Sample inputs are copied next to the binary; samples read them relative to the app directory. -->
+    <None Include="input/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

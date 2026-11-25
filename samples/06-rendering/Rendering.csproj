@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" />
+    <PackageReference Include="AngleSharp.Css" />
+    <PackageReference Include="AngleSharp.Renderer" />
+  </ItemGroup>
+</Project>

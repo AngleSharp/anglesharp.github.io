@@ -1,0 +1,38 @@
+{
+  "name": "@anglesharp/video-tutorials",
+  "version": "1.0.0",
+  "description": "AngleSharp tutorial series: six 4\u20136 minute videos built from ../samples.",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "still": "remotion still src/index.ts",
+    "typecheck": "tsc -p .",
+    "sync": "node ../tools/sync-samples.mjs",
+    "render:1": "remotion render src/index.ts Tutorial1 out/tutorial-1.mp4",
+    "render:1:silent": "remotion render src/index.ts Tutorial1 out/tutorial-1-silent.mp4 --props={\\\"music\\\":false}",
+    "render:2": "remotion render src/index.ts Tutorial2 out/tutorial-2.mp4",
+    "render:2:silent": "remotion render src/index.ts Tutorial2 out/tutorial-2-silent.mp4 --props={\\\"music\\\":false}",
+    "render:3": "remotion render src/index.ts Tutorial3 out/tutorial-3.mp4",
+    "render:3:silent": "remotion render src/index.ts Tutorial3 out/tutorial-3-silent.mp4 --props={\\\"music\\\":false}",
+    "render:4": "remotion render src/index.ts Tutorial4 out/tutorial-4.mp4",
+    "render:4:silent": "remotion render src/index.ts Tutorial4 out/tutorial-4-silent.mp4 --props={\\\"music\\\":false}",
+    "render:5": "remotion render src/index.ts Tutorial5 out/tutorial-5.mp4",
+    "render:5:silent": "remotion render src/index.ts Tutorial5 out/tutorial-5-silent.mp4 --props={\\\"music\\\":false}",
+    "render:6": "remotion render src/index.ts Tutorial6 out/tutorial-6.mp4",
+    "render:6:silent": "remotion render src/index.ts Tutorial6 out/tutorial-6-silent.mp4 --props={\\\"music\\\":false}"
+  },
+  "dependencies": {
+    "@anglesharp/video-shared": "*",
+    "@remotion/cli": "4.0.546",
+    "@remotion/google-fonts": "4.0.546",
+    "@remotion/media": "4.0.546",
+    "@remotion/transitions": "4.0.546",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "4.0.546"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.9.0"
+  }
+}

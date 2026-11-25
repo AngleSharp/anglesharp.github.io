@@ -1,0 +1,17 @@
+{
+  "name": "@anglesharp/video-shared",
+  "version": "1.0.0",
+  "description": "Shared theme, animation helpers and components for AngleSharp videos.",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "peerDependencies": {
+    "@remotion/google-fonts": "*",
+    "@remotion/transitions": "*",
+    "react": ">=18",
+    "remotion": ">=4"
+  }
+}

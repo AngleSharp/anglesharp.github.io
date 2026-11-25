@@ -1,0 +1,14 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="reader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="feed" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="url" type="xs:anyURI" use="required"/>
+            <xs:attribute name="refresh" type="xs:positiveInteger" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

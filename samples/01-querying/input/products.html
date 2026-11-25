@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Garden tools · Example Shop</title>
+  <style>.badge { color: #c00 }</style>
+</head>
+<body>
+  <header>
+    <nav><a href="/">Home</a> › <a href="/garden/">Garden</a></nav>
+    <h1>Garden tools</h1>
+  </header>
+  <main id="catalog">
+    <article class="product" data-sku="WC-100">
+      <img src="/img/watering-can.jpg" alt="">
+      <h2><a href="/garden/watering-can">
+        Watering can
+      </a></h2>
+      <p class="price" content="24.90">€ 24,90</p>
+    </article>
+    <article class="product" data-sku="PS-220" data-sale>
+      <img src="/img/pruning-shears.jpg" alt="">
+      <h2><a href="/garden/pruning-shears">Pruning shears</a></h2>
+      <span class="badge">Sale</span>
+      <p class="price" content="19.00">€ 19,00</p>
+    </article>
+    <article class="product" data-sku="GG-310">
+      <img src="/img/gloves.jpg" alt="">
+      <h2><a href="/garden/gloves">Garden gloves</a></h2>
+      <p class="price" content="12.50">€ 12,50</p>
+      <script>trackImpression("GG-310")</script>
+    </article>
+    <article class="product" data-sku="RK-400" data-sale>
+      <img src="/img/rake.jpg" alt="">
+      <h2><a href="/garden/rake">Leaf rake</a></h2>
+      <span class="badge">Sale</span>
+      <p class="price" content="29.00">€ 29,00</p>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<reader>
+  <feed url="https://anglesharp.github.io/blog/feed.xml" refresh="60"/>
+  <feed url="https://example.com/news.xml" refresh="often"/>
+  <feed refresh="30"/>
+</reader>

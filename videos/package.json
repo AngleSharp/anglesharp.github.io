@@ -1,0 +1,36 @@
+{
+  "name": "@anglesharp/videos",
+  "version": "1.0.0",
+  "description": "Monorepo for the AngleSharp videos, built with Remotion.",
+  "author": "Florian Rappl",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "shared",
+    "intro",
+    "release-1-11",
+    "tutorials"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "studio:intro": "npm run studio -w @anglesharp/video-intro",
+    "render:intro": "npm run render -w @anglesharp/video-intro",
+    "render:intro:silent": "npm run render:silent -w @anglesharp/video-intro",
+    "music:intro": "npm run music -w @anglesharp/video-intro",
+    "studio:release-1-11": "npm run studio -w @anglesharp/video-release-1-11",
+    "render:release-1-11": "npm run render -w @anglesharp/video-release-1-11",
+    "render:release-1-11:silent": "npm run render:silent -w @anglesharp/video-release-1-11",
+    "music:release-1-11": "npm run music -w @anglesharp/video-release-1-11",
+    "studio:tutorials": "npm run studio -w @anglesharp/video-tutorials",
+    "sync:tutorials": "npm run sync -w @anglesharp/video-tutorials",
+    "render:tutorial-1": "npm run render:1 -w @anglesharp/video-tutorials",
+    "render:tutorial-2": "npm run render:2 -w @anglesharp/video-tutorials",
+    "render:tutorial-3": "npm run render:3 -w @anglesharp/video-tutorials",
+    "render:tutorial-4": "npm run render:4 -w @anglesharp/video-tutorials",
+    "render:tutorial-5": "npm run render:5 -w @anglesharp/video-tutorials",
+    "render:tutorial-6": "npm run render:6 -w @anglesharp/video-tutorials",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}

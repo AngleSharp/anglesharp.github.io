@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/01-querying/">
+    <Project Path="01-querying/Querying.csproj" />
+  </Folder>
+  <Folder Name="/02-generating/">
+    <Project Path="02-generating/Generating.csproj" />
+  </Folder>
+  <Folder Name="/03-styles/">
+    <Project Path="03-styles/Styles.csproj" />
+  </Folder>
+  <Folder Name="/04-xml/">
+    <Project Path="04-xml/Xml.csproj" />
+  </Folder>
+  <Folder Name="/05-browsing/">
+    <Project Path="05-browsing/Browsing.csproj" />
+  </Folder>
+  <Folder Name="/06-rendering/">
+    <Project Path="06-rendering/Rendering.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,28 @@
+{
+  "name": "@anglesharp/video-release-1-11",
+  "version": "1.0.0",
+  "description": "AngleSharp 1.11 release video (3:00).",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Release111 out/release-1-11.mp4",
+    "still": "remotion still src/index.ts",
+    "typecheck": "tsc -p .",
+    "render:silent": "remotion render src/index.ts Release111 out/release-1-11-silent.mp4 --props={\\\"music\\\":false}",
+    "music": "node ../tools/generate-music.mjs --duration 180 --seed 111 --out public/music.mp3"
+  },
+  "dependencies": {
+    "@anglesharp/video-shared": "*",
+    "@remotion/cli": "4.0.546",
+    "@remotion/google-fonts": "4.0.546",
+    "@remotion/media": "4.0.546",
+    "@remotion/transitions": "4.0.546",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "4.0.546"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.9.0"
+  }
+}

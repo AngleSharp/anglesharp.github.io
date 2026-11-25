@@ -1,0 +1,11 @@
+<Project>
+  <!-- The released packages of the AngleSharp 1.11 wave (see v2026/content/blog/2026-11-24-anglesharp-v111-release.md). -->
+  <ItemGroup>
+    <PackageVersion Include="AngleSharp" Version="1.11.0" />
+    <PackageVersion Include="AngleSharp.Css" Version="1.6.0" />
+    <PackageVersion Include="AngleSharp.Xml" Version="1.4.0" />
+    <PackageVersion Include="AngleSharp.Io" Version="1.4.0" />
+    <!-- 0.13.0 was not on nuget.org yet when the samples were written; switch to 0.13.0 once it is. -->
+    <PackageVersion Include="AngleSharp.Renderer" Version="0.13.0-beta.240" />
+  </ItemGroup>
+</Project>
