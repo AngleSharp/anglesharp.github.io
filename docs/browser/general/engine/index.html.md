@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/general/engine/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The `BrowserEngine` represents a browsing context with its history, i.e., what a single browser window (or tab) would be. It is `IDisposable`; dispose it once the window goes away.
 
@@ -96,7 +96,22 @@ The underlying `IBrowsingContext` is available via `Context`, e.g., to retrieve 
 | `HoverChanged` | The hovered link or the cursor changed. |
 | `ScrollChanged` | The scroll position changed. |
 | `WindowRequested` | The page asks for a new window. See [Configuration](https://anglesharp.github.io/docs/browser/general/configuration/index.html.md#multiple-windows). |
+| `FullscreenChanged` | The page started or ended showing an element fullscreen. See [Fullscreen](#fullscreen). |
 | `Error` | An operation failed, e.g., a navigation or a script. |
+
+## Fullscreen
+
+A page shows an element fullscreen with `requestFullscreen()`, which needs a user activation (a press or a key), like in browsers. The element then covers the viewport (it matches `:fullscreen`), and the engine raises `FullscreenChanged` with `IsFullscreen` being `true`. A host should show the page fullscreen meanwhile, e.g. with a fullscreen window and without its toolbars:
+
+```cs
+engine.FullscreenChanged += (_, _) =>
+{
+    // raised on the engine's thread
+    Dispatcher.UIThread.Post(() => window.WindowState = engine.IsFullscreen ? WindowState.FullScreen : WindowState.Normal);
+};
+```
+
+Esc ends it, as does the page (`document.exitFullscreen()`) or leaving the document. When the user leaves the fullscreen mode of the host another way, call `ExitFullscreenAsync` to end it for the page as well.
 
 ## Diagnostics
 

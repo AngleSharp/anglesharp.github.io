@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-24T16:21:13.577Z",
+  "builtAt": "2026-11-25T12:36:53.385Z",
   "projects": [
     {
       "id": "anglesharp",
@@ -11,8 +11,8 @@
     {
       "id": "css",
       "repo": "AngleSharp/AngleSharp.Css",
-      "ref": "859f5b254e46961272f9ba24ed64ff44e601ed28",
-      "commit": "859f5b254e46961272f9ba24ed64ff44e601ed28",
+      "ref": "6bb30f14b09633daf58468cb62b46845de4ed056",
+      "commit": "6bb30f14b09633daf58468cb62b46845de4ed056",
       "pages": 15
     },
     {
@@ -60,15 +60,15 @@
     {
       "id": "renderer",
       "repo": "AngleSharp/AngleSharp.Renderer",
-      "ref": "92ec823876840c988d718f377a1c609d779e9e7c",
-      "commit": "92ec823876840c988d718f377a1c609d779e9e7c",
+      "ref": "0c7559a36c8ac8a77ce875c07149f309da1a002e",
+      "commit": "0c7559a36c8ac8a77ce875c07149f309da1a002e",
       "pages": 7
     },
     {
       "id": "browser",
       "repo": "AngleSharp/AngleSharp.Browser",
-      "ref": "9e2ca98df15342044069b89c6ba35431334e1443",
-      "commit": "9e2ca98df15342044069b89c6ba35431334e1443",
+      "ref": "4d468a5b7b6bbf724b3d145420d5704ed9e43ad2",
+      "commit": "4d468a5b7b6bbf724b3d145420d5704ed9e43ad2",
       "pages": 12
     }
   ]

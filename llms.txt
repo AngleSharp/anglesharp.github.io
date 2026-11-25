@@ -21,8 +21,8 @@ Important notes:
 - [AngleSharp.XPath](https://anglesharp.github.io/docs/xpath/index.html.md): Select nodes via XPath expressions. — NuGet: AngleSharp.XPath 2.0.10 — status: stable
 - [AngleSharp.Diffing](https://anglesharp.github.io/docs/diffing/index.html.md): Compare DOM trees and get semantic differences. — NuGet: AngleSharp.Diffing 1.1.1 — status: stable
 - [AngleSharp.Wasm](https://anglesharp.github.io/docs/wasm/index.html.md): WebAssembly support for browsing contexts. — NuGet: AngleSharp.Wasm 1.2.0 — status: stable
-- [AngleSharp.Renderer](https://anglesharp.github.io/docs/renderer/index.html.md): Layout and paint the styled DOM. — NuGet: AngleSharp.Renderer 0.12.0 — status: preview
-- [AngleSharp.Browser](https://anglesharp.github.io/docs/browser/index.html.md): The whole ecosystem, assembled into a browser. — NuGet: AngleSharp.Browser 0.2.0 — status: preview
+- [AngleSharp.Renderer](https://anglesharp.github.io/docs/renderer/index.html.md): Layout and paint the styled DOM. — NuGet: AngleSharp.Renderer 0.13.0 — status: preview
+- [AngleSharp.Browser](https://anglesharp.github.io/docs/browser/index.html.md): The whole ecosystem, assembled into a browser. — NuGet: AngleSharp.Browser 0.3.0 — status: preview
 
 ## AngleSharp documentation
 

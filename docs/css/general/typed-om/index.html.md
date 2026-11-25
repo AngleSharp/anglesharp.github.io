@@ -3,7 +3,7 @@
 > Source: https://anglesharp.github.io/docs/css/general/typed-om/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 AngleSharp.Css implements the [CSS Typed Object Model Level 1](https://www.w3.org/TR/css-typed-om-1/) in the `AngleSharp.Css.TypedOm` namespace. Instead of strings, values are given as objects: a length is a `CssUnitValue` with a value and a unit, a `calc()` is a tree of math values, and a `transform` is a list of transform components.
 

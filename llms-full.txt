@@ -2579,7 +2579,7 @@ CSS, renderer, or browser integrations.
 > Source: https://anglesharp.github.io/docs/css/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 We have more detailed information regarding the following subjects:
 
@@ -2634,7 +2634,7 @@ Typical use cases include:
 > Source: https://anglesharp.github.io/docs/css/general/basics/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 ### Requirements
 
@@ -2789,7 +2789,7 @@ If no specific `IRenderDevice` is supplied, a default implementation is used.
 > Source: https://anglesharp.github.io/docs/css/general/values/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 For details see [CSS2 specification](https://www.w3.org/TR/CSS2/cascade.html#value-stages).
 
@@ -2887,7 +2887,7 @@ support still determine which resolved values can be used by a consuming propert
 > Source: https://anglesharp.github.io/docs/css/general/cssom/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 The CSS Object Model (CSSOM) in AngleSharp.Css gives you structured access to stylesheet rules, declarations, and values.
 
@@ -2981,7 +2981,7 @@ Console.WriteLine(computed.GetPropertyValue("color"));
 > Source: https://anglesharp.github.io/docs/css/general/core-interfaces/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This page summarizes the interfaces you will touch most often when building with AngleSharp.Css.
 
@@ -3097,7 +3097,7 @@ This applies to any pseudo-class the selector engine recognizes (`:hover`, `:act
 > Source: https://anglesharp.github.io/docs/css/general/extensibility/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 AngleSharp.Css is designed to be composed through services in the AngleSharp configuration.
 
@@ -3222,7 +3222,7 @@ This preserves compatibility with the built-in pipeline while still allowing tar
 > Source: https://anglesharp.github.io/docs/css/general/provided-services/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 Calling `WithCss()` registers a set of CSS-related services in the AngleSharp configuration.
 
@@ -3301,7 +3301,7 @@ Console.WriteLine($"Parser: {hasParser}, RenderDevice: {hasDevice}");
 > Source: https://anglesharp.github.io/docs/css/general/supported-at-rules/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This page documents the at-rules recognized by the AngleSharp.Css parser (`CssBuilder.AtRuleMap`) and the corresponding CSSOM rule implementations.
 
@@ -3350,7 +3350,7 @@ This page documents the at-rules recognized by the AngleSharp.Css parser (`CssBu
 > Source: https://anglesharp.github.io/docs/css/general/supported-declarations/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This page documents declaration/property support in AngleSharp.Css based on the registration in `DefaultDeclarationFactory` and declaration classes in `src/AngleSharp.Css/Declarations`.
 
@@ -3891,7 +3891,7 @@ This page documents declaration/property support in AngleSharp.Css based on the 
 > Source: https://anglesharp.github.io/docs/css/general/typed-om/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 AngleSharp.Css implements the [CSS Typed Object Model Level 1](https://www.w3.org/TR/css-typed-om-1/) in the `AngleSharp.Css.TypedOm` namespace. Instead of strings, values are given as objects: a length is a `CssUnitValue` with a value and a unit, a `calc()` is a tree of math values, and a `transform` is a list of transform components.
 
@@ -4038,7 +4038,7 @@ How the CSSOM relates to the [CSS Properties and Values API Level 1](https://www
 > Source: https://anglesharp.github.io/docs/css/general/painting-api/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 AngleSharp.Css implements the [CSS Painting API Level 1](https://www.w3.org/TR/css-paint-api-1/) in the `AngleSharp.Css.Painting` namespace. A *paint definition*, registered under a name, draws the images of the `paint()` functions that use this name, e.g., a background:
 
@@ -4236,7 +4236,7 @@ Not supported: invalidating and repainting (the caller draws when it needs an im
 > Source: https://anglesharp.github.io/docs/css/tutorials/api/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 ### Quick API Map
 
@@ -4359,7 +4359,7 @@ Console.WriteLine(computed.GetPropertyValue("padding"));
 > Source: https://anglesharp.github.io/docs/css/tutorials/examples/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This page collects practical recipes for every-day AngleSharp.Css usage.
 
@@ -4594,7 +4594,7 @@ button.RemovePseudoClass("hover");
 > Source: https://anglesharp.github.io/docs/css/tutorials/render-tree/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This tutorial shows practical workflows using the document render tree.
 
@@ -4729,7 +4729,7 @@ var tree = document.DefaultView!.Render(device);
 > Source: https://anglesharp.github.io/docs/css/tutorials/questions/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 ### How to change the color output?
 
@@ -9055,8 +9055,8 @@ These limits are expected at this stage and can be expanded in future versions.
 
 > Source: https://anglesharp.github.io/docs/renderer/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 We have more detailed information regarding the following subjects:
 
@@ -9078,8 +9078,8 @@ We have more detailed information regarding the following subjects:
 
 > Source: https://anglesharp.github.io/docs/renderer/benchmarks/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 All benchmarks have been run using .NET 10 on an Apple M5 Pro with 24 GB of memory.
 
@@ -9132,8 +9132,8 @@ rasterization/encoding was always a small, roughly fixed slice of total time. Se
 
 > Source: https://anglesharp.github.io/docs/renderer/general/basics/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 ### Requirements
 
@@ -9218,8 +9218,8 @@ The test suite uses PNG snapshots under `verification-assets/`. Missing baseline
 
 > Source: https://anglesharp.github.io/docs/renderer/general/interactivity/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 `HtmlRenderer.RenderToPng`/`BuildDisplayList` render one static snapshot of a document by
 themselves. To simulate mouse hover, drive CSS `transition`s and `animation`s, or read/set scroll
@@ -9664,8 +9664,8 @@ is currently set once a harness exists for the document.
 
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/api/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 ### Configuration
 
@@ -9825,8 +9825,8 @@ A canvas in a page shows its bitmap when the page is rendered.
 
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/examples/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 ### Render A Page To PNG
 
@@ -9938,8 +9938,8 @@ Inspecting the display list is often the fastest way to debug box-model or text-
 
 > Source: https://anglesharp.github.io/docs/renderer/tutorials/questions/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 ### Why do web-safe fonts look the same on my machine?
 
@@ -9970,8 +9970,8 @@ Yes. AngleSharp.Css exposes the render tree via `window.Render(...)`, which is h
 
 > Source: https://anglesharp.github.io/docs/browser/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 We have more detailed information regarding the following subjects:
 
@@ -10020,8 +10020,8 @@ Typical use cases include:
 
 > Source: https://anglesharp.github.io/docs/browser/general/basics/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 ### Packages
 
@@ -10132,8 +10132,8 @@ Layout and painting are done by AngleSharp.Renderer, which is still a young layo
 
 > Source: https://anglesharp.github.io/docs/browser/general/engine/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The `BrowserEngine` represents a browsing context with its history, i.e., what a single browser window (or tab) would be. It is `IDisposable`; dispose it once the window goes away.
 
@@ -10226,7 +10226,22 @@ The underlying `IBrowsingContext` is available via `Context`, e.g., to retrieve 
 | `HoverChanged` | The hovered link or the cursor changed. |
 | `ScrollChanged` | The scroll position changed. |
 | `WindowRequested` | The page asks for a new window. See [Configuration](https://anglesharp.github.io/docs/browser/general/configuration/index.html.md#multiple-windows). |
+| `FullscreenChanged` | The page started or ended showing an element fullscreen. See [Fullscreen](#fullscreen). |
 | `Error` | An operation failed, e.g., a navigation or a script. |
+
+### Fullscreen
+
+A page shows an element fullscreen with `requestFullscreen()`, which needs a user activation (a press or a key), like in browsers. The element then covers the viewport (it matches `:fullscreen`), and the engine raises `FullscreenChanged` with `IsFullscreen` being `true`. A host should show the page fullscreen meanwhile, e.g. with a fullscreen window and without its toolbars:
+
+```cs
+engine.FullscreenChanged += (_, _) =>
+{
+    // raised on the engine's thread
+    Dispatcher.UIThread.Post(() => window.WindowState = engine.IsFullscreen ? WindowState.FullScreen : WindowState.Normal);
+};
+```
+
+Esc ends it, as does the page (`document.exitFullscreen()`) or leaving the document. When the user leaves the fullscreen mode of the host another way, call `ExitFullscreenAsync` to end it for the page as well.
 
 ### Diagnostics
 
@@ -10263,8 +10278,8 @@ The `Changed` event tells when there is something new. `Clear()` removes what ha
 
 > Source: https://anglesharp.github.io/docs/browser/general/rendering/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 There are two ways to get pixels out of the engine. Pick `PaintAsync` for occasional images, and frames for displaying a page continuously.
 
@@ -10351,8 +10366,8 @@ The screen size reported to media queries is set via `BrowserOptions.ScreenWidth
 
 > Source: https://anglesharp.github.io/docs/browser/general/input/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The engine translates input into DOM interactions. It fires the same events as a browser, and performs the default actions of the page, such as following a link, focusing a text field, toggling a checkbox, or submitting a form.
 
@@ -10408,7 +10423,14 @@ Console.WriteLine(await engine.CopySelectionAsync());
 Keys are named by their DOM key value, e.g., `"a"`, `"Enter"`, `"Backspace"`, `"Tab"`, or `"ArrowDown"`. Keys and text are separate on purpose, just like in most UI frameworks:
 
 - `KeyDownAsync` and `KeyUpAsync` fire the keyboard events and perform the actions of keys, e.g., Tab moving the focus, or Enter submitting a form.
-- `TextInputAsync` enters text into the focused text field. It works for whole strings, too.
+- `TextInputAsync` enters text into the focused text field at its cursor, replacing the selected text. It works for whole strings, too.
+
+In a text field (`input` or `textarea`) the keys edit like in browsers. The cursor is the field's `selectionStart` and `selectionEnd`, so scripts see it and can place it:
+
+- The left and right keys move the cursor, by words with Ctrl (or Alt). Home and End go to the start and end of the line, with Ctrl of the whole text. In a `textarea` the up and down keys go to the line above and below.
+- Shift extends the selection, Ctrl+A (or Cmd+A) selects all of the text.
+- Backspace and Delete remove the selected text, or the character (with Ctrl the word) before or after the cursor.
+- Focusing a field by clicking it puts the cursor at the end of its text; tabbing into an `input` selects its text.
 
 ```cs
 await engine.ClickAsync(100, 200);
@@ -10452,8 +10474,8 @@ Console.WriteLine(engine.ScrollPosition);
 
 > Source: https://anglesharp.github.io/docs/browser/general/configuration/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 Everything that touches the outside world is configured via `BrowserOptions`, which is passed to the constructor of the engine.
 
@@ -10462,7 +10484,7 @@ Everything that touches the outside world is configured via `BrowserOptions`, wh
 | Option | Default | Description |
 | --- | --- | --- |
 | `ProfileDirectory` | `null` | Where cookies, web storage and the HTTP cache are persisted; `null` keeps everything in memory. |
-| `UserAgent` | `null` | The user agent to report; `null` uses the default of AngleSharp.Io. |
+| `UserAgent` | `null` | The user agent to report; `null` uses `BrowserOptions.DefaultUserAgent`, e.g. `Mozilla/5.0 (X11; Linux x86_64) AngleSharp.Browser/0.3`. It names the engine rather than claiming to be Chrome: bot protections (e.g. Cloudflare's) refuse a browser claiming to be Chrome that doesn't behave like it in every detail. |
 | `DefaultHeaders` | empty | Headers added to every request, unless a request sets them already. |
 | `ColorScheme` | `null` | The answer to `prefers-color-scheme`, e.g., `light` or `dark`. |
 | `IsScriptingEnabled` | `true` | If JavaScript should be evaluated. |
@@ -10606,8 +10628,8 @@ The caller owns the returned engine and has to dispose it. An overload takes oth
 
 > Source: https://anglesharp.github.io/docs/browser/general/avalonia/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The `AngleSharp.Browser.Avalonia` package provides `BrowserView`, a control displaying a web page. It has no native browser dependency: pages are parsed, scripted and painted in .NET. The control paints frames, forwards pointer, wheel and keyboard input, draws an overlay scrollbar, and shows the cursor the page asks for.
 
@@ -10711,8 +10733,8 @@ Inside of a namespace below `AngleSharp.Browser`, the name `Avalonia` refers to 
 
 > Source: https://anglesharp.github.io/docs/browser/general/vision/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 Vision is the sample application living in `src/Vision`: a small desktop browser built on `AngleSharp.Browser.Avalonia`. It is a proof of concept, which shows how the packages fit together, and is not shipped as a package.
 
@@ -10750,8 +10772,8 @@ The profile and the settings are kept in the `Vision` folder of the local applic
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/api/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 ### Quick API Map
 
@@ -10790,6 +10812,7 @@ The following APIs cover most day-to-day tasks:
 | `HoveredLink`, `Cursor` | What is below the pointer. |
 | `ColorScheme` | The answer to `prefers-color-scheme`; may be changed. |
 | `HasPaintedDocument` | If the current document has been painted at least once. |
+| `IsFullscreen` | If the page shows an element fullscreen. See [Fullscreen](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#fullscreen). |
 | `Diagnostics` | The `BrowserDiagnostics` of the current page. |
 
 #### Methods
@@ -10809,6 +10832,7 @@ The following APIs cover most day-to-day tasks:
 | `MovePointer`, `MovePointerAsync`, `PointerDownAsync`, `PointerUpAsync`, `ClickAsync` | Pointer input. |
 | `KeyDownAsync`, `KeyUpAsync`, `TextInputAsync` | Keyboard input. |
 | `CopySelectionAsync()` | Gets the selected text for the clipboard. |
+| `ExitFullscreenAsync()` | Ends showing an element fullscreen. |
 | `ScrollAsync(deltaX, deltaY)`, `ScrollToAsync(top, animate)` | Scrolling. |
 | `CreateWindow()`, `CreateWindow(options)` | Creates an engine sharing the profile. |
 | `LoadIconAsync()`, `GetCertificate(host)` | Loads the page's icon, or gets the certificate of a host. |
@@ -10817,7 +10841,7 @@ All asynchronous methods take an optional `CancellationToken`.
 
 #### Events
 
-`Invalidated`, `StateChanged`, `HoverChanged`, `ScrollChanged`, `WindowRequested`, and `Error`. See [Browser Engine](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#events).
+`Invalidated`, `StateChanged`, `HoverChanged`, `ScrollChanged`, `WindowRequested`, `FullscreenChanged`, and `Error`. See [Browser Engine](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#events).
 
 ### BrowserFrame
 
@@ -10858,8 +10882,8 @@ The options are described in [Configuration](https://anglesharp.github.io/docs/b
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/examples/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 This page shows some recipes for working with AngleSharp.Browser.
 
@@ -11017,8 +11041,8 @@ await engine.ClickAsync(20, 20);
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/custom-host/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The engine knows nothing about a UI, so it can be displayed in any framework. This tutorial walks through what `BrowserView` does for Avalonia. Its source in `src/AngleSharp.Browser.Avalonia/BrowserView.cs` is the complete reference.
 
@@ -11119,6 +11143,7 @@ What else makes it feel like a browser:
 - Update `ColorScheme` when the theme changes.
 - Draw a scrollbar from `ScrollPosition`, `ScrollHeight` and `ViewportHeight`, and change the position using `ScrollToAsync`.
 - Handle `WindowRequested`, and open a window with an engine from `CreateWindow`.
+- Handle `FullscreenChanged` to show the page fullscreen while `IsFullscreen`, and call `ExitFullscreenAsync` when the user leaves the fullscreen mode of the host.
 
 
 ---
@@ -11127,8 +11152,8 @@ What else makes it feel like a browser:
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/questions/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 ### A page looks wrong or stays empty. What can I do?
 

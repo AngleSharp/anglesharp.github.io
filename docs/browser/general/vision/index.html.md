@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/general/vision/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 Vision is the sample application living in `src/Vision`: a small desktop browser built on `AngleSharp.Browser.Avalonia`. It is a proof of concept, which shows how the packages fit together, and is not shipped as a package.
 

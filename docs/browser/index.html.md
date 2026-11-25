@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 We have more detailed information regarding the following subjects:
 

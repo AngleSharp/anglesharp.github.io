@@ -154,7 +154,14 @@
 <p>Keys are named by their DOM key value, e.g., <code>&quot;a&quot;</code>, <code>&quot;Enter&quot;</code>, <code>&quot;Backspace&quot;</code>, <code>&quot;Tab&quot;</code>, or <code>&quot;ArrowDown&quot;</code>. Keys and text are separate on purpose, just like in most UI frameworks:</p>
 <ul>
 <li><code>KeyDownAsync</code> and <code>KeyUpAsync</code> fire the keyboard events and perform the actions of keys, e.g., Tab moving the focus, or Enter submitting a form.</li>
-<li><code>TextInputAsync</code> enters text into the focused text field. It works for whole strings, too.</li>
+<li><code>TextInputAsync</code> enters text into the focused text field at its cursor, replacing the selected text. It works for whole strings, too.</li>
+</ul>
+<p>In a text field (<code>input</code> or <code>textarea</code>) the keys edit like in browsers. The cursor is the field's <code>selectionStart</code> and <code>selectionEnd</code>, so scripts see it and can place it:</p>
+<ul>
+<li>The left and right keys move the cursor, by words with Ctrl (or Alt). Home and End go to the start and end of the line, with Ctrl of the whole text. In a <code>textarea</code> the up and down keys go to the line above and below.</li>
+<li>Shift extends the selection, Ctrl+A (or Cmd+A) selects all of the text.</li>
+<li>Backspace and Delete remove the selected text, or the character (with Ctrl the word) before or after the cursor.</li>
+<li>Focusing a field by clicking it puts the cursor at the end of its text; tabbing into an <code>input</code> selects its text.</li>
 </ul>
 <div class="code-block"><div class="code-head"><span class="code-lang">C#</span><button class="copy-btn" type="button" aria-label="Copy code">Copy</button></div><pre class="shiki shiki-themes github-light github-dark-default" style="--shiki-light:#24292e;--shiki-dark:#e6edf3;--shiki-light-bg:#fff;--shiki-dark-bg:#0d1117" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> engine.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">ClickAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79C0FF">200</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#FF7B72">await</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3"> engine.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#D2A8FF">TextInputAsync</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">(</span><span style="--shiki-light:#032F62;--shiki-dark:#A5D6FF">"angle brackets"</span><span style="--shiki-light:#24292E;--shiki-dark:#E6EDF3">);</span></span>
@@ -187,7 +194,7 @@
         <a class="edit-link" href="https://github.com/AngleSharp/AngleSharp.Browser/edit/devel/docs/general/04-Input.md" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit this page on GitHub</a>
         <a class="edit-link" href="/docs/browser/general/input/index.html.md" title="Plain markdown, e.g. for LLMs"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 15V9l3 3 3-3v6M17 9v6M15 13l2 2 2-2"/></svg> View as Markdown</a>
       </span>
-      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Browser/tree/9e2ca98df15342044069b89c6ba35431334e1443" target="_blank" rel="noopener"><code>9e2ca98</code></a></span>
+      <span class="doc-rev">Synced from <a href="https://github.com/AngleSharp/AngleSharp.Browser/tree/4d468a5b7b6bbf724b3d145420d5704ed9e43ad2" target="_blank" rel="noopener"><code>4d468a5</code></a></span>
     </div>
     <nav class="pager" aria-label="Pagination">
       <a class="pager-prev" href="/docs/browser/general/rendering/"><small><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> Previous</small><span>Rendering</span></a>

@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/custom-host/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 The engine knows nothing about a UI, so it can be displayed in any framework. This tutorial walks through what `BrowserView` does for Avalonia. Its source in `src/AngleSharp.Browser.Avalonia/BrowserView.cs` is the complete reference.
 
@@ -104,3 +104,4 @@ What else makes it feel like a browser:
 - Update `ColorScheme` when the theme changes.
 - Draw a scrollbar from `ScrollPosition`, `ScrollHeight` and `ViewportHeight`, and change the position using `ScrollToAsync`.
 - Handle `WindowRequested`, and open a window with an engine from `CreateWindow`.
+- Handle `FullscreenChanged` to show the page fullscreen while `IsFullscreen`, and call `ExitFullscreenAsync` when the user leaves the fullscreen mode of the host.

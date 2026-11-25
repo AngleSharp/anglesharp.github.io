@@ -3,7 +3,7 @@
 > Source: https://anglesharp.github.io/docs/css/tutorials/render-tree/
 > Project: AngleSharp.Css (https://github.com/AngleSharp/AngleSharp.Css)
 > Package: AngleSharp.Css 1.6.0 — install with `dotnet add package AngleSharp.Css`
-> Docs revision: 859f5b254e46961272f9ba24ed64ff44e601ed28
+> Docs revision: 6bb30f14b09633daf58468cb62b46845de4ed056
 
 This tutorial shows practical workflows using the document render tree.
 

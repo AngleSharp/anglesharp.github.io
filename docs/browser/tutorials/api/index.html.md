@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/tutorials/api/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 ## Quick API Map
 
@@ -42,6 +42,7 @@ The following APIs cover most day-to-day tasks:
 | `HoveredLink`, `Cursor` | What is below the pointer. |
 | `ColorScheme` | The answer to `prefers-color-scheme`; may be changed. |
 | `HasPaintedDocument` | If the current document has been painted at least once. |
+| `IsFullscreen` | If the page shows an element fullscreen. See [Fullscreen](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#fullscreen). |
 | `Diagnostics` | The `BrowserDiagnostics` of the current page. |
 
 ### Methods
@@ -61,6 +62,7 @@ The following APIs cover most day-to-day tasks:
 | `MovePointer`, `MovePointerAsync`, `PointerDownAsync`, `PointerUpAsync`, `ClickAsync` | Pointer input. |
 | `KeyDownAsync`, `KeyUpAsync`, `TextInputAsync` | Keyboard input. |
 | `CopySelectionAsync()` | Gets the selected text for the clipboard. |
+| `ExitFullscreenAsync()` | Ends showing an element fullscreen. |
 | `ScrollAsync(deltaX, deltaY)`, `ScrollToAsync(top, animate)` | Scrolling. |
 | `CreateWindow()`, `CreateWindow(options)` | Creates an engine sharing the profile. |
 | `LoadIconAsync()`, `GetCertificate(host)` | Loads the page's icon, or gets the certificate of a host. |
@@ -69,7 +71,7 @@ All asynchronous methods take an optional `CancellationToken`.
 
 ### Events
 
-`Invalidated`, `StateChanged`, `HoverChanged`, `ScrollChanged`, `WindowRequested`, and `Error`. See [Browser Engine](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#events).
+`Invalidated`, `StateChanged`, `HoverChanged`, `ScrollChanged`, `WindowRequested`, `FullscreenChanged`, and `Error`. See [Browser Engine](https://anglesharp.github.io/docs/browser/general/engine/index.html.md#events).
 
 ## BrowserFrame
 

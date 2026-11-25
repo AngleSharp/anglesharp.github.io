@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/renderer/benchmarks/
 > Project: AngleSharp.Renderer (https://github.com/AngleSharp/AngleSharp.Renderer)
-> Package: AngleSharp.Renderer 0.12.0 — install with `dotnet add package AngleSharp.Renderer`
-> Docs revision: 92ec823876840c988d718f377a1c609d779e9e7c
+> Package: AngleSharp.Renderer 0.13.0 — install with `dotnet add package AngleSharp.Renderer`
+> Docs revision: 0c7559a36c8ac8a77ce875c07149f309da1a002e
 
 All benchmarks have been run using .NET 10 on an Apple M5 Pro with 24 GB of memory.
 

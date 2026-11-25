@@ -2,8 +2,8 @@
 
 > Source: https://anglesharp.github.io/docs/browser/general/configuration/
 > Project: AngleSharp.Browser (https://github.com/AngleSharp/AngleSharp.Browser)
-> Package: AngleSharp.Browser 0.2.0 — install with `dotnet add package AngleSharp.Browser`
-> Docs revision: 9e2ca98df15342044069b89c6ba35431334e1443
+> Package: AngleSharp.Browser 0.3.0 — install with `dotnet add package AngleSharp.Browser`
+> Docs revision: 4d468a5b7b6bbf724b3d145420d5704ed9e43ad2
 
 Everything that touches the outside world is configured via `BrowserOptions`, which is passed to the constructor of the engine.
 
@@ -12,7 +12,7 @@ Everything that touches the outside world is configured via `BrowserOptions`, wh
 | Option | Default | Description |
 | --- | --- | --- |
 | `ProfileDirectory` | `null` | Where cookies, web storage and the HTTP cache are persisted; `null` keeps everything in memory. |
-| `UserAgent` | `null` | The user agent to report; `null` uses the default of AngleSharp.Io. |
+| `UserAgent` | `null` | The user agent to report; `null` uses `BrowserOptions.DefaultUserAgent`, e.g. `Mozilla/5.0 (X11; Linux x86_64) AngleSharp.Browser/0.3`. It names the engine rather than claiming to be Chrome: bot protections (e.g. Cloudflare's) refuse a browser claiming to be Chrome that doesn't behave like it in every detail. |
 | `DefaultHeaders` | empty | Headers added to every request, unless a request sets them already. |
 | `ColorScheme` | `null` | The answer to `prefers-color-scheme`, e.g., `light` or `dark`. |
 | `IsScriptingEnabled` | `true` | If JavaScript should be evaluated. |
